@@ -13,9 +13,7 @@ namespace RestApi.Controllers
         [HttpGet] [Route("api/customers")]
         public IEnumerable<Customer> Get()
         {
-            CustomerRepository customerRepository = new CustomerRepository();
-
-
+            var customerRepository = new CustomerRepository();
             return customerRepository.GetAllCustomers();
         }
     }

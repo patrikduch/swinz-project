@@ -16,7 +16,14 @@ import { AppContainer } from 'react-hot-loader';
 import { BrowserRouter } from "react-router-dom";
 import Routes from './Routes';
 
+import Api from './api/endpoints/CustomerApi';
+
 renderApp(); // Initial inject of app
+
+const test = Api.getProjectName();
+
+console.log(test);
+
 
 function renderApp() {
     ReactDOM.render(
