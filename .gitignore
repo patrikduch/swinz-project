@@ -1,0 +1,14 @@
+ReactApp/obj
+ReactApp/.awcache
+ReactApp/bin
+ReactApp/node_modules
+Swinz.Database/obj
+Swinz.Database/bin
+.vs/Swinz/v15/.suo
+ApiBase/obj
+CustomerApi/obj
+OrderApi/obj
+ProductApi/obj
+StatsApi/obj
+Swinz.Database/Swinz.Database.jfm
+Swinz.Database/Swinz.Database.dbmdl

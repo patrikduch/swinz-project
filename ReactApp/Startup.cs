@@ -1,0 +1,73 @@
+﻿//-----------------------------------------------------------------------
+// <copyright file="Startup.cs" website="Patrikduch.com">
+//     Copyright 2019 (c) Patrikduch.com
+// </copyright>
+// <author>Patrik Duch</author>
+//-----------------------------------------------------------------------
+namespace ReactApp
+{
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.SpaServices.Webpack;
+    using Microsoft.Extensions.DependencyInjection;
+
+    /// <summary>
+    /// Entry point to the application 
+    /// </summary>
+    public class Startup
+    {
+        // This method gets called by the runtime. Use this method to add services to the container.
+        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+        public void ConfigureServices(IServiceCollection services)
+        {
+            // In production, the React files will be served from this directory
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "wwwroot/dist";
+            });
+
+            services.AddMvc();
+        }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+
+                // Pro okamžité přerenderování změněného obsahu
+                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
+                {
+                    HotModuleReplacement = true
+                });
+            }
+
+            // Enable static files
+            app.UseStaticFiles();
+            app.UseSpaStaticFiles();
+
+            app.UseMvc(routes =>
+            {
+
+                #region Server routing
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+
+                #endregion
+
+                #region Spa Fallback
+                routes.MapSpaFallbackRoute(
+                    name: "spa-fallback",
+                    defaults: new { controller = "Home", action = "Index" });
+
+                #endregion
+
+            });
+
+            app.UseSpa(spa => { spa.Options.SourcePath = "Frontend"; });
+
+        }
+    }
+}

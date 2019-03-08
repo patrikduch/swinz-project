@@ -1,0 +1,26 @@
+﻿//-----------------------------------------------------------------------
+// <copyright file="HomeController.cs" website="Patrikduch.com">
+//     Copyright 2019 (c) Patrikduch.com
+// </copyright>
+// <author>Patrik Duch</author>
+//-----------------------------------------------------------------------
+namespace ReactApp
+{
+    using Microsoft.AspNetCore;
+    using Microsoft.AspNetCore.Hosting;
+
+    /// <summary>
+    /// Create kestrel server based on configuration from Startup class
+    /// </summary>
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            CreateWebHostBuilder(args).Build().Run();
+        }
+
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                .UseStartup<Startup>();
+    }
+}

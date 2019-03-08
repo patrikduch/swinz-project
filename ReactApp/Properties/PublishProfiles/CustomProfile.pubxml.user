@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword />
+    <_PublishTargetUrl>ftp://patrikduch.com/www</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="dotnet-aspnet-codegenerator-design.dll">
+      <publishTime>06/07/2018 00:27:02</publishTime>
+    </File>
+    <File Include="Microsoft.CodeAnalysis.CSharp.Workspaces.dll">
+      <publishTime>04/30/2018 16:29:02</publishTime>
+    </File>
+    <File Include="Microsoft.CodeAnalysis.Workspaces.dll">
+      <publishTime>04/30/2018 16:29:04</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll">
+      <publishTime>06/07/2018 00:27:00</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGeneration.Core.dll">
+      <publishTime>06/07/2018 00:26:58</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGeneration.dll">
+      <publishTime>06/07/2018 00:26:54</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll">
+      <publishTime>06/07/2018 00:26:56</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll">
+      <publishTime>06/07/2018 00:27:02</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll">
+      <publishTime>06/07/2018 00:27:02</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll">
+      <publishTime>06/07/2018 00:26:58</publishTime>
+    </File>
+    <File Include="NuGet.Frameworks.dll">
+      <publishTime>04/24/2018 21:27:10</publishTime>
+    </File>
+    <File Include="package-lock.json">
+      <publishTime>09/15/2018 14:05:22</publishTime>
+    </File>
+    <File Include="package.json">
+      <publishTime>09/15/2018 14:05:21</publishTime>
+    </File>
+    <File Include="ReactApp.deps.json">
+      <publishTime>09/15/2018 14:36:02</publishTime>
+    </File>
+    <File Include="ReactApp.dll">
+      <publishTime>09/15/2018 14:23:34</publishTime>
+    </File>
+    <File Include="ReactApp.pdb">
+      <publishTime>09/15/2018 14:23:34</publishTime>
+    </File>
+    <File Include="ReactApp.runtimeconfig.json">
+      <publishTime>09/15/2018 14:36:02</publishTime>
+    </File>
+    <File Include="ReactApp.Views.dll">
+      <publishTime>09/15/2018 14:34:53</publishTime>
+    </File>
+    <File Include="ReactApp.Views.pdb">
+      <publishTime>09/15/2018 14:34:53</publishTime>
+    </File>
+    <File Include="System.Composition.AttributedModel.dll">
+      <publishTime>07/25/2018 13:09:50</publishTime>
+    </File>
+    <File Include="System.Composition.Convention.dll">
+      <publishTime>07/25/2018 13:09:51</publishTime>
+    </File>
+    <File Include="System.Composition.Hosting.dll">
+      <publishTime>07/25/2018 13:09:51</publishTime>
+    </File>
+    <File Include="System.Composition.Runtime.dll">
+      <publishTime>07/25/2018 13:09:51</publishTime>
+    </File>
+    <File Include="System.Composition.TypedParts.dll">
+      <publishTime>07/25/2018 13:09:51</publishTime>
+    </File>
+    <File Include="tsconfig.json">
+      <publishTime>09/15/2018 14:19:28</publishTime>
+    </File>
+    <File Include="web.config">
+      <publishTime>09/15/2018 14:36:02</publishTime>
+    </File>
+    <File Include="wwwroot/dist/App.js">
+      <publishTime>09/15/2018 14:34:45</publishTime>
+    </File>
+    <File Include="wwwroot/dist/Index.js">
+      <publishTime>09/15/2018 14:34:52</publishTime>
+    </File>
+    <File Include="wwwroot/dist/Index.js.map">
+      <publishTime>09/15/2018 14:34:52</publishTime>
+    </File>
+    <File Include="wwwroot/favicon.ico">
+      <publishTime>09/15/2018 12:53:01</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
