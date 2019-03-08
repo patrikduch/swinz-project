@@ -8,6 +8,7 @@
 
 // Bootstrap style import
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles/_Base.css';
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';

@@ -3,17 +3,19 @@
 //     Copyright 2019 (c) Patrikduch.com
 // </copyright>
 // <author>Patrik Duch</author>
-// Header component encapules
+// Header component
 //-----------------------------------------------------------------------
 
 import * as React from 'react';
 import Navbar from '../common/navigation/NavBar';
+import Navigation from '../common/navigation/Navigation';
 
 export default () => {
 
     return (
         <header>
             <Navbar />
+            <Navigation />
         </header>
     )
 }

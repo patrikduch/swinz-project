@@ -5,10 +5,7 @@
 // <author>Patrik Duch</author>
 // Navbar component
 //-----------------------------------------------------------------------
-
-
 import * as React from 'react';
-
 import {
   Collapse,
   Navbar,
@@ -16,7 +13,7 @@ import {
   NavbarBrand,
   Nav } from 'reactstrap';
 
-export default class Example extends React.Component<any, any> {
+export default class NavBar extends React.Component<any, any> {
   constructor(props:any) {
     super(props);
 
