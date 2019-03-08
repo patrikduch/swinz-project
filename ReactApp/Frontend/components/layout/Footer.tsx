@@ -12,7 +12,7 @@ export default () => {
 
     return (
         <footer>
-            Autoři: Patrik Duch, Lukáš Niklas
+            
         </footer>
     )
 }

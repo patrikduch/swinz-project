@@ -68,11 +68,13 @@ module.exports = (env) => {
                     ]
                 },
 
+                // CSS integration
                 {
                     test: /\.css$/,
                     use: ['style-loader', 'css-loader'],  
                 },
 
+                // SASS integration
                 {
                     test: /\.scss$/,
                     use: ["style-loader", "css-loader", "sass-loader"]  

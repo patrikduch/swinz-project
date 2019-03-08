@@ -17,24 +17,23 @@ export default class Example extends React.Component {
       return (
         <div>
           <Nav className='justify-content-center d-flex flex-fill'>
-            <NavItem>
+            <NavItem className='react-router-nav-items'>
               <Link to='/customers'>Zákaznici</Link>
             </NavItem>
 
-            <NavItem>
+            <NavItem className='react-router-nav-items'>
               <Link to='/products'>Výrobky</Link>
             </NavItem>
 
-            <NavItem>
+            <NavItem className='react-router-nav-items'>
               <Link to='/orders'>Objednávky</Link>
             </NavItem>
 
-            <NavItem>
+            <NavItem className='react-router-nav-items'>
               <Link to='/stats'>Statistiky</Link>
             </NavItem>
           
           </Nav>
-          <hr />
          
         </div>
       );
