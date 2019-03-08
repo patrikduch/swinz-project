@@ -5,6 +5,10 @@
 // <author>Patrik Duch</author>
 // Entry point to the frontend part of application
 //-----------------------------------------------------------------------
+
+// Bootstrap style import
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';

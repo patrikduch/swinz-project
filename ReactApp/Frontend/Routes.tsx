@@ -10,11 +10,15 @@ import HomeComp from './components/Home';
 import { hot } from 'react-hot-loader';
 import { Route } from "react-router-dom";
 
+import HeaderComp from './components/layout/Header';
+
 const Routes = () => {
     return (
         <div>
-            <Route path='/' exact={true} component={HomeComp} />
+            <HeaderComp/>
+            <Route path='/' exact={true} component={ HomeComp } />
         </div>
+        
     )
 }
 
