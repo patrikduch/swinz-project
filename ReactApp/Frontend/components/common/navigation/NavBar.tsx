@@ -31,7 +31,7 @@ export default class NavBar extends React.Component<any, any> {
     return (
       <div>
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">Invoice system</NavbarBrand>
+          <NavbarBrand href="/">Fakturační systém</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>

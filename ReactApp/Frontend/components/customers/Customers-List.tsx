@@ -1,6 +1,20 @@
+//-----------------------------------------------------------------------
+// <copyright file="Customer-List.tsx" website="Patrikduch.com">
+//     Copyright 2019 (c) Patrikduch.com
+// </copyright>
+// <author>Patrik Duch</author>
+// Customer list which consists table with data manipulations
+//-----------------------------------------------------------------------
+
 import * as React from 'react';
 
 import { Table } from 'reactstrap';
+import { Button } from 'reactstrap';
+
+import CustomersListHeadings from './Customers-List-Headings';
+import CustomersListBody from './Customers-List-Body';
+import CustomerListPaging from './Customers-List-Paging';
+
 
 export default class CustomersList extends React.Component<any, any> {
 
@@ -12,30 +26,17 @@ export default class CustomersList extends React.Component<any, any> {
 
         if (this.props.customers != undefined) {
 
-            return <Table>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Křestní jméno</th>
-                        <th>Přijmení</th>
-                    </tr>
-                </thead>
-                <tbody>
+            return (
+                <div>
+                    <Table>
+                        <CustomersListHeadings />
+                        <CustomersListBody data={this.props.customers} />
+                    </Table>
 
-                    {this.props.customers.map((arg: any) => {
+                    <CustomerListPaging />
+                </div>
 
-                        return (
-
-                            <tr>
-                                <th scope="row">{arg.id}</th>
-                                <td>{arg.firstName}</td>
-                                <td>{arg.surname}</td>
-                            </tr>
-                        )
-                    })}
-
-                </tbody>
-            </Table>
+            );
         }
 
         return null;
@@ -45,7 +46,8 @@ export default class CustomersList extends React.Component<any, any> {
     render() {
         return (
             <div>
-                <p className='customers-title'>Seznam zákazníků</p>
+                <p className='customers-title'>Evidence zákazníků</p>
+                <Button outline color="primary">Nový zákazník</Button>
                 {this.getCustomers()}
             </div>
         )
