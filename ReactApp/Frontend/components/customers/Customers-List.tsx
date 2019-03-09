@@ -15,6 +15,7 @@ import CustomersListHeadings from './Customers-List-Headings';
 import CustomersListBody from './Customers-List-Body';
 import CustomerListPaging from './Customers-List-Paging';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default class CustomersList extends React.Component<any, any> {
 
@@ -47,8 +48,9 @@ export default class CustomersList extends React.Component<any, any> {
         return (
             <div>
                 <p className='customers-title'>Evidence zákazníků</p>
-                <Button outline color="primary">Nový zákazník</Button>
+                <Button outline color="primary"><FontAwesomeIcon icon="plus" /> Nový zákazník</Button>
                 {this.getCustomers()}
+
             </div>
         )
     }

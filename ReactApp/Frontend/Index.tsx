@@ -16,19 +16,18 @@ import { AppContainer } from 'react-hot-loader';
 import { BrowserRouter } from "react-router-dom";
 import Routes from './Routes';
 
-//React Redux závislosti
+//React Redux dependencies
 import { Provider } from 'react-redux'
-
 import store from './redux/store/create-Store';
 
-import Api from './api/endpoints/CustomerApi';
+// FA integration
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faPlus, faMinusCircle, faEdit } from '@fortawesome/free-solid-svg-icons'
+library.add(faPlus);
+library.add(faMinusCircle);
+library.add(faEdit);
 
 renderApp(); // Initial inject of app
-
-const test = Api.getCustomers();
-
-console.log(test);
-
 
 function renderApp() {
     ReactDOM.render(
