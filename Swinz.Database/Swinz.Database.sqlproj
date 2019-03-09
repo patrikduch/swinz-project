@@ -65,6 +65,7 @@
   <ItemGroup>
     <Build Include="Tables\Customer.sql" />
     <Build Include="Procedures\pr_GetAllCustomers.sql" />
+    <Build Include="Procedures\pr_DeleteCustomer.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Swinz.Database.publish.xml" />

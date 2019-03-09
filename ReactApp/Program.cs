@@ -10,7 +10,7 @@ namespace ReactApp
     using Microsoft.AspNetCore.Hosting;
 
     /// <summary>
-    /// Create kestrel server based on configuration from Startup class
+    /// Creation of kestrel server based on configuration from Startup class
     /// </summary>
     public class Program
     {

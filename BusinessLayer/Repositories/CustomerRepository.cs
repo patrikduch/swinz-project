@@ -8,6 +8,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 using BusinessLayer.Interfaces;
 using BusinessLayer.Models;
 
@@ -30,6 +31,8 @@ namespace BusinessLayer.Repositories
         {
             _database = new Database();
         }
+
+        
         #endregion
 
         public IEnumerable<Customer> GetAllCustomers()
@@ -54,6 +57,26 @@ namespace BusinessLayer.Repositories
             }
 
             _database.Close();
+        }
+
+        /// <summary>
+        /// Delete customer by its id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async  Task DeleteCustomer(int id)
+        {
+            // Open connection to the database
+            _database.Connect("\"Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Swinz.Database;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False\";");
+
+            SqlCommand procedure = new SqlCommand("pr_DeleteCustomer", _database.Connection);
+            procedure.CommandType = CommandType.StoredProcedure;
+            procedure.Parameters.AddWithValue("@customerId", id);
+
+            await procedure.ExecuteReaderAsync();
+
+            _database.Close();
+
         }
     }
 }
