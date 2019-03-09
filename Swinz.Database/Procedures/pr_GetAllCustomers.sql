@@ -2,5 +2,5 @@
 AS
 
 	BEGIN
-		SELECT [id] FROM [dbo].[Customer]
+		SELECT [id], [FirstName], [Surname] FROM [dbo].[Customer]
 	END;

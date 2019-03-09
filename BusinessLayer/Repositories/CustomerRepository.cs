@@ -47,8 +47,9 @@ namespace BusinessLayer.Repositories
             {
                 yield return new Customer
                 {
-                    Id = int.Parse(dr["id"].ToString())
-
+                    Id = int.Parse(dr["id"].ToString()),
+                    FirstName = dr["FirstName"].ToString(),
+                    Surname = dr["Surname"].ToString()
                 };
             }
 

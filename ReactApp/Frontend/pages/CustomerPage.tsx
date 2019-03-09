@@ -15,11 +15,7 @@ export default  () => {
 
     return (
         <div>
-
-            Customers
-
             <CustomersListComp />
-            
         </div>
     )
 }

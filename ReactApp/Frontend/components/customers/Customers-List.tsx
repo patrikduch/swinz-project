@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import { Table } from 'reactstrap';
+
 export default class CustomersList extends React.Component<any, any> {
 
     componentWillMount() {
@@ -10,10 +12,30 @@ export default class CustomersList extends React.Component<any, any> {
 
         if (this.props.customers != undefined) {
 
-            return this.props.customers.map((arg: any) => {
+            return <Table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Křestní jméno</th>
+                        <th>Přijmení</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-                return <p className='customers-list' key={arg.id}>{arg.id}</p>;
-            });
+                    {this.props.customers.map((arg: any) => {
+
+                        return (
+
+                            <tr>
+                                <th scope="row">{arg.id}</th>
+                                <td>{arg.firstName}</td>
+                                <td>{arg.surname}</td>
+                            </tr>
+                        )
+                    })}
+
+                </tbody>
+            </Table>
         }
 
         return null;
@@ -23,7 +45,7 @@ export default class CustomersList extends React.Component<any, any> {
     render() {
         return (
             <div>
-                Customers list
+                <p className='customers-title'>Seznam zákazníků</p>
                 {this.getCustomers()}
             </div>
         )
