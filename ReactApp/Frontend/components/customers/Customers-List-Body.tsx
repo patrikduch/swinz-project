@@ -10,12 +10,15 @@ import * as React from 'react';
 
 import CustomersItem from './Customers-List-Item';
 
-export default (props:any) => {
+// Iterface for exported component props
+import ICustomerListBodyProps from '../../typescript/interfaces/components/customers/ICustomer-List-Body-Props';
+
+export default (props:ICustomerListBodyProps) => {
 
     return <tbody>
         {props.data.map((arg: any) => {
 
-            return <CustomersItem arg={ arg } />
+            return <CustomersItem key={arg.id} arg={ arg } />
         })}
     </tbody>
 }
