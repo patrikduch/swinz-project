@@ -16,11 +16,16 @@ import { AppContainer } from 'react-hot-loader';
 import { BrowserRouter } from "react-router-dom";
 import Routes from './Routes';
 
+//React Redux závislosti
+import { Provider } from 'react-redux'
+
+import store from './redux/store/create-Store';
+
 import Api from './api/endpoints/CustomerApi';
 
 renderApp(); // Initial inject of app
 
-const test = Api.getProjectName();
+const test = Api.getCustomers();
 
 console.log(test);
 
@@ -29,9 +34,11 @@ function renderApp() {
     ReactDOM.render(
     <div>
         <AppContainer>
+            <Provider store={store()}>
             <BrowserRouter>
                 <Routes />
             </BrowserRouter>
+            </Provider>
         </AppContainer>
     </div>,
                 

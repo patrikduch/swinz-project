@@ -1,4 +1,11 @@
-// Third party knihovna pro snadné provolávání REST API
+//-----------------------------------------------------------------------
+// <copyright file="request-utils.ts" website="Patrikduch.com">
+//     Copyright 2019 (c) Patrikduch.com
+// </copyright>
+// <author>Patrik Duch</author>
+// Helper functions for processing requests
+//-----------------------------------------------------------------------
+
 import axios from 'axios';
 
 export function newGet (url: string) {
