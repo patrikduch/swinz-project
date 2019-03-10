@@ -31,7 +31,7 @@ export default class CustomersList extends React.Component<any, any> {
                 <div>
                     <Table>
                         <CustomersListHeadings />
-                        <CustomersListBody data={this.props.customers} />
+                        <CustomersListBody removeCustomer={ this.props.actions.deleteCustomer } data={this.props.customers} />
                     </Table>
 
                     <CustomerListPaging />

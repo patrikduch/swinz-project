@@ -18,3 +18,24 @@ export const getCustomers : any = () => async (dispatch: Function) => {
         dispatch({ type: actionTypes.FETCH_CUSTOMERS, data });
     })
 }
+
+export const deleteCustomer : any = (customerId: number) => async (dispatch: Function) => {
+        
+    try {
+
+        CustomerApi.deleteCustomer(customerId).then(() => {
+
+            dispatch({ type: actionTypes.DELETE_CUSTOMER, customerId});
+    
+        }).catch(() => {
+    
+            console.log('err');
+    
+        })
+
+
+    } catch(err) {
+
+    }
+    
+}

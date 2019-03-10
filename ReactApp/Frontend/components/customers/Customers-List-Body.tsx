@@ -18,7 +18,7 @@ export default (props:ICustomerListBodyProps) => {
     return <tbody>
         {props.data.map((arg: any) => {
 
-            return <CustomersItem key={arg.id} arg={ arg } />
+            return <CustomersItem removeCustomer={props.removeCustomer} key={arg.id} arg={ arg } />
         })}
     </tbody>
 }

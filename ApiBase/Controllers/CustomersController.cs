@@ -7,6 +7,7 @@
 
 using System.Runtime.InteropServices.ComTypes;
 using System.Threading.Tasks;
+using RestApi.Dto;
 
 namespace RestApi.Controllers
 {
@@ -31,8 +32,8 @@ namespace RestApi.Controllers
             return customerRepository.GetAllCustomers();
         }
 
-        [HttpDelete] [Route("api/customers/delete")]
-        public async Task DeleteCustomer([FromBody]int id)
+        [HttpDelete] [Route("api/customers/delete/{id}")]
+        public async Task DeleteCustomer(int id)
         {
             var customerRepository = new CustomerRepository();
             await customerRepository.DeleteCustomer(id);

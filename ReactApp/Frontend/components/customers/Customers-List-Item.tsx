@@ -10,13 +10,23 @@ import * as React from 'react';
 import { Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export default (props : any) => {
 
-    return (<tr>
-        <th scope="row">{props.arg.id}</th>
-        <td>{props.arg.firstName}</td>
-        <td>{props.arg.surname}</td>
-        <td>N/A <Button className='list-delete-btn' color="danger" size="sm"><FontAwesomeIcon icon="minus-circle" /></Button> <Button color="secondary" size="sm"><FontAwesomeIcon icon="edit" /></Button></td>
-    </tr>
-    );
+export default class CustomersListItem extends React.Component<any, any> {
+
+    removeCustomer = (customerId: number) => {
+        this.props.removeCustomer(customerId);
+    }
+
+    render() {
+
+        return (<tr>
+            <th scope="row">{this.props.arg.id}</th>
+            <td>{this.props.arg.firstName}</td>
+            <td>{this.props.arg.surname}</td>
+            <td>N/A <Button onClick={() => this.props.removeCustomer(this.props.arg.id)} className='list-delete-btn' color="danger" size="sm"><FontAwesomeIcon icon="minus-circle" /></Button> <Button color="secondary" size="sm"><FontAwesomeIcon icon="edit" /></Button></td>
+        </tr>
+        );
+    }
 }
+
+

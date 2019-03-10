@@ -12,3 +12,21 @@ export function newGet (url: string) {
     return axios.get(url);
 }
 
+export function deleteRequest(url: string) {
+
+    try {
+
+        return axios.delete(url).catch(() => {
+
+            return 'aa';
+        })
+
+
+    } catch (err) {
+
+
+    }
+    
+    
+}
+

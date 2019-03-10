@@ -3,7 +3,7 @@
 //     Copyright 2019 (c) Patrikduch.com
 // </copyright>
 // <author>Patrik Duch</author>
-// Redux reducer for customers
+// Redux reducer for cu(stomers
 //-------------------------------------------------------------------------
 
 // Import of all actions types
@@ -16,11 +16,25 @@ const reducer = (state : any = initialState.customers, action: any) => {
 
     switch(action.type) {
 
+        // Fetching all customers
         case actionTypes.FETCH_CUSTOMERS:
             return {
                 ...state,
                 data: action.data.data
             }
+            
+        // Change after removing customer
+        case actionTypes.DELETE_CUSTOMER:
+        
+            const newData = state.data.filter(((arg: any) => {
+
+                return arg.id != action.customerId;
+            }));
+
+            return {
+                ...state,
+                data: newData
+        }
     
         default:
 

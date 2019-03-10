@@ -27,6 +27,10 @@ library.add(faPlus);
 library.add(faMinusCircle);
 library.add(faEdit);
 
+
+import Api from './api/endpoints/CustomerApi';
+
+
 renderApp(); // Initial inject of app
 
 function renderApp() {
