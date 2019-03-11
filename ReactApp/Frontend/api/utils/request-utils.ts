@@ -8,25 +8,12 @@
 
 import axios from 'axios';
 
-export function newGet (url: string) {
+export function newGet(url: string) {
     return axios.get(url);
 }
 
 export function deleteRequest(url: string) {
 
-    try {
-
-        return axios.delete(url).catch(() => {
-
-            return 'aa';
-        })
-
-
-    } catch (err) {
-
-
-    }
-    
-    
+    return axios.delete(url);
 }
 

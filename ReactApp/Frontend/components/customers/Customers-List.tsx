@@ -9,13 +9,10 @@
 import * as React from 'react';
 
 import { Table } from 'reactstrap';
-import { Button } from 'reactstrap';
-
 import CustomersListHeadings from './Customers-List-Headings';
 import CustomersListBody from './Customers-List-Body';
 import CustomerListPaging from './Customers-List-Paging';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import AddCustomer from './Customers-Add';
 
 export default class CustomersList extends React.Component<any, any> {
 
@@ -48,7 +45,8 @@ export default class CustomersList extends React.Component<any, any> {
         return (
             <div>
                 <p className='customers-title'>Evidence zákazníků</p>
-                <Button outline color="primary"><FontAwesomeIcon icon="plus" /> Nový zákazník</Button>
+                
+                <AddCustomer title='Přidání nového zákazníka' btnIcon='plus' />
                 {this.getCustomers()}
 
             </div>

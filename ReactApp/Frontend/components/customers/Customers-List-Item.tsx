@@ -7,8 +7,11 @@
 //-----------------------------------------------------------------------
 
 import * as React from 'react';
-import { Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { Button } from 'reactstrap';
+
+import CustomerEdit from './Customers-Edit';
 
 
 export default class CustomersListItem extends React.Component<any, any> {
@@ -19,11 +22,24 @@ export default class CustomersListItem extends React.Component<any, any> {
 
     render() {
 
+        const data = {
+
+            id: this.props.arg.id,
+            firstName: this.props.arg.firstName,
+            surname: this.props.arg.surname
+        }
+
         return (<tr>
             <th scope="row">{this.props.arg.id}</th>
             <td>{this.props.arg.firstName}</td>
             <td>{this.props.arg.surname}</td>
-            <td>N/A <Button onClick={() => this.props.removeCustomer(this.props.arg.id)} className='list-delete-btn' color="danger" size="sm"><FontAwesomeIcon icon="minus-circle" /></Button> <Button color="secondary" size="sm"><FontAwesomeIcon icon="edit" /></Button></td>
+            <td>N/A <Button onClick={() => this.props.removeCustomer(this.props.arg.id)} className='list-delete-btn' color="danger" size="sm"><FontAwesomeIcon icon="minus-circle" /></Button>
+            
+             <CustomerEdit title='Aktualizace zákaznika' data = { data } />
+             
+     
+             
+             </td>
         </tr>
         );
     }

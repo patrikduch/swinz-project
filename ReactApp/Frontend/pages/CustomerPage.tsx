@@ -10,7 +10,7 @@ import * as React from 'react';
 
 import CustomersListComp from '../redux/containers/customers/Customer-List-Container';
 
-import { Container, Row, Col } from 'reactstrap';
+import { Container } from 'reactstrap';
 
 
 export default  () => {
