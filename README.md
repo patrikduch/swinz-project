@@ -13,3 +13,12 @@ Data persistence (Entity framework Core) </br>
 React with Typescript </br>
 Redux library for state manipulation
 
+
+</br>
+</br>
+</br>
+
+<h1>Backend</h1>
+Asp.net Core 2.1 </br>
+
+
