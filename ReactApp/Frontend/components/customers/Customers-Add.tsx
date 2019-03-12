@@ -7,9 +7,7 @@
 //-----------------------------------------------------------------------
 
 import *  as React from 'react';
-
 import CustomerModal from '../common/modals/Classic-Modal';
-
 
 export default (props: any) => {
 

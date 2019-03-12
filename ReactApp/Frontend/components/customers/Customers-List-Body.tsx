@@ -16,12 +16,13 @@ import ICustomerListItemProps from '../../typescript/interfaces/components/custo
 
 export default (props:ICustomerListBodyProps) => {
 
-    let counter = 1;
+    let counter = 0; // For list identifier
 
     return <tbody>
         {props.data.map((arg: ICustomerListItemProps) => {
 
-            return <CustomersItem removeCustomer={ () => props.removeCustomer(arg.id) } key={ arg.id } arg={ arg } />
+            counter++; // Next item index of the customer`s list
+            return <CustomersItem removeCustomer={ () => props.removeCustomer(arg.id) } test = { counter } key={ arg.id } arg={ arg } />
         })}
     </tbody>
 }

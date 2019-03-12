@@ -26,7 +26,7 @@ export default class CustomersListItem extends React.Component<any, any> {
 
         return (
             <tr>
-                <th scope="row">{ this.props.arg.id }</th>
+                <th scope="row">{ this.props.test }</th>
                 <td>{ this.props.arg.firstName }</td>
                 <td>{ this.props.arg.surname }</td>
 
