@@ -16,6 +16,12 @@ namespace CustomerApi.Contexts
     /// </summary>
     public class CustomerContext : DbContext
     {
+
+        public CustomerContext()
+        {
+                
+        }
+
         public CustomerContext(DbContextOptions<CustomerContext> options) : base(options)
         {
         }

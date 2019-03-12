@@ -24,6 +24,11 @@ namespace CustomerApi.Controllers
         private readonly ICustomerRepository _customerRepository;
         #endregion
 
+        public CustomerController()
+        {
+            
+        }
+
         #region Constructors
         public CustomerController(ICustomerRepository customerRepository)
         {

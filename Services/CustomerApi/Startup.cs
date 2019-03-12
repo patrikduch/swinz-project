@@ -5,6 +5,9 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using CustomerApi.Contexts;
+using Microsoft.EntityFrameworkCore;
+
 namespace CustomerApi
 {
     using Newtonsoft.Json;
@@ -30,6 +33,19 @@ namespace CustomerApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            // Only for migrations
+
+            #region Only for migrations
+
+            // Entity framework context setup
+            var conn = Configuration.GetConnectionString("Default");
+            services.AddDbContext<CustomerContext>(options => options.UseSqlServer(conn));
+
+
+            #endregion
+
+
 
 
             services.AddMvc()
