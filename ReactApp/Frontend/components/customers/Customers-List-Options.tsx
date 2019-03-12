@@ -8,7 +8,9 @@
 
 import * as React from 'react';
 
-export default (props: any) => {
+import ICustomerListOptionsProps from '../../typescript/interfaces/components/customers/ICustomer-List-Options-Props';
+
+export default (props: ICustomerListOptionsProps) => {
 
     return (
         <td>

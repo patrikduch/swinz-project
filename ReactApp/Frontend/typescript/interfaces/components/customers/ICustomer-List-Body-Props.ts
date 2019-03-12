@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------
-// <copyright file="ICustomerListBodyProps.ts" website="Patrikduch.com">
+// <copyright file="ICustomer-List-Body-Props.ts" website="Patrikduch.com">
 //     Copyright 2019 (c) Patrikduch.com
 // </copyright>
 // <author>Patrik Duch</author>
