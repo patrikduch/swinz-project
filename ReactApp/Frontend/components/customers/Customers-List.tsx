@@ -28,12 +28,10 @@ export default class CustomersList extends React.Component<any, any> {
                 <div>
                     <Table>
                         <CustomersListHeadings />
-                        <CustomersListBody removeCustomer={ this.props.actions.deleteCustomer } data={this.props.customers} />
+                        <CustomersListBody removeCustomer={ this.props.actions.deleteCustomer } data={ this.props.customers } />
                     </Table>
-
                     <CustomerListPaging />
                 </div>
-
             );
         }
 
@@ -45,12 +43,10 @@ export default class CustomersList extends React.Component<any, any> {
         return (
             <div>
                 <p className='customers-title'>Evidence zákazníků</p>
-                
                 <AddCustomer title='Přidání nového zákazníka' btnIcon='plus' />
-                {this.getCustomers()}
-
+                { this.getCustomers() }
             </div>
-        )
+        );
     }
 }
 

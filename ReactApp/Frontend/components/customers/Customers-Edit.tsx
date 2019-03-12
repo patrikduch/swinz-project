@@ -14,8 +14,8 @@ import CustomerModal from '../common/modals/Classic-Modal';
 export default (props: any) => {
 
     return (
-        <span className='customer-edit-btn'>
-            <CustomerModal title={props.title} data = { props.data } btnIcon='edit' />
+        <span>
+            <CustomerModal title={ props.title } data = { props.data } btnIcon='edit' />
         </span>
     );
 

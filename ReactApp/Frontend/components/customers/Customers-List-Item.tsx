@@ -7,18 +7,13 @@
 //-----------------------------------------------------------------------
 
 import * as React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { Button } from 'reactstrap';
-
+import CustomerListOptions from './Customers-List-Options';
 import CustomerEdit from './Customers-Edit';
+import CustomerRemove from './Customers-Remove';
 
 
 export default class CustomersListItem extends React.Component<any, any> {
-
-    removeCustomer = (customerId: number) => {
-        this.props.removeCustomer(customerId);
-    }
 
     render() {
 
@@ -29,18 +24,20 @@ export default class CustomersListItem extends React.Component<any, any> {
             surname: this.props.arg.surname
         }
 
-        return (<tr>
-            <th scope="row">{this.props.arg.id}</th>
-            <td>{this.props.arg.firstName}</td>
-            <td>{this.props.arg.surname}</td>
-            <td>N/A <Button onClick={() => this.props.removeCustomer(this.props.arg.id)} className='list-delete-btn' color="danger" size="sm"><FontAwesomeIcon icon="minus-circle" /></Button>
-            
-             <CustomerEdit title='Aktualizace zákaznika' data = { data } />
-             
-     
-             
-             </td>
-        </tr>
+        return (
+            <tr>
+                <th scope="row">{ this.props.arg.id }</th>
+                <td>{ this.props.arg.firstName }</td>
+                <td>{ this.props.arg.surname }</td>
+
+                <CustomerListOptions>
+                    N/A
+
+                        <CustomerRemove  customerId={this.props.arg.id} removeCustomer={ this.props.removeCustomer } />
+                        &nbsp;
+                        <CustomerEdit  title='Aktualizace zákaznika' data={ data } />
+                </CustomerListOptions>
+            </tr>
         );
     }
 }

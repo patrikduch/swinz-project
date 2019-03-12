@@ -7,37 +7,32 @@
 //-----------------------------------------------------------------------
 
 import * as React from 'react';
-
 import { Link } from "react-router-dom";
-
 import { Nav, NavItem } from 'reactstrap';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+export default () => {
+  return (
+    <div>
+      <Nav className='justify-content-center d-flex flex-fill'>
+        <NavItem className='react-router-nav-items'>
+          <Link to='/customers'> Zákaznici</Link>
+        </NavItem>
 
-export default class Example extends React.Component {
-    render() {
-      return (
-        <div>
-          <Nav className='justify-content-center d-flex flex-fill'>
-            <NavItem className='react-router-nav-items'>
-              <Link to='/customers'> Zákaznici</Link>
-            </NavItem>
+        <NavItem className='react-router-nav-items'>
+          <Link to='/products'>Výrobky</Link>
+        </NavItem>
 
-            <NavItem className='react-router-nav-items'>
-              <Link to='/products'>Výrobky</Link>
-            </NavItem>
+        <NavItem className='react-router-nav-items'>
+          <Link to='/orders'>Objednávky</Link>
+        </NavItem>
 
-            <NavItem className='react-router-nav-items'>
-              <Link to='/orders'>Objednávky</Link>
-            </NavItem>
+        <NavItem className='react-router-nav-items'>
+          <Link to='/stats'>Statistiky</Link>
+        </NavItem>
+      
+      </Nav>
+     
+    </div>
+  );
 
-            <NavItem className='react-router-nav-items'>
-              <Link to='/stats'>Statistiky</Link>
-            </NavItem>
-          
-          </Nav>
-         
-        </div>
-      );
-    }
-  }
+}

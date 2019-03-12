@@ -12,13 +12,20 @@ import CustomersItem from './Customers-List-Item';
 
 // Iterface for exported component props
 import ICustomerListBodyProps from '../../typescript/interfaces/components/customers/ICustomer-List-Body-Props';
+import ICustomerListItemProps from '../../typescript/interfaces/components/customers/ICustomer-List-Item-Props';
 
 export default (props:ICustomerListBodyProps) => {
 
-    return <tbody>
-        {props.data.map((arg: any) => {
+    let counter = 1;
 
-            return <CustomersItem removeCustomer={props.removeCustomer} key={arg.id} arg={ arg } />
+    return <tbody>
+        {props.data.map((arg: ICustomerListItemProps) => {
+
+            const dbId = arg.id; // Save identifier of customer from database
+            arg.id = counter; // new id based on iterate thought the array
+            counter++; // increment the printed identifier
+
+            return <CustomersItem removeCustomer={ () => props.removeCustomer(dbId) } key={ arg.id } arg={ arg } />
         })}
     </tbody>
 }

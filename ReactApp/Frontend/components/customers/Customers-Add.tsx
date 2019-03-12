@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------
-// <copyright file="Customers-Edit.tsx" website="Patrikduch.com">
+// <copyright file="Customers-Add.tsx" website="Patrikduch.com">
 //     Copyright 2019 (c) Patrikduch.com
 // </copyright>
 // <author>Patrik Duch</author>
@@ -18,7 +18,7 @@ export default (props: any) => {
     });
 
     return (
-        <span className='customer-edit-btn'>
+        <span>
             <CustomerModal title={ props.title } isModalOpen = { customerState.isModalOpen } btnIcon='plus'  />
         </span>
     );
