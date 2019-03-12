@@ -9,15 +9,13 @@
 import *  as React from 'react';
 import CustomerModal from '../common/modals/Classic-Modal';
 
-export default (props: any) => {
+import ICustomerAddProps from '../../typescript/interfaces/components/customers/ICustomer-Add-Props';
 
-    const [customerState] = React.useState({
-        isModalOpen: false
-    });
+export default (props:ICustomerAddProps) => {
 
     return (
         <span>
-            <CustomerModal title={ props.title } isModalOpen = { customerState.isModalOpen } btnIcon='plus'  />
+            <CustomerModal data={null} title={ props.title } btnIcon='plus'  />
         </span>
     );
 
