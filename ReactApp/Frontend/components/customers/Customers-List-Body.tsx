@@ -21,11 +21,7 @@ export default (props:ICustomerListBodyProps) => {
     return <tbody>
         {props.data.map((arg: ICustomerListItemProps) => {
 
-            const dbId = arg.id; // Save identifier of customer from database
-            arg.id = counter; // new id based on iterate thought the array
-            counter++; // increment the printed identifier
-
-            return <CustomersItem removeCustomer={ () => props.removeCustomer(dbId) } key={ arg.id } arg={ arg } />
+            return <CustomersItem removeCustomer={ () => props.removeCustomer(arg.id) } key={ arg.id } arg={ arg } />
         })}
     </tbody>
 }

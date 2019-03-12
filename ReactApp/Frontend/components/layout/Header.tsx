@@ -14,7 +14,7 @@ export default () => {
 
     return (
         <header>
-            <Navbar />
+            <Navbar title='Fakturační systém' />
             <Navigation />
         </header>
     )

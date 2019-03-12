@@ -1,11 +1,10 @@
 //-----------------------------------------------------------------------
-// <copyright file="INavBar-Props.tsx" website="Patrikduch.com">
+// <copyright file="INavBar-State.tsx" website="Patrikduch.com">
 //     Copyright 2019 (c) Patrikduch.com
 // </copyright>
 // <author>Patrik Duch</author>
-// Interface for properties of navigation component
+// Interface for state properties of navigation component
 //-----------------------------------------------------------------------
 
-export default interface INavigationProps {
-    title: string // title for main navbar brand
+export default interface INavBarState{
 }
