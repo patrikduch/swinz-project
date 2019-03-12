@@ -1,6 +1,0 @@
-﻿CREATE TABLE [dbo].[Customer]
-(
-	[Id] INT NOT NULL PRIMARY KEY,
-	[FirstName] VARCHAR(45) NOT NULL,
-	[Surname] VARCHAR(45) NOT NULL
-)

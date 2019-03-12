@@ -19,3 +19,8 @@ Swinz.Database/Swinz.Database.dbmdl
 ApiBase/bin
 BusinessLayer/bin
 BusinessLayer/obj
+Services/CustomerApi/obj
+Services/CustomerApi/bin
+Services/ApiBase/obj
+Services/ApiBase/bin
+ReactApp/wwwroot/dist

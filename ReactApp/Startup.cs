@@ -12,7 +12,7 @@ namespace ReactApp
     using Microsoft.Extensions.DependencyInjection;
 
     /// <summary>
-    /// Entry point to the application 
+    /// Init configuration setup
     /// </summary>
     public class Startup
     {
