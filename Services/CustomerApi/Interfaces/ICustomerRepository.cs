@@ -16,5 +16,7 @@ namespace CustomerApi.Interfaces
     public interface ICustomerRepository
     {
         Task<IEnumerable<Customer>> GetCustomers();
+
+        Task RemoveCustomer(int customerId);
     }
 }

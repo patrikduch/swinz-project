@@ -38,7 +38,7 @@ namespace CustomerApi.Controllers
 
         #region Methods
         /// <summary>
-        /// End point for getting all customers without restrictions
+        /// Getting all customers without restrictions
         /// </summary>
         /// <returns></returns>
         [Route("customers")]
@@ -46,6 +46,18 @@ namespace CustomerApi.Controllers
         public Task<IEnumerable<Customer>> Get()
         {
             return _customerRepository.GetCustomers();
+        }
+
+        /// <summary>
+        /// Remove customer by id
+        /// </summary>
+        /// <param name="id">customer identifier</param>
+        /// <returns></returns>
+        [Route("customers/delete/{id}")]
+        [HttpDelete]
+        public async Task DeleteCustomer(int id)
+        {
+            await _customerRepository.RemoveCustomer(id);
         }
         #endregion
 

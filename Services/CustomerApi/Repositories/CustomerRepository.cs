@@ -5,6 +5,8 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using System.Linq;
+
 namespace CustomerApi.Repositories
 {
     using System.Collections.Generic;
@@ -31,10 +33,28 @@ namespace CustomerApi.Repositories
         #endregion
 
         #region Methods
+        /// <summary>
+        /// Get all customers
+        /// </summary>
+        /// <returns></returns>
         public async Task<IEnumerable<Customer>> GetCustomers()
         {
             return await _context.Customers.ToListAsync();
         }
+
+        /// <summary>
+        /// Remove customer by its id
+        /// </summary>
+        /// <param name="customerId">customer identifier</param>
+        /// <returns></returns>
+        public async Task RemoveCustomer(int customerId)
+        {
+            var customerEntity = await _context.Customers.Where(c => c.Id == customerId).FirstOrDefaultAsync();
+            _context.Customers.Remove(customerEntity);
+            await _context.SaveChangesAsync();
+
+        }
+
         #endregion
 
     }

@@ -15,6 +15,6 @@ export default class CustomerApi {
     }
 
     static deleteCustomer(customerId: number) {        
-        return deleteRequest ('http://localhost:64097/api/customers/delete/'+customerId)
+        return deleteRequest ('http://localhost:63766/api/customers/delete/'+customerId)
     }
 }
