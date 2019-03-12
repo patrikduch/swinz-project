@@ -10,5 +10,6 @@ Data persistence (Entity framework Core) </br>
 
 <h1>Frontend</h1>
 
-React with Typescript
+React with Typescript </br>
+Redux library for state manipulation
 
