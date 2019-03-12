@@ -1,4 +1,6 @@
 # SWINZ-Project
 
-Reactstrap - Bootstrap React integration </br>
+Reactstrap - Bootstrap v4 React integration </br>
+Stylization with SASS </br>
+Data persistence (Entity framework Core) </br>
 React hooks
