@@ -22,7 +22,7 @@ export default (props:ICustomerListBodyProps) => {
         {props.data.map((arg: ICustomerListItemProps) => {
 
             counter++; // Next item index of the customer`s list
-            return <CustomersItem removeCustomer={ () => props.removeCustomer(arg.id) } test = { counter } key={ arg.id } arg={ arg } />
+            return <CustomersItem removeCustomer={ () => props.removeCustomer(arg.id) } iteration = { counter } key={ arg.id } arg={ arg } />
         })}
     </tbody>
 }
