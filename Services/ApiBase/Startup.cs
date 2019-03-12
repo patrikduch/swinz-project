@@ -43,6 +43,11 @@ namespace ApiBase
             // Register repositories
             services.AddScoped<ICustomerRepository, CustomerRepository>();
 
+            // Cors services
+            services.AddCors(options => options.AddPolicy("AllowAll", p => p.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()));
+
 
         }
 
@@ -52,6 +57,9 @@ namespace ApiBase
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                // CORS
+                app.UseCors(b => b.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
             }
 
             app.UseMvc();

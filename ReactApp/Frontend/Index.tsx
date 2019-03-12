@@ -30,7 +30,7 @@ library.add(faEdit);
 
 import Api from './api/endpoints/CustomerApi';
 
-
+console.log(Api.getCustomers());
 renderApp(); // Initial inject of app
 
 function renderApp() {

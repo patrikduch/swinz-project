@@ -11,7 +11,7 @@ import { newGet, deleteRequest } from '../utils/request-utils';
 export default class CustomerApi {
 
     static getCustomers() {        
-        return newGet ('http://localhost:64097/api/customers')
+        return newGet ('http://localhost:63766/api/customers')
     }
 
     static deleteCustomer(customerId: number) {        
