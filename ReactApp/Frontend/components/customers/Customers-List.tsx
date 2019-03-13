@@ -14,6 +14,28 @@ import CustomersListBody from './Customers-List-Body';
 import CustomerListPaging from './Customers-List-Paging';
 import AddCustomer from './Customers-Add';
 
+
+import { Button, Form, FormGroup, Label, Input} from 'reactstrap';
+
+class NewCustomerForm extends React.Component {
+  render() {
+    return (
+      <Form>
+        <FormGroup>
+          <Label for="firstnameLabel">Křestní jméno</Label>
+          <Input type="text" name="firstnameInput" id="firstnameInputId" placeholder="" />
+        </FormGroup>
+        <FormGroup>
+          <Label for="surnameLabel">Přijmení</Label>
+          <Input type="text" name="surnameInput" id="surnameInputId" placeholder="" />
+        </FormGroup>
+        
+        <Button>Zaregistrovat</Button>
+      </Form>
+    );
+  }
+}
+
 export default class CustomersList extends React.Component<any, any> {
 
     componentWillMount() {
@@ -43,7 +65,7 @@ export default class CustomersList extends React.Component<any, any> {
         return (
             <div>
                 <p className='customers-title'>Evidence zákazníků</p>
-                <AddCustomer title='Přidání nového zákazníka' btnIcon='plus' />
+                <AddCustomer data={ NewCustomerForm } title='Přidání nového zákazníka' btnIcon='plus' />
                 { this.getCustomers() }
             </div>
         );

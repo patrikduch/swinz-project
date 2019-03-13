@@ -13,9 +13,11 @@ import ICustomerAddProps from '../../typescript/interfaces/components/customers/
 
 export default (props:ICustomerAddProps) => {
     
+    console.log(props);
     return (
+        
         <span>
-            <CustomerModal data={null} title={ props.title } btnIcon='plus'  />
+            <CustomerModal showModalBtn={false} data={ props.data } title={ props.title } btnIcon='plus'  />
         </span>
     );
 

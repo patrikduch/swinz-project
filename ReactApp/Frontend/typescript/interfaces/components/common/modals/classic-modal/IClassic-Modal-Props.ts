@@ -12,13 +12,7 @@ export default interface IClassicModalProps {
 
     btnIcon: IconProp, 
     title: string, // Title for the modal
-    data: [] | { // Data that is passed to the modal if its available
-
-        id: number,
-        firstName: string,
-        surname: string
-
-
-    }, 
+    data: any,
+    showModalBtn: boolean
 
 }

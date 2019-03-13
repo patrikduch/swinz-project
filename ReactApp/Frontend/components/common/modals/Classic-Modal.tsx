@@ -27,6 +27,7 @@ export default (props: IClassicModalProps) => {
         });
     }
 
+    const Form = props.data;
     return (
         <span>
             <Button onClick={ () => toggler() } color="secondary" size="sm"><FontAwesomeIcon icon={ props.btnIcon } /></Button>
@@ -34,10 +35,14 @@ export default (props: IClassicModalProps) => {
             <Modal size='lg' isOpen={ dataState.isOpen } toggle={toggler}>
                 <ModalHeader toggle={ toggler }>{ props.title }</ModalHeader>
                 <ModalBody>
+                   <Form/>
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="primary" onClick={ toggler }>Uložit změny</Button>{' '}
-                    <Button color="secondary" onClick={ toggler }>Zrušit</Button>
+                    {props.showModalBtn &&  <div>
+                        <Button color="primary" onClick={ toggler }>Uložit změny</Button>
+                        <Button color="secondary" onClick={ toggler }>Zrušit</Button>
+                    </div> }
+                   
                 </ModalFooter>
             </Modal>
         </span>

@@ -27,6 +27,28 @@ interface ICustomerListItemState {
     
 }
 
+
+import { Button, Form, FormGroup, Label, Input} from 'reactstrap';
+
+class Example extends React.Component {
+  render() {
+    return (
+      <Form>
+        <FormGroup>
+          <Label for="firstnameLabel">Firstname</Label>
+          <Input type="text" name="firstnameInput" id="firstnameInputId" placeholder="" />
+        </FormGroup>
+        <FormGroup>
+          <Label for="surnameLabel">Surname</Label>
+          <Input type="text" name="surnameInput" id="surnameInputId" placeholder="" />
+        </FormGroup>
+        
+        <Button>Submit</Button>
+      </Form>
+    );
+  }
+}
+
 export default class CustomersListItem extends React.Component<ICustomerListItemProps, ICustomerListItemState> {
 
     render() {
@@ -43,7 +65,7 @@ export default class CustomersListItem extends React.Component<ICustomerListItem
 
                         <CustomerRemove  customerId={this.props.arg.id} removeCustomer={ this.props.removeCustomer } />
                         &nbsp;
-                        <CustomerEdit  title='Aktualizace zákaznika' data={null} />
+                        <CustomerEdit  title='Aktualizace zákaznika' data={Example} />
                 </CustomerListOptions>
             </tr>
         );
