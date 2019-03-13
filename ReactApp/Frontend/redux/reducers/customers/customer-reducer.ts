@@ -22,6 +22,18 @@ const reducer = (state : any = initialState.customers, action: any) => {
                 ...state,
                 data: action.data.data
             }
+        case actionTypes.CREATE_USER_SUCCESS:
+
+            const arr = state.data as any;
+            arr.push(action.data);
+
+            console.log(arr);
+
+            return {
+
+                ...state,
+                data: arr
+            }
             
         // Change after removing customer
         case actionTypes.DELETE_CUSTOMER:

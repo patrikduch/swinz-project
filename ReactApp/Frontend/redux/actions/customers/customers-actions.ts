@@ -39,3 +39,25 @@ export const deleteCustomer : any = (customerId: number) => async (dispatch: Fun
     }
     
 }
+
+
+export const createCustomer : any = (data: object) => async (dispatch: Function) => {
+        
+    try {
+
+        CustomerApi.createCustomer(data).then(() => {
+
+            dispatch({ type: actionTypes.CREATE_USER_SUCCESS, data});
+    
+        }).catch(() => {
+    
+            dispatch({ type: actionTypes.CREATE_USER_FAILURE});
+    
+        })
+
+
+    } catch(err) {
+
+    }
+    
+}
