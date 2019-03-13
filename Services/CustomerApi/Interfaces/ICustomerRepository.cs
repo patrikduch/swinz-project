@@ -18,5 +18,7 @@ namespace CustomerApi.Interfaces
         Task<IEnumerable<Customer>> GetCustomers();
 
         Task RemoveCustomer(int customerId);
+
+        Task CreateCustomer(string firstName, string surname);
     }
 }

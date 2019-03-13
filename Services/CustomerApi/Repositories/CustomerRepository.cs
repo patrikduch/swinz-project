@@ -55,6 +55,23 @@ namespace CustomerApi.Repositories
 
         }
 
+        /// <summary>
+        /// Create customer (Registration of user)
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="surname"></param>
+        /// <returns></returns>
+        public async Task CreateCustomer(string firstName, string surname)
+        {
+            _context.Customers.Add(new Customer
+            {
+                FirstName = firstName,
+                Surname = surname
+            });
+
+            await _context.SaveChangesAsync();
+        }
+
         #endregion
 
     }

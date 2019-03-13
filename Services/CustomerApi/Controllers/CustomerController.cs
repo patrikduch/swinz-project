@@ -18,7 +18,7 @@ namespace CustomerApi.Controllers
     /// </summary>
     [Route("api/")]
     [ApiController]
-    public class CustomerController : ControllerBase
+    public class CustomerController : ControllerBase, ICustomerController
     {
         #region Fields
         private readonly ICustomerRepository _customerRepository;
@@ -60,6 +60,18 @@ namespace CustomerApi.Controllers
             await _customerRepository.RemoveCustomer(id);
         }
         #endregion
+
+        /// <summary>
+        /// Add new customer
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <returns></returns>
+        [Route("customers/add")]
+        [HttpPost]
+        public async Task AddCustomer([FromBody] Customer customer)
+        {
+            await _customerRepository.CreateCustomer(customer.FirstName, customer.Surname);
+        }
 
     }
 }
