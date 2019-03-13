@@ -22,12 +22,20 @@ export default (props: IClassicModalProps) => {
 
     const toggler = () => {
 
+        const data = {
+            firstName: "hello",
+            surname: "Worldik"
+        }
+
+        props.methods[0](data);
+
         setState({
             isOpen: !dataState.isOpen
         });
     }
 
-    const Form = props.data;
+    console.log(props);
+
     return (
         <span>
             <Button onClick={ () => toggler() } color="secondary" size="sm"><FontAwesomeIcon icon={ props.btnIcon } /></Button>
@@ -35,7 +43,6 @@ export default (props: IClassicModalProps) => {
             <Modal size='lg' isOpen={ dataState.isOpen } toggle={toggler}>
                 <ModalHeader toggle={ toggler }>{ props.title }</ModalHeader>
                 <ModalBody>
-                   <Form/>
                 </ModalBody>
                 <ModalFooter>
                     {props.showModalBtn &&  <div>

@@ -14,15 +14,16 @@ import CustomersItem from './Customers-List-Item';
 import ICustomerListBodyProps from '../../typescript/interfaces/components/customers/ICustomer-List-Body-Props';
 import ICustomerListItemProps from '../../typescript/interfaces/components/customers/ICustomer-List-Item-Props';
 
+var uniqid = require('uniqid')
+
 export default (props:ICustomerListBodyProps) => {
 
-    let counter = 0; // For list identifier
+    //let counter = 0; // For list identifier
 
     return <tbody>
         {props.data.map((arg: ICustomerListItemProps) => {
-
-            counter++; // Next item index of the customer`s list
-            return <CustomersItem removeCustomer={ () => props.removeCustomer(arg.id) } iteration = { counter } key={ arg.id } arg={ arg } />
+            //counter++; // Next item index of the customer`s list
+            return <CustomersItem key={uniqid.process()} removeCustomer={ props.removeCustomer }  arg={ arg } />
         })}
     </tbody>
 }

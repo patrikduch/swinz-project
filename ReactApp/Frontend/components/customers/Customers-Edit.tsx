@@ -16,7 +16,7 @@ export default (props: ICustomerEditProps) => {
 
     return (
         <span>
-            <CustomerModal showModalBtn={ true }  title={ props.title } data = { props.data } btnIcon='edit' />
+            <CustomerModal methods ={null} showModalBtn={ true }  title={ props.title } data = { props.data } btnIcon='edit' />
         </span>
     );
 

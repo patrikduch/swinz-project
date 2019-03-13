@@ -68,9 +68,9 @@ namespace CustomerApi.Controllers
         /// <returns></returns>
         [Route("customers/create")]
         [HttpPost]
-        public async Task AddCustomer([FromBody] Customer customer)
+        public async Task<Customer> AddCustomer([FromBody] Customer customer)
         {
-            await _customerRepository.CreateCustomer(customer.FirstName, customer.Surname);
+            return await _customerRepository.CreateCustomer(customer.FirstName, customer.Surname);
         }
 
     }

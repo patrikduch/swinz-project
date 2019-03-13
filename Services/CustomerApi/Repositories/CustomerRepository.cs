@@ -5,6 +5,7 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using System;
 using System.Linq;
 
 namespace CustomerApi.Repositories
@@ -61,15 +62,20 @@ namespace CustomerApi.Repositories
         /// <param name="firstName">first name of customer</param>
         /// <param name="surname">surname of customer</param>
         /// <returns></returns>
-        public async Task CreateCustomer(string firstName, string surname)
+        public async Task<Customer> CreateCustomer(string firstName, string surname)
         {
-            _context.Customers.Add(new Customer
+
+            var newCustomer = new Customer
             {
                 FirstName = firstName,
                 Surname = surname
-            });
+            };
+           
+            _context.Customers.Add(newCustomer);
 
             await _context.SaveChangesAsync();
+
+            return await _context.Customers.LastOrDefaultAsync();
         }
 
         #endregion

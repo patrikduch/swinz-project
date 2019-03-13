@@ -17,7 +17,7 @@ export default (props:ICustomerAddProps) => {
     return (
         
         <span>
-            <CustomerModal showModalBtn={false} data={ props.data } title={ props.title } btnIcon='plus'  />
+            <CustomerModal data={null} methods ={[props.addCustomer]} showModalBtn={false}  title={ props.title } btnIcon='plus'  />
         </span>
     );
 

@@ -24,15 +24,23 @@ const reducer = (state : any = initialState.customers, action: any) => {
             }
         case actionTypes.CREATE_USER_SUCCESS:
 
-            const arr = state.data as any;
-            arr.push(action.data);
+            console.log(action.data)
 
-            console.log(arr);
+            let customersResult = new Array();
+            
+            state.data.forEach((arg: any) => {
+
+                customersResult.push(arg);
+            })
+
+
+            customersResult.push(action.data);
+
 
             return {
 
                 ...state,
-                data: arr
+                data: customersResult
             }
             
         // Change after removing customer

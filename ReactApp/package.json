@@ -6,6 +6,7 @@
     "webpack": "webpack"
   },
   "devDependencies": {
+    "@types/nanoid": "^1.2.1",
     "@types/react": "^16.8.7",
     "@types/react-dom": "^16.8.2",
     "@types/react-router-dom": "^4.3.1",
@@ -32,6 +33,7 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "@types/react-redux": "^6.0.9",
     "bootstrap": "^4.3.1",
+    "nanoid": "^2.0.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-hot-loader": "^4.0.0",
@@ -39,7 +41,8 @@
     "react-router-dom": "^4.3.1",
     "reactstrap": "^7.1.0",
     "redux": "^4.0.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "uniqid": "^5.0.3"
   },
   "-vs-binding": {
     "BeforeBuild": [

@@ -12,6 +12,10 @@ import CustomerListOptions from './Customers-List-Options';
 import CustomerEdit from './Customers-Edit';
 import CustomerRemove from './Customers-Remove';
 
+var uniqid = require('uniqid');
+
+
+
 interface ICustomerListItemProps {
     arg: {
         id: number,
@@ -19,7 +23,7 @@ interface ICustomerListItemProps {
         surname: string,
 
     },
-    iteration: number
+    //iteration: number
     removeCustomer: Function
 }
 
@@ -51,13 +55,15 @@ class Example extends React.Component {
 
 export default class CustomersListItem extends React.Component<ICustomerListItemProps, ICustomerListItemState> {
 
+  
+
     render() {
 
 
         return (
-            <tr>
-                <th scope="row">{ this.props.iteration }</th>
-                <td>{ this.props.arg.firstName }</td>
+            <tr key={uniqid()}>
+                <th scope="row">{ this.props.arg.id }</th>
+                <td >{ this.props.arg.firstName }</td>
                 <td>{ this.props.arg.surname }</td>
 
                 <CustomerListOptions>

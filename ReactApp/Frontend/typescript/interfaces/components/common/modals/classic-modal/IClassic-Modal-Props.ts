@@ -12,7 +12,8 @@ export default interface IClassicModalProps {
 
     btnIcon: IconProp, 
     title: string, // Title for the modal
-    data: any,
-    showModalBtn: boolean
+    showModalBtn: boolean,
+    methods: Array<Function>
+    data: object
 
 }

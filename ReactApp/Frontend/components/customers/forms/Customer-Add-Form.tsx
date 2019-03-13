@@ -11,16 +11,10 @@ export default class NewCustomerForm extends React.Component<any,any> {
       surname: "Worldik"
     }
 
-    testik = false;
 
     test = () => {
 
-      this.props.test({
-        isOpen: false
-      })
-
-      this.testik = true;
-
+ 
       
 
       this.props.methods[0](this.data).then(() => {
@@ -37,7 +31,7 @@ export default class NewCustomerForm extends React.Component<any,any> {
       return (
 
       
-        <Form>
+        <Form method='POST'>
           <FormGroup>
             <Label for="firstnameLabel">Křestní jméno</Label>
             <Input type="text" name="firstnameInput" id="firstnameInputId" placeholder="" />

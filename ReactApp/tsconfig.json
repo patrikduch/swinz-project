@@ -2,6 +2,7 @@
     "typeAcquisition": {
         "enable": true
     },
+    
     "compileOnSave": false,
     "compilerOptions": {
         "sourceMap": true,
@@ -10,7 +11,8 @@
         "noImplicitAny": true,
         "jsx": "react",
         "outDir": "wwwroot/dist",
-        "moduleResolution": "node"
+        "moduleResolution": "node",
+        "esModuleInterop": true
     },
     "exclude": [
         "node_modules",

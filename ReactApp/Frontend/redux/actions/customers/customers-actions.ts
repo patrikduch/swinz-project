@@ -23,6 +23,8 @@ export const deleteCustomer : any = (customerId: number) => async (dispatch: Fun
         
     try {
 
+        console.log(customerId)
+
         CustomerApi.deleteCustomer(customerId).then(() => {
 
             dispatch({ type: actionTypes.DELETE_CUSTOMER, customerId});
@@ -41,9 +43,11 @@ export const deleteCustomer : any = (customerId: number) => async (dispatch: Fun
 }
 
 
-export const createCustomer : any = (data: object) => async (dispatch: Function) => {
+export const createCustomer : any = (datar: object) => async (dispatch: Function) => {
         
     try {
+        const promiseResult = await CustomerApi.createCustomer(datar);
+        const data = promiseResult.data;
 
         CustomerApi.createCustomer(data).then(() => {
 
