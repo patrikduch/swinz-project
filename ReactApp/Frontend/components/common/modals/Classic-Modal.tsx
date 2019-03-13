@@ -10,7 +10,7 @@ import *  as React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import IClassicModalProps from '../../../typescript/interfaces/components/common/modals/classic-modal/IClassic-Modal-Props'
+import IClassicModalProps from '../../../typescript/interfaces/components/common/modals/classic-modal/IClassic-Modal-Props';
 
 export default (props: IClassicModalProps) => {
 

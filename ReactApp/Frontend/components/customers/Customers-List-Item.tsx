@@ -12,17 +12,25 @@ import CustomerListOptions from './Customers-List-Options';
 import CustomerEdit from './Customers-Edit';
 import CustomerRemove from './Customers-Remove';
 
+interface ICustomerListItemProps {
+    arg: {
+        id: number,
+        firstName: string,
+        surname: string,
 
-export default class CustomersListItem extends React.Component<any, any> {
+    },
+    iteration: number
+    removeCustomer: Function
+}
+
+interface ICustomerListItemState {
+    
+}
+
+export default class CustomersListItem extends React.Component<ICustomerListItemProps, ICustomerListItemState> {
 
     render() {
 
-        const data = {
-
-            id: this.props.arg.id,
-            firstName: this.props.arg.firstName,
-            surname: this.props.arg.surname
-        }
 
         return (
             <tr>
@@ -35,7 +43,7 @@ export default class CustomersListItem extends React.Component<any, any> {
 
                         <CustomerRemove  customerId={this.props.arg.id} removeCustomer={ this.props.removeCustomer } />
                         &nbsp;
-                        <CustomerEdit  title='Aktualizace zákaznika' data={ data } />
+                        <CustomerEdit  title='Aktualizace zákaznika' data={null} />
                 </CustomerListOptions>
             </tr>
         );

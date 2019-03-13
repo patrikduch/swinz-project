@@ -6,15 +6,9 @@
 // Interface for properties of component that represents creation of new customer
 //--------------------------------------------------------------------------------
 
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-
 export default interface ICustomerEditProps {
 
     title: string,
-    data: [] | {  // Data that is passed to the modal if its available
+    data: [] , // Data that is passed to the modal if its available
 
-        id: number,
-        firstName: string,
-        surname: string
-    },
 }

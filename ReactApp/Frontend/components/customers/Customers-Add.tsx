@@ -12,7 +12,7 @@ import CustomerModal from '../common/modals/Classic-Modal';
 import ICustomerAddProps from '../../typescript/interfaces/components/customers/ICustomer-Add-Props';
 
 export default (props:ICustomerAddProps) => {
-
+    
     return (
         <span>
             <CustomerModal data={null} title={ props.title } btnIcon='plus'  />
