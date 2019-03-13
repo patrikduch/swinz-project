@@ -1,6 +1,6 @@
 # SWINZ-Project
 
-<u>Recommended tools</u>:</br>
+Recommended tools:</br>
 Postman for API testing
 </br>
 </br>
