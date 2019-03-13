@@ -6,15 +6,19 @@
 // Rest API for customers
 //-----------------------------------------------------------------------
 
-import { newGet, deleteRequest } from '../utils/request-utils';
+import { get, del, post} from '../utils/request-utils';
 
 export default class CustomerApi {
 
     static getCustomers() {        
-        return newGet ('http://localhost:63766/api/customers')
+        return get('http://localhost:63766/api/customers')
     }
 
     static deleteCustomer(customerId: number) {        
-        return deleteRequest ('http://localhost:63766/api/customers/delete/'+customerId)
+        return del('http://localhost:63766/api/customers/delete/'+customerId)
+    }
+
+    static createCustomer(data: object) {        
+        return post('http://localhost:63766/api/customers/create', data)
     }
 }

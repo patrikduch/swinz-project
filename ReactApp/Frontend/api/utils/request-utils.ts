@@ -8,12 +8,19 @@
 
 import axios from 'axios';
 
-export function newGet(url: string) {
+// Method for performing get request on REST API
+export function get(url: string) {
     return axios.get(url);
 }
 
-export function deleteRequest(url: string) {
+// Method for performing delete request on REST API
+export function del(url: string) {
 
     return axios.delete(url);
 }
 
+// Method for performing post request on REST API
+export function post(url: string, data: object) {
+
+    return axios.post(url,data);
+}

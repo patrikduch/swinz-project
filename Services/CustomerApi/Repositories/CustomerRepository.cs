@@ -58,8 +58,8 @@ namespace CustomerApi.Repositories
         /// <summary>
         /// Create customer (Registration of user)
         /// </summary>
-        /// <param name="firstName"></param>
-        /// <param name="surname"></param>
+        /// <param name="firstName">first name of customer</param>
+        /// <param name="surname">surname of customer</param>
         /// <returns></returns>
         public async Task CreateCustomer(string firstName, string surname)
         {

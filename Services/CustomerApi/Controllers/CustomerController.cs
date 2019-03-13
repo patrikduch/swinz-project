@@ -66,7 +66,7 @@ namespace CustomerApi.Controllers
         /// </summary>
         /// <param name="customer"></param>
         /// <returns></returns>
-        [Route("customers/add")]
+        [Route("customers/create")]
         [HttpPost]
         public async Task AddCustomer([FromBody] Customer customer)
         {
