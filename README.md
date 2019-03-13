@@ -10,6 +10,7 @@ Postman for API testing
 
 React with Typescript </br>
 Redux library for state manipulation </br>
+REST API communication with Axios library  </br>
 Reactstrap - Bootstrap v4 React integration </br>
 Stylization with SASS </br>
 
