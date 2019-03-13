@@ -1,5 +1,7 @@
 # SWINZ-Project
 
+Recommended tools:</br>
+Postman for API testing
 </br>
 </br>
 </br>
