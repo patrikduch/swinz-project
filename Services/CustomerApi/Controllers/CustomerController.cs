@@ -59,7 +59,6 @@ namespace CustomerApi.Controllers
         {
             await _customerRepository.RemoveCustomer(id);
         }
-        #endregion
 
         /// <summary>
         /// Add new customer
@@ -73,5 +72,6 @@ namespace CustomerApi.Controllers
             return await _customerRepository.CreateCustomer(customer.FirstName, customer.Surname);
         }
 
+        #endregion
     }
 }

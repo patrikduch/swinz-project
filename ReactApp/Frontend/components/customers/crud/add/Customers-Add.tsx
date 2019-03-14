@@ -8,20 +8,15 @@
 
 import *  as React from 'react';
 import CustomerModal from '../../../common/modals/Classic-Modal';
-
+// Props interface
 import ICustomerAddProps from '../../../../typescript/interfaces/components/customers/ICustomer-Add-Props';
-
+// Form to invoke by CustomerModal
 import CustomerAddForm from './forms/Customer-Add-Form';
 
 export default (props:ICustomerAddProps) => {
-    
-    console.log(props);
     return (
-        
         <span>
             <CustomerModal data={CustomerAddForm} methods ={[props.addCustomer]} showModalBtn={false}  title={ props.title } btnIcon='plus'  />
         </span>
     );
-
-
 }

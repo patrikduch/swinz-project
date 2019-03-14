@@ -10,11 +10,12 @@ import * as React from 'react';
 
 import CustomersItem from './Customers-List-Item';
 
-// Iterface for exported component props
+// Props interface (List body)
 import ICustomerListBodyProps from '../../../../typescript/interfaces/components/customers/ICustomer-List-Body-Props';
+// Props interface (List item)
 import ICustomerListItemProps from '../../../../typescript/interfaces/components/customers/ICustomer-List-Item-Props';
 
-var uniqid = require('uniqid')
+var uniqid = require('uniqid');
 
 export default (props:ICustomerListBodyProps) => {
 

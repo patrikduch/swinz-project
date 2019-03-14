@@ -11,6 +11,8 @@ import * as React from 'react';
 import CustomerListOptions from './Customers-List-Options';
 import CustomerRemove from '../delete/Customers-Remove';
 
+import ICustomerListItemState from '../../../../typescript/interfaces/components/customers/ICustomer-List-Item-State';
+
 var uniqid = require('uniqid');
 
 
@@ -26,9 +28,6 @@ interface ICustomerListItemProps {
     iteration: number
 }
 
-interface ICustomerListItemState {
-    
-}
 
 
 export default class CustomersListItem extends React.Component<ICustomerListItemProps, ICustomerListItemState> {
@@ -43,7 +42,6 @@ export default class CustomersListItem extends React.Component<ICustomerListItem
                 <CustomerListOptions>
                     N/A
                         <CustomerRemove  customerId={this.props.arg.id} removeCustomer={ this.props.removeCustomer } />
-                        &nbsp;
                 </CustomerListOptions>
             </tr>
         );
