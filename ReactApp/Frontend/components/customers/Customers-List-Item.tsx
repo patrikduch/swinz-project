@@ -9,11 +9,9 @@
 import * as React from 'react';
 
 import CustomerListOptions from './Customers-List-Options';
-import CustomerEdit from './Customers-Edit';
 import CustomerRemove from './Customers-Remove';
 
 var uniqid = require('uniqid');
-
 
 
 interface ICustomerListItemProps {
@@ -24,7 +22,8 @@ interface ICustomerListItemProps {
 
     },
     //iteration: number
-    removeCustomer: Function
+    removeCustomer: Function,
+    iteration: number
 }
 
 interface ICustomerListItemState {
@@ -32,46 +31,19 @@ interface ICustomerListItemState {
 }
 
 
-import { Button, Form, FormGroup, Label, Input} from 'reactstrap';
-
-class Example extends React.Component {
-  render() {
-    return (
-      <Form>
-        <FormGroup>
-          <Label for="firstnameLabel">Firstname</Label>
-          <Input type="text" name="firstnameInput" id="firstnameInputId" placeholder="" />
-        </FormGroup>
-        <FormGroup>
-          <Label for="surnameLabel">Surname</Label>
-          <Input type="text" name="surnameInput" id="surnameInputId" placeholder="" />
-        </FormGroup>
-        
-        <Button>Submit</Button>
-      </Form>
-    );
-  }
-}
-
 export default class CustomersListItem extends React.Component<ICustomerListItemProps, ICustomerListItemState> {
 
-  
-
     render() {
-
-
         return (
             <tr key={uniqid()}>
-                <th scope="row">{ this.props.arg.id }</th>
+                <th scope="row">{ this.props.iteration}</th>
                 <td >{ this.props.arg.firstName }</td>
                 <td>{ this.props.arg.surname }</td>
 
                 <CustomerListOptions>
                     N/A
-
                         <CustomerRemove  customerId={this.props.arg.id} removeCustomer={ this.props.removeCustomer } />
                         &nbsp;
-                        <CustomerEdit  title='Aktualizace zákaznika' data={Example} />
                 </CustomerListOptions>
             </tr>
         );

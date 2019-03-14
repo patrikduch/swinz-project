@@ -18,12 +18,12 @@ var uniqid = require('uniqid')
 
 export default (props:ICustomerListBodyProps) => {
 
-    //let counter = 0; // For list identifier
+    let counter = 0; // For list identifier
 
     return <tbody>
         {props.data.map((arg: ICustomerListItemProps) => {
-            //counter++; // Next item index of the customer`s list
-            return <CustomersItem key={uniqid.process()} removeCustomer={ props.removeCustomer }  arg={ arg } />
+            counter++; // Next item index of the customer`s list
+            return <CustomersItem key={uniqid.process()} removeCustomer={ props.removeCustomer } iteration={counter}  arg={ arg } />
         })}
     </tbody>
 }

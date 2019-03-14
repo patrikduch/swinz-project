@@ -20,25 +20,12 @@ export default (props: IClassicModalProps) => {
         }
     );
 
-    const data = {
-        firstName: "hello",
-        surname: "Worldik"
-    }
-
-    const registerUser = () => {
-        toggler();
-        props.methods[0](data);
-    }
-
     const toggler = () => {
-
 
         setState({
             isOpen: !dataState.isOpen
         });
     }
-
-    console.log(props);
 
     return (
         <span>
@@ -47,7 +34,7 @@ export default (props: IClassicModalProps) => {
             <Modal size='lg' isOpen={ dataState.isOpen } toggle={toggler}>
                 <ModalHeader toggle={ toggler }>{ props.title }</ModalHeader>
                 <ModalBody>
-                    <Button onClick={() => registerUser()}></Button>
+                    {<props.data toggler={toggler} methods={props.methods}/>}
                 </ModalBody>
                 <ModalFooter>
                     {props.showModalBtn &&  <div>

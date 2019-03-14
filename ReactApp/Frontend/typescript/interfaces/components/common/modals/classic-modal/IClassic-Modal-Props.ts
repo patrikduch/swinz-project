@@ -14,6 +14,6 @@ export default interface IClassicModalProps {
     title: string, // Title for the modal
     showModalBtn: boolean,
     methods: Array<Function>
-    data: object
+    data: any
 
 }
