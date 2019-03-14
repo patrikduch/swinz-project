@@ -10,6 +10,7 @@ import * as React from 'react';
 
 import CustomerListOptions from './Customers-List-Options';
 import CustomerRemove from '../delete/Customers-Remove';
+import EditCustomer from '../update/Customers-Edit';
 
 import ICustomerListItemState from '../../../../typescript/interfaces/components/customers/ICustomer-List-Item-State';
 
@@ -42,6 +43,7 @@ export default class CustomersListItem extends React.Component<ICustomerListItem
                 <CustomerListOptions>
                     N/A
                         <CustomerRemove  customerId={this.props.arg.id} removeCustomer={ this.props.removeCustomer } />
+                        <EditCustomer title='Úprava detailů zákazníka' data={null} />
                 </CustomerListOptions>
             </tr>
         );

@@ -13,18 +13,19 @@ import CustomersListHeadings from './Customers-List-Headings';
 import CustomersListBody from './Customers-List-Body';
 import CustomerListPaging from './Customers-List-Paging';
 import AddCustomer from '../add/Customers-Add';
+import EditCustomer from '../update/Customers-Edit';
 
 // Styled helper
 import styled from 'styled-components';
-
+// Container that wrappps list of customers
 const Container = styled.div`
-    margin-top: 2.0vh;
+    margin-top: 1.0vh;
 `;
 
 // Title of customer page
 const Title = styled.h2`
 
-    margin-top: 10.0vh;
+    margin-top: 5.0vh;
     text-align: center;
 `;
 
@@ -46,7 +47,7 @@ export default class CustomersList extends React.Component<any, any> {
                 </Container>
             );
         }
-        return null;
+        return null
     }
 
     render() {
