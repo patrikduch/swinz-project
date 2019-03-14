@@ -15,7 +15,7 @@ import ICustomerEditProps from '../../../../typescript/interfaces/components/cus
 export default (props: ICustomerEditProps) => {
     return (
         <span>
-            <CustomerModal methods ={null} showModalBtn={ true }  title={ props.title } data = { null } btnIcon='edit' />
+            <CustomerModal methods ={null} showModalBtn={ true }  title={ props.title } data = { props.data } btnIcon='edit' />
         </span>
     );
 

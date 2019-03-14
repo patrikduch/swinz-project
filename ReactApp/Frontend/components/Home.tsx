@@ -12,7 +12,7 @@ export default  () => {
 
     return (
         <div>
-            
+            Vítejte v CRM systemu
         </div>
     )
 }

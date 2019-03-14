@@ -73,7 +73,7 @@ export default class NewCustomerForm extends React.Component<ICustomerAddFormPro
           <Input onChange={this.fieldChangeHandler} type="text" name="surnameInput" id="surnameInputId" value={this.state.surname} placeholder="" />
         </FormGroup>
 
-        <Button onClick={this.registerUser}>Zaregistrovat</Button>
+        <Button onClick={this.registerUser}>Přidat</Button>
       </Form>
     );
   }

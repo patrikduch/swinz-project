@@ -14,6 +14,8 @@ import EditCustomer from '../update/Customers-Edit';
 
 import ICustomerListItemState from '../../../../typescript/interfaces/components/customers/ICustomer-List-Item-State';
 
+import EditCustomerForm from '../update/forms/Customer-Edit-Form';
+
 var uniqid = require('uniqid');
 
 
@@ -43,7 +45,7 @@ export default class CustomersListItem extends React.Component<ICustomerListItem
                 <CustomerListOptions>
                     N/A
                         <CustomerRemove  customerId={this.props.arg.id} removeCustomer={ this.props.removeCustomer } />
-                        <EditCustomer title='Úprava detailů zákazníka' data={null} />
+                        <EditCustomer title='Úprava detailů zákazníka' data={ EditCustomerForm } />
                 </CustomerListOptions>
             </tr>
         );
