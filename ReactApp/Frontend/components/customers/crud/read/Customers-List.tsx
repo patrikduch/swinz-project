@@ -24,7 +24,7 @@ const Container = styled.div`
 // Title of customer page
 const Title = styled.h2`
 
-    margin-top: 6.0vh;
+    margin-top: 10.0vh;
     text-align: center;
 `;
 
