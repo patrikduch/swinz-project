@@ -14,6 +14,20 @@ import CustomersListBody from './Customers-List-Body';
 import CustomerListPaging from './Customers-List-Paging';
 import AddCustomer from '../add/Customers-Add';
 
+// Styled helper
+import styled from 'styled-components';
+
+const Container = styled.div`
+    margin-top: 2.0vh;
+`;
+
+// Title of customer page
+const Title = styled.h2`
+
+    margin-top: 6.0vh;
+    text-align: center;
+`;
+
 export default class CustomersList extends React.Component<any, any> {
 
     componentWillMount() {
@@ -23,13 +37,13 @@ export default class CustomersList extends React.Component<any, any> {
     getCustomers = () => {
         if (this.props.customers != undefined) {
             return (
-                <div>
+                <Container>
                     <Table>
                         <CustomersListHeadings />
                         <CustomersListBody removeCustomer={ this.props.actions.deleteCustomer } data={ this.props.customers } />
                     </Table>
                     <CustomerListPaging />
-                </div>
+                </Container>
             );
         }
         return null;
@@ -38,7 +52,7 @@ export default class CustomersList extends React.Component<any, any> {
     render() {
         return (
             <div>
-                <p className='customers-title'>Evidence zákazníků</p>
+                <Title>Evidence zákazniků</Title>
                 <AddCustomer addCustomer={this.props.actions.createCustomer} title='Přidání nového zákazníka' btnIcon='plus' />
                 { this.getCustomers() }
             </div>
