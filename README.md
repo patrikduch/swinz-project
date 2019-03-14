@@ -13,6 +13,7 @@ Redux library for state manipulation </br>
 REST API communication with Axios library  </br>
 Reactstrap - Bootstrap v4 React integration </br>
 Stylization with SASS </br>
+Component styling wich styled-components library </br>
 
 
 </br>
