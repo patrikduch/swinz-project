@@ -8,16 +8,23 @@
 
 import * as React from 'react';
 
+// Styled helper
+import styled from 'styled-components';
+
+const Thead = styled.thead``;
+const Tr = styled.tr``;
+const Th = styled.th``;
+
 export default () => {
 
     return (
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Křestní jméno</th>
-                <th>Přijmení</th>
-                <th>Nárok na slevu</th>
-            </tr>
-        </thead>
+            <Thead>
+                <Tr>
+                    <Th>#</Th>
+                    <Th>Křestní jméno</Th>
+                    <Th>Přijmení</Th>
+                    <Th>Nárok na slevu</Th>
+                </Tr>
+            </Thead>
     );
 }

@@ -34,7 +34,7 @@ export default class CustomersListItem extends React.Component<ICustomerListItem
 
     render() {
         return (
-            <tr key={uniqid()}>
+            <tr key={ uniqid() }>
                 <th scope="row">{ this.props.iteration}</th>
                 <td >{ this.props.arg.firstName }</td>
                 <td>{ this.props.arg.surname }</td>

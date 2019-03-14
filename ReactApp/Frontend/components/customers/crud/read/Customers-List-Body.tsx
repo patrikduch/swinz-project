@@ -24,7 +24,7 @@ export default (props:ICustomerListBodyProps) => {
     return <tbody>
         {props.data.map((arg: ICustomerListItemProps) => {
             counter++; // Next item index of the customer`s list
-            return <CustomersItem key={uniqid.process()} removeCustomer={ props.removeCustomer } iteration={counter}  arg={ arg } />
+            return <CustomersItem key={uniqid.process()} removeCustomer={ props.removeCustomer } iteration={ counter }  arg={ arg } />
         })}
     </tbody>
 }
