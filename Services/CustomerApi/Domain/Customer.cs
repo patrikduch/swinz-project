@@ -32,6 +32,10 @@ namespace CustomerApi.Domain
         /// </summary>
         public string Surname { get; set; }
 
+        /// <summary>
+        /// Customer`s discount
+        /// </summary>
+        public int Discount { get; set; }
 
     }
 }
