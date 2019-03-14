@@ -15,47 +15,32 @@ import * as actionTypes from '../../actions/action-types';
 export const getCustomers : any = () => async (dispatch: Function) => {
         
     CustomerApi.getCustomers().then((data) => {
-        dispatch({ type: actionTypes.FETCH_CUSTOMERS, data });
-    })
+
+        dispatch({ type: actionTypes.CUSTOMER_FETCH_SUCCESS, data });
+
+    }).catch(() => {
+
+        dispatch({ type: actionTypes.CUSTOMER_FETCH_FAILED });
+    });
 }
 
 export const deleteCustomer : any = (customerId: number) => async (dispatch: Function) => {
         
-    try {
-
-        console.log(customerId)
-
         CustomerApi.deleteCustomer(customerId).then(() => {
 
-            dispatch({ type: actionTypes.DELETE_CUSTOMER, customerId});
+            dispatch({ type: actionTypes.CUSTOMER_DELETION_SUCCESS, customerId});
     
-        }).catch(() => {
+        }).catch(() => { // Error ocurred (REST API mostly)
     
-            console.log('err');
-    
-        })
-
-
-    } catch(err) {
-
-    }
-    
+            dispatch({ type: actionTypes.CUSTOMER_DELETION_FAILED});
+        });
 }
 
 
-export const createCustomer : any = (datar: object) => async (dispatch: Function) => {
+export const createCustomer : any = (customerObj: object) => async (dispatch: Function) => {
         
-        const promiseResult = await CustomerApi.createCustomer(datar);
+        const promiseResult = await CustomerApi.createCustomer(customerObj);
         const data = promiseResult.data;
 
-
-
-            
-        dispatch({ type: actionTypes.CREATE_USER_SUCCESS, data});
-    
-    
-
-
-   
-    
+        dispatch({ type: actionTypes.CUSTOMER_CREATION_SUCCESS, data});    
 }

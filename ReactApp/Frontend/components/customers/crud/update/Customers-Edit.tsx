@@ -9,11 +9,10 @@
 import *  as React from 'react';
 import CustomerModal from '../../../common/modals/Classic-Modal';
 
-// Interface for edit customer component
+// Props interface
 import ICustomerEditProps from '../../../../typescript/interfaces/components/customers/ICustomer-Edit-Props';
 
 export default (props: ICustomerEditProps) => {
-
     return (
         <span>
             <CustomerModal methods ={null} showModalBtn={ true }  title={ props.title } data = { null } btnIcon='edit' />

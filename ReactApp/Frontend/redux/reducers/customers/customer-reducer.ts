@@ -17,22 +17,19 @@ const reducer = (state : any = initialState.customers, action: any) => {
     switch(action.type) {
 
         // Fetching all customers
-        case actionTypes.FETCH_CUSTOMERS:
+        case actionTypes.CUSTOMER_FETCH_SUCCESS:
             return {
                 ...state,
                 data: action.data.data
             }
-        case actionTypes.CREATE_USER_SUCCESS:
-
-            console.log(action.data)
+        case actionTypes.CUSTOMER_CREATION_SUCCESS:
 
             let customersResult = new Array();
             
             state.data.forEach((arg: any) => {
 
                 customersResult.push(arg);
-            })
-
+            });
 
             customersResult.push(action.data);
 
@@ -44,7 +41,7 @@ const reducer = (state : any = initialState.customers, action: any) => {
             }
             
         // Change after removing customer
-        case actionTypes.DELETE_CUSTOMER:
+        case actionTypes.CUSTOMER_DELETION_SUCCESS:
         
             const newData = state.data.filter(((arg: any) => {
 

@@ -24,3 +24,4 @@ Services/CustomerApi/bin
 Services/ApiBase/obj
 Services/ApiBase/bin
 ReactApp/wwwroot/dist
+.vs/config/applicationhost.config
