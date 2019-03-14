@@ -9,7 +9,7 @@
 import * as React from 'react';
 
 import CustomerListOptions from './Customers-List-Options';
-import CustomerRemove from './Customers-Remove';
+import CustomerRemove from '../delete/Customers-Remove';
 
 var uniqid = require('uniqid');
 

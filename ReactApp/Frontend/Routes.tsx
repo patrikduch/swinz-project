@@ -17,7 +17,6 @@ import { Route } from "react-router-dom";
 import HeaderComp from './components/layout/Header';
 import FooterComp from './components/layout/Footer';
 
-import CustomerCreatePage from './pages/customers/Customer-Create-Page';
 
 const Routes = () => {
     return (
@@ -25,7 +24,6 @@ const Routes = () => {
             <HeaderComp />
             <Route path='/' exact component={ HomeComp } />
             <Route path='/customers' exact component={ CustomerPage } />
-            <Route path='/customers/create' exact component={ CustomerCreatePage } />
             <Route path='/orders' exact component={ OrderPage } />
             <Route path='/products' exact component={ ProductPage } />
             <Route path='/stats' exact component={ StatsPage } />

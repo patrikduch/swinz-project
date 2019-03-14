@@ -12,7 +12,7 @@ import { Table } from 'reactstrap';
 import CustomersListHeadings from './Customers-List-Headings';
 import CustomersListBody from './Customers-List-Body';
 import CustomerListPaging from './Customers-List-Paging';
-import AddCustomer from './Customers-Add';
+import AddCustomer from '../add/Customers-Add';
 
 export default class CustomersList extends React.Component<any, any> {
 

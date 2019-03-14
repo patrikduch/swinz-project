@@ -7,10 +7,10 @@
 //-----------------------------------------------------------------------
 
 import *  as React from 'react';
-import CustomerModal from '../common/modals/Classic-Modal';
+import CustomerModal from '../../../common/modals/Classic-Modal';
 
 // Interface for edit customer component
-import ICustomerEditProps from '../../typescript/interfaces/components/customers/ICustomer-Edit-Props';
+import ICustomerEditProps from '../../../../typescript/interfaces/components/customers/ICustomer-Edit-Props';
 
 export default (props: ICustomerEditProps) => {
 

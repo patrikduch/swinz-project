@@ -10,10 +10,10 @@ import * as React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 // Props interface
-import ICustomerAddFormProps from '../../../typescript/interfaces/components/customers/ICustomer-Add-Form-Props';
+import ICustomerAddFormProps from '../../../../../typescript/interfaces/components/customers/ICustomer-Add-Form-Props';
 
 // State interface
-import ICustomerAddFormState from '../../../typescript/interfaces/components/customers/ICustomer-Add-Form-State';
+import ICustomerAddFormState from '../../../../../typescript/interfaces/components/customers/ICustomer-Add-Form-State';
 
 export default class NewCustomerForm extends React.Component<ICustomerAddFormProps, ICustomerAddFormState> {
 

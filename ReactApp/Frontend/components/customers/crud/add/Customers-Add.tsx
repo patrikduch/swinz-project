@@ -7,11 +7,11 @@
 //-----------------------------------------------------------------------
 
 import *  as React from 'react';
-import CustomerModal from '../common/modals/Classic-Modal';
+import CustomerModal from '../../../common/modals/Classic-Modal';
 
-import ICustomerAddProps from '../../typescript/interfaces/components/customers/ICustomer-Add-Props';
+import ICustomerAddProps from '../../../../typescript/interfaces/components/customers/ICustomer-Add-Props';
 
-import CustomerAddForm from '../../components/customers/forms/Customer-Add-Form';
+import CustomerAddForm from './forms/Customer-Add-Form';
 
 export default (props:ICustomerAddProps) => {
     

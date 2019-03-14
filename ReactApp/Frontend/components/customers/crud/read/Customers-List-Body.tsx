@@ -11,8 +11,8 @@ import * as React from 'react';
 import CustomersItem from './Customers-List-Item';
 
 // Iterface for exported component props
-import ICustomerListBodyProps from '../../typescript/interfaces/components/customers/ICustomer-List-Body-Props';
-import ICustomerListItemProps from '../../typescript/interfaces/components/customers/ICustomer-List-Item-Props';
+import ICustomerListBodyProps from '../../../../typescript/interfaces/components/customers/ICustomer-List-Body-Props';
+import ICustomerListItemProps from '../../../../typescript/interfaces/components/customers/ICustomer-List-Item-Props';
 
 var uniqid = require('uniqid')
 

@@ -7,8 +7,8 @@
 //-----------------------------------------------------------------------
 
 import *  as React from 'react';
-import DecisionModal from '../common/modals/Decision-Modal';
-import ICustomerRemoveProps from '../../typescript/interfaces/components/customers/ICustomer-Remove-Props';
+import DecisionModal from '../../../common/modals/Decision-Modal';
+import ICustomerRemoveProps from '../../../../typescript/interfaces/components/customers/ICustomer-Remove-Props';
 
 export default (props: ICustomerRemoveProps) => {
 
