@@ -72,6 +72,18 @@ namespace CustomerApi.Controllers
             return await _customerRepository.CreateCustomer(customer.FirstName, customer.Surname);
         }
 
+        /// <summary>
+        /// Update credentials of specific customer
+        /// </summary>
+        /// <param name="customer">Customer entity</param>
+        /// <returns></returns>
+        [Route("customers/update")]
+        [HttpPost]
+        public async Task<Customer> UpdateCustomer(Customer customer)
+        {
+            return await _customerRepository.UpdateCustomer(customer.Id, customer.FirstName, customer.Surname);
+        }
+
         #endregion
     }
 }

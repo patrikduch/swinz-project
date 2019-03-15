@@ -78,6 +78,28 @@ namespace CustomerApi.Repositories
             return await _context.Customers.LastOrDefaultAsync();
         }
 
+        /// <summary>
+        /// Customer update
+        /// </summary>
+        /// <param name="id">customer`s identifier</param>
+        /// <param name="firstName">customer`s firstname</param>
+        /// <param name="surname">customer`s surname</param>
+        /// <returns></returns>
+        public async Task<Customer> UpdateCustomer(int id, string firstName, string surname)
+        {
+            var entity = await _context.Customers.SingleOrDefaultAsync(c=>c.Id == id);
+
+            if (entity == null) return null;
+          
+            entity.FirstName = firstName;
+            entity.Surname = surname;
+
+            await _context.SaveChangesAsync();
+
+            return entity;
+
+        }
+
         #endregion
 
     }

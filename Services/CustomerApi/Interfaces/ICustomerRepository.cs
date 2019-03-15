@@ -20,5 +20,7 @@ namespace CustomerApi.Interfaces
         Task RemoveCustomer(int customerId);
 
         Task<Customer> CreateCustomer(string firstName, string surname);
+
+        Task<Customer> UpdateCustomer(int id, string firstName, string surname);
     }
 }
