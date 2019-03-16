@@ -5,6 +5,8 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using UserApi.Dto;
+
 namespace UserApi.Interfaces
 {
     using System.Collections.Generic;
@@ -21,5 +23,7 @@ namespace UserApi.Interfaces
         Task<User> CreateAdmin(string username, string password);
 
         Task<User> CreateCustomer(User user);
+
+        Task<User> Authenticate(RegisterUserDto userDto);
     }
 }

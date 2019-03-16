@@ -6,6 +6,7 @@
 //-----------------------------------------------------------------------
 
 using System.Linq;
+using UserApi.Dto;
 using UserApi.Helpers;
 
 namespace UserApi.Repositories
@@ -51,6 +52,12 @@ namespace UserApi.Repositories
             return await _context.Users.Include(c => c.UserRoles).ToListAsync();
         }
 
+        /// <summary>
+        /// Creation of admin user
+        /// </summary>
+        /// <param name="username">username of new administrator</param>
+        /// <param name="password">password of new administrator</param>
+        /// <returns></returns>
         public async Task<User> CreateAdmin(string username, string password)
         {
             var entity = await _context.Users.Include(u => u.UserRoles).Where(u => u.Username == username).FirstOrDefaultAsync();
@@ -72,9 +79,10 @@ namespace UserApi.Repositories
             };
 
             
-
+            // Encryption process
             CryptographyHelper.CreatePasswordHash(password, out var passwordHash, out var passwordSalt);
 
+            // Creation of new user
             var newUser = new User
             {
                 Username = username,
@@ -83,11 +91,14 @@ namespace UserApi.Repositories
                 PasswordSalt = passwordSalt
             };
 
+            // Affect tracking mechanism of EF
             _context.Users.Add(newUser);
 
+            // Save changes to the database
             await _context.SaveChangesAsync();
 
-            return await _context.Users.LastOrDefaultAsync();
+            // Returns user
+            return await _context.Users.Where(u=>u.Username == username).LastOrDefaultAsync();
         }
 
         public Task<User> CreateCustomer(User user)
@@ -95,9 +106,25 @@ namespace UserApi.Repositories
             throw new System.NotImplementedException();
         }
 
-       
+        /// <summary>
+        /// Login for any user
+        /// </summary>
+        /// <param name="userDto">Username transfer object</param>
+        /// <returns></returns>
+        public async  Task<User> Authenticate(RegisterUserDto userDto)
+        {
+            if (string.IsNullOrEmpty(userDto.Username) || string.IsNullOrEmpty(userDto.Password))
+                return null;
 
+            var user = await _context.Users.SingleOrDefaultAsync(x => x.Username == userDto.Username);
 
+            // check if username exists
+            if (user == null)
+                return null;
+
+            return !CryptographyHelper.VerifyPasswordHash(userDto.Password, user.PasswordHash, user.PasswordSalt) ? null : user;
+
+        }
 
         #endregion
 

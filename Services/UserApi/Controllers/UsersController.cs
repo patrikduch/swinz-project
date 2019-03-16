@@ -49,6 +49,13 @@ namespace UserApi.Controllers
         }
 
         [HttpPost]
+        [Route("authenticate")]
+        public async Task<User> Authenticate(RegisterUserDto userDto)
+        {
+            return await _userRepository.Authenticate(userDto);
+        }
+
+        [HttpPost]
         [Route("create/customer")]
         public Task<User> CreateCustomer(User user)
         {

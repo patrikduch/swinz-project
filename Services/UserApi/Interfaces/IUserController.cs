@@ -21,6 +21,7 @@ namespace UserApi.Interfaces
         Task<List<User>> GetAllUsers();
 
         Task<User> CreateAdmin(RegisterUserDto userDto);
+        Task<User> Authenticate(RegisterUserDto userDto);
         Task<User> CreateCustomer(User user);
     }
 }
