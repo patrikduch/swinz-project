@@ -5,6 +5,8 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using UserApi.Dto;
+
 namespace UserApi.Interfaces
 {
     using System.Collections.Generic;
@@ -17,5 +19,8 @@ namespace UserApi.Interfaces
     public interface IUserController
     {
         Task<List<User>> GetAllUsers();
+
+        Task<User> CreateAdmin(RegisterUserDto userDto);
+        Task<User> CreateCustomer(User user);
     }
 }

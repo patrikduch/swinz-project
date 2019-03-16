@@ -5,6 +5,8 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using UserApi.Dto;
+
 namespace UserApi.Controllers
 {
     using System.Threading.Tasks;
@@ -38,6 +40,21 @@ namespace UserApi.Controllers
         {
             return await _userRepository.GetUsers();
         }
+
+        [HttpPost]
+        [Route("create/admin")]
+        public async Task<User> CreateAdmin([FromBody] RegisterUserDto userDto)
+        {
+            return await _userRepository.CreateAdmin(userDto.Username, userDto.Password);
+        }
+
+        [HttpPost]
+        [Route("create/customer")]
+        public Task<User> CreateCustomer(User user)
+        {
+            throw new System.NotImplementedException();
+        }
+
         #endregion
 
 

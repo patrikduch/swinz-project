@@ -12,9 +12,6 @@ using UserApi.Repositories;
 
 namespace ApiBase
 {
-    using CustomerApi.Contexts;
-    using CustomerApi.Interfaces;
-    using CustomerApi.Repositories;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Mvc;
@@ -38,7 +35,6 @@ namespace ApiBase
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
-                .AddApplicationPart(typeof(CustomerApi.Controllers.CustomerController).Assembly)
                 .AddApplicationPart(typeof(ProductApi.Controllers.ProductsController).Assembly)
                 .AddApplicationPart(typeof(UserApi.Controllers.UsersController).Assembly).
                 AddJsonOptions(options =>
@@ -49,11 +45,9 @@ namespace ApiBase
 
             // Entity framework context setup
             var conn = Configuration.GetConnectionString("Default");
-            services.AddDbContext<CustomerContext>(options => options.UseSqlServer(conn));
             services.AddDbContext<UserContext>(options => options.UseSqlServer(conn));
 
             // Register repositories
-            services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
 
             // Cors services

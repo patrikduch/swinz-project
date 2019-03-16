@@ -4,6 +4,10 @@
 // </copyright>
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
+
+using System.Linq;
+using UserApi.Helpers;
+
 namespace UserApi.Repositories
 {
     using System.Collections.Generic;
@@ -42,10 +46,59 @@ namespace UserApi.Repositories
         /// Get the list of all users
         /// </summary>
         /// <returns></returns>
-        public Task<List<User>> GetUsers()
+        public async Task<List<User>> GetUsers()
         {
-            return _context.Users.Include(c => c.UserRoles).ToListAsync();
+            return await _context.Users.Include(c => c.UserRoles).ToListAsync();
         }
+
+        public async Task<User> CreateAdmin(string username, string password)
+        {
+            var entity = await _context.Users.Include(u => u.UserRoles).Where(u => u.Username == username).FirstOrDefaultAsync();
+
+            // This user already exists
+            if (entity != null) return null;
+
+
+            // Create role if not exists
+            var roleEntity = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Admin") ?? new Role()
+            {
+                Name = "Admin"
+            };
+
+            // List of roles that will be added to new user
+            var roles = new List<UserRoles>
+            {
+                new UserRoles() {User = new User() {Username = username}, Role = roleEntity}
+            };
+
+            
+
+            CryptographyHelper.CreatePasswordHash(password, out var passwordHash, out var passwordSalt);
+
+            var newUser = new User
+            {
+                Username = username,
+                UserRoles = roles,
+                PasswordHash = passwordHash,
+                PasswordSalt = passwordSalt
+            };
+
+            _context.Users.Add(newUser);
+
+            await _context.SaveChangesAsync();
+
+            return await _context.Users.LastOrDefaultAsync();
+        }
+
+        public Task<User> CreateCustomer(User user)
+        {
+            throw new System.NotImplementedException();
+        }
+
+       
+
+
+
         #endregion
 
 

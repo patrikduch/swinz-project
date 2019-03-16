@@ -17,5 +17,9 @@ namespace UserApi.Interfaces
     public interface IUserRepository
     {
         Task<List<User>> GetUsers();
+
+        Task<User> CreateAdmin(string username, string password);
+
+        Task<User> CreateCustomer(User user);
     }
 }
