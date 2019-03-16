@@ -8,5 +8,6 @@
 
 export default interface ICustomerListBodyProps {
     data: [],
-    removeCustomer: Function
+    removeCustomer: Function,
+    updateCustomer: Function
 }

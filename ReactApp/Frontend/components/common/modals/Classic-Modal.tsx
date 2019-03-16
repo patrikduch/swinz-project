@@ -34,7 +34,7 @@ export default (props: IClassicModalProps) => {
             <Modal size='lg' isOpen={ dataState.isOpen } toggle={toggler}>
                 <ModalHeader toggle={ toggler }>{ props.title }</ModalHeader>
                 <ModalBody>
-                    {<props.data toggler={toggler} methods={props.methods}/>}
+                    {<props.data arg={props.arg} toggler={toggler} methods={props.methods} />}
                 </ModalBody>
                 <ModalFooter>
                     {props.showModalBtn &&  <div>

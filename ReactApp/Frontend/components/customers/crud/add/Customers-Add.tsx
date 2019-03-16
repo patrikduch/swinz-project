@@ -16,7 +16,7 @@ import CustomerAddForm from './forms/Customer-Add-Form';
 export default (props:ICustomerAddProps) => {
     return (
         <span>
-            <CustomerModal data={CustomerAddForm} methods ={[props.addCustomer]} showModalBtn={false}  title={ props.title } btnIcon='plus'  />
+            <CustomerModal arg={null} data={CustomerAddForm} methods ={[props.addCustomer]} showModalBtn={false}  title={ props.title } btnIcon='plus'  />
         </span>
     );
 }

@@ -44,3 +44,12 @@ export const createCustomer : any = (customerObj: object) => async (dispatch: Fu
 
         dispatch({ type: actionTypes.CUSTOMER_CREATION_SUCCESS, data});    
 }
+
+
+export const updateCustomer : any = (customerObj: object) => async (dispatch: Function) => {
+        
+    const promiseResult = await CustomerApi.updateCustomer(customerObj);
+    const data = promiseResult.data;
+
+    dispatch({ type: actionTypes.CUSTOMER_UPDATE_SUCCESS, data});    
+}

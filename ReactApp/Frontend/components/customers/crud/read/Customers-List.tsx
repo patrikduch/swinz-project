@@ -18,7 +18,7 @@ import AddCustomer from '../add/Customers-Add';
 import styled from 'styled-components';
 // Container that wrappps list of customers
 const Container = styled.div`
-    margin-top: 1.0vh;
+  //  margin-top: 1.0vh;
 `;
 
 // Title of customer page
@@ -40,7 +40,7 @@ export default class CustomersList extends React.Component<any, any> {
                 <Container>
                     <Table>
                         <CustomersListHeadings />
-                        <CustomersListBody removeCustomer={ this.props.actions.deleteCustomer } data={ this.props.customers } />
+                        <CustomersListBody updateCustomer={this.props.actions.updateCustomer} removeCustomer={ this.props.actions.deleteCustomer } data={ this.props.customers } />
                     </Table>
                     <CustomerListPaging />
                 </Container>

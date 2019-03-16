@@ -22,7 +22,7 @@ const reducer = (state : any = initialState.customers, action: any) => {
                 ...state,
                 data: action.data.data
             }
-        case actionTypes.CUSTOMER_CREATION_SUCCESS:
+        case actionTypes.CUSTOMER_CREATION_SUCCESS: // Creation of new customer
 
             let customersResult = new Array();
             
@@ -35,9 +35,24 @@ const reducer = (state : any = initialState.customers, action: any) => {
 
 
             return {
-
                 ...state,
                 data: customersResult
+            }
+
+        // Update credentials of specific customer
+        case actionTypes.CUSTOMER_UPDATE_SUCCESS:
+
+            const updatedData = state.data.map((arg: any) => {
+                if(arg.id == action.data.id) {
+                    arg.firstName = action.data.firstName;
+                    arg.surname = action.data.surname;
+                }
+                return arg;
+            });
+
+            return {
+                ...state,
+                data: updatedData
             }
             
         // Change after removing customer

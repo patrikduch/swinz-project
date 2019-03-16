@@ -10,5 +10,6 @@ export default interface ICustomerEditProps {
 
     title: string,
     data: any , // Data that is passed to the modal if its available
-
+    arg: any,
+    method: Function
 }

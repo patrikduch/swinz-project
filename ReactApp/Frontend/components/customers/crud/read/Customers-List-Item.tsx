@@ -28,12 +28,14 @@ interface ICustomerListItemProps {
     },
     //iteration: number
     removeCustomer: Function,
+    updateCustomer: Function,
     iteration: number
 }
 
 
 
 export default class CustomersListItem extends React.Component<ICustomerListItemProps, ICustomerListItemState> {
+
 
     render() {
         return (
@@ -45,7 +47,7 @@ export default class CustomersListItem extends React.Component<ICustomerListItem
                 <CustomerListOptions>
                     N/A
                         <CustomerRemove  customerId={this.props.arg.id} removeCustomer={ this.props.removeCustomer } />
-                        <EditCustomer title='Úprava detailů zákazníka' data={ EditCustomerForm } />
+                        <EditCustomer title='Úprava detailů zákazníka' method={this.props.updateCustomer} data={ EditCustomerForm} arg={this.props.arg} />
                 </CustomerListOptions>
             </tr>
         );

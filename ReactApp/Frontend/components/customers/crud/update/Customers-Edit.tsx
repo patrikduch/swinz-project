@@ -13,9 +13,10 @@ import CustomerModal from '../../../common/modals/Classic-Modal';
 import ICustomerEditProps from '../../../../typescript/interfaces/components/customers/ICustomer-Edit-Props';
 
 export default (props: ICustomerEditProps) => {
+
     return (
         <span>
-            <CustomerModal methods ={null} showModalBtn={ true }  title={ props.title } data = { props.data } btnIcon='edit' />
+            <CustomerModal methods ={[props.method]} showModalBtn={ true }  title={ props.title } arg={props.arg} data = { props.data } btnIcon='edit' />
         </span>
     );
 

@@ -21,4 +21,8 @@ export default class CustomerApi {
     static createCustomer(data: object) {        
         return post('http://localhost:63766/api/customers/create', data)
     }
+
+    static updateCustomer(data: object) {        
+        return post('http://localhost:63766/api/customers/update', data)
+    }
 }
