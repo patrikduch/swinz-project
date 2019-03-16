@@ -5,6 +5,11 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using Newtonsoft.Json;
+using UserApi.Contexts;
+using UserApi.Interfaces;
+using UserApi.Repositories;
+
 namespace ApiBase
 {
     using CustomerApi.Contexts;
@@ -35,14 +40,21 @@ namespace ApiBase
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                 .AddApplicationPart(typeof(CustomerApi.Controllers.CustomerController).Assembly)
                 .AddApplicationPart(typeof(ProductApi.Controllers.ProductsController).Assembly)
+                .AddApplicationPart(typeof(UserApi.Controllers.UsersController).Assembly).
+                AddJsonOptions(options =>
+                {
+                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                })
                 .AddControllersAsServices();
 
             // Entity framework context setup
             var conn = Configuration.GetConnectionString("Default");
             services.AddDbContext<CustomerContext>(options => options.UseSqlServer(conn));
+            services.AddDbContext<UserContext>(options => options.UseSqlServer(conn));
 
             // Register repositories
             services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             // Cors services
             services.AddCors(options => options.AddPolicy("AllowAll", p => p.AllowAnyOrigin()

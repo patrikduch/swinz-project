@@ -33,12 +33,24 @@ namespace UserApi.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            #region Conventions 
+
+            // User entity
             modelBuilder.Entity<User>().ToTable("User")
                 .Property(c => c.Username).HasColumnName("username");
 
+            // Role entity
             modelBuilder.Entity<Role>().ToTable("Role");
 
-            modelBuilder.Entity<UserRoles>().HasKey(sc => new { sc.UserId, sc.RoleId });
+            // UserRoles entity
+            modelBuilder.Entity<UserRoles>().HasKey(sc => new { sc.Id, sc.UserId, sc.RoleId }); // Composite key
+
+
+            #endregion
+
+
+
 
             #region Relationship mapping
 
