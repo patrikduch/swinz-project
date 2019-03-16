@@ -25,3 +25,7 @@ Services/ApiBase/obj
 Services/ApiBase/bin
 ReactApp/wwwroot/dist
 .vs/config/applicationhost.config
+Services/ProductApi/bin
+Services/UserApi/obj
+Services/ProductApi/obj
+Services/UserApi/bin

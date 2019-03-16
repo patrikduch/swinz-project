@@ -34,6 +34,7 @@ namespace ApiBase
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                 .AddApplicationPart(typeof(CustomerApi.Controllers.CustomerController).Assembly)
+                .AddApplicationPart(typeof(ProductApi.Controllers.ProductsController).Assembly)
                 .AddControllersAsServices();
 
             // Entity framework context setup
