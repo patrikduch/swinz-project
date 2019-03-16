@@ -4,6 +4,12 @@
 // </copyright>
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
+
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+
 namespace ReactApp
 {
     using Microsoft.AspNetCore.Builder;
@@ -16,6 +22,15 @@ namespace ReactApp
     /// </summary>
     public class Startup
     {
+
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; }
+
+
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
@@ -25,8 +40,7 @@ namespace ReactApp
                 .AllowAnyMethod()
                 .AllowAnyHeader()));
 
-
-
+      
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {

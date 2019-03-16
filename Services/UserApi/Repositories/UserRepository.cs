@@ -5,10 +5,6 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
-using System.Linq;
-using UserApi.Dto;
-using UserApi.Helpers;
-
 namespace UserApi.Repositories
 {
     using System.Collections.Generic;
@@ -17,6 +13,9 @@ namespace UserApi.Repositories
     using Contexts;
     using Domains;
     using Interfaces;
+    using System.Linq;
+    using Dto;
+    using Helpers;
 
     /// <summary>
     /// Repository for user`s manipulation
@@ -43,6 +42,28 @@ namespace UserApi.Repositories
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// User validation
+        /// </summary>
+        /// <param name="userDto">Username transfer object</param>
+        /// <returns></returns>
+        public async Task<User> ValidateUser(RegisterUserDto userDto)
+        {
+            if (string.IsNullOrEmpty(userDto.Username) || string.IsNullOrEmpty(userDto.Password))
+                return null;
+
+            var user = await _context.Users.SingleOrDefaultAsync(x => x.Username == userDto.Username);
+
+            // check if username exists
+            if (user == null)
+                return null;
+
+            return !CryptographyHelper.VerifyPasswordHash(userDto.Password, user.PasswordHash, user.PasswordSalt) ? null : user;
+
+        }
+
+
         /// <summary>
         /// Get the list of all users
         /// </summary>
@@ -104,26 +125,6 @@ namespace UserApi.Repositories
         public Task<User> CreateCustomer(User user)
         {
             throw new System.NotImplementedException();
-        }
-
-        /// <summary>
-        /// Login for any user
-        /// </summary>
-        /// <param name="userDto">Username transfer object</param>
-        /// <returns></returns>
-        public async  Task<User> Authenticate(RegisterUserDto userDto)
-        {
-            if (string.IsNullOrEmpty(userDto.Username) || string.IsNullOrEmpty(userDto.Password))
-                return null;
-
-            var user = await _context.Users.SingleOrDefaultAsync(x => x.Username == userDto.Username);
-
-            // check if username exists
-            if (user == null)
-                return null;
-
-            return !CryptographyHelper.VerifyPasswordHash(userDto.Password, user.PasswordHash, user.PasswordSalt) ? null : user;
-
         }
 
         #endregion

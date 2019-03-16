@@ -5,6 +5,7 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using Microsoft.AspNetCore.Mvc;
 using UserApi.Dto;
 
 namespace UserApi.Interfaces
@@ -24,6 +25,7 @@ namespace UserApi.Interfaces
 
         Task<User> CreateCustomer(User user);
 
-        Task<User> Authenticate(RegisterUserDto userDto);
+        Task<User> ValidateUser(RegisterUserDto userDto);
+
     }
 }
