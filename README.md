@@ -23,4 +23,5 @@ Component styling wich styled-components library </br>
 <h1>Backend</h1>
 Asp.net Core 2.1 </br>
 Data persistence (Entity framework Core) </br>
+Fluent-Api for model conventions </br>
 
