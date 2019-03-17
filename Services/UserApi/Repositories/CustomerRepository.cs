@@ -46,10 +46,9 @@ namespace UserApi.Repositories
         /// <returns></returns>
         public async Task<List<Customer>> GetCustomers()
         {
-            return await _userContext.Users.Include(c => c.Customer)
-                .Select(c => c.Customer)
-                .Where(c => !c.Equals(null)) // Only fetch customers not nullable (which represents user`s entity)
-                .ToListAsync();
+            return await (from c in _userContext.Users
+                where c.Customer != null
+                select c.Customer).ToListAsync();
 
         }
         #endregion

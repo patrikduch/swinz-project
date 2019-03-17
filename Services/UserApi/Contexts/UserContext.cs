@@ -5,11 +5,10 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
-
-using UserApi.Domains;
-
 namespace UserApi.Contexts
 {
+    using Domains;
+    using EntityConfigurations;
     using Microsoft.EntityFrameworkCore;
 
     /// <summary>
@@ -38,48 +37,9 @@ namespace UserApi.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
-            #region Conventions 
-
-            // User entity
-            modelBuilder.Entity<User>().ToTable("User")
-                .Property(c => c.Username).HasColumnName("username");
-
-            // Primary key of User entity
-            modelBuilder.Entity<User>().HasKey(u => u.Id);
-
-
-            // Role entity
-            modelBuilder.Entity<Role>().ToTable("Role");
-
-            // UserRoles entity
-            modelBuilder.Entity<UserRoles>().HasKey(sc => new { sc.Id, sc.UserId, sc.RoleId }); // Composite key
-            #endregion
-
-            #region Relationship mapping
-
-            // M:N (Users -> Roles)
-
-            modelBuilder.Entity<UserRoles>()
-                .HasOne(sc => sc.User)
-                .WithMany(s => s.UserRoles)
-                .HasForeignKey(sc => sc.UserId);
-
-
-            modelBuilder.Entity<UserRoles>()
-                .HasOne(sc => sc.Role)
-                .WithMany(s => s.UserRoles)
-                .HasForeignKey(sc => sc.RoleId);
-
-
-            // 1:1 User -> Customer
-
-            modelBuilder.Entity<User>().HasOne(u => u.Customer)
-                .WithOne(c => c.User)
-                .HasForeignKey<User>(u => u.CustomerId);
-
-
-            #endregion
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
+            modelBuilder.ApplyConfiguration(new UserRoleConfiguration());
         }
 
     }
