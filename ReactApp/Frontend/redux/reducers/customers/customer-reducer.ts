@@ -3,7 +3,7 @@
 //     Copyright 2019 (c) Patrikduch.com
 // </copyright>
 // <author>Patrik Duch</author>
-// Redux reducer for cu(stomers
+// Redux reducer for customers
 //-------------------------------------------------------------------------
 
 // Import of all actions types

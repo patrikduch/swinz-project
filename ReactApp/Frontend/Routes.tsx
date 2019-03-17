@@ -11,25 +11,32 @@ import CustomerPage from './pages/customers/CustomerPage';
 import OrderPage from './pages/orders/OrderPage';
 import ProductPage from './pages/products/ProductPage';
 import StatsPage from './pages/stats/StatsPage';
+import LoginPage from './redux/containers/login/Login-Page-Container';
 import { hot } from 'react-hot-loader';
 import { Route } from "react-router-dom";
 
 import HeaderComp from './components/layout/Header';
 import FooterComp from './components/layout/Footer';
 
+import AdminAuth from './hoc/authentication/Admin-Auth';
+
 
 const Routes = () => {
     return (
         <div>
             <HeaderComp />
-            <Route path='/' exact component={ HomeComp } />
-            <Route path='/customers' exact component={ CustomerPage } />
-            <Route path='/orders' exact component={ OrderPage } />
-            <Route path='/products' exact component={ ProductPage } />
-            <Route path='/stats' exact component={ StatsPage } />
+            <Route path='/login' exact component={ LoginPage } />
+            <AdminAuth>
+                <Route path='/' exact component={ HomeComp } />
+                <Route path='/customers' exact component={ CustomerPage } />
+                <Route path='/orders' exact component={ OrderPage } />
+                <Route path='/products' exact component={ ProductPage } />
+                <Route path='/stats' exact component={ StatsPage } />
+            </AdminAuth>
+
             <FooterComp />
         </div>
-        
+
     )
 }
 

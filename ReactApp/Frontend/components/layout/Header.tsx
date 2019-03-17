@@ -10,12 +10,19 @@ import * as React from 'react';
 import Navbar from '../common/navigation/NavBar';
 import Navigation from '../common/navigation/Navigation';
 
+// Auth process
+import AdminAuth from '../../hoc/authentication/Admin-Auth';
+
 export default () => {
 
     return (
         <header>
             <Navbar title='Fakturační systém' />
-            <Navigation />
+            
+            <AdminAuth>
+                 <Navigation />
+            </AdminAuth>
+            
         </header>
     )
 }

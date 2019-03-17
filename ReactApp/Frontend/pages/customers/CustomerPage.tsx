@@ -8,6 +8,7 @@
 
 import * as React from 'react';
 
+import UsersListComp from '../../redux/containers/users/User-List-Container';
 import CustomersListComp from '../../redux/containers/customers/Customer-List-Container';
 
 import { Container } from 'reactstrap';

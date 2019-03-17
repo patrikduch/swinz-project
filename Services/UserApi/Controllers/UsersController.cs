@@ -124,7 +124,7 @@ namespace UserApi.Controllers
         /// <returns>Instance of Action Result</returns>
         [AllowAnonymous]
         [HttpPost("isAuthenticated")]
-        public IActionResult IsAuthenticated([FromBody] UserTokenDto token)
+        public async Task<IActionResult> IsAuthenticated([FromBody] UserTokenDto token)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             JwtSecurityToken jwt;
@@ -144,11 +144,24 @@ namespace UserApi.Controllers
             int.TryParse(userIdentifier, out var userId);
 
             // Get user from database
-            var user = _userRepository.GetUserById(userId);
+
+            User user = null;
+
+            try
+            {
+                user = await _userRepository.GetUserById(userId);
+            }
+            catch (NullReferenceException)
+            {
+
+                BadRequest("Unauthorized");
+
+            }
+            
 
             return Ok(new
             {
-                user.Result.Username,
+                user?.Username,
                 TokenString = token.TokenString
             });
         }

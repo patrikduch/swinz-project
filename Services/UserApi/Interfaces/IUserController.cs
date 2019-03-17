@@ -22,6 +22,6 @@ namespace UserApi.Interfaces
         Task<User> CreateAdmin(RegisterUserDto userDto);
         Task<ActionResult> Authenticate(RegisterUserDto userDto);
         Task<User> CreateCustomer(CustomerDto customerDto);
-        IActionResult IsAuthenticated(UserTokenDto token);
+        Task<IActionResult> IsAuthenticated(UserTokenDto token);
     }
 }

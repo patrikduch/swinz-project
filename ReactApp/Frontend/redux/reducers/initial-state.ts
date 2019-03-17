@@ -7,5 +7,10 @@
 //-----------------------------------------------------------------------
 
 export default {
-    customers: []
+    customers: [],
+    users: [],
+    auth: {
+        token: '',
+        isAuthenticated: false
+    }
 }

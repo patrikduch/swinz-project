@@ -11,7 +11,7 @@ import { get, del, post} from '../utils/request-utils';
 export default class CustomerApi {
 
     static getCustomers() {        
-        return get('http://localhost:63766/api/customers')
+        return get('http://localhost:63766/api/customers/getAll')
     }
 
     static deleteCustomer(customerId: number) {        

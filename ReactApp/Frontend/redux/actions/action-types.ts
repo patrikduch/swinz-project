@@ -1,3 +1,11 @@
+// Admin authentification
+export const ADMIN_AUTH_SUCCESS = 'ADMIN_AUTH_SUCCESS';
+export const ADMIN_AUTH_FAILED = 'ADMIN_AUTH_FAILED';
+
+// User fetching
+export const USER_FETCH_SUCCESS = 'USER_FETCH_SUCCESS';
+export const USER_FETCH_FAILED = 'USER_FETCH_FAILED';
+
 // Customer fetching
 export const CUSTOMER_FETCH_SUCCESS = 'CUSTOMER_FETCH_SUCCESS';
 export const CUSTOMER_FETCH_FAILED = 'CUSTOMER_FETCH_FAILED';
