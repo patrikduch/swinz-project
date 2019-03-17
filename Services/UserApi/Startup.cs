@@ -1,19 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using UserApi.Contexts;
+﻿//-----------------------------------------------------------------------
+// <copyright file="Startup.cs" website="Patrikduch.com">
+//     Copyright 2019 (c) Patrikduch.com
+// </copyright>
+// <author>Patrik Duch</author>
+//-----------------------------------------------------------------------
 
 namespace UserApi
 {
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Contexts;
+
+    /// <summary>
+    /// Init configuration setup of UserApi service
+    /// </summary>
     public class Startup
     {
         public Startup(IConfiguration configuration)

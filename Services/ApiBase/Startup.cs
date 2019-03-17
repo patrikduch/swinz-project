@@ -83,12 +83,14 @@ namespace ApiBase
 
             // Register repositories
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
 
             #endregion
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                 .AddApplicationPart(typeof(ProductApi.Controllers.ProductsController).Assembly)
-                .AddApplicationPart(typeof(UserApi.Controllers.UsersController).Assembly).
+                .AddApplicationPart(typeof(UserApi.Controllers.UsersController).Assembly)
+                .AddApplicationPart(typeof(UserApi.Controllers.CustomersController).Assembly).
                 AddJsonOptions(options =>
                 {
                     options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;

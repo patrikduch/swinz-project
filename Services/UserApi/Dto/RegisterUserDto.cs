@@ -5,8 +5,6 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
-using UserApi.Interfaces;
-
 namespace UserApi.Dto
 {
     /// <summary>
@@ -14,10 +12,19 @@ namespace UserApi.Dto
     /// </summary>
     public class RegisterUserDto
     {
+        /// <summary>
+        /// Gets or sets user`s identifier
+        /// </summary>
         public int Id { get; set; }
 
+        /// <summary>
+        /// Gets or sets user`s username
+        /// </summary>
         public string Username { get; set; }
 
+        /// <summary>
+        /// Gets or sets user`s password
+        /// </summary>
         public string Password { get; set; }
 
     }

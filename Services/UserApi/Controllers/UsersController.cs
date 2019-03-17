@@ -5,19 +5,18 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
-using System;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
-using UserApi.Dto;
-using UserApi.Helpers;
-
 namespace UserApi.Controllers
 {
+    using System;
+    using System.IdentityModel.Tokens.Jwt;
+    using System.Linq;
+    using System.Security.Claims;
+    using System.Text;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.Extensions.Options;
+    using Microsoft.IdentityModel.Tokens;
+    using Dto;
+    using Helpers;
     using System.Threading.Tasks;
     using Domains;
     using Interfaces;
@@ -44,7 +43,11 @@ namespace UserApi.Controllers
         }
         #endregion
 
-        #region Methods
+        #region Actions
+        /// <summary>
+        /// Get all users (admins, customers)
+        /// </summary>
+        /// <returns>list of all users</returns>
         [HttpGet]
         [Route("getAll")]
         public async Task<List<User>> GetAllUsers()
@@ -52,6 +55,11 @@ namespace UserApi.Controllers
             return await _userRepository.GetUsers();
         }
 
+        /// <summary>
+        /// Creation of new admin user
+        /// </summary>
+        /// <param name="userDto"></param>
+        /// <returns>Instance of created user</returns>
         [HttpPost]
         [Route("create/admin")]
         public async Task<User> CreateAdmin([FromBody] RegisterUserDto userDto)
@@ -59,6 +67,24 @@ namespace UserApi.Controllers
             return await _userRepository.CreateAdmin(userDto.Username, userDto.Password);
         }
 
+        /// <summary>
+        /// Creation of new customer
+        /// </summary>
+        /// <param name="customerDto">Data transfer object for customers</param>
+        /// <returns>Instance of created user</returns>
+        [HttpPost]
+        [Route("create/customer")]
+        public Task<User> CreateCustomer([FromBody] CustomerDto customerDto)
+        {
+            return _userRepository.CreateCustomer(customerDto);
+        }
+
+
+        /// <summary>
+        /// Login process
+        /// </summary>
+        /// <param name="userDto">Data transfer object for users</param>
+        /// <returns>Instance of Action Result</returns>
         [HttpPost]
         [Route("authenticate")]
         public async Task<ActionResult> Authenticate(RegisterUserDto userDto)
@@ -91,13 +117,11 @@ namespace UserApi.Controllers
         }
 
 
-        [HttpPost]
-        [Route("create/customer")]
-        public Task<User> CreateCustomer([FromBody] CustomerDto customerDto)
-        {
-            return _userRepository.CreateCustomer(customerDto);
-        }
-
+        /// <summary>
+        /// Auth checker via JWT token
+        /// </summary>
+        /// <param name="token">authentication token</param>
+        /// <returns>Instance of Action Result</returns>
         [AllowAnonymous]
         [HttpPost("isAuthenticated")]
         public IActionResult IsAuthenticated([FromBody] UserTokenDto token)
@@ -109,7 +133,6 @@ namespace UserApi.Controllers
             try
             {
                 jwt = tokenHandler.ReadJwtToken(token.TokenString);
-
             }
             catch (ArgumentException)
             {
@@ -130,14 +153,7 @@ namespace UserApi.Controllers
             });
         }
 
-
         #endregion
-
-
-
-
-
-
 
     }
 }

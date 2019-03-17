@@ -12,12 +12,24 @@ namespace UserApi.Domains
     /// </summary>
     public class Customer
     {
+        /// <summary>
+        /// Gets or sets customer`s identifier
+        /// </summary>
         public int? Id { get; set; }
 
+        /// <summary>
+        /// Gets or sets customer`s first name
+        /// </summary>
         public string FirstName { get; set; }
 
+        /// <summary>
+        /// Gets or sets customer`s surname
+        /// </summary>
         public string Surname { get; set; }
 
+        /// <summary>
+        /// Gets or sets customer`s User reference
+        /// </summary>
         public User User { get; set; }
     }
 }

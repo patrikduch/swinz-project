@@ -5,14 +5,12 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
-using Microsoft.AspNetCore.Mvc;
-using UserApi.Dto;
-
 namespace UserApi.Interfaces
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Domains;
+    using Dto;
 
     /// <summary>
     /// Interface that implements User repository

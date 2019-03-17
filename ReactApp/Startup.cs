@@ -5,13 +5,9 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
-using System.Text;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
-
 namespace ReactApp
 {
+    using Microsoft.Extensions.Configuration;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.SpaServices.Webpack;
@@ -61,7 +57,7 @@ namespace ReactApp
             {
                 app.UseDeveloperExceptionPage();
 
-                // Pro okamžité přerenderování změněného obsahu
+                // For immediate re rendering
                 app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
                 {
                     HotModuleReplacement = true

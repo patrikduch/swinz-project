@@ -5,11 +5,10 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
-using Microsoft.AspNetCore.Mvc;
-using UserApi.Dto;
-
 namespace UserApi.Interfaces
 {
+    using Microsoft.AspNetCore.Mvc;
+    using Dto;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Domains;
@@ -20,10 +19,9 @@ namespace UserApi.Interfaces
     public interface IUserController
     {
         Task<List<User>> GetAllUsers();
-
         Task<User> CreateAdmin(RegisterUserDto userDto);
         Task<ActionResult> Authenticate(RegisterUserDto userDto);
         Task<User> CreateCustomer(CustomerDto customerDto);
-        IActionResult IsAuthenticated([FromBody] UserTokenDto token);
+        IActionResult IsAuthenticated(UserTokenDto token);
     }
 }
