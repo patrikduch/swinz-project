@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UserApi.Contexts;
 
 namespace UserApi.Migrations
 {
     [DbContext(typeof(UserContext))]
-    partial class UserContextModelSnapshot : ModelSnapshot
+    [Migration("20190317075139_CustomerToUserEntity")]
+    partial class CustomerToUserEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,13 +23,9 @@ namespace UserApi.Migrations
 
             modelBuilder.Entity("UserApi.Domains.Customer", b =>
                 {
-                    b.Property<int?>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("FirstName");
-
-                    b.Property<string>("Surname");
 
                     b.HasKey("Id");
 
@@ -53,7 +51,7 @@ namespace UserApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CustomerId");
+                    b.Property<int>("CustomerId");
 
                     b.Property<byte[]>("PasswordHash");
 
@@ -65,8 +63,7 @@ namespace UserApi.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId")
-                        .IsUnique()
-                        .HasFilter("[CustomerId] IS NOT NULL");
+                        .IsUnique();
 
                     b.ToTable("User");
                 });
@@ -92,7 +89,8 @@ namespace UserApi.Migrations
                 {
                     b.HasOne("UserApi.Domains.Customer", "Customer")
                         .WithOne("User")
-                        .HasForeignKey("UserApi.Domains.User", "CustomerId");
+                        .HasForeignKey("UserApi.Domains.User", "CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("UserApi.Domains.UserRoles", b =>

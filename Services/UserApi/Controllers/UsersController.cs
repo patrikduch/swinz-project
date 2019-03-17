@@ -72,9 +72,9 @@ namespace UserApi.Controllers
             var key = Encoding.ASCII.GetBytes(_appSettings.Value.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new Claim[]
+                Subject = new ClaimsIdentity(new[]
                 {
-                    new Claim(ClaimTypes.Name, userDto.Username.ToString())
+                    new Claim(ClaimTypes.Name, userDto.Id.ToString())
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
@@ -90,20 +90,20 @@ namespace UserApi.Controllers
             });
         }
 
+
         [HttpPost]
         [Route("create/customer")]
-        public Task<User> CreateCustomer(User user)
+        public Task<User> CreateCustomer([FromBody] CustomerDto customerDto)
         {
-            throw new System.NotImplementedException();
+            return _userRepository.CreateCustomer(customerDto);
         }
-
 
         [AllowAnonymous]
         [HttpPost("isAuthenticated")]
         public IActionResult IsAuthenticated([FromBody] UserTokenDto token)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            JwtSecurityToken jwt = null;
+            JwtSecurityToken jwt;
 
             // Trying to parse the token string
             try
@@ -117,19 +117,17 @@ namespace UserApi.Controllers
             }
 
             // Get user id from token
-            var userIdentifier = jwt.Claims.Where(c => c.Type == "unique_name").SingleOrDefault().Value;
-            int.TryParse(userIdentifier, out int userId);
+            var userIdentifier = jwt.Claims.SingleOrDefault(c => c.Type == "unique_name")?.Value;
+            int.TryParse(userIdentifier, out var userId);
 
             // Get user from database
-            //var user = _userRepository.GetById(userId);
+            var user = _userRepository.GetUserById(userId);
 
-            //return Ok(new
-            //{
-              //  Id = user.Id,
-              //  Username = user.Username
-            //});
-
-            return null;
+            return Ok(new
+            {
+                user.Result.Username,
+                TokenString = token.TokenString
+            });
         }
 
 

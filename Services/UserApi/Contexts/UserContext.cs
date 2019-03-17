@@ -68,6 +68,13 @@ namespace UserApi.Contexts
                 .HasForeignKey(sc => sc.RoleId);
 
 
+            // 1:1 User -> Customer
+
+            modelBuilder.Entity<User>().HasOne(u => u.Customer)
+                .WithOne(c => c.User)
+                .HasForeignKey<User>(u => u.CustomerId);
+
+
             #endregion
 
 

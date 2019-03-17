@@ -23,9 +23,11 @@ namespace UserApi.Interfaces
 
         Task<User> CreateAdmin(string username, string password);
 
-        Task<User> CreateCustomer(User user);
+        Task<User> CreateCustomer(CustomerDto customerDto);
 
         Task<User> ValidateUser(RegisterUserDto userDto);
+
+        Task<User> GetUserById(int id);
 
     }
 }

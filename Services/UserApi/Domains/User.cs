@@ -24,5 +24,15 @@ namespace UserApi.Domains
 
         public IList<UserRoles> UserRoles { get; set; }
 
+
+
+        /// <summary>
+        /// User entity has optional relation ship with Customer entity
+        /// </summary>
+        public int? CustomerId { get; set; }
+
+        public Customer Customer { get; set; }
+
+
     }
 }
