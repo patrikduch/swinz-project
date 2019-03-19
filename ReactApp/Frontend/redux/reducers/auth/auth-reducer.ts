@@ -30,7 +30,7 @@ const reducer = (state : any = initialState.auth, action: any) => {
 
             case actionTypes.ADMIN_AUTH_FAILED: // Failed to login with credentials
 
-            Cookies.set('auth', '');
+            Cookies.set('auth', 'N/A');
             
             return {
                     ...state,

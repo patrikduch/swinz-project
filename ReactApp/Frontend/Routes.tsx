@@ -21,10 +21,19 @@ import FooterComp from './components/layout/Footer';
 import AdminAuth from './hoc/authentication/Admin-Auth';
 
 
+import Navbar from './components/common/navigation/NavBar';
+import Navigation from './components/common/navigation/Navigation';
+
+
 const Routes = () => {
     return (
         <div>
-            <HeaderComp />
+            <HeaderComp>
+                <Navbar title='Fakturační systém' /> 
+                <AdminAuth isNav>
+                    <Navigation />
+                </AdminAuth>
+            </HeaderComp>
             <Route path='/login' exact component={ LoginPage } />
             <AdminAuth>
                 <Route path='/' exact component={ HomeComp } />

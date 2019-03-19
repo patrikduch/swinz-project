@@ -39,12 +39,15 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-hot-loader": "^4.0.0",
+    "react-loader-spinner": "^2.3.0",
+    "react-loading": "^2.0.3",
+    "react-promise": "^2.1.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "reactstrap": "^7.1.0",
-    "styled-components": "^4.0.3",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
+    "styled-components": "^4.0.3",
     "uniqid": "^5.0.3"
   },
   "-vs-binding": {

@@ -29,3 +29,4 @@ Services/ProductApi/bin
 Services/UserApi/obj
 Services/ProductApi/obj
 Services/UserApi/bin
+ReactApp/package-lock.json

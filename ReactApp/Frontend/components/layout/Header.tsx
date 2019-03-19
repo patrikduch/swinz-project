@@ -7,22 +7,16 @@
 //-----------------------------------------------------------------------
 
 import * as React from 'react';
-import Navbar from '../common/navigation/NavBar';
-import Navigation from '../common/navigation/Navigation';
+
 
 // Auth process
 import AdminAuth from '../../hoc/authentication/Admin-Auth';
 
-export default () => {
+export default (props:any) => {
 
     return (
         <header>
-            <Navbar title='Fakturační systém' />
-            
-            <AdminAuth>
-                 <Navigation />
-            </AdminAuth>
-            
+            {props.children}
         </header>
     )
 }
