@@ -11,9 +11,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{07
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiBase", "Services\ApiBase\ApiBase.csproj", "{42EEC060-DFF5-4D65-B690-A208095B617C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductApi", "Services\ProductApi\ProductApi.csproj", "{B2864F69-6BA6-4737-8016-665B78E8A4CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductApi", "Services\ProductApi\ProductApi.csproj", "{B2864F69-6BA6-4737-8016-665B78E8A4CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserApi", "Services\UserApi\UserApi.csproj", "{34838DBD-B2B7-4469-947B-F3C7DF733C61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserApi", "Services\UserApi\UserApi.csproj", "{34838DBD-B2B7-4469-947B-F3C7DF733C61}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{CF03CD73-104A-4003-8BAB-93BC08922C9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swinz.Tests", "Swinz.Tests\Swinz.Tests.csproj", "{9F783E6D-14A0-40B1-B354-691D6B997560}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +41,10 @@ Global
 		{34838DBD-B2B7-4469-947B-F3C7DF733C61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34838DBD-B2B7-4469-947B-F3C7DF733C61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34838DBD-B2B7-4469-947B-F3C7DF733C61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F783E6D-14A0-40B1-B354-691D6B997560}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F783E6D-14A0-40B1-B354-691D6B997560}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F783E6D-14A0-40B1-B354-691D6B997560}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F783E6D-14A0-40B1-B354-691D6B997560}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +54,7 @@ Global
 		{42EEC060-DFF5-4D65-B690-A208095B617C} = {07040D16-0605-4DF9-9360-D07576C593AA}
 		{B2864F69-6BA6-4737-8016-665B78E8A4CF} = {07040D16-0605-4DF9-9360-D07576C593AA}
 		{34838DBD-B2B7-4469-947B-F3C7DF733C61} = {07040D16-0605-4DF9-9360-D07576C593AA}
+		{9F783E6D-14A0-40B1-B354-691D6B997560} = {CF03CD73-104A-4003-8BAB-93BC08922C9F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BC95EF07-4827-4F68-BFBC-5E941B2CEA18}

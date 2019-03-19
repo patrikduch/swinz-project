@@ -30,3 +30,5 @@ Services/UserApi/obj
 Services/ProductApi/obj
 Services/UserApi/bin
 ReactApp/package-lock.json
+Swinz.Tests/obj
+Swinz.Tests/bin
