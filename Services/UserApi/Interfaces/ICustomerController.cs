@@ -8,6 +8,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UserApi.Domains;
+using UserApi.Dto;
 
 namespace UserApi.Interfaces
 {
@@ -17,5 +18,7 @@ namespace UserApi.Interfaces
     public interface ICustomerController
     {
         Task<List<Customer>> GetAllCustomers();
+
+        Task<Customer> UpdateCustomer(int id, CustomerDto customerDto);
     }
 }

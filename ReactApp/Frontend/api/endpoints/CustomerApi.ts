@@ -6,7 +6,7 @@
 // Rest API for customers
 //-----------------------------------------------------------------------
 
-import { get, del, post} from '../utils/request-utils';
+import { get, del, put, post} from '../utils/request-utils';
 
 export default class CustomerApi {
 
@@ -22,7 +22,7 @@ export default class CustomerApi {
         return post('http://localhost:63766/api/customers/create', data)
     }
 
-    static updateCustomer(data: object) {        
-        return post('http://localhost:63766/api/customers/update', data)
+    static updateCustomer(arg:string, data: object) {        
+        return put('http://localhost:63766/api/customers/update/', arg, data);
     }
 }

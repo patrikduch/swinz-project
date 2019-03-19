@@ -5,6 +5,8 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using UserApi.Dto;
+
 namespace UserApi.Repositories
 {
     using System.Collections.Generic;
@@ -62,6 +64,32 @@ namespace UserApi.Repositories
             await (from c in _userContext.Users where c.CustomerId == customerId select c.Username).FirstOrDefaultAsync();
             await _userContext.SaveChangesAsync();
         }
+
+        /// <summary>
+        /// Customer update
+        /// </summary>
+        /// <param name="id">customer`s identifier</param>
+        /// <param name="customerDto">Data transfer object for customer</param>
+        /// <returns></returns>
+        public async Task<Customer> UpdateCustomer(int id, CustomerDto customerDto)
+        {
+            var entity = await(from customers in _userContext.Users
+                where customers.Customer.Id == id
+                select customers.Customer).SingleOrDefaultAsync();
+
+            if (entity == null) return null;
+
+            entity.FirstName = customerDto.FirstName;
+            entity.Surname = customerDto.Lastname;
+
+            await _userContext.SaveChangesAsync();
+
+            return entity;
+        }
+
+
+        
+        
 
         #endregion
     }

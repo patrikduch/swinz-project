@@ -13,20 +13,20 @@ export default class EditCustomerForm extends React.Component<any, any> {
 
   state = {
     firstname: this.props.arg.firstName,
-    surname: this.props.arg.surname
+    lastname: this.props.arg.surname
   }
 
   componentDidMount() {
-    console.log(this.props.arg);
+    console.log(this.props);
   }
 
   updateCustomer = () => {
-
+    
     // Object that will be sended with POST request to update customer
     const data = {
       id: this.props.arg.id,
       firstname: this.state.firstname,
-      surname: this.state.surname
+      lastname: this.state.lastname
     }
 
     // Call method to update customer
@@ -38,7 +38,7 @@ export default class EditCustomerForm extends React.Component<any, any> {
 
     switch (e.target.id) {
 
-      case 'firstnameInputId':
+      case 'firstNameInputId':
         this.setState({
           firstname: e.target.value
         });
@@ -46,7 +46,7 @@ export default class EditCustomerForm extends React.Component<any, any> {
 
       case 'surnameInputId':
         this.setState({
-          surname: e.target.value
+          lastname: e.target.value
         });
         break;
     }
@@ -57,14 +57,14 @@ export default class EditCustomerForm extends React.Component<any, any> {
       <Form method='POST'>
         <FormGroup>
           <Label for="firstnameLabel">Křestní jméno</Label>
-          <Input onChange={this.fieldChangeHandler} type="text" name="firstemail" id="firstnameInputId" placeholder="" value={this.state.firstname} />
+          <Input onChange={ this.fieldChangeHandler } type="text" name="firstNameInput" id="firstNameInputId"  value={ this.state.firstname } />
         </FormGroup>
         <FormGroup>
           <Label for="surnameLabel">Přijmení</Label>
-          <Input onChange={this.fieldChangeHandler} type="text" name="surnameInput" id="surnameInputId" value={this.state.surname} />
+          <Input onChange={ this.fieldChangeHandler } type="text" name="surnameInput" id="surnameInputId"  value={ this.state.lastname } />
         </FormGroup>
 
-        <Button onClick={this.updateCustomer}>Aktualizovat</Button>
+        <Button onClick={ this.updateCustomer }>Aktualizovat</Button>
       </Form>
     );
   }

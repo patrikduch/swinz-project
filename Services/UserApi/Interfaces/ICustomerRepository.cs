@@ -4,6 +4,9 @@
 // </copyright>
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
+
+using UserApi.Dto;
+
 namespace UserApi.Interfaces
 {
     using System.Collections.Generic;
@@ -18,5 +21,7 @@ namespace UserApi.Interfaces
         Task<List<Customer>> GetCustomers();
 
         Task RemoveCustomer(int customerId);
+
+        Task<Customer> UpdateCustomer(int id, CustomerDto customerDto);
     }
 }

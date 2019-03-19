@@ -7,6 +7,7 @@
 
 namespace UserApi.Controllers
 {
+    using Dto;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
@@ -46,7 +47,19 @@ namespace UserApi.Controllers
         public async Task<List<Customer>> GetAllCustomers()
         {
             return await _customerRepository.GetCustomers();
+        }
 
+        /// <summary>
+        /// Update customer by his id
+        /// </summary>
+        /// <param name="id">Customer`s identifier</param>
+        /// <param name="dto">Data transfer object for customers</param>
+        /// <returns>Customer instance</returns>
+        [HttpPut]
+        [Route("update/{id}")]
+        public async Task<Customer> UpdateCustomer(int id, [FromBody] CustomerDto dto)
+        {
+            return await _customerRepository.UpdateCustomer(id, dto);
         }
 
         /// <summary>
