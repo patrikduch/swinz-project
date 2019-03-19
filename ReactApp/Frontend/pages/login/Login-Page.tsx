@@ -86,7 +86,7 @@ export default class LoginPage extends React.Component<any, any> {
                         <Input onChange={ this.onFieldChange } type="password" name="password" id="passwordField" />
                     </FormGroup>
     
-                    <Button onClick={ this.loginUser }>Log-in</Button>
+                    <Button onClick={ this.loginUser }>Přihlásit se</Button>
                 </Form>
             </Container>
     

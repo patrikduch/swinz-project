@@ -51,6 +51,18 @@ namespace UserApi.Repositories
                 select c.Customer).ToListAsync();
 
         }
+
+        /// <summary>
+        /// Remove customer by its id
+        /// </summary>
+        /// <param name="customerId">customer identifier</param>
+        /// <returns></returns>
+        public async Task RemoveCustomer(int customerId)
+        {
+            await (from c in _userContext.Users where c.CustomerId == customerId select c.Username).FirstOrDefaultAsync();
+            await _userContext.SaveChangesAsync();
+        }
+
         #endregion
     }
 }

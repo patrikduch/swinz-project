@@ -48,6 +48,21 @@ namespace UserApi.Controllers
             return await _customerRepository.GetCustomers();
 
         }
+
+        /// <summary>
+        /// Remove customer by id
+        /// </summary>
+        /// <param name="id">customer identifier</param>
+        /// <returns></returns>
+        [Route("delete/{id}")]
+        [HttpDelete]
+        public async Task DeleteCustomer(int id)
+        {
+            await _customerRepository.RemoveCustomer(id);
+        }
+
+
+
         #endregion
     }
 }

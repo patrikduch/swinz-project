@@ -16,5 +16,7 @@ namespace UserApi.Interfaces
     public interface ICustomerRepository
     {
         Task<List<Customer>> GetCustomers();
+
+        Task RemoveCustomer(int customerId);
     }
 }
