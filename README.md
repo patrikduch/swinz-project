@@ -19,9 +19,9 @@
 
 </br>
 
-<h1>Backend</h1>
-Asp.net Core 2.1 </br>
-Data persistence (Entity framework Core) </br>
-Fluent-Api for model conventions </br>
-Unit tests with xUnit </br>
+<b>Backend</b>
+- Asp.net Core 2.1
+- Data persistence (Entity framework Core)
+- Fluent-Api for model conventions
+- Unit tests with xUnit </br>
 
