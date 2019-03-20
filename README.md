@@ -1,5 +1,8 @@
 # SWINZ-Project
 
+<h2>HOW TO USE</h2>
+Install nodeJS </br> </br></br>
+
 Recommended tools:</br>
 Postman for API testing
 </br>
