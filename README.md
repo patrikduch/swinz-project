@@ -1,12 +1,12 @@
 # SWINZ-Project
 <b>Requirements</b></br>
-NODEJS </br> 
+- NODEJS </br> 
 
 <b>Recommended tools:</b></br>
-Postman for API testing
+- Postman for API testing
 </br>
-Visual Studio Code (for Frontend)</br>
-Visual Studio (Backend)</br>
+- Visual Studio Code (for Frontend)</br>
+- Visual Studio (Backend)</br>
 </br>
 </br>
 
