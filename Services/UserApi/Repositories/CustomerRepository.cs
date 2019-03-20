@@ -61,7 +61,12 @@ namespace UserApi.Repositories
         /// <returns></returns>
         public async Task RemoveCustomer(int customerId)
         {
-            await (from c in _userContext.Users where c.CustomerId == customerId select c.Username).FirstOrDefaultAsync();
+            var entity = await (from c in _userContext.Users where c.CustomerId == customerId select c)
+                .FirstOrDefaultAsync();
+
+            if (entity == null) return; // No entity was founded
+
+            _userContext.Remove(entity);
             await _userContext.SaveChangesAsync();
         }
 
