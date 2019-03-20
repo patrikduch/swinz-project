@@ -1,6 +1,6 @@
 # SWINZ-Project
 
-<h2>HOW TO USE</h2></br>
+<h2>HOW TO USE</h2>
 Install nodeJS </br>
 
 Recommended tools:</br>
