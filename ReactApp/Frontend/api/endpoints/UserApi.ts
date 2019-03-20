@@ -10,10 +10,6 @@ import { get, del, post} from '../utils/request-utils';
 
 export default class UserApi {
 
-    static getCustomers() {        
-        return get('http://localhost:63766/api/customers/getAll')
-    }
-
     static authenticate(data: object) {        
         return post('http://localhost:63766/api/users/authenticate', data)
     }
