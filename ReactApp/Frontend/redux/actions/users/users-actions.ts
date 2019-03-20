@@ -12,19 +12,6 @@ import UserApi from '../../../api/endpoints/UserApi';
 // Alll redux action types
 import * as actionTypes from '../../actions/action-types';
 
-export const getUsers : any = () => async (dispatch: Function) => {
-        
-    UserApi.getCustomers().then((data) => {
-
-        dispatch({ type: actionTypes.USER_FETCH_SUCCESS, data });
-
-    }).catch(() => {
-
-        dispatch({ type: actionTypes.USER_FETCH_FAILED });
-    });
-}
-
-
 export const loginProcess : any = (customerObj: object) => async (dispatch: Function) => {
         
     UserApi.authenticate(customerObj).then((res) => {

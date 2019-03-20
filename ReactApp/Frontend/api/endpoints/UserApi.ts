@@ -6,7 +6,7 @@
 // Rest API for users
 //-----------------------------------------------------------------------
 
-import { get, del, post} from '../utils/request-utils';
+import { post} from '../utils/request-utils';
 
 export default class UserApi {
 
