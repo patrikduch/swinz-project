@@ -4,9 +4,8 @@
 
 <b>Recommended tools:</b></br>
 - Postman for API testing
-</br>
-- Visual Studio Code (for Frontend)</br>
-- Visual Studio (Backend)</br>
+- Visual Studio Code (for Frontend)
+- Visual Studio (Backend)
 </br>
 </br>
 
