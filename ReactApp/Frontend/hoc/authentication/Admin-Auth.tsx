@@ -1,6 +1,11 @@
+//-------------------------------------------------------------------------
+// <copyright file="Admin-Auth.tsx" website="Patrikduch.com">
+//     Copyright 2019 (c) Patrikduch.com
+// </copyright>
+// <author>Patrik Duch</author>
+// Authorization admin hoc component
+//-------------------------------------------------------------------------
 
-
-// HOC authentication component
 import *  as React from 'react';
 
 import Api from '../../api/endpoints/UserApi';
@@ -13,7 +18,7 @@ import Button from 'reactstrap/lib/Button';
 
 
 
-const Test = (props: any) => {
+const AdminAuth = (props: any) => {
 
     class Hoc extends React.Component<any, any> {
 
@@ -22,9 +27,7 @@ const Test = (props: any) => {
         }
 
         logout = () => {
-            console.log('aa')
             Cookies.expire('auth');
-
         }
 
         authPromise = Api.isAuthenticated({
@@ -33,11 +36,8 @@ const Test = (props: any) => {
 
 
         render() {
-
-
             return (
                 <div>
-
                     <Async catch={(err) => {
 
                         if (props.isNav) {
@@ -50,7 +50,6 @@ const Test = (props: any) => {
 
                         return null;
                     }}
-
 
                         promise={this.authPromise} then={(val) => {
 
@@ -78,4 +77,4 @@ const Test = (props: any) => {
     return <Hoc />;
 }
 
-export default Test;
+export default AdminAuth;
