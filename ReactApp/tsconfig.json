@@ -12,7 +12,8 @@
         "jsx": "react",
         "outDir": "wwwroot/dist",
         "moduleResolution": "node",
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "types": ["@types/webpack-env"] // Typescript compilation 
     },
     "exclude": [
         "node_modules",

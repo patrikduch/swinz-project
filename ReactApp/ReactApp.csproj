@@ -21,4 +21,6 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
   </ItemGroup>
 
+  <ProjectExtensions><VisualStudio><UserProperties tsconfig_1json__JSONSchema="http://json.schemastore.org/vega-lite" /></VisualStudio></ProjectExtensions>
+
 </Project>
