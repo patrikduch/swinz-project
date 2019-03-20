@@ -3,7 +3,7 @@
 <b>Requirements</b></br>
 NODEJS </br> </br></br>
 
-Recommended tools:</br>
+<b>Recommended tools:</b></br>
 Postman for API testing
 </br>
 Visual Studio Code (for Frontend)</br>
