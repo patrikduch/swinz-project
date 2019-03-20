@@ -1,6 +1,6 @@
 # SWINZ-Project
 
-<h2>Requirements</h2>
+<b>Requirements</b>
 NODEJS </br> </br></br>
 
 Recommended tools:</br>
