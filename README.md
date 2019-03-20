@@ -9,15 +9,13 @@
 </br>
 </br>
 
-<h1>Frontend</h1>
-
-React with Typescript </br>
-Redux library for state manipulation </br>
-REST API communication with Axios library  </br>
-Reactstrap - Bootstrap v4 React integration </br>
-Stylization with SASS </br>
-Component styling wich styled-components library </br>
-
+<b>Frontend</b>
+- React with Typescript 
+- Redux library for state manipulation 
+- REST API communication with Axios library  
+- Reactstrap - Bootstrap v4 React integration
+- Stylization with SASS
+- Component styling wich styled-components library
 
 </br>
 </br>
