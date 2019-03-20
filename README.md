@@ -18,8 +18,6 @@
 - Component styling wich styled-components library
 
 </br>
-</br>
-</br>
 
 <h1>Backend</h1>
 Asp.net Core 2.1 </br>
