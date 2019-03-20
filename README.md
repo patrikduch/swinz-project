@@ -6,6 +6,8 @@ Install nodeJS </br> </br></br>
 Recommended tools:</br>
 Postman for API testing
 </br>
+Visual Studio Code (for Frontend)</br>
+Visual Studio (Backend)</br>
 </br>
 </br>
 
