@@ -1,6 +1,6 @@
 # SWINZ-Project
 <b>Requirements</b></br>
-- NODEJS </br> 
+- Node.js </br> 
 
 <b>Recommended tools:</b></br>
 - Postman for API testing
