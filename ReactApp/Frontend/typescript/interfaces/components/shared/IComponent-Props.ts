@@ -1,13 +1,13 @@
 //---------------------------------------------------------------------------------------
-// <copyright file="IHeader-Props.ts" website="Patrikduch.com">
+// <copyright file="IComponent-Props.ts" website="Patrikduch.com">
 //     Copyright 2019 (c) Patrikduch.com
 // </copyright>
 // <author>Patrik Duch</author>
-// Interface for properties of component that headings of application
+// Shared interface for all component where props are need
 //--------------------------------------------------------------------------------------
 
-import IComponentProps from "../shared/IComponent-Props";
+import { ReactChildren } from "react";
 
-export default interface IHeaderProps extends IComponentProps {
-
+export default interface IComponentProps {
+    children: ReactChildren
 }

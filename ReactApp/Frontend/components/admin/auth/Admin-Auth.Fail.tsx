@@ -8,7 +8,10 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-export default (props:any) => {
+// Props interface
+import IAdminAuthFailProps from '../../../typescript/interfaces/components/admin/IAdmin-Auth-Fail-Props';
+
+export default (props:IAdminAuthFailProps) => {
 
     if (props.isNav) {
         return (

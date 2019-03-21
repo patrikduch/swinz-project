@@ -10,6 +10,7 @@
         "target": "es2015",
         "noImplicitAny": true, // Every variable must have assigment
         "noEmitOnError": true, // No file will be generated when error occurs
+        "noUnusedParameters": true, // Every parameter has to be used otherwise error occurs
         "jsx": "react",
         "outDir": "wwwroot/dist",
         "moduleResolution": "node",
