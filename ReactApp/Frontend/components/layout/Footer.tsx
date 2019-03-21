@@ -3,7 +3,7 @@
 //     Copyright 2019 (c) Patrikduch.com
 // </copyright>
 // <author>Patrik Duch</author>
-// Footer component
+// Component that represents footer of app globally
 //-----------------------------------------------------------------------
 
 import * as React from 'react';

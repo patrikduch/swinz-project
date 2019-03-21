@@ -28,6 +28,8 @@ const Title = styled.h2`
     text-align: center;
 `;
 
+
+
 export default class CustomersList extends React.Component<any, any> {
 
     componentWillMount() {
