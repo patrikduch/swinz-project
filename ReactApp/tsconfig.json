@@ -5,15 +5,17 @@
     
     "compileOnSave": false,
     "compilerOptions": {
-        "sourceMap": true,
+        "sourceMap": true, // Debugging purposes
         "module": "commonjs",
         "target": "es2015",
-        "noImplicitAny": true,
+        "noImplicitAny": true, // Every variable must have assigment
+        "noEmitOnError": true, // No file will be generated when error occurs
         "jsx": "react",
         "outDir": "wwwroot/dist",
         "moduleResolution": "node",
         "esModuleInterop": true,
-        "types": ["@types/webpack-env"] // Typescript compilation 
+        "types": ["@types/webpack-env"], // Typescript compilation 
+        "strictNullChecks": true // Another layer of type control (variable with number type cannot hold null)
     },
     "exclude": [
         "node_modules",
