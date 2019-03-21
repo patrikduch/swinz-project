@@ -11,11 +11,13 @@ import *  as React from 'react';
 import Api from '../../api/endpoints/UserApi';
 import Cookies from 'cookies-js';
 
-import { Link } from 'react-router-dom';
-
 import Async from 'react-promise'
-import Button from 'reactstrap/lib/Button';
 
+// Admin Success component
+import AdminAuthSuccess from '../../components/admin/auth/Admin-Auth-Success';
+
+// Admin auth failed component
+import AdminAuthFail from '../../components/admin/auth/Admin-Auth.Fail';
 
 
 const AdminAuth = (props: any) => {
@@ -38,36 +40,8 @@ const AdminAuth = (props: any) => {
         render() {
             return (
                 <div>
-                    <Async catch={(err) => {
-
-                        if (props.isNav) {
-                            return (
-                                <div>
-                                    <Link to='/login'>Administrace</Link>
-                                </div>
-                            )
-                        }
-
-                        return null;
-                    }}
-
-                        promise={this.authPromise} then={(val) => {
-
-                            if (val.data.tokenString != '' && props.isNav) { // Content in navigation for admin users
-                                return <div>
-                                    <div>
-                                        <Button onClick={this.logout}>Odhlasit</Button>
-                                    </div>
-
-                                    {props.children}
-                                </div>
-                            } else if (!props.isNav) {
-
-                                return props.children;
-
-                            }
-                        }
-
+                    <Async catch={() => <AdminAuthFail isNav={props.isNav} />}
+                        promise={this.authPromise} then={(val) => <AdminAuthSuccess nestedChildren={props.children} isNav={props.isNav} input={val.data}/>
                         } />
                 </div>
             )

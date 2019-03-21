@@ -11,8 +11,9 @@ import CustomerApi from '../../../api/endpoints/CustomerApi';
 
 // Alll redux action types
 import * as actionTypes from '../../actions/action-types';
+import { ActionCreator } from 'redux';
 
-export const getCustomers : any = () => async (dispatch: Function) => {
+export const getCustomers: ActionCreator<any>= () => async (dispatch: Function) => {
         
     CustomerApi.getCustomers().then((data) => {
 

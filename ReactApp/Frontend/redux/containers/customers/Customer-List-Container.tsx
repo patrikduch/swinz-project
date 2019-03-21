@@ -6,7 +6,7 @@
 // Redux container for Customer list
 //-------------------------------------------------------------------------
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { bindActionCreators, ActionCreator } from 'redux';
 
 // Component on which we apply Redux
 import CustomersListComp from '../../../components/customers/crud/read/Customers-List';
@@ -22,7 +22,7 @@ const mapStateToProps = (state: any) => {
 }
 
 // mapping actions to the specific component
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: ActionCreator<any>) => {
     return {
         actions: bindActionCreators(customersActions,dispatch)
     }

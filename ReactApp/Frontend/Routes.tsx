@@ -6,7 +6,7 @@
 // React router routing setup
 //-----------------------------------------------------------------------
 import * as React from 'react';
-import HomeComp from './components/Home';
+import HomeComp from './pages/Home-Page';
 import CustomerPage from './pages/customers/CustomerPage';
 import OrderPage from './pages/orders/OrderPage';
 import ProductPage from './pages/products/ProductPage';

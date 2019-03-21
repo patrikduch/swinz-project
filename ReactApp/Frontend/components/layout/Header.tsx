@@ -8,11 +8,10 @@
 
 import * as React from 'react';
 
+// Props interface
+import IHeaderProps from '../../typescript/interfaces/components/layout/IHeader-Props';
 
-// Auth process
-import AdminAuth from '../../hoc/authentication/Admin-Auth';
-
-export default (props:any) => {
+export default (props:IHeaderProps) => {
 
     return (
         <header>
