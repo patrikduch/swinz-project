@@ -14,11 +14,16 @@ import {
   Nav
 } from 'reactstrap';
 
+// Props interface
 import INavBarProps from '../../../typescript/interfaces/components/common/navigation/INavBar-Props';
+// State interface
 import INavBarState from '../../../typescript/interfaces/components/common/navigation/INavBar-State';
 
 // Styled helper
 import styled from 'styled-components';
+
+// React router
+import { Link } from 'react-router-dom';
 
 // Creating styled components
 const Title = styled.h1`
@@ -40,7 +45,11 @@ export default class NavBar extends React.Component<INavBarProps,INavBarState> {
     return (
       <div>
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/"><Title>{this.props.title}</Title></NavbarBrand>
+          <NavbarBrand>
+            <Link to='/'>
+              <Title>{this.props.title}</Title>
+            </Link>
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
