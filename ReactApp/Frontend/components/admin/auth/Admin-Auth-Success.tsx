@@ -11,7 +11,10 @@ import { Button } from 'reactstrap';
 
 import Cookies from 'cookies-js';
 
-export default (props: any) => {
+// Props interface
+import IAdminAuthSuccessProps from '../../../typescript/interfaces/components/admin/IAdmin-Auth-Success-Props';
+
+export default (props: IAdminAuthSuccessProps) => {
 
     const logout = () => {
         Cookies.expire('auth');

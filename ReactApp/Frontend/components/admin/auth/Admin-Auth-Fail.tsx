@@ -5,6 +5,7 @@
 // <author>Patrik Duch</author>
 // Admin authentification has failed component representation
 //-----------------------------------------------------------------------
+
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 

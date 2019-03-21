@@ -36,7 +36,7 @@ const Routes = () => {
             </HeaderComp>
             
             <Route path='/login' exact component={ LoginPage } />
-            <AdminAuth>
+            <AdminAuth isNav={false}>
                 <Route path='/' exact component={ HomeComp } />
                 <Route path='/customers' exact component={ CustomerPage } />
                 <Route path='/orders' exact component={ OrderPage } />
