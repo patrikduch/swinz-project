@@ -29,9 +29,7 @@ export default () => {
         <NavItem className='react-router-nav-items'>
           <Link to='/stats'>Statistiky</Link>
         </NavItem>
-      
       </Nav>
-     
     </div>
   );
 

@@ -7,10 +7,10 @@
 //-----------------------------------------------------------------------
 import * as React from 'react';
 import HomeComp from './pages/Home-Page';
-import CustomerPage from './pages/customers/CustomerPage';
-import OrderPage from './pages/orders/OrderPage';
-import ProductPage from './pages/products/ProductPage';
-import StatsPage from './pages/stats/StatsPage';
+import CustomerPage from './pages/customers/Customer-Page';
+import OrderPage from './pages/orders/Order-Page';
+import ProductPage from './pages/products/Product-Page';
+import StatsPage from './pages/stats/Stats-Page';
 import LoginPage from './redux/containers/login/Login-Page-Container';
 import { hot } from 'react-hot-loader';
 import { Route } from "react-router-dom";

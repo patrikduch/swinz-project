@@ -1,20 +1,18 @@
 //-----------------------------------------------------------------------
-// <copyright file="ProductPage.tsx" website="Patrikduch.com">
+// <copyright file="Order-Page.tsx" website="Patrikduch.com">
 //     Copyright 2019 (c) Patrikduch.com
 // </copyright>
 // <author>Patrik Duch</author>
-// Product page
+// Order page
 //-----------------------------------------------------------------------
 
 import * as React from 'react';
+import { Container } from 'reactstrap';
 
 export default  () => {
-
     return (
-        <div>
-
-            Product page
-            
-        </div>
-    )
+        <Container>
+            Orders
+        </Container>
+    );
 }

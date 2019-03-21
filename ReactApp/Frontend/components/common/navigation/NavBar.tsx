@@ -10,7 +10,6 @@ import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav
 } from 'reactstrap';
 
@@ -45,11 +44,9 @@ export default class NavBar extends React.Component<INavBarProps,INavBarState> {
     return (
       <div>
         <Navbar color="light" light expand="md">
-          <NavbarBrand>
             <Link to='/'>
               <Title>{this.props.title}</Title>
             </Link>
-          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>

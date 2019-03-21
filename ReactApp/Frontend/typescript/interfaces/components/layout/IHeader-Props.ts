@@ -10,5 +10,4 @@
 import IComponentProps from "../shared/IComponent-Props";
 
 export default interface IHeaderProps extends IComponentProps {
-
 }

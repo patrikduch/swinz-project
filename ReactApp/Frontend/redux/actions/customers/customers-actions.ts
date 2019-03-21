@@ -47,10 +47,7 @@ export const createCustomer : any = (customerObj: object) => async (dispatch: Fu
 }
 
 
-export const updateCustomer : any = (customerObj: any) => async (dispatch: Function) => {
-
-    console.log(customerObj);
-        
+export const updateCustomer : any = (customerObj: any) => async (dispatch: Function) => {        
     const promiseResult = await CustomerApi.updateCustomer(customerObj.id, {
         firstname: customerObj.firstname,
         lastname: customerObj.lastname

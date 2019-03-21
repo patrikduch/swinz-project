@@ -6,6 +6,7 @@
 // Interface for customer`s manipulations container
 //-----------------------------------------------------------------------
 
-export default interface ICustomerListOptionsProps {
-    children: object // nested elements of Customer-List-Options component
+import IComponentProps from "../shared/IComponent-Props";
+
+export default interface ICustomerListOptionsProps extends IComponentProps {
 }

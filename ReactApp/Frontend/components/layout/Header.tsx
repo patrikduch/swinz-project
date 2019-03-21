@@ -12,10 +12,9 @@ import * as React from 'react';
 import IHeaderProps from '../../typescript/interfaces/components/layout/IHeader-Props';
 
 export default (props:IHeaderProps) => {
-    
     return (
         <header>
             {props.children}
         </header>
-    )
+    );
 }
