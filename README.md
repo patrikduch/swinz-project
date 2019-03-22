@@ -15,7 +15,7 @@
 - REST API communication with Axios library  
 - Reactstrap - Bootstrap v4 React integration
 - Stylization with SASS
-- Component styling wich styled-components library
+- Component styling with styled-components library
 
 </br>
 
