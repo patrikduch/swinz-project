@@ -13,7 +13,7 @@ import { Container } from 'reactstrap';
 export default  () => {
     return (
         <Container>
-            Product page
+            Evidence vyrobku
         </Container>
     );
 }

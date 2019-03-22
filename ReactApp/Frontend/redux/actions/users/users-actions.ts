@@ -11,8 +11,9 @@ import UserApi from '../../../api/endpoints/UserApi';
 
 // Alll redux action types
 import * as actionTypes from '../../actions/action-types';
+import { Dispatch, ActionCreator } from 'redux';
 
-export const loginProcess : any = (customerObj: object) => async (dispatch: Function) => {
+export const loginProcess : ActionCreator<{}> = (customerObj: object) => async (dispatch: Dispatch) => {
         
     UserApi.authenticate(customerObj).then((res) => {
 

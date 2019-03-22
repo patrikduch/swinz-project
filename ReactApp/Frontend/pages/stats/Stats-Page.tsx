@@ -12,7 +12,7 @@ import { Container } from 'reactstrap';
 export default  () => {
     return (
         <Container>
-            Statistics page
+            Globální statistiky
         </Container>
     )
 }

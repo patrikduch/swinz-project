@@ -11,9 +11,9 @@ import CustomerApi from '../../../api/endpoints/CustomerApi';
 
 // Alll redux action types
 import * as actionTypes from '../../actions/action-types';
-import { ActionCreator } from 'redux';
+import { ActionCreator, Dispatch } from 'redux';
 
-export const getCustomers: ActionCreator<any>= () => async (dispatch: Function) => {
+export const getCustomers: ActionCreator<{}> = () => async (dispatch: Dispatch) => {
         
     CustomerApi.getCustomers().then((data) => {
 
@@ -25,7 +25,7 @@ export const getCustomers: ActionCreator<any>= () => async (dispatch: Function) 
     });
 }
 
-export const deleteCustomer : any = (customerId: number) => async (dispatch: Function) => {
+export const deleteCustomer : ActionCreator<{}> = (customerId: number) => async (dispatch: Dispatch) => {
         
         CustomerApi.deleteCustomer(customerId).then(() => {
 
@@ -38,7 +38,7 @@ export const deleteCustomer : any = (customerId: number) => async (dispatch: Fun
 }
 
 
-export const createCustomer : any = (customerObj: object) => async (dispatch: Function) => {
+export const createCustomer : ActionCreator<{}> = (customerObj: object) => async (dispatch: Dispatch) => {
         
         const promiseResult = await CustomerApi.createCustomer(customerObj);
         const data = promiseResult.data;
@@ -47,7 +47,7 @@ export const createCustomer : any = (customerObj: object) => async (dispatch: Fu
 }
 
 
-export const updateCustomer : any = (customerObj: any) => async (dispatch: Function) => {        
+export const updateCustomer : ActionCreator<{}> = (customerObj: any) => async (dispatch: Dispatch) => {        
     const promiseResult = await CustomerApi.updateCustomer(customerObj.id, {
         firstname: customerObj.firstname,
         lastname: customerObj.lastname
