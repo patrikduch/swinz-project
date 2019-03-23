@@ -10,6 +10,7 @@
 </br>
 
 <b>Frontend</b>
+- ES6 JS Syntax with Typescript
 - React with Typescript 
 - Redux library for state manipulation 
 - REST API communication with Axios library  
