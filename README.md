@@ -26,3 +26,10 @@
 - Fluent-Api for model conventions
 - Unit tests with xUnit </br>
 
+
+</br>
+
+<b>HOW TO USE</b>
+
+Db preparation </br>
+- Update-Database -Project UserApi
