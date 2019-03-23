@@ -18,7 +18,7 @@ export default class CustomerApi {
     }
 
     static deleteCustomer(customerId: number) {        
-        return del(`${domain}/api/customers/delete/${customerId}`);
+        return del(`${domain}/api/customers/delete/`+customerId);
     }
 
     static createCustomer(data: object) {        

@@ -12,6 +12,10 @@ namespace UserApi.Dto.Customers
     /// </summary>
     public class CustomerDto
     {
+        /// <summary>
+        /// Gets or sets customer`s identifier
+        /// </summary>
+        public int? Id { get; set; }
 
         /// <summary>
         /// Gets or sets customer`s first name

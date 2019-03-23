@@ -55,6 +55,7 @@ namespace UserApi.Repositories
         {
             return from user in userCollection where user.Customer != null select new CustomerUserDto
             {
+                Id =  user.Customer.Id,
                 FirstName = user.Customer.FirstName,
                 Lastname = user.Customer.Surname,
                 Username = user.Username

@@ -16,7 +16,7 @@ export function get(url: string) {
 
 // Method for performing delete request on REST API
 export function del(url: string) {
-
+    console.log(url);
     return axios.delete(url);
 }
 

@@ -13,7 +13,7 @@ export default class EditCustomerForm extends React.Component<any, any> {
 
   state = {
     firstname: this.props.arg.firstName,
-    lastname: this.props.arg.surname
+    lastname: this.props.arg.lastname
   }
 
   componentDidMount() {
@@ -21,6 +21,8 @@ export default class EditCustomerForm extends React.Component<any, any> {
   }
 
   updateCustomer = () => {
+
+    console.log(this.props.arg);
     
     // Object that will be sended with POST request to update customer
     const data = {
