@@ -6,6 +6,6 @@
 // Get domain for REST API services
 //-----------------------------------------------------------------------
 
-const domain = "http://localhost:63766/";
+const domain = "http://localhost:63766";
 
 export { domain };

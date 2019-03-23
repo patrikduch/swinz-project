@@ -27,6 +27,9 @@ library.add(faPlus);
 library.add(faMinusCircle);
 library.add(faEdit);
 
+
+
+
 renderApp(); // Initial inject of app
 
 function renderApp() {

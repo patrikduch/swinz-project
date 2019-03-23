@@ -9,11 +9,7 @@
 import * as React from 'react';
 import { Container } from 'reactstrap';
 
-export default  () => {
-
-    return (
-        <Container>
-            Vítejte v CRM systemu
-        </Container>
-    )
-}
+export default  () => (
+    <Container>Vítejte v CRM systemu</Container>
+);
+    

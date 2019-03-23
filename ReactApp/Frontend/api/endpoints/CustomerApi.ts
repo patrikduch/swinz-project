@@ -14,11 +14,11 @@ import { domain } from '../utils/domain-utils';
 export default class CustomerApi {
 
     static getCustomers() {   
-        return get(domain+'api/customers/getAll')
+        return get(`${domain}/api/customers/getAll`);
     }
 
     static deleteCustomer(customerId: number) {        
-        return del(domain+'api/customers/delete/'+customerId)
+        return del(`${domain}/api/customers/delete/${customerId}`);
     }
 
     static createCustomer(data: object) {        
@@ -26,6 +26,6 @@ export default class CustomerApi {
     }
 
     static updateCustomer(arg:string, data: object) {        
-        return put(domain+'/api/customers/update/', arg, data);
+        return put(`${domain}/api/customers/update/`, arg, data);
     }
 }

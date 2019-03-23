@@ -10,6 +10,7 @@ import axios from 'axios';
 
 // Method for performing get request on REST API
 export function get(url: string) {
+    console.log(url);
     return axios.get(url);
 }
 

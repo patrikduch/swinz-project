@@ -23,7 +23,7 @@ interface ICustomerListItemProps {
     arg: {
         id: number,
         firstName: string,
-        surname: string,
+        lastname: string,
 
     },
     //iteration: number
@@ -42,7 +42,7 @@ export default class CustomersListItem extends React.Component<ICustomerListItem
             <tr key={ uniqid() }>
                 <th scope="row">{ this.props.iteration}</th>
                 <td >{ this.props.arg.firstName }</td>
-                <td>{ this.props.arg.surname }</td>
+                <td>{ this.props.arg.lastname }</td>
 
                 <CustomerListOptions>
                     N/A
