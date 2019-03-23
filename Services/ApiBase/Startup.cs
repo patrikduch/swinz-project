@@ -5,24 +5,23 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
-using System.Text;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Protocols;
-using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json;
-using UserApi.Contexts;
-using UserApi.Helpers;
-using UserApi.Interfaces;
-using UserApi.Repositories;
-
 namespace ApiBase
 {
+    using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.IdentityModel.Tokens;
+    using Newtonsoft.Json;
+    using System.Text;
+    using UserApi.Contexts;
+    using UserApi.Helpers;
+    using UserApi.Interfaces;
+    using UserApi.Interfaces.Repositories;
+    using UserApi.Repositories;
 
     /// <summary>
     /// Init configuration setup of all REST services

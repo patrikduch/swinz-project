@@ -4,7 +4,8 @@
 // </copyright>
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
-namespace UserApi.Dto
+
+namespace UserApi.Dto.Token
 {
     /// <summary>
     /// Data transfer object for transfer user`s token

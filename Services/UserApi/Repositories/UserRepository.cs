@@ -12,10 +12,11 @@ namespace UserApi.Repositories
     using Microsoft.EntityFrameworkCore;
     using Contexts;
     using Domains;
-    using Interfaces;
     using System.Linq;
-    using Dto;
     using Helpers;
+    using Dto.Customers;
+    using Dto.Users;
+    using UserApi.Interfaces.Repositories;
 
     /// <summary>
     /// Repository for user`s manipulation

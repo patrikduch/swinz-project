@@ -5,12 +5,13 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
-namespace UserApi.Interfaces
+namespace UserApi.Interfaces.Repositories
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Domains;
-    using Dto;
+    using Dto.Customers;
+    using Dto.Users;
 
     /// <summary>
     /// Interface that implements User repository

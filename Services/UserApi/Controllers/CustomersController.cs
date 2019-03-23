@@ -7,12 +7,13 @@
 
 namespace UserApi.Controllers
 {
-    using Dto;
+    using Domains;
+    using Dto.Customers;
+    using Interfaces;
+    using Microsoft.AspNetCore.Mvc;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Mvc;
-    using Domains;
-    using Interfaces;
+    using UserApi.Interfaces.Controllers;
 
     /// <summary>
     /// Rest API Customers controller
@@ -73,9 +74,6 @@ namespace UserApi.Controllers
         {
             await _customerRepository.RemoveCustomer(id);
         }
-
-
-
         #endregion
     }
 }

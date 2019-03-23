@@ -5,7 +5,7 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
-using UserApi.Dto;
+using UserApi.Dto.Customers;
 
 namespace UserApi.Repositories
 {

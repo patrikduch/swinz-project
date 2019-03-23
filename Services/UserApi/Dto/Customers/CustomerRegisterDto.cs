@@ -5,10 +5,10 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
-namespace UserApi.Dto
+namespace UserApi.Dto.Customers
 {
     /// <summary>
-    /// /// Data transfer object for creating new customers
+    /// Data transfer object for creating new customers
     /// </summary>
     public class CustomerRegisterDto
     {

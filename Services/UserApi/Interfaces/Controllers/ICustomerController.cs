@@ -1,26 +1,23 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="ICustomerRepository.cs" website="Patrikduch.com">
+// <copyright file="ICustomerController.cs" website="Patrikduch.com">
 //     Copyright 2019 (c) Patrikduch.com
 // </copyright>
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
-using UserApi.Dto;
-
-namespace UserApi.Interfaces
+namespace UserApi.Interfaces.Controllers
 {
+    using Domains;
+    using Dto.Customers;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using Domains;
 
     /// <summary>
-    /// Interface that implements Customer repository
+    /// Interface description for User REST API Controller
     /// </summary>
-    public interface ICustomerRepository
+    public interface ICustomerController
     {
-        Task<List<Customer>> GetCustomers();
-
-        Task RemoveCustomer(int customerId);
+        Task<List<Customer>> GetAllCustomers();
 
         Task<Customer> UpdateCustomer(int id, CustomerDto customerDto);
     }

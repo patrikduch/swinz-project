@@ -5,7 +5,7 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
-namespace UserApi.Dto
+namespace UserApi.Dto.Customers
 {
     /// <summary>
     /// Data transfer object for customers

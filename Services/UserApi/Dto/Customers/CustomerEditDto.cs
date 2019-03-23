@@ -1,31 +1,31 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="RegisterUserDto.cs" website="Patrikduch.com">
+// <copyright file="CustomerEdit.cs" website="Patrikduch.com">
 //     Copyright 2019 (c) Patrikduch.com
 // </copyright>
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
-namespace UserApi.Dto
+namespace UserApi.Dto.Customers
 {
     /// <summary>
-    /// Dto for creating new users
+    /// Data transfer object for editing specific customer
     /// </summary>
-    public class RegisterUserDto
+    public class CustomerEditDto
     {
         /// <summary>
-        /// Gets or sets user`s identifier
+        /// Gets or sets customer`s identifier
         /// </summary>
         public int Id { get; set; }
 
         /// <summary>
-        /// Gets or sets user`s username
+        /// Gets or sets customer`s first name
         /// </summary>
-        public string Username { get; set; }
+        public string Firstname { get; set; }
 
         /// <summary>
-        /// Gets or sets user`s password
+        /// Gets or sets customer`s surname
         /// </summary>
-        public string Password { get; set; }
+        public string Surname { get; set; }
 
     }
 }
