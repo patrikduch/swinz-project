@@ -17,10 +17,14 @@ namespace UserApi.Interfaces
     /// </summary>
     public interface ICustomerRepository
     {
-        Task<List<Customer>> GetCustomers();
+        //Task<List<CustomerUserDto>> GetCustomers();
+
+        Task<List<CustomerUserDto>> GetCustomers();
 
         Task RemoveCustomer(int customerId);
 
         Task<Customer> UpdateCustomer(int id, CustomerDto customerDto);
+
+        Task<CustomerUserDto> CreateCustomer(CustomerRegisterDto customerDto);
     }
 }

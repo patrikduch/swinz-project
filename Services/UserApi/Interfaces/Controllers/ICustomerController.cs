@@ -5,6 +5,8 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using UserApi.Dto.Users;
+
 namespace UserApi.Interfaces.Controllers
 {
     using Domains;
@@ -17,8 +19,12 @@ namespace UserApi.Interfaces.Controllers
     /// </summary>
     public interface ICustomerController
     {
-        Task<List<Customer>> GetAllCustomers();
+        Task<List<CustomerUserDto>> GetAllCustomers();
 
         Task<Customer> UpdateCustomer(int id, CustomerDto customerDto);
+
+        Task<CustomerUserDto> CreateCustomer(CustomerRegisterDto customerDto);
+
+
     }
 }

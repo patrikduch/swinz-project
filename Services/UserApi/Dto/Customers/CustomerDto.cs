@@ -12,7 +12,7 @@ namespace UserApi.Dto.Customers
     /// </summary>
     public class CustomerDto
     {
-       
+
         /// <summary>
         /// Gets or sets customer`s first name
         /// </summary>

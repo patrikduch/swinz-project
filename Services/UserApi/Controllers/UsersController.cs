@@ -8,7 +8,6 @@
 namespace UserApi.Controllers
 {
     using Domains;
-    using Dto.Customers;
     using Dto.Token;
     using Dto.Users;
     using Helpers;
@@ -69,19 +68,6 @@ namespace UserApi.Controllers
         {
             return await _userRepository.CreateAdmin(userDto.Username, userDto.Password);
         }
-
-        /// <summary>
-        /// Creation of new customer
-        /// </summary>
-        /// <param name="customerDto">Data transfer object for customers</param>
-        /// <returns>Instance of created user</returns>
-        [HttpPost]
-        [Route("create/customer")]
-        public Task<User> CreateCustomer([FromBody] CustomerRegisterDto customerDto)
-        {
-            return _userRepository.CreateCustomer(customerDto);
-        }
-
 
         /// <summary>
         /// Login process

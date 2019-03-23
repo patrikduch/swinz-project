@@ -45,9 +45,22 @@ namespace UserApi.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("getAll")]
-        public async Task<List<Customer>> GetAllCustomers()
+        public async Task<List<CustomerUserDto>> GetAllCustomers()
         {
             return await _customerRepository.GetCustomers();
+        }
+
+
+        /// <summary>
+        /// Creation of new customer
+        /// </summary>
+        /// <param name="customerDto">Data transfer object for customers</param>
+        /// <returns>Instance of created user</returns>
+        [HttpPost]
+        [Route("create")]
+        public Task<CustomerUserDto> CreateCustomer([FromBody] CustomerRegisterDto customerDto)
+        {
+            return _customerRepository.CreateCustomer(customerDto);
         }
 
         /// <summary>

@@ -24,9 +24,7 @@ namespace UserApi.Interfaces
     public interface IUserController
     {
         Task<List<User>> GetAllUsers();
-        Task<User> CreateAdmin(RegisterUserDto userDto);
         Task<ActionResult> Authenticate(RegisterUserDto userDto);
-        Task<User> CreateCustomer(CustomerRegisterDto customerDto);
         Task<IActionResult> IsAuthenticated(UserTokenDto token);
     }
 }
