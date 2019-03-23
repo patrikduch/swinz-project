@@ -12,10 +12,6 @@ namespace UserApi.Dto
     /// </summary>
     public class UserDto
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        public int Id { get; set; }
 
         /// <summary>
         /// Gets or sets user`s username

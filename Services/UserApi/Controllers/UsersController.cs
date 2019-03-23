@@ -74,7 +74,7 @@ namespace UserApi.Controllers
         /// <returns>Instance of created user</returns>
         [HttpPost]
         [Route("create/customer")]
-        public Task<User> CreateCustomer([FromBody] CustomerDto customerDto)
+        public Task<User> CreateCustomer([FromBody] CustomerRegisterDto customerDto)
         {
             return _userRepository.CreateCustomer(customerDto);
         }

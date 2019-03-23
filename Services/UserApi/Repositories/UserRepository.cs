@@ -153,13 +153,13 @@ namespace UserApi.Repositories
         /// </summary>
         /// <param name="customerDto">Data transfer object for customers</param>
         /// <returns></returns>
-        public async Task<User> CreateCustomer(CustomerDto customerDto)
+        public async Task<User> CreateCustomer(CustomerRegisterDto customerDto)
         {
             // Creation of userDto from customerDto for user preparation
             var userDto = new UserDto
             {
-                //Username = customerDto.Username,
-                // Password = customerDto.Password
+                Username = customerDto.Username,
+                Password = customerDto.Password
             };
 
             // User preparation
@@ -169,7 +169,7 @@ namespace UserApi.Repositories
             userEntity.Customer = new Customer
             {
                 FirstName = customerDto.FirstName,
-                Surname =  customerDto.Lastname
+                Surname =  customerDto.Surname
                 
             };
 
@@ -180,9 +180,7 @@ namespace UserApi.Repositories
             await _context.SaveChangesAsync();
 
             // Returns user
-            //return await _context.Users.Where(u => u.Username == customerDto.Username).LastOrDefaultAsync();
-
-            return null;
+            return await _context.Users.Where(u => u.Username == customerDto.Username).LastOrDefaultAsync();
         }
 
         #endregion
