@@ -26,5 +26,12 @@ namespace UserApi.Domains
         /// Gets or sets customer`s last name
         /// </summary>
         public string LastName { get; set; }
+
+        public int UserId { get; set; }
+
+        /// <summary>
+        /// Navigation property
+        /// </summary>
+        public User User { get; set; }
     }
 }

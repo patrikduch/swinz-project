@@ -17,6 +17,12 @@ namespace UserApi.EntityConfigurations
             builder.HasKey(c => c.Id).HasName("Id");
 
 
+            builder
+                .HasOne(sc => sc.User)
+                .WithOne(s => s.Customer)
+                .HasForeignKey<Customer>(c => c.UserId);
+
+
 
 
 

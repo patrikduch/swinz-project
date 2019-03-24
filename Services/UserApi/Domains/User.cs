@@ -39,6 +39,11 @@ namespace UserApi.Domains
         /// </summary>
         public IList<UserRoles> UserRoles { get; set; }
 
+        /// <summary>
+        /// Navigation property
+        /// </summary>
+        public Customer Customer { get; set; }
+
 
 
 

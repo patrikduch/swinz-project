@@ -5,6 +5,7 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using Microsoft.AspNetCore.Internal;
 using Microsoft.IdentityModel.Tokens;
 
 namespace UserApi.Repositories
@@ -47,6 +48,17 @@ namespace UserApi.Repositories
         #region Methods
 
 
+        private IEnumerable<CustomerUserDto> CustomerEntityToDto(IEnumerable<Customer> customers)
+        {
+            return customers.Select(customer => new CustomerUserDto
+            {
+                Id = customer.Id,
+                FirstName = customer.FirstName,
+                Lastname = customer.LastName,
+                Username = customer.User.Username
+            });
+        }
+
 
         /// <summary>
         /// Get all customers
@@ -54,7 +66,8 @@ namespace UserApi.Repositories
         /// <returns></returns>
         public async Task<List<CustomerUserDto>> GetCustomers()
         {
-            return null;
+            var customers = await _userContext.Customers.Include(c=>c.User).ToListAsync();
+            return CustomerEntityToDto(customers).ToList();
         }
 
         /// <summary>
@@ -64,7 +77,10 @@ namespace UserApi.Repositories
         /// <returns></returns>
         public async Task RemoveCustomer(int customerId)
         {
-            return;
+            var userEntity = await _userContext.Users.FirstOrDefaultAsync(u => u.Customer.Id == customerId);
+            _userContext.Users.Remove(userEntity);
+
+            await _userContext.SaveChangesAsync();
         }
 
         /// <summary>
@@ -125,6 +141,30 @@ namespace UserApi.Repositories
         /// <returns></returns>
         public async Task<CustomerUserDto> CreateCustomer(CustomerRegisterDto customerDto)
         {
+
+            var user = await PrepareUser(new UserDto
+            {
+                Username = "patrik",
+                Password = "pavouk"
+            }, "Customer");
+
+
+
+
+
+            var customer = new Customer
+            {
+                FirstName = "Patrik",
+                LastName = "Duch",
+                User = user
+            };
+
+            _userContext.Customers.Add(customer);
+
+            await _userContext.SaveChangesAsync();
+
+
+
             return null;
 
 
