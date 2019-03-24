@@ -39,15 +39,7 @@ namespace UserApi.Domains
         /// </summary>
         public IList<UserRoles> UserRoles { get; set; }
 
-        /// <summary>
-        /// Get or sets foreign key to represent relationship between customer and user
-        /// </summary>
-        public int? CustomerId { get; set; }
 
-        /// <summary>
-        /// Gets or sets Customer reference (navigation property)
-        /// </summary>
-        public Customer Customer { get; set; }
 
 
     }

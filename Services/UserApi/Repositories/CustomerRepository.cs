@@ -46,21 +46,7 @@ namespace UserApi.Repositories
 
         #region Methods
 
-        /// <summary>
-        /// Transform Customer entity into Data-transfer-object
-        /// </summary>
-        /// <param name="userCollection">Collection that will be transformed</param>
-        /// <returns></returns>
-        private static IEnumerable<CustomerUserDto> CustomerEntityToDto(IEnumerable<User> userCollection)
-        {
-            return from user in userCollection where user.Customer != null select new CustomerUserDto
-            {
-                Id =  user.Customer.Id,
-                FirstName = user.Customer.FirstName,
-                Lastname = user.Customer.Surname,
-                Username = user.Username
-            };
-        }
+
 
         /// <summary>
         /// Get all customers
@@ -68,7 +54,7 @@ namespace UserApi.Repositories
         /// <returns></returns>
         public async Task<List<CustomerUserDto>> GetCustomers()
         {
-            return CustomerEntityToDto(await _userContext.Users.Include(u => u.Customer).ToListAsync()).ToList();
+            return null;
         }
 
         /// <summary>
@@ -78,13 +64,7 @@ namespace UserApi.Repositories
         /// <returns></returns>
         public async Task RemoveCustomer(int customerId)
         {
-            var entity = await (from c in _userContext.Users where c.CustomerId == customerId select c)
-                .FirstOrDefaultAsync();
-
-            if (entity == null) return; // No entity was founded
-
-            _userContext.Remove(entity);
-            await _userContext.SaveChangesAsync();
+            return;
         }
 
         /// <summary>
@@ -95,18 +75,7 @@ namespace UserApi.Repositories
         /// <returns></returns>
         public async Task<Customer> UpdateCustomer(int id, CustomerDto customerDto)
         {
-            var entity = await(from customers in _userContext.Users
-                where customers.Customer.Id == id
-                select customers.Customer).SingleOrDefaultAsync();
-
-            if (entity == null) return null;
-
-            entity.FirstName = customerDto.FirstName;
-            entity.Surname = customerDto.Lastname;
-
-            await _userContext.SaveChangesAsync();
-
-            return entity;
+            return null;
         }
 
         private async Task<User> PrepareUser(UserDto dto, string roleName)
@@ -156,37 +125,7 @@ namespace UserApi.Repositories
         /// <returns></returns>
         public async Task<CustomerUserDto> CreateCustomer(CustomerRegisterDto customerDto)
         {
-            // Creation of userDto from customerDto for user preparation
-            var userDto = new UserDto
-            {
-                Username = customerDto.Username,
-                Password = customerDto.Password
-            };
-
-            // User preparation
-            var userEntity = await PrepareUser(userDto, "Customer");
-
-            // Customer properites assigment
-            userEntity.Customer = new Customer
-            {
-                FirstName = customerDto.FirstName,
-                Surname = customerDto.Surname
-
-            };
-
-            // Affect tracking mechanism of EF
-            _userContext.Users.Add(userEntity);
-
-            // Save changes to the database
-            await _userContext.SaveChangesAsync();
-
-            // Returns user
-            return new CustomerUserDto
-            {
-                FirstName = customerDto.FirstName,
-                Lastname = customerDto.Surname,
-                Username = customerDto.Username
-            };
+            return null;
 
 
         }

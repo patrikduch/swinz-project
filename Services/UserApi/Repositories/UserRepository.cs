@@ -156,32 +156,7 @@ namespace UserApi.Repositories
         /// <returns></returns>
         public async Task<User> CreateCustomer(CustomerRegisterDto customerDto)
         {
-            // Creation of userDto from customerDto for user preparation
-            var userDto = new UserDto
-            {
-                Username = customerDto.Username,
-                Password = customerDto.Password
-            };
-
-            // User preparation
-            var userEntity = await PrepareUser(userDto, "Customer");
-
-            // Customer properites assigment
-            userEntity.Customer = new Customer
-            {
-                FirstName = customerDto.FirstName,
-                Surname =  customerDto.Surname
-                
-            };
-
-            // Affect tracking mechanism of EF
-            _context.Users.Add(userEntity);
-
-            // Save changes to the database
-            await _context.SaveChangesAsync();
-
-            // Returns user
-            return await _context.Users.Where(u => u.Username == customerDto.Username).LastOrDefaultAsync();
+            return null;
         }
 
         #endregion

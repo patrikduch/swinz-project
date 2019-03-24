@@ -35,11 +35,14 @@ namespace UserApi.Contexts
         /// </summary>
         public DbSet<Role> Roles { get; set; }
 
+        public DbSet<Customer> Customers { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
             modelBuilder.ApplyConfiguration(new UserRoleConfiguration());
+            modelBuilder.ApplyConfiguration(new CustomerConfiguration());
         }
 
     }

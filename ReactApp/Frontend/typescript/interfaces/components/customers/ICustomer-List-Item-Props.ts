@@ -9,5 +9,5 @@
 export default interface ICustomerListItemProps {
     id: number
     firstName: string,
-    surname: string
+    lastname: string
 }

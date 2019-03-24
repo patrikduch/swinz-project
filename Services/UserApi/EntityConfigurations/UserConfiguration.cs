@@ -27,12 +27,7 @@ namespace UserApi.EntityConfigurations
             // Properties
             builder.Property(c => c.Username).HasColumnName("username");
 
-            #region Relationships
-            // 1:1 User -> Customer
-            builder.HasOne(u => u.Customer)
-                .WithOne(c => c.User)
-                .HasForeignKey<User>(u => u.CustomerId);
-            #endregion
+            
 
 
 
