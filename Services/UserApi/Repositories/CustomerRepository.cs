@@ -5,9 +5,6 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
-using Microsoft.AspNetCore.Internal;
-using Microsoft.IdentityModel.Tokens;
-
 namespace UserApi.Repositories
 {
     using Contexts;
@@ -47,8 +44,12 @@ namespace UserApi.Repositories
 
         #region Methods
 
-
-        private IEnumerable<CustomerUserDto> CustomerEntityToDto(IEnumerable<Customer> customers)
+        /// <summary>
+        /// Transformer of Customer entity into DTO
+        /// </summary>
+        /// <param name="customers"></param>
+        /// <returns></returns>
+        private static IEnumerable<CustomerUserDto> CustomerEntityToDto(IEnumerable<Customer> customers)
         {
             return customers.Select(customer => new CustomerUserDto
             {
@@ -57,6 +58,47 @@ namespace UserApi.Repositories
                 Lastname = customer.LastName,
                 Username = customer.User.Username
             });
+        }
+
+
+        /// <summary>
+        /// Create new user with specific role
+        /// </summary>
+        /// <param name="dto">User information stored in DTO</param>
+        /// <param name="roleName">Name of role that will be assigned to new user</param>
+        /// <returns></returns>
+        private async Task<User> PrepareUser(UserDto dto, string roleName)
+        {
+            var entity = await _userContext.Users.Include(u => u.UserRoles).Where(u => u.Username == dto.Username).FirstOrDefaultAsync();
+
+            // This user already exists
+            if (entity != null) return null;
+
+            // Create role if not exists
+            var roleEntity = await _userContext.Roles.FirstOrDefaultAsync(r => r.Name == roleName) ?? new Role()
+            {
+                Name = roleName
+            };
+
+            // List of roles that will be added to new user
+            var roles = new List<UserRoles>
+            {
+                new UserRoles() {User = new User() {Username = dto.Username}, Role = roleEntity}
+            };
+
+            // Encryption process
+            CryptographyHelper.CreatePasswordHash(dto.Password, out var passwordHash, out var passwordSalt);
+
+            // Creation of new user
+            var newUser = new User
+            {
+                Username = dto.Username,
+                UserRoles = roles,
+                PasswordHash = passwordHash,
+                PasswordSalt = passwordSalt
+            };
+
+            return newUser;
         }
 
 
@@ -94,44 +136,7 @@ namespace UserApi.Repositories
             return null;
         }
 
-        private async Task<User> PrepareUser(UserDto dto, string roleName)
-        {
-            var entity = await _userContext.Users.Include(u => u.UserRoles).Where(u => u.Username == dto.Username).FirstOrDefaultAsync();
-
-            // This user already exists
-            if (entity != null) return null;
-
-
-            // Create role if not exists
-            var roleEntity = await _userContext.Roles.FirstOrDefaultAsync(r => r.Name == roleName) ?? new Role()
-            {
-                Name = roleName
-            };
-
-
-            // List of roles that will be added to new user
-            var roles = new List<UserRoles>
-            {
-                new UserRoles() {User = new User() {Username = dto.Username}, Role = roleEntity}
-            };
-
-
-            // Encryption process
-            CryptographyHelper.CreatePasswordHash(dto.Password, out var passwordHash, out var passwordSalt);
-
-            // Creation of new user
-            var newUser = new User
-            {
-                Username = dto.Username,
-                UserRoles = roles,
-                PasswordHash = passwordHash,
-                PasswordSalt = passwordSalt
-            };
-
-
-            return newUser;
-
-        }
+        
 
 
         /// <summary>
@@ -144,18 +149,14 @@ namespace UserApi.Repositories
 
             var user = await PrepareUser(new UserDto
             {
-                Username = "patrik",
-                Password = "pavouk"
+                Username = customerDto.Username,
+                Password = customerDto.Password
             }, "Customer");
-
-
-
-
 
             var customer = new Customer
             {
-                FirstName = "Patrik",
-                LastName = "Duch",
+                FirstName = customerDto.FirstName,
+                LastName = customerDto.Surname,
                 User = user
             };
 
@@ -165,15 +166,15 @@ namespace UserApi.Repositories
 
 
 
-            return null;
+            return new CustomerUserDto
+            {
+                FirstName = customer.FirstName,
+                Username = customer.User.Username,
+                Lastname = customer.LastName
+            };
 
 
         }
-
-  
-
-
-
 
 
         #endregion
