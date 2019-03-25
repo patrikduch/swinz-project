@@ -14,6 +14,16 @@ import ICustomerAddFormProps from '../../../../../typescript/interfaces/componen
 // State interface
 import ICustomerAddFormState from '../../../../../typescript/interfaces/components/customers/ICustomer-Add-Form-State';
 
+import CustomerRegexHelper from '../../../../../helpers/regex/Customer-Regex-Helper';
+
+
+enum InputType {
+  Username = "username",
+  FirstName = "firstname",
+  LastName = "lastname"
+}
+
+
 export default class NewCustomerForm extends React.Component<ICustomerAddFormProps, ICustomerAddFormState> {
 
   state = {
@@ -27,6 +37,8 @@ export default class NewCustomerForm extends React.Component<ICustomerAddFormPro
     }
   }
 
+
+
   componentDidMount() {
     console.log(this.state.firstname.value.length)
   }
@@ -37,14 +49,14 @@ export default class NewCustomerForm extends React.Component<ICustomerAddFormPro
     switch (e.target.id) {
 
       case 'firstnameInputId':
-       
+
         this.setState({
           firstname: {
             value: e.target.value
-        }
-  
-      });
-        
+          }
+
+        });
+
         break;
 
       case 'surnameInputId':
@@ -70,12 +82,38 @@ export default class NewCustomerForm extends React.Component<ICustomerAddFormPro
 
   }
 
-  validateInput = (input: string) => {
-    if (input.length == 0) {
-      return null;
-    } else if (input.length >=1 && input.length < 20) {
-      return <p>Zadejte delší křestní jméno</p>;
+  validateInput = (input: string, type: string) => {
+
+
+    switch (type) {
+
+      case InputType.FirstName: // First name checker
+
+        if (input.length == 0) {
+          return null;
+        }
+
+        return CustomerRegexHelper.firstNameRegex(input);
+
+
+      case InputType.LastName: // Lastname checker
+
+      break;
+
+
+      case InputType.Username: // Username checker
+
+      break;
+
+
+
+
+
     }
+
+
+
+
   }
 
 
@@ -101,24 +139,21 @@ export default class NewCustomerForm extends React.Component<ICustomerAddFormPro
   }
 
   render() {
-
-    console.log(this.state.firstname)
-
     return (
       <Form method='POST'>
         <FormGroup>
           <Label for="usernameLabel">Uživatelské jméno</Label>
-          <Input onChange={this.fieldChangeHandler} type="text" name="usernameInput" id="usernameInputId" value={this.state.username.value}  />
+          <Input onChange={this.fieldChangeHandler} type="text" name="usernameInput" id="usernameInputId" value={this.state.username.value} />
         </FormGroup>
         <FormGroup>
           <Label for="passwordLabel">Heslo</Label>
-          <Input onChange={this.fieldChangeHandler} type="password" name="passwordInput" id="passwordInputId" value={this.state.password}  />
+          <Input onChange={this.fieldChangeHandler} type="password" name="passwordInput" id="passwordInputId" value={this.state.password} />
         </FormGroup>
         <FormGroup>
           <Label for="firstnameLabel">Křestní jméno</Label>
           <Input onChange={this.fieldChangeHandler} type="text" name="firstnameInput" id="firstnameInputId" value={this.state.firstname.value} />
           {
-            this.validateInput(this.state.firstname.value)
+            this.validateInput(this.state.firstname.value, InputType.FirstName)
           }
         </FormGroup>
         <FormGroup>
