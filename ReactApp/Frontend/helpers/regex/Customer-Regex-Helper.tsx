@@ -28,6 +28,5 @@ export default class CustomerRegexHelper {
         if (input.length >= 1 && input.length < 3) {
           return <p>Zadejte delší přijmení</p>;
         }
-
     }
 }

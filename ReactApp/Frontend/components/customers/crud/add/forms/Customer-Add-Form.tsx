@@ -17,12 +17,8 @@ import ICustomerAddFormState from '../../../../../typescript/interfaces/componen
 // Form validation
 import CustomerRegexHelper from '../../../../../helpers/regex/Customer-Regex-Helper';
 
-enum InputType {
-  Username = "username",
-  FirstName = "firstname",
-  LastName = "lastname"
-}
-
+// Enum to determine type of filled input
+import { CustomerInputType } from '../../../../../typescript/enums/customers/forms/Customer-InputType';
 
 export default class NewCustomerForm extends React.Component<ICustomerAddFormProps, ICustomerAddFormState> {
 
@@ -35,12 +31,6 @@ export default class NewCustomerForm extends React.Component<ICustomerAddFormPro
     username: {
       value: '',
     }
-  }
-
-
-
-  componentDidMount() {
-    console.log(this.state.firstname.value.length)
   }
 
   // Manipulation of web elements via state property
@@ -82,42 +72,25 @@ export default class NewCustomerForm extends React.Component<ICustomerAddFormPro
 
   }
 
+  // Validation method = if error occurs specific error message will be displayed
   validateInput = (input: string, type: string) => {
 
+    if (input.length == 0) {
+      return null;
+    }
 
     switch (type) {
 
-      case InputType.FirstName: // First name checker
-
-        if (input.length == 0) {
-          return null;
-        }
-
+      case CustomerInputType.FirstName: // First name checker
         return CustomerRegexHelper.firstNameRegex(input);
 
-
-      case InputType.LastName: // Lastname checker
-
-        if (input.length == 0) {
-          return null;
-        }
-
+      case CustomerInputType.LastName: // Lastname checker
         return CustomerRegexHelper.lastnameRegex(input);
 
-
-      case InputType.Username: // Username checker
+      case CustomerInputType.Username: // Username checker
 
         break;
-
-
-
-
-
     }
-
-
-
-
   }
 
 
@@ -157,14 +130,14 @@ export default class NewCustomerForm extends React.Component<ICustomerAddFormPro
           <Label for="firstnameLabel">Křestní jméno</Label>
           <Input onChange={this.fieldChangeHandler} type="text" name="firstnameInput" id="firstnameInputId" value={this.state.firstname.value} />
           {
-            this.validateInput(this.state.firstname.value, InputType.FirstName)
+            this.validateInput(this.state.firstname.value, CustomerInputType.FirstName)
           }
         </FormGroup>
         <FormGroup>
           <Label for="surnameLabel">Přijmení</Label>
           <Input onChange={this.fieldChangeHandler} type="text" name="surnameInput" id="surnameInputId" value={this.state.lastname} />
           {
-            this.validateInput(this.state.lastname, InputType.LastName)
+            this.validateInput(this.state.lastname, CustomerInputType.LastName)
           }
 
         </FormGroup>
