@@ -15,6 +15,7 @@ export default interface IClassicModalProps {
     showModalBtn: boolean,
     methods: Array<Function>
     data: any,
-    arg: any
+    arg: any,
+    classList: Array<string>
 
 }

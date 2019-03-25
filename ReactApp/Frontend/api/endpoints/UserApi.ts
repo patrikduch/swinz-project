@@ -15,6 +15,11 @@ export default class UserApi {
     }
 
     static isAuthenticated(data: object) {        
+
         return post('http://localhost:63766/api/users/isAuthenticated', data);
+
+        
+        
+
     }
 }

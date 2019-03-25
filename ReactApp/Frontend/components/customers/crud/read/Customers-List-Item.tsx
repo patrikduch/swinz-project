@@ -7,14 +7,7 @@
 //-----------------------------------------------------------------------
 
 import * as React from 'react';
-
-import CustomerListOptions from './Customers-List-Options';
-import CustomerRemove from '../delete/Customers-Remove';
-import EditCustomer from '../update/Customers-Edit';
-
 import ICustomerListItemState from '../../../../typescript/interfaces/components/customers/ICustomer-List-Item-State';
-
-import EditCustomerForm from '../update/forms/Customer-Edit-Form';
 
 var uniqid = require('uniqid');
 
@@ -27,28 +20,36 @@ interface ICustomerListItemProps {
 
     },
     //iteration: number
-    removeCustomer: Function,
-    updateCustomer: Function,
     iteration: number
 }
 
 
+// Styled helper
+import styled from 'styled-components';
+
 
 export default class CustomersListItem extends React.Component<ICustomerListItemProps, ICustomerListItemState> {
 
-
     render() {
+        const CustomerListOptions = styled.span`
+
+           margin-left: 10vw;
+        `;
+
+
         return (
             <tr key={ uniqid() }>
+                
                 <th scope="row">{ this.props.iteration}</th>
                 <td >{ this.props.arg.firstName }</td>
                 <td>{ this.props.arg.lastname }</td>
-
-                <CustomerListOptions>
-                    N/A
-                        <CustomerRemove  customerId={this.props.arg.id} removeCustomer={ this.props.removeCustomer } />
-                        <EditCustomer title='Úprava detailů zákazníka' method={this.props.updateCustomer} data={ EditCustomerForm} arg={this.props.arg} />
-                </CustomerListOptions>
+                <td>
+                    <span>N/A</span>
+                    <CustomerListOptions>
+                        <span>Editovat</span>
+                        <span>Smazat</span>
+                    </CustomerListOptions>
+                </td>
             </tr>
         );
     }

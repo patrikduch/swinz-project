@@ -40,10 +40,13 @@ export const deleteCustomer : ActionCreator<{}> = (customerId: number) => async 
 
 export const createCustomer : ActionCreator<{}> = (customerObj: object) => async (dispatch: Dispatch) => {
         
-        const promiseResult = await CustomerApi.createCustomer(customerObj);
-        const data = promiseResult.data;
+        CustomerApi.createCustomer(customerObj).then(() => {
 
-        dispatch({ type: actionTypes.CUSTOMER_CREATION_SUCCESS, data});    
+        }).catch(() => {
+
+        });
+
+        
 }
 
 

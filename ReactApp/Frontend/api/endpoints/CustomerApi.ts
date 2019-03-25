@@ -22,7 +22,7 @@ export default class CustomerApi {
     }
 
     static createCustomer(data: object) {        
-        return post(domain+'api/customers/create', data)
+        return post(`${domain}/api/customers/create`, data)
     }
 
     static updateCustomer(arg:string, data: object) {        

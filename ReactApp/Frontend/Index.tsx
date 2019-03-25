@@ -27,12 +27,15 @@ library.add(faPlus);
 library.add(faMinusCircle);
 library.add(faEdit);
 
+import Axios, { AxiosRequestConfig } from 'axios';
+
 
 
 
 renderApp(); // Initial inject of app
 
 function renderApp() {
+
     ReactDOM.render(
     <div>
         <AppContainer>

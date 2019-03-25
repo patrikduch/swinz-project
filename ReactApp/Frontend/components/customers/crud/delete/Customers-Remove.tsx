@@ -7,13 +7,11 @@
 //-----------------------------------------------------------------------
 
 import *  as React from 'react';
-import DecisionModal from '../../../common/modals/Decision-Modal';
 import ICustomerRemoveProps from '../../../../typescript/interfaces/components/customers/ICustomer-Remove-Props';
 
-export default (props: ICustomerRemoveProps) => {
+export default () => {
     return (
         <span>
-            <DecisionModal title='Opravdu chcete smazat tohoto zákaznika' event={ () => props.removeCustomer(props.customerId) } />
         </span>  
     );
 }

@@ -9,7 +9,7 @@
 import * as React from 'react';
 
 // Styled helper
-import styled, { css } from 'styled-components';
+import styled  from 'styled-components';
 
 // Creating styled components
 const Thead = styled.thead`

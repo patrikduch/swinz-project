@@ -8,22 +8,25 @@
 
 import * as React from 'react';
 
+// Styled helper
+import styled from 'styled-components';
+
 import { Table } from 'reactstrap';
 import CustomersListHeadings from './Customers-List-Headings';
 import CustomersListBody from './Customers-List-Body';
 import CustomerListPaging from './Customers-List-Paging';
-import AddCustomer from '../add/Customers-Add';
 
-// Styled helper
-import styled from 'styled-components';
+// Modals
+import AddCustomerModal from '../../../customers/crud/add/modals/Customer-Creation-Modal';
+
+
 // Container that wrappps list of customers
 const Container = styled.div`
   //  margin-top: 1.0vh;
 `;
 
 // Title of customer page
-const Title = styled.h2`
-
+const CustomersTitle = styled.h2`
     margin-top: 5.0vh;
     text-align: center;
 `;
@@ -42,7 +45,7 @@ export default class CustomersList extends React.Component<any, any> {
                 <Container>
                     <Table>
                         <CustomersListHeadings />
-                        <CustomersListBody updateCustomer={this.props.actions.updateCustomer} removeCustomer={ this.props.actions.deleteCustomer } data={ this.props.customers } />
+                        <CustomersListBody data={ this.props.customers } />
                     </Table>
                     <CustomerListPaging />
                 </Container>
@@ -54,8 +57,8 @@ export default class CustomersList extends React.Component<any, any> {
     render() {
         return (
             <div>
-                <Title>Evidence zákazniků</Title>
-                <AddCustomer addCustomer={this.props.actions.createCustomer} title='Přidání nového zákazníka' btnIcon='plus' />
+                <CustomersTitle>Evidence zákazniků</CustomersTitle>
+                <AddCustomerModal createCustomer={this.props.actions.createCustomer} />
                 { this.getCustomers() }
             </div>
         );

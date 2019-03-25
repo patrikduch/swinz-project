@@ -11,5 +11,6 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 export default interface ICustomerAddProps {
     title: string,
     btnIcon: IconProp,
-    addCustomer: Function
+    addCustomer: Function,
+    classList: Array<string> // Class string representation
 }

@@ -7,7 +7,6 @@
 //--------------------------------------------------------------------------------------
 
 export default interface ICustomerAddFormProps {
-
-    methods: Array<Function> // All methods that are present in the customer form
-    toggler: Function // Separated method for closing modal after successfull customer creation
+    modalToggler: Function // Function for closing modal after new customer is completed
+    createCustomer: Function
 }

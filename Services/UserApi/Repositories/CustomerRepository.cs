@@ -121,7 +121,6 @@ namespace UserApi.Repositories
         {
             var userEntity = await _userContext.Users.FirstOrDefaultAsync(u => u.Customer.Id == customerId);
             _userContext.Users.Remove(userEntity);
-
             await _userContext.SaveChangesAsync();
         }
 
@@ -152,6 +151,8 @@ namespace UserApi.Repositories
                 Username = customerDto.Username,
                 Password = customerDto.Password
             }, "Customer");
+
+            if (user == null) return null; // User already exists
 
             var customer = new Customer
             {
