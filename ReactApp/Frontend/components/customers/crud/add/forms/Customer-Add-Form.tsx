@@ -14,13 +14,13 @@ import ICustomerAddFormProps from '../../../../../typescript/interfaces/componen
 // State interface
 import ICustomerAddFormState from '../../../../../typescript/interfaces/components/customers/ICustomer-Add-Form-State';
 
-import Api from '../../../../../api/endpoints/CustomerApi'
-
 export default class NewCustomerForm extends React.Component<ICustomerAddFormProps, ICustomerAddFormState> {
 
   state = {
     firstname: '',
-    surname: ''
+    surname: '',
+    password: '',
+    username: '',
   }
 
   componentDidMount(){
@@ -43,7 +43,20 @@ export default class NewCustomerForm extends React.Component<ICustomerAddFormPro
           surname: e.target.value
         });
         break;
+
+        case 'passwordInputId':
+        this.setState({
+          password: e.target.value
+        });
+        break;
+
+        case 'usernameInputId':
+        this.setState({
+          username: e.target.value
+        });
+        break;
     }
+
   }
 
 
@@ -53,18 +66,12 @@ export default class NewCustomerForm extends React.Component<ICustomerAddFormPro
     if(this.state.firstname == '' || this.state.surname == '')  return;
 
     // Object that will be sended with POST request to create new customer
-    //const data = {
-      //firstname: this.state.firstname,
-      //surname: this.state.surname
-    //}
-
-
     const data = {
-      firstname: 'a',
-      surname: 'b',
-      username: 'aaaaaaa',
-      password: 'ccc'
-    }
+      firstname: this.state.firstname,
+      surname: this.state.surname,
+      username: this.state.username,
+      password: this.state.password
+    };
 
     // Call method for customer creation
     //this.props.methods[0](data)
@@ -79,6 +86,14 @@ export default class NewCustomerForm extends React.Component<ICustomerAddFormPro
     return (
       <Form method='POST'>
         <FormGroup>
+          <Label for="usernameLabel">Uživatelské jméno</Label>
+          <Input onChange={this.fieldChangeHandler} type="text" name="usernameInput" id="usernameInputId" value={this.state.username} placeholder="" />
+        </FormGroup>
+        <FormGroup>
+          <Label for="passwordLabel">Heslo</Label>
+          <Input onChange={this.fieldChangeHandler} type="password" name="passwordInput" id="passwordInputId" value={this.state.password} placeholder="" />
+        </FormGroup>
+        <FormGroup>
           <Label for="firstnameLabel">Křestní jméno</Label>
           <Input onChange={this.fieldChangeHandler} type="text" name="firstnameInput" id="firstnameInputId" value={this.state.firstname} />
         </FormGroup>
@@ -86,8 +101,7 @@ export default class NewCustomerForm extends React.Component<ICustomerAddFormPro
           <Label for="surnameLabel">Přijmení</Label>
           <Input onChange={this.fieldChangeHandler} type="text" name="surnameInput" id="surnameInputId" value={this.state.surname} placeholder="" />
         </FormGroup>
-
-        <Button onClick={this.registerUser}>Přidat</Button>
+        <Button onClick={this.registerUser}>Vytvořit</Button>
       </Form>
     );
   }
