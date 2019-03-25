@@ -18,4 +18,16 @@ export default class CustomerRegexHelper {
           return <p>Zadejte delší křestní jméno</p>;
         }
     }
+
+    static lastnameRegex(input: string) {
+
+      const regex = RegExp('^[A-Z][a-z]+$');
+        if (!regex.test(input)) {
+          return <p>Zkontrolujte format vaseho přijmení</p>
+        }
+        if (input.length >= 1 && input.length < 3) {
+          return <p>Zadejte delší přijmení</p>;
+        }
+
+    }
 }

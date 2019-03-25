@@ -14,8 +14,8 @@ import ICustomerAddFormProps from '../../../../../typescript/interfaces/componen
 // State interface
 import ICustomerAddFormState from '../../../../../typescript/interfaces/components/customers/ICustomer-Add-Form-State';
 
+// Form validation
 import CustomerRegexHelper from '../../../../../helpers/regex/Customer-Regex-Helper';
-
 
 enum InputType {
   Username = "username",
@@ -30,7 +30,7 @@ export default class NewCustomerForm extends React.Component<ICustomerAddFormPro
     firstname: {
       value: '',
     },
-    surname: '',
+    lastname: '',
     password: '',
     username: {
       value: '',
@@ -61,7 +61,7 @@ export default class NewCustomerForm extends React.Component<ICustomerAddFormPro
 
       case 'surnameInputId':
         this.setState({
-          surname: e.target.value
+          lastname: e.target.value
         });
         break;
 
@@ -98,12 +98,16 @@ export default class NewCustomerForm extends React.Component<ICustomerAddFormPro
 
       case InputType.LastName: // Lastname checker
 
-      break;
+        if (input.length == 0) {
+          return null;
+        }
+
+        return CustomerRegexHelper.lastnameRegex(input);
 
 
       case InputType.Username: // Username checker
 
-      break;
+        break;
 
 
 
@@ -120,12 +124,12 @@ export default class NewCustomerForm extends React.Component<ICustomerAddFormPro
   registerUser = () => {
 
     // Empty fields cannot be used for new customer credentials
-    if (this.state.firstname.value == '' || this.state.surname == '') return;
+    if (this.state.firstname.value == '' || this.state.lastname == '') return;
 
     // Object that will be sended with POST request to create new customer
     const data = {
       firstname: this.state.firstname,
-      surname: this.state.surname,
+      lastname: this.state.lastname,
       username: this.state.username,
       password: this.state.password
     };
@@ -158,7 +162,11 @@ export default class NewCustomerForm extends React.Component<ICustomerAddFormPro
         </FormGroup>
         <FormGroup>
           <Label for="surnameLabel">Přijmení</Label>
-          <Input onChange={this.fieldChangeHandler} type="text" name="surnameInput" id="surnameInputId" value={this.state.surname} />
+          <Input onChange={this.fieldChangeHandler} type="text" name="surnameInput" id="surnameInputId" value={this.state.lastname} />
+          {
+            this.validateInput(this.state.lastname, InputType.LastName)
+          }
+
         </FormGroup>
         <Button onClick={this.registerUser}>Vytvořit</Button>
       </Form>
