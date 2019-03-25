@@ -17,14 +17,18 @@ import ICustomerAddFormState from '../../../../../typescript/interfaces/componen
 export default class NewCustomerForm extends React.Component<ICustomerAddFormProps, ICustomerAddFormState> {
 
   state = {
-    firstname: '',
+    firstname: {
+      value: '',
+    },
     surname: '',
     password: '',
-    username: '',
+    username: {
+      value: '',
+    }
   }
 
-  componentDidMount(){
-    
+  componentDidMount() {
+    console.log(this.state.firstname.value.length)
   }
 
   // Manipulation of web elements via state property
@@ -33,9 +37,14 @@ export default class NewCustomerForm extends React.Component<ICustomerAddFormPro
     switch (e.target.id) {
 
       case 'firstnameInputId':
+       
         this.setState({
-          firstname: e.target.value
-        });
+          firstname: {
+            value: e.target.value
+        }
+  
+      });
+        
         break;
 
       case 'surnameInputId':
@@ -44,26 +53,36 @@ export default class NewCustomerForm extends React.Component<ICustomerAddFormPro
         });
         break;
 
-        case 'passwordInputId':
+      case 'passwordInputId':
         this.setState({
           password: e.target.value
         });
         break;
 
-        case 'usernameInputId':
+      case 'usernameInputId':
         this.setState({
-          username: e.target.value
+          username: {
+            value: e.target.value
+          }
         });
         break;
     }
 
   }
 
+  validateInput = (input: string) => {
+    if (input.length == 0) {
+      return null;
+    } else if (input.length >=1 && input.length < 20) {
+      return <p>Zadejte delší křestní jméno</p>;
+    }
+  }
+
 
   registerUser = () => {
 
     // Empty fields cannot be used for new customer credentials
-    if(this.state.firstname == '' || this.state.surname == '')  return;
+    if (this.state.firstname.value == '' || this.state.surname == '') return;
 
     // Object that will be sended with POST request to create new customer
     const data = {
@@ -74,7 +93,6 @@ export default class NewCustomerForm extends React.Component<ICustomerAddFormPro
     };
 
     // Call method for customer creation
-    //this.props.methods[0](data)
     this.props.createCustomer(data);
 
     // Close form modal
@@ -83,23 +101,29 @@ export default class NewCustomerForm extends React.Component<ICustomerAddFormPro
   }
 
   render() {
+
+    console.log(this.state.firstname)
+
     return (
       <Form method='POST'>
         <FormGroup>
           <Label for="usernameLabel">Uživatelské jméno</Label>
-          <Input onChange={this.fieldChangeHandler} type="text" name="usernameInput" id="usernameInputId" value={this.state.username} placeholder="" />
+          <Input onChange={this.fieldChangeHandler} type="text" name="usernameInput" id="usernameInputId" value={this.state.username.value}  />
         </FormGroup>
         <FormGroup>
           <Label for="passwordLabel">Heslo</Label>
-          <Input onChange={this.fieldChangeHandler} type="password" name="passwordInput" id="passwordInputId" value={this.state.password} placeholder="" />
+          <Input onChange={this.fieldChangeHandler} type="password" name="passwordInput" id="passwordInputId" value={this.state.password}  />
         </FormGroup>
         <FormGroup>
           <Label for="firstnameLabel">Křestní jméno</Label>
-          <Input onChange={this.fieldChangeHandler} type="text" name="firstnameInput" id="firstnameInputId" value={this.state.firstname} />
+          <Input onChange={this.fieldChangeHandler} type="text" name="firstnameInput" id="firstnameInputId" value={this.state.firstname.value} />
+          {
+            this.validateInput(this.state.firstname.value)
+          }
         </FormGroup>
         <FormGroup>
           <Label for="surnameLabel">Přijmení</Label>
-          <Input onChange={this.fieldChangeHandler} type="text" name="surnameInput" id="surnameInputId" value={this.state.surname} placeholder="" />
+          <Input onChange={this.fieldChangeHandler} type="text" name="surnameInput" id="surnameInputId" value={this.state.surname} />
         </FormGroup>
         <Button onClick={this.registerUser}>Vytvořit</Button>
       </Form>
