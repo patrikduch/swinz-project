@@ -5,28 +5,19 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
-
-using System;
-using System.Linq.Expressions;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using PersistenceLib;
-using UserApi.Interfaces.Helpers;
-using UserApi.Interfaces.Repositories;
-using UserApi.Mocking;
-
 namespace UserApi.Repositories
 {
     using Contexts;
     using Domains;
     using Dto.Customers;
     using Dto.Users;
-    using Helpers;
     using Interfaces;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.EntityFrameworkCore.Internal;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using PersistenceLib;
+    using UserApi.Interfaces.Helpers;
+    using Mocking;
 
     /// <summary>
     /// Repository for customer`s manipulation
@@ -37,24 +28,16 @@ namespace UserApi.Repositories
         /// <summary>
         /// User context instance
         /// </summary>
+        private readonly IUserHelperService _userHelperService;
         #endregion
+
+        public UserContext UserContext => Context as UserContext;
 
         #region Constructors
         /// <summary>
         /// Inject constructor for Customer repository
         /// </summary>
         /// <param name="userContext">Context of all users</param>
-        //public CustomerRepository(UserContext userContext)
-        //{
-          //  _userContext = userContext;
-        //}
-
-
-        public UserContext UserContext => Context as UserContext;
-
-        private readonly IUserHelperService _userHelperService;
-
-
         public CustomerRepository(IUserContextService context, IUserHelperService userHelperService) : base(context.UserContext)
         {
             _userHelperService = userHelperService;
@@ -89,30 +72,16 @@ namespace UserApi.Repositories
         /// <returns></returns>
         public async Task<Customer> CreateCustomer(CustomerRegisterDto customerDto)
         {
+            if (customerDto.FirstName == string.Empty|| customerDto.Lastname == string.Empty)
+                return null; // Creation cannot be performed
 
-            if (customerDto.FirstName == null)
-            {
-                customerDto.FirstName = string.Empty;
-            }
-
-            if (customerDto.Lastname == null)
-            {
-                customerDto.Lastname = " ";
-            }
-
-
-            var userDto = new UserDto
+            var user = await _userHelperService.PrepareUser(new UserDto
             {
                 Username = customerDto.Username,
                 Password = customerDto.Password
-            };
+            }, "Customer");
 
-
-            var result = await UserContext.Users.ToListAsync();
-
-            var user = await _userHelperService.PrepareUser(userDto, "Customer");
-
-
+            // Creation of customer object from user a customer data
             var customerResult = new Customer
             {
                 FirstName = customerDto.FirstName,
@@ -120,13 +89,11 @@ namespace UserApi.Repositories
                 User = user
             };
 
-
+            // Add new object to the customer collection
             UserContext.Customers.Add(customerResult);
 
-
+            // Return new added object
             return customerResult;
-
-
         }
 
 

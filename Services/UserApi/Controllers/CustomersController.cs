@@ -55,7 +55,11 @@ namespace UserApi.Controllers
         [Route("getAll")]
         public async Task<List<Customer>> GetAllCustomers()
         {
-            return await _customerUnitOfWork.CustomerRepository.GetAll() as List<Customer>;
+            var customers = await _customerUnitOfWork.CustomerRepository.GetAll() as List<Customer>;
+
+            return null;
+
+
         }
 
 
