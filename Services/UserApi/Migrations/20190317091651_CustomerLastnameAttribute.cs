@@ -7,7 +7,7 @@ namespace UserApi.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
-                name: "Surname",
+                name: "Lastname",
                 table: "Customer",
                 nullable: true);
         }
@@ -15,7 +15,7 @@ namespace UserApi.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Surname",
+                name: "Lastname",
                 table: "Customer");
         }
     }

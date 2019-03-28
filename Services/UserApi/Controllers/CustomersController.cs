@@ -47,7 +47,7 @@ namespace UserApi.Controllers
         [Route("getAll")]
         public async Task<List<CustomerUserDto>> GetAllCustomers()
         {
-            return await _customerRepository.GetCustomers();
+            return await _customerRepository.GetAll();
         }
 
 
@@ -60,7 +60,7 @@ namespace UserApi.Controllers
         [Route("create")]
         public Task<CustomerUserDto> CreateCustomer([FromBody] CustomerRegisterDto customerDto)
         {
-            return _customerRepository.CreateCustomer(customerDto);
+            return _customerRepository.Add(customerDto);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace UserApi.Controllers
         [HttpDelete]
         public async Task DeleteCustomer(int id)
         {
-            await _customerRepository.RemoveCustomer(id);
+            await _customerRepository.Remove(id);
         }
         #endregion
     }

@@ -5,6 +5,9 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+
+using System.Linq.Expressions;
+
 namespace UserApi.Repositories
 {
     using Contexts;
@@ -14,6 +17,7 @@ namespace UserApi.Repositories
     using Helpers;
     using Interfaces;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.Internal;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -106,7 +110,7 @@ namespace UserApi.Repositories
         /// Get all customers
         /// </summary>
         /// <returns></returns>
-        public async Task<List<CustomerUserDto>> GetCustomers()
+        public async Task<List<CustomerUserDto>> GetAll()
         {
             var customers = await _userContext.Customers.Include(c=>c.User).ToListAsync();
             return CustomerEntityToDto(customers).ToList();
@@ -117,7 +121,7 @@ namespace UserApi.Repositories
         /// </summary>
         /// <param name="customerId">customer identifier</param>
         /// <returns></returns>
-        public async Task RemoveCustomer(int customerId)
+        public async Task Remove(int customerId)
         {
             var userEntity = await _userContext.Users.FirstOrDefaultAsync(u => u.Customer.Id == customerId);
             _userContext.Users.Remove(userEntity);
@@ -143,7 +147,7 @@ namespace UserApi.Repositories
         /// </summary>
         /// <param name="customerDto">Data transfer object for customers</param>
         /// <returns></returns>
-        public async Task<CustomerUserDto> CreateCustomer(CustomerRegisterDto customerDto)
+        public async Task<CustomerUserDto> Add(CustomerRegisterDto customerDto)
         {
 
             var user = await PrepareUser(new UserDto
@@ -157,7 +161,7 @@ namespace UserApi.Repositories
             var customer = new Customer
             {
                 FirstName = customerDto.FirstName,
-                LastName = customerDto.Surname,
+                LastName = customerDto.Lastname,
                 User = user
             };
 

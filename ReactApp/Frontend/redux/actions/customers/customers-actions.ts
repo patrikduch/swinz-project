@@ -42,11 +42,12 @@ export const createCustomer : ActionCreator<{}> = (customerObj: object) => async
         
         CustomerApi.createCustomer(customerObj).then(() => {
 
+            dispatch({ type: actionTypes.CUSTOMER_CREATION_SUCCESS, customerObj });
+
         }).catch(() => {
 
+            dispatch({ type: actionTypes.CUSTOMER_CREATION_FAILED });
         });
-
-        
 }
 
 
