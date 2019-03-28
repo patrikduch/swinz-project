@@ -5,6 +5,7 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using PersistenceLib;
 
 namespace UserApi.Interfaces
@@ -19,6 +20,8 @@ namespace UserApi.Interfaces
     /// </summary>
     public interface ICustomerRepository : IRepository<Customer>
     {
+        Task<Customer> CreateCustomer(CustomerRegisterDto customerDto);
+
         //Task<List<CustomerUserDto>> GetAll();
 
         //Task<List<CustomerUserDto>> GetAll();

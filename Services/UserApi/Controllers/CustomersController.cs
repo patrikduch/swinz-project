@@ -66,11 +66,17 @@ namespace UserApi.Controllers
         /// <returns>Instance of created user</returns>
         [HttpPost]
         [Route("create")]
-        public Task<CustomerUserDto> CreateCustomer([FromBody] CustomerRegisterDto customerDto)
+        public async Task<CustomerUserDto> CreateCustomer([FromBody] CustomerRegisterDto customerDto)
         {
-            //return _customerRepository.Add(customerDto);
+            var res = await _customerUnitOfWork.CustomerRepository.CreateCustomer(customerDto);
+            _customerUnitOfWork.Complete();
 
-            return null;
+            return new CustomerUserDto
+            {
+                FirstName = res.FirstName,
+                Lastname = res.LastName,
+                Username = res.User.Username
+            };
         }
 
         /// <summary>

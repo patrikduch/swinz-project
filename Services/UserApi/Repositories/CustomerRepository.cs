@@ -8,7 +8,9 @@
 
 using System;
 using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using PersistenceLib;
+using UserApi.Interfaces.Helpers;
 using UserApi.Interfaces.Repositories;
 using UserApi.Mocking;
 
@@ -35,7 +37,6 @@ namespace UserApi.Repositories
         /// <summary>
         /// User context instance
         /// </summary>
-        private readonly UserContext _userContext;
         #endregion
 
         #region Constructors
@@ -51,9 +52,12 @@ namespace UserApi.Repositories
 
         public UserContext UserContext => Context as UserContext;
 
-        public CustomerRepository(IUserContextService context) : base(context.UserContext)
-        {
+        private readonly IUserHelperService _userHelperService;
 
+
+        public CustomerRepository(IUserContextService context, IUserHelperService userHelperService) : base(context.UserContext)
+        {
+            _userHelperService = userHelperService;
         }
 
 
@@ -79,119 +83,48 @@ namespace UserApi.Repositories
 
 
         /// <summary>
-        /// Create new user with specific role
-        /// </summary>
-        /// <param name="dto">User information stored in DTO</param>
-        /// <param name="roleName">Name of role that will be assigned to new user</param>
-        /// <returns></returns>
-        private async Task<User> PrepareUser(UserDto dto, string roleName)
-        {
-            var entity = await _userContext.Users.Include(u => u.UserRoles).Where(u => u.Username == dto.Username).FirstOrDefaultAsync();
-
-            // This user already exists
-            if (entity != null) return null;
-
-            // Create role if not exists
-            var roleEntity = await _userContext.Roles.FirstOrDefaultAsync(r => r.Name == roleName) ?? new Role()
-            {
-                Name = roleName
-            };
-
-            // List of roles that will be added to new user
-            var roles = new List<UserRoles>
-            {
-                new UserRoles() {User = new User() {Username = dto.Username}, Role = roleEntity}
-            };
-
-            // Encryption process
-            CryptographyHelper.CreatePasswordHash(dto.Password, out var passwordHash, out var passwordSalt);
-
-            // Creation of new user
-            var newUser = new User
-            {
-                Username = dto.Username,
-                UserRoles = roles,
-                PasswordHash = passwordHash,
-                PasswordSalt = passwordSalt
-            };
-
-            return newUser;
-        }
-
-
-        
-
-        /// <summary>
-        /// Get all customers
-        /// </summary>
-        /// <returns></returns>
-        public async Task<List<CustomerUserDto>> GetAll()
-        {
-            var customers = await UserContext.Customers.Include(c=>c.User).ToListAsync();
-            return CustomerEntityToDto(customers).ToList();
-        }
-
-        /// <summary>
-        /// Remove customer by its id
-        /// </summary>
-        /// <param name="customerId">customer identifier</param>
-        /// <returns></returns>
-        public async Task Remove(int customerId)
-        {
-            var userEntity = await _userContext.Users.FirstOrDefaultAsync(u => u.Customer.Id == customerId);
-            _userContext.Users.Remove(userEntity);
-            await _userContext.SaveChangesAsync();
-        }
-
-        /// <summary>
-        /// Customer update
-        /// </summary>
-        /// <param name="id">customer`s identifier</param>
-        /// <param name="customerDto">Data transfer object for customer</param>
-        /// <returns></returns>
-        public async Task<Customer> UpdateCustomer(int id, CustomerDto customerDto)
-        {
-            return null;
-        }
-
-        
-
-
-        /// <summary>
         /// Creation of customer
         /// </summary>
         /// <param name="customerDto">Data transfer object for customers</param>
         /// <returns></returns>
-        public async Task<CustomerUserDto> Add(CustomerRegisterDto customerDto)
+        public async Task<Customer> CreateCustomer(CustomerRegisterDto customerDto)
         {
 
-            var user = await PrepareUser(new UserDto
+            if (customerDto.FirstName == null)
+            {
+                customerDto.FirstName = string.Empty;
+            }
+
+            if (customerDto.Lastname == null)
+            {
+                customerDto.Lastname = " ";
+            }
+
+
+            var userDto = new UserDto
             {
                 Username = customerDto.Username,
                 Password = customerDto.Password
-            }, "Customer");
+            };
 
-            if (user == null) return null; // User already exists
 
-            var customer = new Customer
+            var result = await UserContext.Users.ToListAsync();
+
+            var user = await _userHelperService.PrepareUser(userDto, "Customer");
+
+
+            var customerResult = new Customer
             {
                 FirstName = customerDto.FirstName,
                 LastName = customerDto.Lastname,
                 User = user
             };
 
-            _userContext.Customers.Add(customer);
 
-            await _userContext.SaveChangesAsync();
-
+            UserContext.Customers.Add(customerResult);
 
 
-            return new CustomerUserDto
-            {
-                FirstName = customer.FirstName,
-                Username = customer.User.Username,
-                Lastname = customer.LastName
-            };
+            return customerResult;
 
 
         }

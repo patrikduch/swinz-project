@@ -24,8 +24,11 @@ namespace Swinz.Tests
         public void Transform_CustomerEntity_ReturnsCustomerUserDto()
         {
 
-            var mockService = new MockUserContextService();            
-            var customerRepository = new CustomerRepository(mockService);
+            var mockService = new MockUserContextService(); 
+
+            var mockService2 = new MockUserHelperService();
+                        
+            var customerRepository = new CustomerRepository(mockService, mockService2);
 
             try
             {

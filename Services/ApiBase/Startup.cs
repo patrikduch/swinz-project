@@ -5,6 +5,7 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using UserApi.Interfaces.Helpers;
 using UserApi.Interfaces.UnitOfWork;
 using UserApi.Mocking;
 using UserApi.UnitOfWork;
@@ -90,6 +91,9 @@ namespace ApiBase
 
             services.AddScoped<ICustomerUnitOfWork, CustomerUnitOfWork>();
             services.AddScoped<IUserContextService, UserContextService>();
+
+            // Helper services
+            services.AddScoped<IUserHelperService, UserHelperService>();
 
             #endregion
 

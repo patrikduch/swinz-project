@@ -5,10 +5,9 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
-using System.Threading.Tasks;
-
 namespace PersistenceLib
 {
+    using System.Threading.Tasks;
     using System;
     using System.Collections.Generic;
     using System.Linq.Expressions;

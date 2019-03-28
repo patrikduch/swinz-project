@@ -23,7 +23,7 @@ namespace UserApi.UnitOfWork
 
         public void Dispose()
         {
-            _userContext.Dispose();
+            //_userContext.Dispose();
         }
 
         public int Complete()
