@@ -7,6 +7,7 @@
 
 using System.Linq;
 using UserApi.Contexts;
+using UserApi.Interfaces.Helpers;
 using UserApi.Interfaces.UnitOfWork;
 using UserApi.UnitOfWork;
 
@@ -53,13 +54,9 @@ namespace UserApi.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("getAll")]
-        public async Task<List<Customer>> GetAllCustomers()
+        public async Task<IEnumerable<CustomerUserDto>> GetAllCustomers()
         {
-            var customers = await _customerUnitOfWork.CustomerRepository.GetAll() as List<Customer>;
-
-            return null;
-
-
+           return await _customerUnitOfWork.CustomerRepository.GetAllCustomers();
         }
 
 

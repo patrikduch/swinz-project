@@ -19,7 +19,7 @@ namespace UserApi.Interfaces.Controllers
     /// </summary>
     public interface ICustomerController
     {
-        Task<List<Customer>> GetAllCustomers();
+        Task<IEnumerable<CustomerUserDto>> GetAllCustomers();
 
         Task<Customer> UpdateCustomer(int id, CustomerDto customerDto);
 

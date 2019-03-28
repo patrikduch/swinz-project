@@ -22,7 +22,7 @@ namespace UserApi.Interfaces
     {
         Task<Customer> CreateCustomer(CustomerRegisterDto customerDto);
 
-        //Task<List<CustomerUserDto>> GetAll();
+        Task<List<CustomerUserDto>> GetAllCustomers();
 
         //Task<List<CustomerUserDto>> GetAll();
 

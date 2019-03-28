@@ -5,6 +5,8 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using Microsoft.EntityFrameworkCore;
+
 namespace UserApi.Repositories
 {
     using Contexts;
@@ -48,21 +50,7 @@ namespace UserApi.Repositories
 
         #region Methods
 
-        /// <summary>
-        /// Transformer of Customer entity into DTO
-        /// </summary>
-        /// <param name="customers"></param>
-        /// <returns></returns>
-        public IEnumerable<CustomerUserDto> CustomerEntityToDto(IEnumerable<Customer> customers)
-        {
-            return customers.Select(customer => new CustomerUserDto
-            {
-                Id = customer.Id,
-                FirstName = customer.FirstName,
-                Lastname = customer.LastName,
-                Username = customer.User.Username
-            });
-        }
+        
 
 
         /// <summary>
@@ -96,6 +84,12 @@ namespace UserApi.Repositories
             return customerResult;
         }
 
+        public async Task<List<CustomerUserDto>> GetAllCustomers()
+        {
+            var customers = await UserContext.Customers.Include(c => c.User).ToListAsync();
+
+            return _userHelperService.CustomerEntityToDto(customers).ToList();
+        }
 
         #endregion
     }

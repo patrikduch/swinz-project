@@ -1,5 +1,6 @@
 ﻿
 
+using UserApi.Dto.Customers;
 using UserApi.Interfaces.Helpers;
 using UserApi.Mocking;
 
@@ -20,6 +21,23 @@ namespace UserApi.Helpers
         {
            UserContext = userContext;
 
+        }
+
+
+        /// <summary>
+        /// Transformer of Customer entity into DTO
+        /// </summary>
+        /// <param name="customers"></param>
+        /// <returns></returns>
+        public IEnumerable<CustomerUserDto> CustomerEntityToDto(IEnumerable<Customer> customers)
+        {
+            return customers.Select(customer => new CustomerUserDto
+            {
+                Id = customer.Id,
+                FirstName = customer.FirstName,
+                Lastname = customer.LastName,
+                Username = customer.User.Username
+            });
         }
 
         /// <summary>
