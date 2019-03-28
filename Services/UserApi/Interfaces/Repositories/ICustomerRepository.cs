@@ -5,6 +5,8 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using PersistenceLib;
+
 namespace UserApi.Interfaces
 {
     using System.Collections.Generic;
@@ -15,16 +17,16 @@ namespace UserApi.Interfaces
     /// <summary>
     /// Interface that implements Customer repository
     /// </summary>
-    public interface ICustomerRepository
+    public interface ICustomerRepository : IRepository<Customer>
     {
         //Task<List<CustomerUserDto>> GetAll();
 
-        Task<List<CustomerUserDto>> GetAll();
+        //Task<List<CustomerUserDto>> GetAll();
 
-        Task Remove(int customerId);
+        //Task Remove(int customerId);
 
-        Task<Customer> UpdateCustomer(int id, CustomerDto customerDto);
+        //Task<Customer> UpdateCustomer(int id, CustomerDto customerDto);
 
-        Task<CustomerUserDto> Add(CustomerRegisterDto customerDto);
+        //Task<CustomerUserDto> Add(CustomerRegisterDto customerDto);
     }
 }

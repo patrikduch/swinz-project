@@ -6,7 +6,11 @@
 //-----------------------------------------------------------------------
 
 
+using System;
 using System.Linq.Expressions;
+using PersistenceLib;
+using UserApi.Interfaces.Repositories;
+using UserApi.Mocking;
 
 namespace UserApi.Repositories
 {
@@ -25,7 +29,7 @@ namespace UserApi.Repositories
     /// <summary>
     /// Repository for customer`s manipulation
     /// </summary>
-    public class CustomerRepository : ICustomerRepository
+    public class CustomerRepository : Repository<Customer>, ICustomerRepository 
     {
         #region Fields
         /// <summary>
@@ -39,10 +43,19 @@ namespace UserApi.Repositories
         /// Inject constructor for Customer repository
         /// </summary>
         /// <param name="userContext">Context of all users</param>
-        public CustomerRepository(UserContext userContext)
+        //public CustomerRepository(UserContext userContext)
+        //{
+          //  _userContext = userContext;
+        //}
+
+
+        public UserContext UserContext => Context as UserContext;
+
+        public CustomerRepository(IUserContextService context) : base(context.UserContext)
         {
-            _userContext = userContext;
+
         }
+
 
         #endregion
 
@@ -53,7 +66,7 @@ namespace UserApi.Repositories
         /// </summary>
         /// <param name="customers"></param>
         /// <returns></returns>
-        private static IEnumerable<CustomerUserDto> CustomerEntityToDto(IEnumerable<Customer> customers)
+        public IEnumerable<CustomerUserDto> CustomerEntityToDto(IEnumerable<Customer> customers)
         {
             return customers.Select(customer => new CustomerUserDto
             {
@@ -106,13 +119,15 @@ namespace UserApi.Repositories
         }
 
 
+        
+
         /// <summary>
         /// Get all customers
         /// </summary>
         /// <returns></returns>
         public async Task<List<CustomerUserDto>> GetAll()
         {
-            var customers = await _userContext.Customers.Include(c=>c.User).ToListAsync();
+            var customers = await UserContext.Customers.Include(c=>c.User).ToListAsync();
             return CustomerEntityToDto(customers).ToList();
         }
 

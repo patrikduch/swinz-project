@@ -5,6 +5,10 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using UserApi.Interfaces.UnitOfWork;
+using UserApi.Mocking;
+using UserApi.UnitOfWork;
+
 namespace ApiBase
 {
     using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -83,6 +87,9 @@ namespace ApiBase
             // Register repositories
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();
+
+            services.AddScoped<ICustomerUnitOfWork, CustomerUnitOfWork>();
+            services.AddScoped<IUserContextService, UserContextService>();
 
             #endregion
 

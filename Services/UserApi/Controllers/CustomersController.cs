@@ -5,6 +5,11 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using System.Linq;
+using UserApi.Contexts;
+using UserApi.Interfaces.UnitOfWork;
+using UserApi.UnitOfWork;
+
 namespace UserApi.Controllers
 {
     using Domains;
@@ -23,19 +28,22 @@ namespace UserApi.Controllers
     public class CustomersController : ControllerBase, ICustomerController
     {
         #region Fields
+
         /// <summary>
-        /// Reference to the customer`s repository
+        /// Reference to the customer`s unit of work
         /// </summary>
-        private readonly ICustomerRepository _customerRepository;
+        private readonly ICustomerUnitOfWork _customerUnitOfWork;
+
         #endregion
         #region Constructors
         /// <summary>
         /// Inject constructor for Customer`s Controller
         /// </summary>
         /// <param name="customerRepository">Interface for customer repository</param>
-        public CustomersController(ICustomerRepository customerRepository)
+        public CustomersController(ICustomerUnitOfWork customerUnitOfWork)
         {
-            _customerRepository = customerRepository;
+            _customerUnitOfWork = customerUnitOfWork;
+
         }
         #endregion
         #region Actions
@@ -45,9 +53,9 @@ namespace UserApi.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("getAll")]
-        public async Task<List<CustomerUserDto>> GetAllCustomers()
+        public async Task<List<Customer>> GetAllCustomers()
         {
-            return await _customerRepository.GetAll();
+            return await _customerUnitOfWork.CustomerRepository.GetAll() as List<Customer>;
         }
 
 
@@ -60,7 +68,9 @@ namespace UserApi.Controllers
         [Route("create")]
         public Task<CustomerUserDto> CreateCustomer([FromBody] CustomerRegisterDto customerDto)
         {
-            return _customerRepository.Add(customerDto);
+            //return _customerRepository.Add(customerDto);
+
+            return null;
         }
 
         /// <summary>
@@ -73,7 +83,9 @@ namespace UserApi.Controllers
         [Route("update/{id}")]
         public async Task<Customer> UpdateCustomer(int id, [FromBody] CustomerDto dto)
         {
-            return await _customerRepository.UpdateCustomer(id, dto);
+            //return await _customerRepository.UpdateCustomer(id, dto);
+
+            return null;
         }
 
         /// <summary>
@@ -85,7 +97,8 @@ namespace UserApi.Controllers
         [HttpDelete]
         public async Task DeleteCustomer(int id)
         {
-            await _customerRepository.Remove(id);
+            return;
+            //await _customerRepository.Remove(id);
         }
         #endregion
     }
