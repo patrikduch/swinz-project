@@ -18,7 +18,7 @@ namespace PersistenceLib
     /// <typeparam name="TEntity">Type of repository entity</typeparam>
     public interface IRepository<TEntity> where TEntity: class
     {
-        TEntity Get(int id);
+        Task<TEntity> Get(int id);
         Task<IEnumerable<TEntity>> GetAll();
         IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
         void Add(TEntity entity);

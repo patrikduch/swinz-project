@@ -5,6 +5,8 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using PersistenceLib;
+
 namespace UserApi.Interfaces.Repositories
 {
     using System.Collections.Generic;
@@ -16,13 +18,11 @@ namespace UserApi.Interfaces.Repositories
     /// <summary>
     /// Interface that implements User repository
     /// </summary>
-    public interface IUserRepository
+    public interface IUserRepository : IRepository<User>
     {
         Task<List<User>> GetUsers();
 
         Task<User> CreateAdmin(string username, string password);
-
-        Task<User> CreateCustomer(CustomerRegisterDto customerDto);
 
         Task<User> ValidateUser(RegisterUserDto userDto);
 

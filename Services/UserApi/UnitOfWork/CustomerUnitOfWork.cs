@@ -7,18 +7,21 @@ using Microsoft.EntityFrameworkCore;
 using PersistenceLib;
 using UserApi.Contexts;
 using UserApi.Interfaces;
+using UserApi.Interfaces.Repositories;
 using UserApi.Interfaces.UnitOfWork;
 
 namespace UserApi.UnitOfWork
 {
     public class CustomerUnitOfWork : ICustomerUnitOfWork
     {
-        private UserContext _userContext;
+        private readonly UserContext _userContext;
 
-        public CustomerUnitOfWork(UserContext userContext, ICustomerRepository customerRepository)
+        public CustomerUnitOfWork(UserContext userContext, ICustomerRepository customerRepository, IUserRepository userRepository)
         {
             _userContext = userContext;
+            // Services initialization
             CustomerRepository = customerRepository;
+            UserRepository = userRepository;
         }
 
         public void Dispose()
@@ -26,12 +29,13 @@ namespace UserApi.UnitOfWork
             _userContext.Dispose();
         }
 
-        public int Complete()
+        Task<int> IUnitOfWork.Complete()
         {
-            return _userContext.SaveChanges();
+            return _userContext.SaveChangesAsync();
         }
 
         public ICustomerRepository CustomerRepository { get; private set; }
-        }
+        public IUserRepository UserRepository { get; private set; }
+    }
 }
     

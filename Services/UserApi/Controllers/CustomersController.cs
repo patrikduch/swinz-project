@@ -5,17 +5,11 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
-using System.Linq;
-using UserApi.Contexts;
-using UserApi.Interfaces.Helpers;
-using UserApi.Interfaces.UnitOfWork;
-using UserApi.UnitOfWork;
-
 namespace UserApi.Controllers
 {
+    using UserApi.Interfaces.UnitOfWork;
     using Domains;
     using Dto.Customers;
-    using Interfaces;
     using Microsoft.AspNetCore.Mvc;
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -48,18 +42,7 @@ namespace UserApi.Controllers
         }
         #endregion
         #region Actions
-        /// <summary>
-        /// Get all customers from database
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        [Route("getAll")]
-        public async Task<IEnumerable<CustomerUserDto>> GetAllCustomers()
-        {
-           return await _customerUnitOfWork.CustomerRepository.GetAllCustomers();
-        }
-
-
+        
         /// <summary>
         /// Creation of new customer
         /// </summary>
@@ -70,7 +53,7 @@ namespace UserApi.Controllers
         public async Task<CustomerUserDto> CreateCustomer([FromBody] CustomerRegisterDto customerDto)
         {
             var res = await _customerUnitOfWork.CustomerRepository.CreateCustomer(customerDto);
-            _customerUnitOfWork.Complete();
+            await _customerUnitOfWork.Complete();
 
             return new CustomerUserDto
             {
@@ -79,6 +62,18 @@ namespace UserApi.Controllers
                 Username = res.User.Username
             };
         }
+
+        /// <summary>
+        /// Get all customers from database
+        /// </summary>
+        /// <returns>List of all customers</returns>
+        [HttpGet]
+        [Route("getAll")]
+        public async Task<IEnumerable<CustomerUserDto>> GetAllCustomers()
+        {
+            return await _customerUnitOfWork.CustomerRepository.GetAllCustomers();
+        }
+
 
         /// <summary>
         /// Update customer by his id
@@ -104,8 +99,10 @@ namespace UserApi.Controllers
         [HttpDelete]
         public async Task DeleteCustomer(int id)
         {
-            return;
-            //await _customerRepository.Remove(id);
+            var userEntity = await _customerUnitOfWork.UserRepository.Get(id);
+            _customerUnitOfWork.UserRepository.Remove(userEntity);
+            await _customerUnitOfWork.Complete();
+
         }
         #endregion
     }

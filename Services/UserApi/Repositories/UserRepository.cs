@@ -5,6 +5,13 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using System;
+using System.Linq.Expressions;
+using PersistenceLib;
+using UserApi.Interfaces;
+using UserApi.Interfaces.Helpers;
+using UserApi.Mocking;
+
 namespace UserApi.Repositories
 {
     using System.Collections.Generic;
@@ -21,7 +28,7 @@ namespace UserApi.Repositories
     /// <summary>
     /// Repository for user`s manipulation
     /// </summary>
-    public class UserRepository : IUserRepository
+    public class UserRepository : Repository<User>, IUserRepository
     {
 
         #region Fields
@@ -35,25 +42,33 @@ namespace UserApi.Repositories
         /// <summary>
         /// Main repository constructor for injecting resources
         /// </summary>
-        /// <param name="userContext">Context for user`s manipulation</param>
-        public UserRepository(UserContext userContext)
+        /// <param name="context">Context service for user`s manipulation</param>
+        public UserRepository(IUserContextService context) : base(context.UserContext)
         {
-            _context = userContext;
+            UserContext = context.UserContext;
         }
+
         #endregion
+
+
+        #region Fields
+        public UserContext UserContext { get; }
+
+        #endregion
+
 
         #region Methods
 
         private async  Task<User> PrepareUser(UserDto dto, string roleName)
         {
-            var entity = await _context.Users.Include(u => u.UserRoles).Where(u => u.Username == dto.Username).FirstOrDefaultAsync();
+            var entity = await UserContext.Users.Include(u => u.UserRoles).Where(u => u.Username == dto.Username).FirstOrDefaultAsync();
 
             // This user already exists
             if (entity != null) return null;
 
 
             // Create role if not exists
-            var roleEntity = await _context.Roles.FirstOrDefaultAsync(r => r.Name == roleName) ?? new Role()
+            var roleEntity = await UserContext.Roles.FirstOrDefaultAsync(r => r.Name == roleName) ?? new Role()
             {
                 Name = roleName
             };
@@ -94,13 +109,13 @@ namespace UserApi.Repositories
             if (string.IsNullOrEmpty(userDto.Username) || string.IsNullOrEmpty(userDto.Password))
                 return null;
 
-            var user = await _context.Users.SingleOrDefaultAsync(x => x.Username == userDto.Username);
+            var userEntity = await UserContext.Users.FirstOrDefaultAsync(c => c.Username == userDto.Username);
 
             // check if username exists
-            if (user == null)
+            if (userEntity == null)
                 return null;
 
-            return !CryptographyHelper.VerifyPasswordHash(userDto.Password, user.PasswordHash, user.PasswordSalt) ? null : user;
+            return !CryptographyHelper.VerifyPasswordHash(userDto.Password, userEntity.PasswordHash, userEntity.PasswordSalt) ? null : userEntity;
 
         }
 
@@ -140,27 +155,19 @@ namespace UserApi.Repositories
             };
 
             // Affect tracking mechanism of EF
-            _context.Users.Add(await PrepareUser(dto, "Admin"));
+            UserContext.Users.Add(await PrepareUser(dto, "Admin"));
 
             // Save changes to the database
-            await _context.SaveChangesAsync();
+            await UserContext.SaveChangesAsync();
 
             // Returns user
-            return await _context.Users.Where(u=>u.Username == username).LastOrDefaultAsync();
+            return await UserContext.Users.Where(u=>u.Username == username).LastOrDefaultAsync();
         }
 
-        /// <summary>
-        /// Creation of customer
-        /// </summary>
-        /// <param name="customerDto">Data transfer object for customers</param>
-        /// <returns></returns>
-        public async Task<User> CreateCustomer(CustomerRegisterDto customerDto)
-        {
-            return null;
-        }
 
         #endregion
 
 
+        
     }
 }

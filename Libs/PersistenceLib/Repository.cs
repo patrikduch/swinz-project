@@ -34,17 +34,6 @@ namespace PersistenceLib
             Context = context;
         }
 
-        /// <summary>
-        /// Get entry by identifier
-        /// </summary>
-        /// <param name="id">identifier</param>
-        /// <returns>Entity</returns>
-        public TEntity Get(int id)
-        {
-            return Context.Set<TEntity>().Find(id);
-        }
-
-        
 
         /// <summary>
         /// Get the result from specific entity based on condition
@@ -101,6 +90,15 @@ namespace PersistenceLib
             return await Context.Set<TEntity>().ToListAsync();
         }
 
+        /// <summary>
+        /// Get entry by identifier
+        /// </summary>
+        /// <param name="id">identifier</param>
+        /// <returns>Entity</returns>
+        async Task<TEntity> IRepository<TEntity>.Get(int id)
+        {
+            return  await Context.Set<TEntity>().FindAsync(id);
+        }
 
     }
 }

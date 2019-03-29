@@ -5,6 +5,8 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using System.Threading.Tasks;
+
 namespace PersistenceLib
 {
     using System;
@@ -14,6 +16,6 @@ namespace PersistenceLib
     /// </summary>
     public interface IUnitOfWork : IDisposable
     {
-        int Complete();
+        Task<int> Complete();
     }
 }

@@ -24,8 +24,6 @@ namespace UserApi.Interfaces
 
         Task<List<CustomerUserDto>> GetAllCustomers();
 
-        //Task<List<CustomerUserDto>> GetAll();
-
         //Task Remove(int customerId);
 
         //Task<Customer> UpdateCustomer(int id, CustomerDto customerDto);

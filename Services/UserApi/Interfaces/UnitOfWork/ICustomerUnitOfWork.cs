@@ -1,4 +1,6 @@
-﻿namespace UserApi.Interfaces.UnitOfWork
+﻿using UserApi.Interfaces.Repositories;
+
+namespace UserApi.Interfaces.UnitOfWork
 {
     using System.Threading.Tasks;
     using PersistenceLib;
@@ -7,5 +9,6 @@
     public interface ICustomerUnitOfWork : IUnitOfWork
     {
         ICustomerRepository CustomerRepository { get; }
+        IUserRepository UserRepository { get; }
     }
 }
