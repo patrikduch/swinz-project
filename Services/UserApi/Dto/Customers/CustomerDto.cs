@@ -25,7 +25,7 @@ namespace UserApi.Dto.Customers
         /// <summary>
         /// Gets or sets customer`s last name
         /// </summary>
-        public string Lastname { get; set; }
+        public string LastName { get; set; }
 
     }
 }

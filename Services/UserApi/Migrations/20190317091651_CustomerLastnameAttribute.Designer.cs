@@ -29,7 +29,7 @@ namespace UserApi.Migrations
 
                     b.Property<string>("FirstName");
 
-                    b.Property<string>("Lastname");
+                    b.Property<string>("LastName");
 
                     b.HasKey("Id");
 

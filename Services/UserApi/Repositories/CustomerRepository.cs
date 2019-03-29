@@ -5,10 +5,9 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
-using Microsoft.EntityFrameworkCore;
-
 namespace UserApi.Repositories
 {
+    using Microsoft.EntityFrameworkCore;
     using Contexts;
     using Domains;
     using Dto.Customers;
@@ -49,10 +48,6 @@ namespace UserApi.Repositories
         #endregion
 
         #region Methods
-
-        
-
-
         /// <summary>
         /// Creation of customer
         /// </summary>
@@ -84,13 +79,15 @@ namespace UserApi.Repositories
             return customerResult;
         }
 
+        /// <summary>
+        /// Get all customers without restrictions
+        /// </summary>
+        /// <returns>Collection of customers</returns>
         public async Task<List<CustomerUserDto>> GetAllCustomers()
         {
             var customers = await UserContext.Customers.Include(c => c.User).ToListAsync();
-
             return _userHelperService.CustomerEntityToDto(customers).ToList();
         }
-
         #endregion
     }
 }

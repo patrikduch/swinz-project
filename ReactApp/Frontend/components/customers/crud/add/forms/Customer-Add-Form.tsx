@@ -101,8 +101,8 @@ export default class NewCustomerForm extends React.Component<ICustomerAddFormPro
 
     // Object that will be sended with POST request to create new customer
     const data = {
-      firstname: this.state.firstname.value,
-      lastname: this.state.lastname,
+      firstName: this.state.firstname.value,
+      lastName: this.state.lastname,
       username: this.state.username.value,
       password: this.state.password
     };

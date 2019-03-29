@@ -27,7 +27,7 @@ namespace UserApi.Migrations
                 table: "Customer");
 
             migrationBuilder.DropColumn(
-                name: "Lastname",
+                name: "LastName",
                 table: "Customer");
 
             migrationBuilder.AddPrimaryKey(
@@ -53,7 +53,7 @@ namespace UserApi.Migrations
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
-                name: "Lastname",
+                name: "LastName",
                 table: "Customer",
                 nullable: true);
 

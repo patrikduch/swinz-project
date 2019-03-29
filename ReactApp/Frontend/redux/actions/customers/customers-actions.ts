@@ -42,6 +42,8 @@ export const createCustomer : ActionCreator<{}> = (customerObj: object) => async
         
         CustomerApi.createCustomer(customerObj).then(() => {
 
+            console.log(customerObj);
+
             dispatch({ type: actionTypes.CUSTOMER_CREATION_SUCCESS, customerObj });
 
         }).catch(() => {

@@ -35,7 +35,7 @@ namespace UserApi.Helpers
             {
                 Id = customer.Id,
                 FirstName = customer.FirstName,
-                Lastname = customer.LastName,
+                LastName = customer.LastName,
                 Username = customer.User.Username
             });
         }

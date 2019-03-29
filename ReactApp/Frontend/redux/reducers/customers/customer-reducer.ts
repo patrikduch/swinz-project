@@ -25,14 +25,17 @@ const reducer = (state : any = initialState.customers, action: any) => {
         case actionTypes.CUSTOMER_CREATION_SUCCESS: // Creation of new customer
 
             let customersResult = new Array();
+
+            console.log(action);
             
             state.data.forEach((arg: any) => {
 
                 customersResult.push(arg);
             });
 
-            customersResult.push(action.data);
+            customersResult.push(action.customerObj);
 
+            console.log(action)
 
             return {
                 ...state,

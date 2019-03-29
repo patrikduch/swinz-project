@@ -75,7 +75,7 @@ namespace UserApi.Controllers
             return new CustomerUserDto
             {
                 FirstName = res.FirstName,
-                Lastname = res.LastName,
+                LastName = res.LastName,
                 Username = res.User.Username
             };
         }
