@@ -138,7 +138,7 @@ namespace UserApi.Controllers
 
             try
             {
-                user = await _userRepository.GetUserById(userId);
+                user = await _userRepository.Get(userId);
             }
             catch (NullReferenceException)
             {

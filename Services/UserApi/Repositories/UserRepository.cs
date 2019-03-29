@@ -5,15 +5,10 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
-using System;
-using System.Linq.Expressions;
-using PersistenceLib;
-using UserApi.Interfaces;
-using UserApi.Interfaces.Helpers;
-using UserApi.Mocking;
-
 namespace UserApi.Repositories
 {
+    using PersistenceLib;
+    using Mocking;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Microsoft.EntityFrameworkCore;
@@ -21,7 +16,6 @@ namespace UserApi.Repositories
     using Domains;
     using System.Linq;
     using Helpers;
-    using Dto.Customers;
     using Dto.Users;
     using UserApi.Interfaces.Repositories;
 
@@ -52,6 +46,9 @@ namespace UserApi.Repositories
 
 
         #region Fields
+        /// <summary>
+        /// Reference to the context for user`s manipulation
+        /// </summary>
         public UserContext UserContext { get; }
 
         #endregion
@@ -66,20 +63,17 @@ namespace UserApi.Repositories
             // This user already exists
             if (entity != null) return null;
 
-
             // Create role if not exists
             var roleEntity = await UserContext.Roles.FirstOrDefaultAsync(r => r.Name == roleName) ?? new Role()
             {
                 Name = roleName
             };
 
-
             // List of roles that will be added to new user
             var roles = new List<UserRoles>
             {
                 new UserRoles() {User = new User() {Username = dto.Username}, Role = roleEntity}
             };
-
 
             // Encryption process
             CryptographyHelper.CreatePasswordHash(dto.Password, out var passwordHash, out var passwordSalt);
@@ -93,11 +87,8 @@ namespace UserApi.Repositories
                 PasswordSalt = passwordSalt
             };
 
-
             return newUser;
-
         }
-
 
         /// <summary>
         /// User validation
@@ -120,17 +111,6 @@ namespace UserApi.Repositories
         }
 
         /// <summary>
-        /// Get user by his identifier
-        /// </summary>
-        /// <param name="id"> identifier of user</param>
-        /// <returns></returns>
-        public  async  Task<User> GetUserById(int id)
-        {
-            return await _context.Users.SingleOrDefaultAsync(u => u.Id == id);
-        }
-
-
-        /// <summary>
         /// Get the list of all users
         /// </summary>
         /// <returns></returns>
@@ -147,7 +127,6 @@ namespace UserApi.Repositories
         /// <returns></returns>
         public async Task<User> CreateAdmin(string username, string password)
         {
-
             var dto = new UserDto
             {
                 Username = username,

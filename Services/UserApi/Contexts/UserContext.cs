@@ -34,7 +34,9 @@ namespace UserApi.Contexts
         /// Data-set for accessing roles
         /// </summary>
         public DbSet<Role> Roles { get; set; }
-
+        /// <summary>
+        /// Data-set for accessing customers
+        /// </summary>
         public DbSet<Customer> Customers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

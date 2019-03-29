@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using UserApi.Domains;
-using UserApi.Dto.Customers;
-using UserApi.Dto.Users;
-
-namespace UserApi.Interfaces.Helpers
+﻿namespace UserApi.Interfaces.Helpers
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Domains;
+    using Dto.Customers;
+    using Dto.Users;
+
     public interface IUserHelperService
     {
         Task<User> PrepareUser(UserDto dto, string roleName);

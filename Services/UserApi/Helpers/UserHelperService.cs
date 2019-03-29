@@ -1,11 +1,14 @@
-﻿
-
-using UserApi.Dto.Customers;
-using UserApi.Interfaces.Helpers;
-using UserApi.Mocking;
-
+﻿//-----------------------------------------------------------------------
+// <copyright file="UserHelperService.cs" website="Patrikduch.com">
+//     Copyright 2019 (c) Patrikduch.com
+// </copyright>
+// <author>Patrik Duch</author>
+//-----------------------------------------------------------------------
 namespace UserApi.Helpers
 {
+    using Dto.Customers;
+    using UserApi.Interfaces.Helpers;
+    using Mocking;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -14,15 +17,19 @@ namespace UserApi.Helpers
     using Domains;
     using Dto.Users;
 
+    /// <summary>
+    /// Service providing helper methods for user`s manipulation 
+    /// </summary>
     public class UserHelperService : IUserContextService, IUserHelperService
     {
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UserHelperService"/> class.
+        /// </summary>
+        /// <param name="userContext">Database context for user`s manipulation</param>
         public UserHelperService(UserContext userContext)
         {
            UserContext = userContext;
-
         }
-
 
         /// <summary>
         /// Transformer of Customer entity into DTO

@@ -1,11 +1,17 @@
-﻿using UserApi.Interfaces.Repositories;
-
+﻿//-----------------------------------------------------------------------
+// <copyright file="ICustomerUnitOfWork.cs" website="Patrikduch.com">
+//     Copyright 2019 (c) Patrikduch.com
+// </copyright>
+// <author>Patrik Duch</author>
+//-----------------------------------------------------------------------
 namespace UserApi.Interfaces.UnitOfWork
 {
-    using System.Threading.Tasks;
+    using Repositories;
     using PersistenceLib;
-    using Dto.Customers;
 
+    /// <summary>
+    /// Contract for customer`s unit of work
+    /// </summary>
     public interface ICustomerUnitOfWork : IUnitOfWork
     {
         ICustomerRepository CustomerRepository { get; }

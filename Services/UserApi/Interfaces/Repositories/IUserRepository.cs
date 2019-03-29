@@ -25,8 +25,5 @@ namespace UserApi.Interfaces.Repositories
         Task<User> CreateAdmin(string username, string password);
 
         Task<User> ValidateUser(RegisterUserDto userDto);
-
-        Task<User> GetUserById(int id);
-
     }
 }

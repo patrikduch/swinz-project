@@ -5,11 +5,9 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using PersistenceLib;
-
-namespace UserApi.Interfaces
+namespace UserApi.Interfaces.Repositories
 {
+    using PersistenceLib;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Domains;
@@ -21,13 +19,6 @@ namespace UserApi.Interfaces
     public interface ICustomerRepository : IRepository<Customer>
     {
         Task<Customer> CreateCustomer(CustomerRegisterDto customerDto);
-
         Task<List<CustomerUserDto>> GetAllCustomers();
-
-        //Task Remove(int customerId);
-
-        //Task<Customer> UpdateCustomer(int id, CustomerDto customerDto);
-
-        //Task<CustomerUserDto> Add(CustomerRegisterDto customerDto);
     }
 }

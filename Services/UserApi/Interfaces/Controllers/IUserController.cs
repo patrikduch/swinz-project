@@ -4,19 +4,14 @@
 // </copyright>
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
-
-
-using UserApi.Dto.Token;
-using UserApi.Dto.Users;
-
 namespace UserApi.Interfaces
 {
+    using Dto.Token;
+    using Dto.Users;
     using Microsoft.AspNetCore.Mvc;
-    using Dto;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Domains;
-    using Dto.Customers;
 
     /// <summary>
     /// Interface description for User REST API Controller

@@ -5,10 +5,8 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
-
 namespace UserApi.EntityConfigurations
 {
-
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
     using Microsoft.EntityFrameworkCore;
     using Domains;

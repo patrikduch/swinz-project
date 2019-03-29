@@ -31,14 +31,14 @@ namespace UserApi.Controllers
 
         #endregion
         #region Constructors
+
         /// <summary>
         /// Inject constructor for Customer`s Controller
         /// </summary>
-        /// <param name="customerRepository">Interface for customer repository</param>
+        /// <param name="customerUnitOfWork">Unit of work for customer`a manipulation</param>
         public CustomersController(ICustomerUnitOfWork customerUnitOfWork)
         {
             _customerUnitOfWork = customerUnitOfWork;
-
         }
         #endregion
         #region Actions

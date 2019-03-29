@@ -5,8 +5,6 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
-using UserApi.Dto.Users;
-
 namespace UserApi.Interfaces.Controllers
 {
     using Domains;
@@ -24,7 +22,5 @@ namespace UserApi.Interfaces.Controllers
         Task<Customer> UpdateCustomer(int id, CustomerDto customerDto);
 
         Task<CustomerUserDto> CreateCustomer(CustomerRegisterDto customerDto);
-
-
     }
 }

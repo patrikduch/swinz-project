@@ -7,12 +7,12 @@
 
 namespace UserApi.Repositories
 {
+    using UserApi.Interfaces.Repositories;
     using Microsoft.EntityFrameworkCore;
     using Contexts;
     using Domains;
     using Dto.Customers;
     using Dto.Users;
-    using Interfaces;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
