@@ -76,6 +76,7 @@ namespace UserApi.Repositories
             UserContext.Customers.Add(customerResult);
 
             // Return new added object
+            //return await UserContext.Customers.LastOrDefaultAsync();
             return customerResult;
         }
 

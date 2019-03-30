@@ -26,16 +26,11 @@ const reducer = (state : any = initialState.customers, action: any) => {
 
             let customersResult = new Array();
 
-            console.log(action);
-            
             state.data.forEach((arg: any) => {
-
                 customersResult.push(arg);
             });
 
-            customersResult.push(action.customerObj);
-
-            console.log(action)
+            customersResult.push(action.result.data);
 
             return {
                 ...state,

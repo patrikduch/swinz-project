@@ -41,8 +41,6 @@ export default class CustomersListItem extends React.Component<ICustomerListItem
            margin-left: 10vw;
         `;
 
-        console.log(this.props.arg)
-
         return (
             <tr key={ uniqid() }>
                 

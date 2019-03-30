@@ -57,8 +57,13 @@ namespace UserApi.Controllers
             var res = await _customerUnitOfWork.CustomerRepository.CreateCustomer(customerDto);
             await _customerUnitOfWork.Complete();
 
+            var customerId =
+                _customerUnitOfWork.CustomerRepository.Find(c =>
+                    c.FirstName == res.FirstName && c.LastName == res.LastName).SingleOrDefault();
+
             return new CustomerUserDto
             {
+                Id = customerId?.Id,
                 FirstName = res.FirstName,
                 LastName = res.LastName,
                 Username = res.User.Username
