@@ -9,9 +9,11 @@
 import *  as React from 'react';
 import ICustomerRemoveProps from '../../../../typescript/interfaces/components/customers/ICustomer-Remove-Props';
 
-export default () => {
+export default (props:any) => {
+    console.log(props)
     return (
         <span>
+            <button onClick={props.deleteCustomer}>Smazat</button>
         </span>  
     );
 }

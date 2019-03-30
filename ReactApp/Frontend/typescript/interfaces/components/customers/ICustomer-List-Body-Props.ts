@@ -8,4 +8,5 @@
 
 export default interface ICustomerListBodyProps {
     data: [],
+    deleteCustomer: Function // Passed removal customer method
 }

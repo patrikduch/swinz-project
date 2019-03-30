@@ -20,4 +20,8 @@
     <ProjectReference Include="..\Services\UserApi\UserApi.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Mocking\" />
+  </ItemGroup>
+
 </Project>

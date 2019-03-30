@@ -5,6 +5,8 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using System.Linq;
+
 namespace UserApi.Controllers
 {
     using UserApi.Interfaces.UnitOfWork;
@@ -99,7 +101,13 @@ namespace UserApi.Controllers
         [HttpDelete]
         public async Task DeleteCustomer(int id)
         {
-            var userEntity = await _customerUnitOfWork.UserRepository.Get(id);
+            var userEntity = (_customerUnitOfWork.UserRepository.Find(c => c.Customer.Id == id)).SingleOrDefault();
+
+            if (userEntity != null)
+            {
+                userEntity.Customer = await _customerUnitOfWork.CustomerRepository.Get(id);
+            }
+
             _customerUnitOfWork.UserRepository.Remove(userEntity);
             await _customerUnitOfWork.Complete();
 

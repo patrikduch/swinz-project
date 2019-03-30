@@ -12,7 +12,6 @@ namespace UserApi.Interfaces.Repositories
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Domains;
-    using Dto.Customers;
     using Dto.Users;
 
     /// <summary>
@@ -21,9 +20,7 @@ namespace UserApi.Interfaces.Repositories
     public interface IUserRepository : IRepository<User>
     {
         Task<List<User>> GetUsers();
-
         Task<User> CreateAdmin(string username, string password);
-
         Task<User> ValidateUser(RegisterUserDto userDto);
     }
 }

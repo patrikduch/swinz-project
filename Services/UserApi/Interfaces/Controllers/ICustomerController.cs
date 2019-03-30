@@ -4,7 +4,6 @@
 // </copyright>
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
-
 namespace UserApi.Interfaces.Controllers
 {
     using Domains;
@@ -18,9 +17,7 @@ namespace UserApi.Interfaces.Controllers
     public interface ICustomerController
     {
         Task<IEnumerable<CustomerUserDto>> GetAllCustomers();
-
         Task<Customer> UpdateCustomer(int id, CustomerDto customerDto);
-
         Task<CustomerUserDto> CreateCustomer(CustomerRegisterDto customerDto);
     }
 }

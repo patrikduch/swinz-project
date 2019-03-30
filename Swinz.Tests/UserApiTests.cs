@@ -5,6 +5,8 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+
+
 namespace Swinz.Tests
 {
     using System;
@@ -20,7 +22,14 @@ namespace Swinz.Tests
     /// </summary>
     public class UserApiTests
     {
-        
+
+        [Fact]
+        public void Test()
+        {
+          
+
+
+        }
 
     }
 }
