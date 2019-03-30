@@ -34,3 +34,6 @@ Swinz.Tests/obj
 Swinz.Tests/bin
 Libs/PersistenceLib/bin
 Libs/PersistenceLib/obj
+Libs/PaginationLib/obj
+Libs/PaginationLib/bin
+.vs/Swinz

@@ -5,6 +5,8 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using UserApi.Dto;
+
 namespace UserApi.Repositories
 {
     using UserApi.Interfaces.Repositories;
@@ -76,7 +78,6 @@ namespace UserApi.Repositories
             UserContext.Customers.Add(customerResult);
 
             // Return new added object
-            //return await UserContext.Customers.LastOrDefaultAsync();
             return customerResult;
         }
 
@@ -89,6 +90,16 @@ namespace UserApi.Repositories
             var customers = await UserContext.Customers.Include(c => c.User).ToListAsync();
             return _userHelperService.CustomerEntityToDto(customers).ToList();
         }
+
+        public async Task<List<CustomerUserDto>> GetCustomersPaged(int from, int to, int pageSize)
+        {
+            var customers = await UserContext.Customers.Include(c => c.User).Skip(from).Take(to).ToListAsync();
+
+            return _userHelperService.CustomerEntityToDto(customers).ToList();
+        }
+
+
+
         #endregion
     }
 }

@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Libs\PaginationLib\PaginationLib.csproj" />
     <ProjectReference Include="..\..\Libs\PersistenceLib\PersistenceLib.csproj" />
   </ItemGroup>
 

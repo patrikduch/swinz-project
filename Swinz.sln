@@ -21,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Swinz.Tests", "Swinz.Tests\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{6F2AF9F8-C28B-45E7-B132-365FF8BE80BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersistenceLib", "Libs\PersistenceLib\PersistenceLib.csproj", "{EC0FFE11-A4EB-47F2-89FE-A80A7B54B90D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersistenceLib", "Libs\PersistenceLib\PersistenceLib.csproj", "{EC0FFE11-A4EB-47F2-89FE-A80A7B54B90D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaginationLib", "Libs\PaginationLib\PaginationLib.csproj", "{EDD95B3E-6D3F-43C8-966E-F87722FE10D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{EC0FFE11-A4EB-47F2-89FE-A80A7B54B90D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC0FFE11-A4EB-47F2-89FE-A80A7B54B90D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC0FFE11-A4EB-47F2-89FE-A80A7B54B90D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDD95B3E-6D3F-43C8-966E-F87722FE10D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDD95B3E-6D3F-43C8-966E-F87722FE10D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDD95B3E-6D3F-43C8-966E-F87722FE10D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDD95B3E-6D3F-43C8-966E-F87722FE10D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +70,7 @@ Global
 		{34838DBD-B2B7-4469-947B-F3C7DF733C61} = {07040D16-0605-4DF9-9360-D07576C593AA}
 		{9F783E6D-14A0-40B1-B354-691D6B997560} = {CF03CD73-104A-4003-8BAB-93BC08922C9F}
 		{EC0FFE11-A4EB-47F2-89FE-A80A7B54B90D} = {6F2AF9F8-C28B-45E7-B132-365FF8BE80BD}
+		{EDD95B3E-6D3F-43C8-966E-F87722FE10D4} = {6F2AF9F8-C28B-45E7-B132-365FF8BE80BD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BC95EF07-4827-4F68-BFBC-5E941B2CEA18}

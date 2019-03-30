@@ -5,6 +5,8 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using UserApi.Dto;
+
 namespace UserApi.Interfaces.Repositories
 {
     using PersistenceLib;
@@ -20,5 +22,6 @@ namespace UserApi.Interfaces.Repositories
     {
         Task<Customer> CreateCustomer(CustomerRegisterDto customerDto);
         Task<List<CustomerUserDto>> GetAllCustomers();
+        Task<List<CustomerUserDto>> GetCustomersPaged(int from, int to, int pageSize);
     }
 }

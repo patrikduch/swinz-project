@@ -5,10 +5,9 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
-using System.Linq;
-
 namespace UserApi.Controllers
 {
+    using System.Linq;
     using UserApi.Interfaces.UnitOfWork;
     using Domains;
     using Dto.Customers;
@@ -16,6 +15,7 @@ namespace UserApi.Controllers
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using UserApi.Interfaces.Controllers;
+    using PaginationLib;
 
     /// <summary>
     /// Rest API Customers controller
@@ -71,7 +71,7 @@ namespace UserApi.Controllers
         }
 
         /// <summary>
-        /// Get all customers from database
+        /// Get all customers
         /// </summary>
         /// <returns>List of all customers</returns>
         [HttpGet]
@@ -79,6 +79,19 @@ namespace UserApi.Controllers
         public async Task<IEnumerable<CustomerUserDto>> GetAllCustomers()
         {
             return await _customerUnitOfWork.CustomerRepository.GetAllCustomers();
+        }
+
+
+        /// <summary>
+        /// Get all customers for current page
+        /// </summary>
+        /// <returns>List of all customers</returns>
+        [HttpGet]
+        [Route("getPaged")]
+        public async Task<IEnumerable<CustomerUserDto>> GetCustomersWithPagination([FromBody]PaginationTransferObject paginationTransfer)
+        {
+            var res = Paginator.GetPage(paginationTransfer);
+            return await _customerUnitOfWork.CustomerRepository.GetCustomersPaged(res.From, res.To, paginationTransfer.PageSize);
         }
 
 
