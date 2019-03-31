@@ -40,10 +40,12 @@ const reducer = (state : any = initialState.customers, action: any) => {
         // Update credentials of specific customer
         case actionTypes.CUSTOMER_UPDATE_SUCCESS:
 
+            console.log(state.data);
+
             const updatedData = state.data.map((arg: any) => {
                 if(arg.id == action.data.id) {
                     arg.firstName = action.data.firstName;
-                    arg.surname = action.data.surname;
+                    arg.lastName = action.data.lastName;
                 }
                 return arg;
             });

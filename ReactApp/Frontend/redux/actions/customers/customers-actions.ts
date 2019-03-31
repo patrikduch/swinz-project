@@ -50,13 +50,15 @@ export const createCustomer : ActionCreator<{}> = (customerObj: object) => async
 }
 
 
-export const updateCustomer : ActionCreator<{}> = (customerObj: any) => async (dispatch: Dispatch) => {        
-    const promiseResult = await CustomerApi.updateCustomer(customerObj.id, {
+export const updateCustomer : ActionCreator<{}> = (customerObj: any) => async (dispatch: Dispatch) => {    
+    
+    CustomerApi.updateCustomer(customerObj.id, {
         firstname: customerObj.firstname,
         lastname: customerObj.lastname
-    });
-
-    const data = promiseResult.data;
-
-    dispatch({ type: actionTypes.CUSTOMER_UPDATE_SUCCESS, data});    
+    }).then((result) => {
+        const data = result.data;
+        dispatch({ type: actionTypes.CUSTOMER_UPDATE_SUCCESS, data});  
+    }).catch((err) => {
+        console.log(err);
+    }); 
 }

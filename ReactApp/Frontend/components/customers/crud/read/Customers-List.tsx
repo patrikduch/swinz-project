@@ -48,7 +48,6 @@ export default class CustomersList extends React.Component<any, any> {
                         <CustomersListHeadings />
                         <CustomersListBody data={ this.props.customers } updateCustomer={this.props.actions.updateCustomer} deleteCustomer={this.props.actions.deleteCustomer} />
                     </Table>
-                    <CustomerListPaging />
                 </Container>
             );
         }
