@@ -12,27 +12,21 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 export default class EditCustomerForm extends React.Component<any, any> {
 
   state = {
-    firstname: this.props.arg.firstName,
-    lastname: this.props.arg.lastname
-  }
-
-  componentDidMount() {
-    console.log(this.props);
+    firstname: this.props.customer.firstName,
+    lastname: this.props.customer.lastName
   }
 
   updateCustomer = () => {
-
-    console.log(this.props.arg);
     
     // Object that will be sended with POST request to update customer
     const data = {
-      id: this.props.arg.id,
+      id: this.props.customer.id,
       firstname: this.state.firstname,
       lastname: this.state.lastname
     }
 
     // Call method to update customer
-    this.props.methods[0](data);
+    this.props.updateCustomer(data);
   }
 
   // Manipulation of web elements via state property

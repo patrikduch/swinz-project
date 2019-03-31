@@ -11,6 +11,7 @@ import ICustomerListItemState from '../../../../typescript/interfaces/components
 
 // Remove customer`s modal
 import CustomerDeletion from '../delete/modals/Customer-Deletion-Modal';
+import CustomerUpdate from '../update/modals/Customer-Update-Modal';
 
 var uniqid = require('uniqid');
 
@@ -25,7 +26,8 @@ interface ICustomerListItemProps {
     //iteration: number
     iteration: number,
 
-    deleteCustomer: Function
+    deleteCustomer: Function,
+    updateCustomer: Function
 }
 
 
@@ -49,7 +51,7 @@ export default class CustomersListItem extends React.Component<ICustomerListItem
                 <td>
                     <span>N/A</span>
                     <CustomerListOptions>
-                        <span>Editovat</span>
+                        <CustomerUpdate customer={this.props.arg} updateCustomer={this.props.updateCustomer} />
                         <CustomerDeletion customerId={this.props.arg.id} deleteCustomer={this.props.deleteCustomer} />
                     </CustomerListOptions>
                 </td>

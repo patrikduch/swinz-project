@@ -19,23 +19,28 @@ namespace Swinz.Tests.Libs.PaginationLib
         [Fact]
         public void GetPage_IdentifierEqualToOne_ReturnsZeroToFive()
         {
+            // Arrange
             var pagination = new PaginationTransferObject {PageIdentifier = 1};
-            var result = Paginator.GetPage(pagination);
 
+            // Act
+            var result = Paginator.GetPage(pagination);
             var expected = new PaginatorResult {From = 0, To = 5};
 
+            // Assert
             Assert.Equal(result, expected);
-
         }
 
         [Fact]
         public void GetPage_IdentifierNotEqualToOne_ReturnsFiveToTen()
         {
+            // Arrange
             var pagination = new PaginationTransferObject { PageIdentifier = 2 };
-            var result = Paginator.GetPage(pagination);
 
+            // Act
+            var result = Paginator.GetPage(pagination);
             var expected = new PaginatorResult { From = 5, To = 10 };
 
+            // Assert
             Assert.Equal(result, expected);
         }
 
@@ -43,11 +48,14 @@ namespace Swinz.Tests.Libs.PaginationLib
         [Fact]
         public void GetPage_IdentifierNotEqualToOne_ReturnsTenToFifteen()
         {
+            // Arrange
             var pagination = new PaginationTransferObject { PageIdentifier = 3 };
-            var result = Paginator.GetPage(pagination);
 
+            // Act
+            var result = Paginator.GetPage(pagination);
             var expected = new PaginatorResult { From = 10, To = 15 };
 
+            // Assert
             Assert.Equal(result, expected);
         }
     }

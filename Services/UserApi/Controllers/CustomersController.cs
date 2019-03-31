@@ -105,9 +105,21 @@ namespace UserApi.Controllers
         [Route("update/{id}")]
         public async Task<Customer> UpdateCustomer(int id, [FromBody] CustomerDto dto)
         {
-            //return await _customerRepository.UpdateCustomer(id, dto);
+            // Get customers entity by primary key
+            var entity = await _customerUnitOfWork.CustomerRepository.Get(id);
 
-            return null;
+            if (entity != null && (entity.FirstName != dto.FirstName || entity.LastName != dto.LastName)) // Entry was founded
+            {
+                // Change  entity values
+                entity.FirstName = dto.FirstName;
+                entity.LastName = dto.LastName;               
+            }
+
+            // Save changes
+            await _customerUnitOfWork.Complete();
+
+            // Return modified customer object
+            return entity;
         }
 
         /// <summary>
