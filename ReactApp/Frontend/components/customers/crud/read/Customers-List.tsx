@@ -41,7 +41,6 @@ export default class CustomersList extends React.Component<any, any> {
 
     getCustomers = () => {
         if (this.props.customers != undefined) {
-            console.log(this.props.customers);
             return (
                 <Container>
                     <Table>
