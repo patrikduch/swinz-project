@@ -9,8 +9,8 @@
 import * as React from 'react';
 import ICustomerListItemState from '../../../../typescript/interfaces/components/customers/ICustomer-List-Item-State';
 
-// Removal of customer
-import CustomerRemoval from '../delete/Customers-Remove';
+// Remove customer`s modal
+import CustomerDeletion from '../delete/modals/Customer-Deletion-Modal';
 
 var uniqid = require('uniqid');
 
@@ -32,7 +32,6 @@ interface ICustomerListItemProps {
 // Styled helper
 import styled from 'styled-components';
 
-
 export default class CustomersListItem extends React.Component<ICustomerListItemProps, ICustomerListItemState> {
 
     render() {
@@ -51,7 +50,7 @@ export default class CustomersListItem extends React.Component<ICustomerListItem
                     <span>N/A</span>
                     <CustomerListOptions>
                         <span>Editovat</span>
-                        <CustomerRemoval deleteCustomer={() => this.props.deleteCustomer(this.props.arg.id)} />
+                        <CustomerDeletion customerId={this.props.arg.id} deleteCustomer={this.props.deleteCustomer} />
                     </CustomerListOptions>
                 </td>
             </tr>
