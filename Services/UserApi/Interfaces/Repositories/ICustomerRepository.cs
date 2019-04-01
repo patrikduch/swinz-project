@@ -5,6 +5,7 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using PersistenceLib.Domains;
 using UserApi.Dto;
 
 namespace UserApi.Interfaces.Repositories
@@ -12,7 +13,6 @@ namespace UserApi.Interfaces.Repositories
     using PersistenceLib;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using Domains;
     using Dto.Customers;
 
     /// <summary>

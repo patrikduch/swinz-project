@@ -5,9 +5,10 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using PersistenceLib.Domains;
+
 namespace UserApi.Contexts
 {
-    using Domains;
     using EntityConfigurations;
     using Microsoft.EntityFrameworkCore;
 

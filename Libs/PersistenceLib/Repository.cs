@@ -23,7 +23,7 @@ namespace PersistenceLib
         /// <summary>
         /// Reference to the current database context
         /// </summary>
-        protected readonly DbContext Context;
+        protected DbContext Context;
 
         /// <summary>
         /// Constructor for creating new instance of generic repository class

@@ -4,11 +4,13 @@
 // </copyright>
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
+
+using PersistenceLib.Domains;
+
 namespace UserApi.Interfaces.Helpers
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using Domains;
     using Dto.Customers;
     using Dto.Users;
 

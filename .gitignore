@@ -37,3 +37,5 @@ Libs/PersistenceLib/obj
 Libs/PaginationLib/obj
 Libs/PaginationLib/bin
 .vs/Swinz
+Services/OrderApi/bin
+Services/OrderApi/obj

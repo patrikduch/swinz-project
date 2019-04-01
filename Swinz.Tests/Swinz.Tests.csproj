@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="EntityFrameworkCoreMock.Moq" Version="1.0.0.21" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.0.1" />
     <PackageReference Include="Moq" Version="4.10.1" />
     <PackageReference Include="xunit" Version="2.4.1" />
@@ -15,9 +16,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Services\ApiBase\ApiBase.csproj" />
-    <ProjectReference Include="..\Services\ProductApi\ProductApi.csproj" />
+    <ProjectReference Include="..\Services\OrderApi\OrderApi.csproj" />
     <ProjectReference Include="..\Services\UserApi\UserApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\OrderApi\Mocking\" />
   </ItemGroup>
 
 </Project>

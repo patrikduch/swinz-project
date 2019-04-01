@@ -7,7 +7,6 @@
 
 namespace UserApi.Controllers
 {
-    using Domains;
     using Dto.Token;
     using Dto.Users;
     using Helpers;
@@ -16,6 +15,7 @@ namespace UserApi.Controllers
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
     using Microsoft.IdentityModel.Tokens;
+    using PersistenceLib.Domains;
     using System;
     using System.Collections.Generic;
     using System.IdentityModel.Tokens.Jwt;

@@ -11,7 +11,6 @@ namespace Swinz.Tests
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using UserApi.Domains;
     using UserApi.Mocking;
     using UserApi.Repositories;
     using Xunit;

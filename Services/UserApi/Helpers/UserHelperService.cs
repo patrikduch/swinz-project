@@ -14,8 +14,8 @@ namespace UserApi.Helpers
     using System.Threading.Tasks;
     using Microsoft.EntityFrameworkCore;
     using Contexts;
-    using Domains;
     using Dto.Users;
+    using PersistenceLib.Domains;
 
     /// <summary>
     /// Service providing helper methods for user`s manipulation 

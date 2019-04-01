@@ -4,6 +4,9 @@
 // </copyright>
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
+
+using PersistenceLib.Domains;
+
 namespace UserApi.Interfaces
 {
     using Dto.Token;
@@ -11,7 +14,6 @@ namespace UserApi.Interfaces
     using Microsoft.AspNetCore.Mvc;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using Domains;
 
     /// <summary>
     /// Interface description for User REST API Controller

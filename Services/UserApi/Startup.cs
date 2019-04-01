@@ -30,11 +30,13 @@ namespace UserApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Only for migrations
-
+            #region Only for migrations
             // Entity framework context setup
             var conn = Configuration.GetConnectionString("Default");
             services.AddDbContext<UserContext>(options => options.UseSqlServer(conn));
+            #endregion
+
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

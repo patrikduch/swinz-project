@@ -5,11 +5,12 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using PersistenceLib.Domains;
+
 namespace UserApi.Controllers
 {
     using System.Linq;
     using UserApi.Interfaces.UnitOfWork;
-    using Domains;
     using Dto.Customers;
     using Microsoft.AspNetCore.Mvc;
     using System.Collections.Generic;

@@ -1,14 +1,9 @@
-﻿//-----------------------------------------------------------------------
-// <copyright file="Role.cs" website="Patrikduch.com">
-//     Copyright 2019 (c) Patrikduch.com
-// </copyright>
-// <author>Patrik Duch</author>
-//-----------------------------------------------------------------------
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace UserApi.Domains
+namespace PersistenceLib.Domains
 {
-    using System.Collections.Generic;
-
     /// <summary>
     /// Model that represents Role entity
     /// </summary>

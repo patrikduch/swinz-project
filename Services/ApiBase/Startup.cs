@@ -5,6 +5,11 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using OrderApi.Contexts;
+using OrderApi.Interfaces.Repositories;
+using OrderApi.Interfaces.UnitOfWork;
+using OrderApi.Repositories;
+using OrderApi.UnitOfWork;
 using UserApi.Interfaces.Helpers;
 using UserApi.Interfaces.UnitOfWork;
 using UserApi.Mocking;
@@ -84,21 +89,31 @@ namespace ApiBase
             // Entity framework context setup
             var conn = Configuration.GetConnectionString("Default");
             services.AddDbContext<UserContext>(options => options.UseSqlServer(conn));
+            services.AddDbContext<ProductContext>(options => options.UseSqlServer(conn));
 
+            #region UserApi
             // Register repositories
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();
-
             services.AddScoped<ICustomerUnitOfWork, CustomerUnitOfWork>();
             services.AddScoped<IUserContextService, UserContextService>();
-
             // Helper services
             services.AddScoped<IUserHelperService, UserHelperService>();
+            #endregion
+
+            services.AddScoped<IProductUnitOfWork, ProductUnitOfWork>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+
+
+
+
+
+
 
             #endregion
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
-                .AddApplicationPart(typeof(ProductApi.Controllers.ProductsController).Assembly)
+                .AddApplicationPart(typeof(OrderApi.Controllers.ProductController).Assembly)
                 .AddApplicationPart(typeof(UserApi.Controllers.UsersController).Assembly)
                 .AddApplicationPart(typeof(UserApi.Controllers.CustomersController).Assembly).
                 AddJsonOptions(options =>

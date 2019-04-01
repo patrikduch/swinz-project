@@ -5,11 +5,12 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using PersistenceLib.Domains;
+
 namespace UserApi.EntityConfigurations
 {
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
-    using Domains;
 
     /// <summary>
     /// Entity configuration for User entity

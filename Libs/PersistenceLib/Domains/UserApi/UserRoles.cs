@@ -1,11 +1,8 @@
-﻿// ----------------------------------------------------------------------
-// <copyright file="UserRoles.cs" website="Patrikduch.com">
-//     Copyright 2019 (c) Patrikduch.com
-// </copyright>
-// <author>Patrik Duch</author>
-//-----------------------------------------------------------------------
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace UserApi.Domains
+namespace PersistenceLib.Domains
 {
     /// <summary>
     /// Associative table for user and roles

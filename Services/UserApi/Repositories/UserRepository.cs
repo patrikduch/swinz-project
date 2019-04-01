@@ -5,6 +5,8 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using PersistenceLib.Domains;
+
 namespace UserApi.Repositories
 {
     using PersistenceLib;
@@ -13,7 +15,6 @@ namespace UserApi.Repositories
     using System.Threading.Tasks;
     using Microsoft.EntityFrameworkCore;
     using Contexts;
-    using Domains;
     using System.Linq;
     using Helpers;
     using Dto.Users;

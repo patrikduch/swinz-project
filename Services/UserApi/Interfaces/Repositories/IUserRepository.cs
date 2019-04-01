@@ -6,12 +6,12 @@
 //-----------------------------------------------------------------------
 
 using PersistenceLib;
+using PersistenceLib.Domains;
 
 namespace UserApi.Interfaces.Repositories
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using Domains;
     using Dto.Users;
 
     /// <summary>
