@@ -5,14 +5,13 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
-using PersistenceLib;
-using PersistenceLib.Domains;
-
 namespace UserApi.Interfaces.Repositories
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Dto.Users;
+    using PersistenceLib;
+    using PersistenceLib.Domains.UserApi;
 
     /// <summary>
     /// Interface that implements User repository

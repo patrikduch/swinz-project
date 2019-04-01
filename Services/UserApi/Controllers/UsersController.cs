@@ -15,7 +15,6 @@ namespace UserApi.Controllers
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
     using Microsoft.IdentityModel.Tokens;
-    using PersistenceLib.Domains;
     using System;
     using System.Collections.Generic;
     using System.IdentityModel.Tokens.Jwt;
@@ -24,6 +23,8 @@ namespace UserApi.Controllers
     using System.Text;
     using System.Threading.Tasks;
     using UserApi.Interfaces.Repositories;
+    using PersistenceLib.Domains.UserApi;
+    using UserApi.Interfaces.Controllers;
 
     /// <summary>
     /// Rest API User controller

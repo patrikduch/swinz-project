@@ -6,6 +6,7 @@
 //-----------------------------------------------------------------------
 
 using PersistenceLib.Domains;
+using PersistenceLib.Domains.UserApi;
 
 namespace UserApi.Interfaces.Helpers
 {

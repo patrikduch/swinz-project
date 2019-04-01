@@ -1,9 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿//-----------------------------------------------------------------------
+// <copyright file="User.cs" website="Patrikduch.com">
+//     Copyright 2019 (c) Patrikduch.com
+// </copyright>
+// <author>Patrik Duch</author>
+//-----------------------------------------------------------------------
 
-namespace PersistenceLib.Domains
+namespace PersistenceLib.Domains.UserApi
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// Modal class that represents User entity
     /// </summary>
@@ -38,8 +43,5 @@ namespace PersistenceLib.Domains
         /// Navigation property
         /// </summary>
         public Customer Customer { get; set; }
-
-
-
     }
 }

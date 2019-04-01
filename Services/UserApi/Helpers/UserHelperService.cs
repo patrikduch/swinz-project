@@ -4,6 +4,7 @@
 // </copyright>
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
+
 namespace UserApi.Helpers
 {
     using Dto.Customers;
@@ -16,6 +17,7 @@ namespace UserApi.Helpers
     using Contexts;
     using Dto.Users;
     using PersistenceLib.Domains;
+    using PersistenceLib.Domains.UserApi;
 
     /// <summary>
     /// Service providing helper methods for user`s manipulation 

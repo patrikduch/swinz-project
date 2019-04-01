@@ -1,24 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using PersistenceLib.Domains;
+﻿//-----------------------------------------------------------------------
+// <copyright file="ProductContext.cs" website="Patrikduch.com">
+//     Copyright 2019 (c) Patrikduch.com
+// </copyright>
+// <author>Patrik Duch</author>
+
+using OrderApi.EntityConfigurations;
 
 namespace OrderApi.Contexts
 {
+    using Microsoft.EntityFrameworkCore;
+    using PersistenceLib.Domains.OrderApi;
+
     /// <summary>
     /// User context represents connection to the database to manage users
     /// </summary>
     public class ProductContext : DbContext
     {
-
-
-        public ProductContext()
-        {
-            
-        }
-
+        /// <summary>
+        /// Initializes a new instance of the <seealso cref="ProductContext"/> class.
+        /// </summary>
+        /// <param name="options">Context setup configuration for context creation.</param>
         public ProductContext(DbContextOptions<ProductContext> options) : base(options)
         {
         }
@@ -28,10 +29,9 @@ namespace OrderApi.Contexts
         /// </summary>
         public virtual DbSet<Product> Products { get; set; }
 
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
+            modelBuilder.ApplyConfiguration(new ProductConfiguration());
         }
     }
 }

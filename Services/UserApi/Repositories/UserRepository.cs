@@ -4,11 +4,10 @@
 // </copyright>
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
-
-using PersistenceLib.Domains;
-
 namespace UserApi.Repositories
 {
+    using PersistenceLib.Domains;
+    using PersistenceLib.Domains.UserApi;
     using PersistenceLib;
     using Mocking;
     using System.Collections.Generic;

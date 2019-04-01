@@ -6,6 +6,7 @@
 //-----------------------------------------------------------------------
 
 using PersistenceLib.Domains;
+using PersistenceLib.Domains.UserApi;
 using UserApi.Dto;
 
 namespace UserApi.Repositories

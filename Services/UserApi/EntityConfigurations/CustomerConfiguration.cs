@@ -5,13 +5,12 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
-using PersistenceLib.Domains;
 
 namespace UserApi.EntityConfigurations
 {
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
+    using PersistenceLib.Domains.UserApi;
 
     /// <summary>
     /// Entity configuration for Customer entity
