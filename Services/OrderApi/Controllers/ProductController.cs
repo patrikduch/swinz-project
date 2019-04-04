@@ -43,5 +43,18 @@ namespace OrderApi.Controllers
         {
             return await _unitOfWork.ProductRepository.GetAll();
         }
+
+
+        [Route("create")]
+        [HttpPost]
+        public async Task CreateProduct()
+        {
+            _unitOfWork.ProductRepository.Add(new Product
+            {
+                Name = "Boruvka"
+            });
+
+            await _unitOfWork.Complete();
+        }
     }
 }
