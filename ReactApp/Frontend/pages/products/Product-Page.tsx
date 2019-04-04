@@ -9,11 +9,14 @@
 import * as React from 'react';
 
 import { Container } from 'reactstrap';
+import ProductListComp from '../../redux/containers/products/Product-List-Container';
+
+
 
 export default  () => {
     return (
         <Container>
-            Evidence vyrobku
+           <ProductListComp/>
         </Container>
     );
 }

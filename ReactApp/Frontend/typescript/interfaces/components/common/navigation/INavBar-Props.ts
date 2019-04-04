@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------
-// <copyright file="INavBar-Props.tsx" website="Patrikduch.com">
+// <copyright file="INavBar-Props.ts" website="Patrikduch.com">
 //     Copyright 2019 (c) Patrikduch.com
 // </copyright>
 // <author>Patrik Duch</author>

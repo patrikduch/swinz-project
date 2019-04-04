@@ -7,7 +7,8 @@
 //-----------------------------------------------------------------------
 
 export default {
-    customers: [],
+    customers: [], // list of customers
+    products: [], // list of products
     users: [],
     auth: {
         token: '',

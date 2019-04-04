@@ -1,10 +1,10 @@
-//-----------------------------------------------------------------------
+//---------------------------------------------------------------------------------------
 // <copyright file="Customer-List.tsx" website="Patrikduch.com">
 //     Copyright 2019 (c) Patrikduch.com
 // </copyright>
 // <author>Patrik Duch</author>
-// Customer list which consists table with data manipulations
-//-----------------------------------------------------------------------
+// Customer list which consists table with data manipulations (redux connected component)
+//----------------------------------------------------------------------------------------
 
 import * as React from 'react';
 
@@ -12,7 +12,10 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import { Table } from 'reactstrap';
-import CustomersListHeadings from './Customers-List-Headings';
+
+import ListHeadings from '../../../common/crud/read/List-Headings';
+
+
 import CustomersListBody from './Customers-List-Body';
 import CustomerListPaging from './Customers-List-Paging';
 
@@ -32,12 +35,13 @@ const CustomersTitle = styled.h2`
 `;
 
 
+var uniqid = require('uniqid');
+
 
 export default class CustomersList extends React.Component<any, any> {
 
     componentWillMount() {
         this.props.actions.getCustomers();
-        console.log(this.props.actions);
     }
 
     getCustomers = () => {
@@ -45,7 +49,7 @@ export default class CustomersList extends React.Component<any, any> {
             return (
                 <Container>
                     <Table>
-                        <CustomersListHeadings />
+                        <ListHeadings columns={['#','Křestní jméno','Přijmení', 'Nárok na slevu']} />
                         <CustomersListBody data={ this.props.customers } updateCustomer={this.props.actions.updateCustomer} deleteCustomer={this.props.actions.deleteCustomer} />
                     </Table>
                 </Container>
