@@ -5,6 +5,7 @@
 // <author>Patrik Duch</author>
 // Regex validation helper for customer form
 //-----------------------------------------------------------------------
+
 import * as React from 'react';
 
 export default class CustomerRegexHelper {

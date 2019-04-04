@@ -8,61 +8,43 @@
 
 import * as React from 'react';
 
-// Styled helper
-import styled from 'styled-components';
-
-import { Table } from 'reactstrap';
-
-import ListHeadings from '../../../common/crud/read/List-Headings';
-
-
-// Container that wrappps list of products
-const Container = styled.div`
-  //  margin-top: 1.0vh;
-`;
-
-
+import ListTitle from '../../../common/crud/read/List-Title';
+import ProductListContainer from '../../../common/crud/read/List-Container';
+import ListItemObject from '../../../../helpers/types/List-Item-Object';
+import ProductObject from '../../../../helpers/types/Product-Object';
 
 export default class ProductList extends React.Component<any, any> {
-
-    componentDidMount() {
-        console.log(this.props);
-        console.log(this.props.products.data);
-    }
 
     componentWillMount() {
         this.props.actions.getProducts();
     }
 
-    renderProducts = () => {
+    transformData = () => {
 
+        const list = new ListItemObject<ProductObject>();
+                
         if(this.props.products.data != undefined) {
 
-            return (
-                <Container>
-                    <Table>
-                        <ListHeadings columns={['#','Název výrobku','Cena']} />
+            this.props.products.data.forEach((arg: any) => {
+                const newObj = new ProductObject(arg.name);
+                list.objects.push(newObj);
+            })
 
-                    </Table>
-
-                </Container>
-            )
-
-
-
+            return list;
         }
-
-       
     }
 
     render(){
 
         return (
             <div>
-
-                {this.renderProducts()}
-               
-
+                <ListTitle>Evidence výrobků</ListTitle>
+                <ProductListContainer
+                data={ this.transformData() }
+                updateMethod = {null}
+                deleteMethod ={null} 
+                columnNames = {['#','Název výrobku','Cena']}
+                />
             </div>
         )
     }

@@ -8,34 +8,14 @@
 
 import * as React from 'react';
 
-// Styled helper
-import styled from 'styled-components';
-
-import { Table } from 'reactstrap';
-
-import ListHeadings from '../../../common/crud/read/List-Headings';
-
-
-import CustomersListBody from './Customers-List-Body';
-import CustomerListPaging from './Customers-List-Paging';
-
 // Modals
 import AddCustomerModal from '../../../customers/crud/add/modals/Customer-Creation-Modal';
+import ListTitle from '../../../common/crud/read/List-Title';
+import CustomerListContainer from '../../../common/crud/read/List-Container';
 
-
-// Container that wrappps list of customers
-const Container = styled.div`
-  //  margin-top: 1.0vh;
-`;
-
-// Title of customer page
-const CustomersTitle = styled.h2`
-    margin-top: 5.0vh;
-    text-align: center;
-`;
-
-
-var uniqid = require('uniqid');
+// Entity objects
+import CustomerObject from '../../../../helpers/types/Customer-Object';
+import ListItemObject from '../../../../helpers/types/List-Item-Object';
 
 
 export default class CustomersList extends React.Component<any, any> {
@@ -44,26 +24,32 @@ export default class CustomersList extends React.Component<any, any> {
         this.props.actions.getCustomers();
     }
 
-    getCustomers = () => {
-        if (this.props.customers != undefined) {
-            return (
-                <Container>
-                    <Table>
-                        <ListHeadings columns={['#','Křestní jméno','Přijmení', 'Nárok na slevu']} />
-                        <CustomersListBody data={ this.props.customers } updateCustomer={this.props.actions.updateCustomer} deleteCustomer={this.props.actions.deleteCustomer} />
-                    </Table>
-                </Container>
-            );
+    transformData = () => {
+
+        const list = new ListItemObject<CustomerObject>();
+                
+        if(this.props.customers != undefined) {
+
+            this.props.customers.forEach((arg: any) => {
+                const newObj = new CustomerObject(arg.firstName, arg.lastName);
+                list.objects.push(newObj);
+            })
+
+            return list;
         }
-        return null
     }
 
     render() {
         return (
             <div>
-                <CustomersTitle>Evidence zákazniků</CustomersTitle>
+                <ListTitle>Evidence zákazniků</ListTitle>
                 <AddCustomerModal createCustomer={this.props.actions.createCustomer} />
-                { this.getCustomers() }
+                <CustomerListContainer 
+                    data={ this.transformData() } 
+                    updateCustomer={this.props.actions.updateCustomer}
+                    deleteCustomer={this.props.actions.deleteCustomer}
+                    columnNames = {['#','Křestní jméno','Přijmení', 'Nárok na slevu']}
+                />
             </div>
         );
     }
