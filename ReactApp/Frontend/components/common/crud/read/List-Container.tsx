@@ -6,22 +6,18 @@
 // Container for list content
 //----------------------------------------------------------------------------------------
 
+// React dependency
 import * as React from 'react';
-
 // Styled helper
 import styled from 'styled-components';
-
 import { Table } from 'reactstrap';
 import ListHeadings from './List-Headings';
-
+import ListBody from '../read/List-Body';
 
 // Container that wrappps list of customers
 const Container = styled.div`
   //  margin-top: 1.0vh;
 `;
-
-import ListBody from '../read/List-Body';
-
 
 export default (props:any) => {
     return (

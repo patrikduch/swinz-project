@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
 // Component on which we apply Redux
-import ProductListComp from '../../../components/products/crud/read/Product-List';
+import ProductListComp from '../../../components/products/Product-List';
 
 // All redux actions that will be sent from container to the specific component
 import * as productActions from '../../actions/products/products-actions';

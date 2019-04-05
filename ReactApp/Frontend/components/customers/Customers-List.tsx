@@ -8,14 +8,15 @@
 
 import * as React from 'react';
 
-// Modals
-import AddCustomerModal from '../../../customers/crud/add/modals/Customer-Creation-Modal';
-import ListTitle from '../../../common/crud/read/List-Title';
-import CustomerListContainer from '../../../common/crud/read/List-Container';
+import ListTitle from '../common/crud/read/List-Title';
+import CustomerListContainer from '../common/crud/read/List-Container';
+
+// Create operation
+import CustomerCreation from '../common/crud/create/List-Item-Creation';
 
 // Entity objects
-import CustomerObject from '../../../../helpers/types/Customer-Object';
-import ListItemObject from '../../../../helpers/types/List-Item-Object';
+import CustomerObject from '../../helpers/types/Customer-Object';
+import ListItemObject from '../../helpers/types/List-Item-Object';
 
 
 export default class CustomersList extends React.Component<any, any> {
@@ -43,7 +44,8 @@ export default class CustomersList extends React.Component<any, any> {
         return (
             <div>
                 <ListTitle>Evidence zákazniků</ListTitle>
-                <AddCustomerModal createCustomer={this.props.actions.createCustomer} />
+                <CustomerCreation modalTitle='Vytvoření nového zákazníka' />
+
                 <CustomerListContainer 
                     data={ this.transformData() } 
                     updateMethod={this.props.actions.updateCustomer}

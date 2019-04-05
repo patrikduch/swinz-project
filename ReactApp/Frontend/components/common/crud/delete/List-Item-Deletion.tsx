@@ -6,22 +6,18 @@
 // Generic list item deletion
 //----------------------------------------------------------------------------------------
 
+// React dependency
 import * as React from 'react';
-import Button from 'reactstrap/lib/Button';
+// Component stylization
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Modal from 'reactstrap/lib/Modal';
-import ModalHeader from 'reactstrap/lib/ModalHeader';
-import ModalFooter from 'reactstrap/lib/ModalFooter';
-
+import { Button, Modal, ModalHeader, ModalFooter} from 'reactstrap';
 // Props interface
 import IListItemDeletionProps from '../../../../typescript/interfaces/components/common/crud/delete/IList-Item-Deletion-Props';
+// State interface
+import IListItemDeletionState from '../../../../typescript/interfaces/components/common/crud/delete/IList-Item-Deletion-State';
 
-export default class ListItemDeletion extends React.Component<IListItemDeletionProps, any> {
-
-    componentDidMount() {
-      console.log(this.props);
-    }
-
+export default class ListItemDeletion extends React.Component<IListItemDeletionProps, IListItemDeletionState> {
+  
     state = {
         modal: false  
     };
