@@ -49,6 +49,7 @@ export default class CustomersList extends React.Component<any, any> {
                     updateMethod={this.props.actions.updateCustomer}
                     deleteMethod={this.props.actions.deleteCustomer}
                     columnNames = {['#','Křestní jméno','Přijmení', 'Nárok na slevu']}
+                    
                 />
             </div>
         );

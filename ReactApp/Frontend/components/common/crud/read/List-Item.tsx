@@ -6,37 +6,37 @@
 // Single Content item of all crud lists
 //-----------------------------------------------------------------------
 
+// React dependency
 import * as React from "react";
-
-var uniqid = require("uniqid");
-
 // Styled helper
 import styled from "styled-components";
-import { area } from "../../../../helpers/components/rendererHelper";
-
+// Renderer helper methods
+import { area, getUniqueId } from "../../../../helpers/components/rendererHelper";
+// Item deletion
 import ListItemDeletion from '../delete/List-Item-Deletion';
+// Props interface
+import IListItemProps from '../../../../typescript/interfaces/components/common/crud/read/IList-Item-Props';
+// State interface
+import IListItemState from '../../../../typescript/interfaces/components/common/crud/read/IList-Item-State';
 
-export default class ListItem extends React.Component<any, any> {
-
+export default class ListItem extends React.Component<IListItemProps, IListItemState> {
   render() {
-    const CustomerListOptions = styled.span`
+    const ListOptions = styled.span`
       margin-left: 10vw;
     `;
 
-    console.log(this.props);
-
     return (
-      <tr key={uniqid()}>
+      <tr key={ getUniqueId() }>
         <th scope="row">{this.props.iteration}</th>
         {
           area(this.props.arg.constructor.name,this.props.arg)
         }
-        
+  
         <td>
           <span>N/A</span>
-          <CustomerListOptions>
-            <ListItemDeletion itemIdentifier={this.props.arg.id} deleteMethod={this.props.deleteMethod} />
-          </CustomerListOptions>
+          <ListOptions>
+            <ListItemDeletion itemIdentifier={this.props.arg.id} deleteMethod={ this.props.deleteMethod}  />
+          </ListOptions>
         </td>
       </tr>
     );

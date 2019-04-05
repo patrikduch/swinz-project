@@ -6,10 +6,12 @@
 // Universal title specification for different areas of lists
 //-----------------------------------------------------------------------
 
+// React dependency
 import * as React from "react";
-
 // Styled helper
 import styled from "styled-components";
+// Props interface
+import IListTitleProps from '../../../../typescript/interfaces/components/common/crud/read/IList-Title-Props';
 
 // Title of customer page
 const Title = styled.h2`
@@ -17,13 +19,10 @@ const Title = styled.h2`
     text-align: center;
 `;
 
-
-export default (props: any) => {
-
+export default (props: IListTitleProps) => {
   return (
     <Title>
       { props.children }
     </Title>
   )
-
 };
