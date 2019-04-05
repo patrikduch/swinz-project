@@ -22,7 +22,7 @@ export default (props: any) => {
 
   return (
     <Title>
-      {props.children}
+      { props.children }
     </Title>
   )
 

@@ -13,7 +13,8 @@ import styled  from 'styled-components';
 // Props interface
 import IListHeadingsProps from '../../../../typescript/interfaces/components/common/crud/read/IList-Headings-Props';
 
-var uniqid = require('uniqid');
+// Renderer helper
+import { getUniqueId } from '../../../../helpers/components/rendererHelper';
 
 // Stylization 
 const Tr = styled.tr`
@@ -28,7 +29,7 @@ export default (props:IListHeadingsProps) => {
         <Tr>
             {
                 props.columns.map((arg: string) => {
-                    return <Th key={uniqid.process()}>{arg}</Th>;
+                    return <Th key={ getUniqueId() }>{arg}</Th>;
                 })
             }    
         </Tr>

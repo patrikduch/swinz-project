@@ -8,7 +8,8 @@
 
 import * as React from 'react';
 
-var uniqid = require('uniqid');
+// Renderer helper
+import { getUniqueId} from '../../../../helpers/components/rendererHelper';
 
 import ListItem from '../read/List-Item';
 
@@ -22,11 +23,16 @@ export default (props:any) => {
         {
             props.data.length == 0 && <tr><td>Seznam zákazníků je prázdný</td></tr>
         }
+
         {
             props.data.objects.map((arg: any) => {
                 
             counter++; // Next item index of the customer`s list
-            return <ListItem key={uniqid.process()} updateMethod={props.updateMethod}deleteMethod={props.deleteMethod} iteration={ counter }  arg={ arg } />
+            return <ListItem key={ getUniqueId() }
+                     updateMethod={props.updateMethod}
+                     deleteMethod={props.deleteMethod}
+                     iteration={ counter }
+                     arg={ arg } />
         })}
     </tbody>
 
