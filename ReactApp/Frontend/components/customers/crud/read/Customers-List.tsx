@@ -31,7 +31,7 @@ export default class CustomersList extends React.Component<any, any> {
         if(this.props.customers != undefined) {
 
             this.props.customers.forEach((arg: any) => {
-                const newObj = new CustomerObject(arg.firstName, arg.lastName);
+                const newObj = new CustomerObject(arg.id, arg.firstName, arg.lastName);
                 list.objects.push(newObj);
             })
 
@@ -46,8 +46,8 @@ export default class CustomersList extends React.Component<any, any> {
                 <AddCustomerModal createCustomer={this.props.actions.createCustomer} />
                 <CustomerListContainer 
                     data={ this.transformData() } 
-                    updateCustomer={this.props.actions.updateCustomer}
-                    deleteCustomer={this.props.actions.deleteCustomer}
+                    updateMethod={this.props.actions.updateCustomer}
+                    deleteMethod={this.props.actions.deleteCustomer}
                     columnNames = {['#','Křestní jméno','Přijmení', 'Nárok na slevu']}
                 />
             </div>

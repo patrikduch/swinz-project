@@ -11,8 +11,8 @@ import * as React from 'react';
 import { ListItemType } from "../../typescript/enums/crud/List-Item-Type";
 import CustomerObject from "../types/Customer-Object";
 import ProductObject from "../types/Product-Object";
-
 var uniqid = require('uniqid');
+
 // Selection of type of crud view
 export function area (areaName: any, obj: any) {
   switch (areaName) {

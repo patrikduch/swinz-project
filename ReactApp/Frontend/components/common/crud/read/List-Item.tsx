@@ -14,12 +14,16 @@ var uniqid = require("uniqid");
 import styled from "styled-components";
 import { area } from "../../../../helpers/components/rendererHelper";
 
+import ListItemDeletion from '../delete/List-Item-Deletion';
+
 export default class ListItem extends React.Component<any, any> {
 
   render() {
     const CustomerListOptions = styled.span`
       margin-left: 10vw;
     `;
+
+    console.log(this.props);
 
     return (
       <tr key={uniqid()}>
@@ -30,7 +34,9 @@ export default class ListItem extends React.Component<any, any> {
         
         <td>
           <span>N/A</span>
-          <CustomerListOptions />
+          <CustomerListOptions>
+            <ListItemDeletion itemIdentifier={this.props.arg.id} deleteMethod={this.props.deleteMethod} />
+          </CustomerListOptions>
         </td>
       </tr>
     );

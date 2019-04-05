@@ -6,11 +6,10 @@
 // Generator of list content
 //----------------------------------------------------------------------------------------
 
+// React depedencies
 import * as React from 'react';
-
 // Renderer helper
 import { getUniqueId} from '../../../../helpers/components/rendererHelper';
-
 import ListItem from '../read/List-Item';
 
 export default (props:any) => {
