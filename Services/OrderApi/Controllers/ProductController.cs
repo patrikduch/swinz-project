@@ -4,6 +4,8 @@
 // </copyright>
 // <author>Patrik Duch</author>
 
+using System.Linq;
+
 namespace OrderApi.Controllers
 {
     using System.Collections.Generic;
@@ -55,6 +57,27 @@ namespace OrderApi.Controllers
             });
 
             await _unitOfWork.Complete();
+        }
+
+
+        /// <summary>
+        /// Remove customer by id
+        /// </summary>
+        /// <param name="id">customer identifier</param>
+        /// <returns></returns>
+        [Route("delete/{id}")]
+        [HttpDelete]
+        public async Task<ActionResult> DeleteProduct(int id)
+        {
+            var productEntity = (_unitOfWork.ProductRepository.Find(c => c.Id == id)).SingleOrDefault();
+
+            if (productEntity == null) return BadRequest("a");
+
+            _unitOfWork.ProductRepository.Remove(productEntity);
+            await _unitOfWork.Complete();
+
+            return Ok(productEntity);
+
         }
     }
 }

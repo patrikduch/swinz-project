@@ -57,9 +57,7 @@ const reducer = (state : any = initialState.customers, action: any) => {
             
         // Change after removing customer
         case actionTypes.CUSTOMER_DELETION_SUCCESS:
-        
             const newData = state.data.filter(((arg: any) => {
-
                 return arg.id != action.customerId;
             }));
 

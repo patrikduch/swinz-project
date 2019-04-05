@@ -15,16 +15,13 @@ import ListItem from '../read/List-Item';
 // Props interface
 import IListBodyProps from '../../../../typescript/interfaces/components/common/crud/read/IList-Body-Props';
 
-export default (props: IListBodyProps) => {
 
+export default (props: IListBodyProps) => {
     if (props.data != undefined) {
-      
         let counter = 0; // For list identifier
-        
-        
         return <tbody>
             {
-                props.data.objects.length == 0 && <tr><td>Seznam zákazníků je prázdný</td></tr>
+                props.data.objects.length == 0 && <tr><td>{props.emptyError}</td></tr>
             }
 
             {

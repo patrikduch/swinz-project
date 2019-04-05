@@ -28,7 +28,7 @@ export default (props:any) => {
        <Container>
            <Table>
                 <ListHeadings columns={props.columnNames} />
-                <ListBody data={props.data} updateMethod={props.updateMethod} deleteMethod={props.deleteMethod} />
+                <ListBody data={props.data} emptyError={props.emptyError} updateMethod={props.updateMethod} deleteMethod={props.deleteMethod} />
            </Table>
        </Container>
     )

@@ -24,3 +24,17 @@ export const getProducts: ActionCreator<{}> = () => async (dispatch: Dispatch) =
         dispatch({ type: actionTypes.PRODUCT_FETCH_FAILURE });
     });
 }
+
+
+export const deleteProduct : ActionCreator<{}> = (productId: number) => async (dispatch: Dispatch) => {
+        
+    ProductApi.deleteProduct(productId).then(() => {
+
+        dispatch({ type: actionTypes.PRODUCT_DELETION_SUCCESS, productId});
+
+    }).catch(() => { // Error ocurred (REST API mostly)
+
+        dispatch({ type: actionTypes.PRODUCT_DELETION_FAILURE});
+    });
+}
+

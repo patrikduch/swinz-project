@@ -3,7 +3,7 @@
 //     Copyright 2019 (c) Patrikduch.com
 // </copyright>
 // <author>Patrik Duch</author>
-// Product list which consists table with data manipulations (redux connected component)
+// Product list which consists table with data manipulations (Redux connected component)
 //----------------------------------------------------------------------------------------
 
 import * as React from 'react';
@@ -20,16 +20,12 @@ export default class ProductList extends React.Component<any, any> {
     }
 
     transformData = () => {
-
         const list = new ListItemObject<ProductObject>();
-                
         if(this.props.products.data != undefined) {
-
             this.props.products.data.forEach((arg: any) => {
-                const newObj = new ProductObject(arg.name);
+                const newObj = new ProductObject(arg.id, arg.name);
                 list.objects.push(newObj);
             })
-
             return list;
         }
     }
@@ -42,8 +38,9 @@ export default class ProductList extends React.Component<any, any> {
                 <ProductListContainer
                 data={ this.transformData() }
                 updateMethod = {null}
-                deleteMethod ={null} 
+                deleteMethod ={this.props.actions.deleteProduct} 
                 columnNames = {['#','Název výrobku','Cena']}
+                emptyError = 'Seznam výrobků je prázdný'
                 />
             </div>
         )

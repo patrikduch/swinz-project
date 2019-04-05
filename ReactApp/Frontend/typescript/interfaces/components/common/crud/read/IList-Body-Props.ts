@@ -13,5 +13,7 @@ export default interface IListBodyProps {
     data: {
         objects: []
     }
+
+    emptyError: string // Error message that will be displayed if list is empty
     
 }
