@@ -6,6 +6,7 @@
 // Customer list which consists table with data manipulations (redux connected component)
 //----------------------------------------------------------------------------------------
 
+// React dependency
 import * as React from 'react';
 
 import ListTitle from '../common/crud/read/List-Title';
@@ -44,7 +45,7 @@ export default class CustomersList extends React.Component<any, any> {
         return (
             <div>
                 <ListTitle>Evidence zákazniků</ListTitle>
-                <CustomerCreation modalTitle='Vytvoření nového zákazníka' />
+                <CustomerCreation createMethod={this.props.actions.createCustomer} modalTitle='Vytvoření nového zákazníka' />
 
                 <CustomerListContainer 
                     data={ this.transformData() } 

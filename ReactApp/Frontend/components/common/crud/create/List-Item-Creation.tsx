@@ -16,6 +16,7 @@ import ModalBody from 'reactstrap/lib/ModalBody';
 
 // State interface
 
+import CustomerCreationForm from '../../../customers/forms/create/Customer-Create-Form';
 
 export default class ListItemCreation extends React.Component<any, any> {
   
@@ -41,7 +42,7 @@ export default class ListItemCreation extends React.Component<any, any> {
           <Modal size='lg' isOpen={this.state.modal} toggle={this.toggle} >
             <ModalHeader toggle={this.toggle}>{this.props.modalTitle}</ModalHeader>
             <ModalBody>
-              aaa
+              <CustomerCreationForm modalToggler={this.toggle} createMethod={this.props.createMethod} />
             </ModalBody>
             <ModalFooter>
             </ModalFooter>
