@@ -12,7 +12,7 @@ import * as React from 'react';
 import ListTitle from '../common/crud/read/List-Title';
 import ProductListContainer from '../common/crud/read/List-Container';
 import ListItemObject from '../../helpers/types/List-Item-Object';
-import ProductObject from '../../helpers/types/Product-Object';
+import ProductObject from '../../view-models/Product';
 
 export default class ProductList extends React.Component<any, any> {
 

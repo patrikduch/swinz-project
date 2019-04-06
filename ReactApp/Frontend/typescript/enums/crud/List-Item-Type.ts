@@ -7,8 +7,8 @@
 //-----------------------------------------------------------------------
 
 export enum ListItemType {
-    Product = 'ProductObject',
-    Customer = 'CustomerObject',
+    Product = 'Product',
+    Customer = 'Customer',
     Order = 'order'
 }
   

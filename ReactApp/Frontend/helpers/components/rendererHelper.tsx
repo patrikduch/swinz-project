@@ -9,8 +9,8 @@
 import * as React from 'react';
 
 import { ListItemType } from "../../typescript/enums/crud/List-Item-Type";
-import CustomerObject from "../types/Customer-Object";
-import ProductObject from "../types/Product-Object";
+import CustomerObject from "../../view-models/Customer";
+import ProductObject from "../../view-models/Product";
 var uniqid = require('uniqid');
 
 // Selection of type of crud view
@@ -20,10 +20,10 @@ export function area (areaName: any, obj: any) {
       return (
         <>
           <td>
-            <div>{(obj as CustomerObject).firstname}</div>
+            <div>{(obj as CustomerObject).getFirstname}</div>
           </td>
           <td>
-            <div>{(obj as CustomerObject).lastname}</div>
+            <div>{(obj as CustomerObject).getLastname}</div>
           </td>
         </>
       );
@@ -33,7 +33,7 @@ export function area (areaName: any, obj: any) {
       return (
       <>
         <td>
-          <div>{productEntity.name}</div>
+          <div>{productEntity.getName}</div>
         </td>
       </>
       );

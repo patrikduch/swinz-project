@@ -29,6 +29,7 @@ library.add(faEdit);
 
 renderApp(); // Initial inject of app
 
+
 function renderApp() {
 
     ReactDOM.render(

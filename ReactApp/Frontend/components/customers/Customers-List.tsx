@@ -16,7 +16,7 @@ import CustomerListContainer from '../common/crud/read/List-Container';
 import CustomerCreation from '../common/crud/create/List-Item-Creation';
 
 // Entity objects
-import CustomerObject from '../../helpers/types/Customer-Object';
+import CustomerObject from '../../view-models/Customer';
 import ListItemObject from '../../helpers/types/List-Item-Object';
 
 
