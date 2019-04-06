@@ -33,3 +33,4 @@
 
 Db preparation </br>
 - Update-Database -Project UserApi
+- Update-Database -Project OrderApi
