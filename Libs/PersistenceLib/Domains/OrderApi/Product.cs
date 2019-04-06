@@ -4,6 +4,9 @@
 // </copyright>
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
+
+using System.Collections.Generic;
+
 namespace PersistenceLib.Domains.OrderApi
 {
     /// <summary>
@@ -23,5 +26,7 @@ namespace PersistenceLib.Domains.OrderApi
         /// Gets or sets product`s price
         /// </summary>
         public int Price { get; set; }
+
+        public IList<OrderProduct> OrderProducts { get; set; }
     }
 }

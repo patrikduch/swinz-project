@@ -113,10 +113,12 @@ namespace ApiBase
             #endregion
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
-                .AddApplicationPart(typeof(OrderApi.Controllers.ProductController).Assembly)
                 .AddApplicationPart(typeof(UserApi.Controllers.UsersController).Assembly)
-                .AddApplicationPart(typeof(UserApi.Controllers.CustomersController).Assembly).
-                AddJsonOptions(options =>
+                .AddApplicationPart(typeof(UserApi.Controllers.CustomersController).Assembly)
+                .AddApplicationPart(typeof(OrderApi.Controllers.ProductController).Assembly)
+                .AddApplicationPart(typeof(OrderApi.Controllers.OrderController).Assembly)
+
+                .AddJsonOptions(options =>
                 {
                     options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
                 })

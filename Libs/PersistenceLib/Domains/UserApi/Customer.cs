@@ -5,6 +5,9 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using System.ComponentModel;
+using PersistenceLib.Domains.OrderApi;
+
 namespace PersistenceLib.Domains.UserApi
 {
     /// <summary>
@@ -33,5 +36,8 @@ namespace PersistenceLib.Domains.UserApi
         /// Navigation property
         /// </summary>
         public User User { get; set; }
+
+
+        public OrderProduct OrderProduct { get; set; }
     }
 }
