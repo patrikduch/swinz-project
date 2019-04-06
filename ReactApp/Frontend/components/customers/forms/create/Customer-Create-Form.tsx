@@ -108,22 +108,22 @@ export default class NewCustomerForm extends React.Component<ICustomerAddFormPro
     return (
       <Form method='POST'>
         <FormGroup>
-          <Label for="usernameLabel">Uživatelské jméno</Label>
+          <Label for="usernameInputId">Uživatelské jméno</Label>
           <Input onChange={this.fieldChangeHandler} type="text" name="usernameInput" id="usernameInputId" value={this.state.username} />
         </FormGroup>
         <FormGroup>
-          <Label for="passwordLabel">Heslo</Label>
+          <Label for="passwordInputId">Heslo</Label>
           <Input onChange={this.fieldChangeHandler} type="password" name="passwordInput" id="passwordInputId" value={this.state.password} />
         </FormGroup>
         <FormGroup>
-          <Label for="firstnameLabel">Křestní jméno</Label>
+          <Label for="firstnameInputId">Křestní jméno</Label>
           <Input onChange={this.fieldChangeHandler} type="text" name="firstnameInput" id="firstnameInputId" value={this.state.firstname} />
           {
             this.validateInput(this.state.firstname, CustomerInputType.FirstName)
           }
         </FormGroup>
         <FormGroup>
-          <Label for="lastnameLabel">Přijmení</Label>
+          <Label for="lastnameInputId">Přijmení</Label>
           <Input onChange={this.fieldChangeHandler} type="text" name="lastnameInput" id="lastnameInputId" value={this.state.lastname} />
           {
             this.validateInput(this.state.lastname, CustomerInputType.LastName)
