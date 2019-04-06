@@ -8,8 +8,8 @@ import { ProductInputType } from "../../../../typescript/enums/crud/products/for
 
 export default class ProductCreationForm extends React.Component<any, any> {
   state = {
-    productName: "",
-    productPrice: ""
+    productName: '',
+    productPrice: ''
   };
 
   // Manipulation of web elements via state property

@@ -32,7 +32,6 @@ export default class ListItem extends React.Component<IListItemProps, IListItemS
           area(this.props.arg.constructor.name,this.props.arg)
         }
         <td>
-          <span>N/A</span>
           <ListOptions>
             <ListItemDeletion itemIdentifier={this.props.arg.id} deleteMethod={ this.props.deleteMethod}  />
           </ListOptions>

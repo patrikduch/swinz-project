@@ -35,6 +35,9 @@ export function area (areaName: any, obj: any) {
         <td>
           <div>{productEntity.getName}</div>
         </td>
+        <td>
+          <div>{productEntity.getPrice}</div>
+        </td>
       </>
       );
       

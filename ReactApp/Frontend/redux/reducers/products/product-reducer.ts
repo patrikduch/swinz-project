@@ -29,6 +29,21 @@ const reducer = (state : any = initialState.products, action: any) => {
             ...state,
             data : newData
         }
+
+        case actionTypes.PRODUCT_CREATION_SUCCESS: // Creation of new product
+
+            let productResult = new Array();
+
+            state.data.forEach((arg: any) => {
+                productResult.push(arg);
+            });
+
+            productResult.push(action.result.data);
+
+            return {
+                ...state,
+                data: productResult
+            }
         default:
             return state;
     }
