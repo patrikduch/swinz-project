@@ -1,5 +1,3 @@
-import Customer from "../../../../../view-models/Customer";
-
 //--------------------------------------------------------------------------------------------
 // <copyright file="ICustomer-Update-Form-Props.ts" website="Patrikduch.com">
 //     Copyright 2019 (c) Patrikduch.com
@@ -7,6 +5,8 @@ import Customer from "../../../../../view-models/Customer";
 // <author>Patrik Duch</author>
 // Interface for properties of component that represents form for updating specific customer
 //--------------------------------------------------------------------------------------------
+
+import Customer from "../../../../../../view-models/Customer";
 
 export default interface ICustomerUpdateFormProps {
 

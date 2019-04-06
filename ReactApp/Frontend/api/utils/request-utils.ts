@@ -24,6 +24,5 @@ export function post(url: string, data: object) {
 }
 
 export function put(url: string, data: object) {
-    console.log(url);
     return axios.put(url, data);
 }

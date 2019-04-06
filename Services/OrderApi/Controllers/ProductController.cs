@@ -4,10 +4,9 @@
 // </copyright>
 // <author>Patrik Duch</author>
 
-using System.Linq;
-
 namespace OrderApi.Controllers
 {
+    using System.Linq;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
@@ -36,17 +35,10 @@ namespace OrderApi.Controllers
         }
 
         /// <summary>
-        /// Get all products without restrictions
+        /// Creation of new product
         /// </summary>
+        /// <param name="product">Entity object that encapsulates product details</param>
         /// <returns></returns>
-        [Route("getAll")]
-        [HttpGet]
-        public async Task<IEnumerable<Product>> Get()
-        {
-            return await _unitOfWork.ProductRepository.GetAll();
-        }
-
-
         [Route("create")]
         [HttpPost]
         public async Task<ActionResult> CreateProduct([FromBody] Product product)
@@ -68,6 +60,47 @@ namespace OrderApi.Controllers
             return Ok(product);
         }
 
+        /// <summary>
+        /// Get all products without restrictions
+        /// </summary>
+        /// <returns></returns>
+        [Route("getAll")]
+        [HttpGet]
+        public async Task<IEnumerable<Product>> Get()
+        {
+            return await _unitOfWork.ProductRepository.GetAll();
+        }
+
+
+        /// <summary>
+        /// Update product by identifier number
+        /// </summary>
+        /// <param name="product"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("update/{id}")]
+        [HttpPut]
+        public async Task<ActionResult> UpdateProduct(int id, [FromBody] Product product)
+        {
+            if (product.Name.Equals(string.Empty) || product.Price == 0)
+            {
+                return BadRequest("Incorrect input");
+            }
+
+            // Get entity by provided identifier
+            var entity = await _unitOfWork.ProductRepository.Get(id);
+
+            if (entity == null) return BadRequest("Entity to update wasn't founded");
+
+            // Edit fetched object
+            entity.Name = product.Name;
+            entity.Price = product.Price;
+
+            // Save changes
+            await _unitOfWork.Complete();
+
+            return Ok(product);
+        }
 
         /// <summary>
         /// Remove customer by id
@@ -80,7 +113,7 @@ namespace OrderApi.Controllers
         {
             var productEntity = (_unitOfWork.ProductRepository.Find(c => c.Id == id)).SingleOrDefault();
 
-            if (productEntity == null) return BadRequest("a");
+            if (productEntity == null) return BadRequest("Entity to delete wasn't founded");
 
             _unitOfWork.ProductRepository.Remove(productEntity);
             await _unitOfWork.Complete();

@@ -44,10 +44,11 @@ export default class ProductList extends React.Component<any, any> {
                 <ListItemCreation createMethod={this.props.actions.createProduct} type={ListItemType.Product} />
                 <ListContainer
                 data={ this.transformData() }
-                updateMethod = {null}
+                updateMethod = {this.props.actions.updateProduct}
                 deleteMethod ={this.props.actions.deleteProduct} 
                 columnNames = {['#','Název výrobku','Cena']}
                 emptyError = 'Seznam výrobků je prázdný'
+                type={ListItemType.Product}
                 />
             </div>
         )

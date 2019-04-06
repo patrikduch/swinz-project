@@ -44,6 +44,22 @@ const reducer = (state : any = initialState.products, action: any) => {
                 ...state,
                 data: productResult
             }
+
+        // Update details of specific product
+        case actionTypes.PRODUCT_UPDATE_SUCCESS:
+
+        const updatedData = state.data.map((arg: any) => {
+            if(arg.id == action.data.id) {
+                arg.name = action.data.name;
+                arg.price = action.data.price;
+            }
+            return arg;
+        });
+
+        return {
+            ...state,
+            data: updatedData
+        }
         default:
             return state;
     }

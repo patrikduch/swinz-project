@@ -13,19 +13,19 @@ import { domain } from '../utils/domain-utils';
 
 export default class CustomerApi {
 
-    static getCustomers() {   
-        return get(`${domain}/api/customers/getAll`);
-    }
-
-    static deleteCustomer(customerId: number) {        
-        return del(`${domain}/api/customers/delete/`+customerId);
-    }
-
     static createCustomer(data: object) {        
         return post(`${domain}/api/customers/create`, data)
     }
 
+    static getCustomers() {   
+        return get(`${domain}/api/customers/getAll`);
+    }
+
     static updateCustomer(id:number, data: object) {        
         return put(`${domain}/api/customers/update/${id}`, data);
+    }
+
+    static deleteCustomer(customerId: number) {        
+        return del(`${domain}/api/customers/delete/`+customerId);
     }
 }

@@ -11,10 +11,10 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { CustomerInputType } from '../../../../typescript/enums/customers/forms/Customer-Input-Type';
 
 // Props interface
-import ICustomerUpdateFormProps from '../../../../typescript/interfaces/components/customers/crud/ICustomer-Update-Form-Props';
+import ICustomerUpdateFormProps from '../../../../typescript/interfaces/components/customers/crud/update/ICustomer-Update-Form-Props';
 
 // State interface
-import ICustomerUpdateFormState from '../../../../typescript/interfaces/components/customers/crud/ICustomer-Update-Form-State';
+import ICustomerUpdateFormState from '../../../../typescript/interfaces/components/customers/crud/update/ICustomer-Update-Form-State';
 
 export default class CustomerUpdateForm extends React.Component<ICustomerUpdateFormProps, ICustomerUpdateFormState> {
 

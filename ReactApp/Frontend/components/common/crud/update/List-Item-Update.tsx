@@ -17,15 +17,12 @@ import Modal from "reactstrap/lib/Modal";
 import ModalFooter from "reactstrap/lib/ModalFooter";
 
 import CustomerUpdateForm from '../../../../components/customers/forms/update/Customer-Update-Form';
+import ProductUpdateForm from '../../../../components/products/forms/update/Product-Update-Form';
 
 export default class ListItemUpdate extends React.Component<any, any> {
   state = {
     isModalActive: false
   };
-
-  componentDidMount() {
-      console.log(this.props);
-  }
 
   toggle = () => {
     this.setState((prevState: any) => ({
@@ -44,7 +41,7 @@ export default class ListItemUpdate extends React.Component<any, any> {
         return (
           <>
             <ModalHeader toggle={this.toggle}>
-              Vytvoření nového zákazníka
+              Aktualizace zákazníka
             </ModalHeader>
             <ModalBody>
                 <CustomerUpdateForm data={this.props.data} modalToggler={this.toggle} updateMethod={this.props.updateMethod} />
@@ -56,9 +53,11 @@ export default class ListItemUpdate extends React.Component<any, any> {
         return (
           <>
             <ModalHeader toggle={this.toggle}>
-              Vytvoření nového výrobku
+              Aktualizace výrobku
             </ModalHeader>
-            <ModalBody />
+            <ModalBody>
+              <ProductUpdateForm data={this.props.data} modalToggler={this.toggle} updateMethod={this.props.updateMethod}/>
+            </ModalBody>
           </>
         );
     }
