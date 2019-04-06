@@ -10,9 +10,14 @@
 import * as React from 'react';
 
 import ListTitle from '../common/crud/read/List-Title';
-import ProductListContainer from '../common/crud/read/List-Container';
+import ListContainer from '../common/crud/read/List-Container';
 import ListItemObject from '../../helpers/types/List-Item-Object';
+
+// Create operation
+import ListItemCreation from '../common/crud/create/List-Item-Creation';
+
 import ProductObject from '../../view-models/Product';
+import { ListItemType } from '../../typescript/enums/crud/List-Item-Type';
 
 export default class ProductList extends React.Component<any, any> {
 
@@ -23,7 +28,7 @@ export default class ProductList extends React.Component<any, any> {
     transformData = () => {
         const list = new ListItemObject<ProductObject>();
         if(this.props.products.data != undefined) {
-            this.props.products.data.forEach((arg: any) => {
+            this.props.products.data.forEach((arg: {id: number, name: string}) => {
                 const newObj = new ProductObject(arg.id, arg.name);
                 list.objects.push(newObj);
             })
@@ -36,7 +41,8 @@ export default class ProductList extends React.Component<any, any> {
         return (
             <div>
                 <ListTitle>Evidence výrobků</ListTitle>
-                <ProductListContainer
+                <ListItemCreation createMethod={this.props.actions.createProduct} type={ListItemType.Product} />
+                <ListContainer
                 data={ this.transformData() }
                 updateMethod = {null}
                 deleteMethod ={this.props.actions.deleteProduct} 

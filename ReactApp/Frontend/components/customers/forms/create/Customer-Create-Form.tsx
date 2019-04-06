@@ -18,19 +18,15 @@ import ICustomerAddFormState from '../../../../typescript/interfaces/components/
 import CustomerRegexHelper from '../../../../helpers/regex/Customer-Regex-Helper';
 
 // Enum to determine type of filled input
-import { CustomerInputType } from '../../../../typescript/enums/customers/forms/Customer-InputType';
+import { CustomerInputType } from '../../../../typescript/enums/customers/forms/Customer-Input-Type';
 
-export default class NewCustomerForm extends React.Component<any, any> {
+export default class NewCustomerForm extends React.Component<ICustomerAddFormProps, ICustomerAddFormState> {
 
   state = {
-    firstname: {
-      value: '',
-    },
+    firstname:'',
     lastname: '',
     password: '',
-    username: {
-      value: '',
-    }
+    username: ''
   }
 
   // Manipulation of web elements via state property
@@ -38,34 +34,27 @@ export default class NewCustomerForm extends React.Component<any, any> {
 
     switch (e.target.id) {
 
-      case 'firstnameInputId':
-
+      case CustomerInputType.FirstName:
         this.setState({
-          firstname: {
-            value: e.target.value
-          }
-
+          firstname: e.target.value
         });
-
         break;
 
-      case 'surnameInputId':
+      case CustomerInputType.LastName:
         this.setState({
           lastname: e.target.value
         });
         break;
 
-      case 'passwordInputId':
+      case CustomerInputType.Password:
         this.setState({
           password: e.target.value
         });
         break;
 
-      case 'usernameInputId':
+      case CustomerInputType.Username:
         this.setState({
-          username: {
-            value: e.target.value
-          }
+          username: e.target.value
         });
         break;
     }
@@ -97,13 +86,13 @@ export default class NewCustomerForm extends React.Component<any, any> {
   registerUser = () => {
 
     // Empty fields cannot be used for new customer credentials
-    if (this.state.firstname.value == '' || this.state.lastname == '') return;
+    if (this.state.firstname == '' || this.state.lastname == '') return;
 
     // Object that will be sended with POST request to create new customer
     const data = {
-      firstName: this.state.firstname.value,
+      firstName: this.state.firstname,
       lastName: this.state.lastname,
-      username: this.state.username.value,
+      username: this.state.username,
       password: this.state.password
     };
 
@@ -120,7 +109,7 @@ export default class NewCustomerForm extends React.Component<any, any> {
       <Form method='POST'>
         <FormGroup>
           <Label for="usernameLabel">Uživatelské jméno</Label>
-          <Input onChange={this.fieldChangeHandler} type="text" name="usernameInput" id="usernameInputId" value={this.state.username.value} />
+          <Input onChange={this.fieldChangeHandler} type="text" name="usernameInput" id="usernameInputId" value={this.state.username} />
         </FormGroup>
         <FormGroup>
           <Label for="passwordLabel">Heslo</Label>
@@ -128,14 +117,14 @@ export default class NewCustomerForm extends React.Component<any, any> {
         </FormGroup>
         <FormGroup>
           <Label for="firstnameLabel">Křestní jméno</Label>
-          <Input onChange={this.fieldChangeHandler} type="text" name="firstnameInput" id="firstnameInputId" value={this.state.firstname.value} />
+          <Input onChange={this.fieldChangeHandler} type="text" name="firstnameInput" id="firstnameInputId" value={this.state.firstname} />
           {
-            this.validateInput(this.state.firstname.value, CustomerInputType.FirstName)
+            this.validateInput(this.state.firstname, CustomerInputType.FirstName)
           }
         </FormGroup>
         <FormGroup>
-          <Label for="surnameLabel">Přijmení</Label>
-          <Input onChange={this.fieldChangeHandler} type="text" name="surnameInput" id="surnameInputId" value={this.state.lastname} />
+          <Label for="lastnameLabel">Přijmení</Label>
+          <Input onChange={this.fieldChangeHandler} type="text" name="lastnameInput" id="lastnameInputId" value={this.state.lastname} />
           {
             this.validateInput(this.state.lastname, CustomerInputType.LastName)
           }

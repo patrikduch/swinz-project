@@ -6,7 +6,7 @@
 // Rest API for products
 //-----------------------------------------------------------------------
 
-import { get, del } from '../utils/request-utils';
+import { get, del, post } from '../utils/request-utils';
 
 // Get domain for REST API services
 import { domain } from '../utils/domain-utils';
@@ -19,5 +19,9 @@ export default class ProductApi {
 
     static deleteProduct(productId: number) {        
         return del(`${domain}/api/products/delete/`+productId);
+    }
+
+    static createProduct(data: object) {        
+        return post(`${domain}/api/products/create`, data)
     }
 }

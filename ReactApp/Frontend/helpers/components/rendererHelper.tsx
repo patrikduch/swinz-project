@@ -8,9 +8,9 @@
 
 import * as React from 'react';
 
-import { ListItemType } from "../../typescript/enums/crud/List-Item-Type";
-import CustomerObject from "../../view-models/Customer";
-import ProductObject from "../../view-models/Product";
+import { ListItemType } from '../../typescript/enums/crud/List-Item-Type';
+import CustomerObject from '../../view-models/Customer';
+import ProductObject from '../../view-models/Product';
 var uniqid = require('uniqid');
 
 // Selection of type of crud view

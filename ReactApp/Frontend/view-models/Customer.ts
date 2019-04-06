@@ -10,7 +10,7 @@ export default class Customer {
     private id: number;
     private firstname: string;
     private lastname : string;
-
+    
     constructor(id: number, firstname: string, lastname: string) {
         this.id = id;
         this.firstname = firstname;

@@ -7,8 +7,9 @@
 //-----------------------------------------------------------------------
 
 export enum CustomerInputType {
-    Username = "username",
-    FirstName = "firstname",
-    LastName = "lastname"
+    Username = 'usernameInputId',
+    FirstName = 'firstnameInputId',
+    LastName = 'lastnameInputId',
+    Password = 'passwordInputId'
 }
   

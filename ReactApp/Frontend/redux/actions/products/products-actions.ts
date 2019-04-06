@@ -38,3 +38,16 @@ export const deleteProduct : ActionCreator<{}> = (productId: number) => async (d
     });
 }
 
+
+export const createProduct : ActionCreator<{}> = (productObj: object) => async (dispatch: Dispatch) => {
+        
+    ProductApi.createProduct(productObj).then((result:any) => {
+        dispatch({ type: actionTypes.PRODUCT_CREATION_SUCCESS, result });
+
+    }).catch(() => {
+
+        dispatch({ type: actionTypes.PRODUCT_CREATION_FAILURE });
+    });
+}
+
+

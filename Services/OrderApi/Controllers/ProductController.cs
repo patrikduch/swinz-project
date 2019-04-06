@@ -49,7 +49,7 @@ namespace OrderApi.Controllers
 
         [Route("create")]
         [HttpPost]
-        public async Task CreateProduct()
+        public async Task CreateProduct([FromBody] Product product)
         {
             _unitOfWork.ProductRepository.Add(new Product
             {

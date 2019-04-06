@@ -9,15 +9,19 @@
 // React dependency
 import * as React from 'react';
 
+// Title of CRUD manipulator
 import ListTitle from '../common/crud/read/List-Title';
-import CustomerListContainer from '../common/crud/read/List-Container';
+
+// List content
+import ListContainer from '../common/crud/read/List-Container';
 
 // Create operation
-import CustomerCreation from '../common/crud/create/List-Item-Creation';
+import ListItemCreation from '../common/crud/create/List-Item-Creation';
 
 // Entity objects
 import CustomerObject from '../../view-models/Customer';
 import ListItemObject from '../../helpers/types/List-Item-Object';
+import { ListItemType } from '../../typescript/enums/crud/List-Item-Type';
 
 
 export default class CustomersList extends React.Component<any, any> {
@@ -43,11 +47,11 @@ export default class CustomersList extends React.Component<any, any> {
 
     render() {
         return (
-            <div>
+            <>
                 <ListTitle>Evidence zákazniků</ListTitle>
-                <CustomerCreation createMethod={this.props.actions.createCustomer} modalTitle='Vytvoření nového zákazníka' />
+                <ListItemCreation createMethod={this.props.actions.createCustomer} type={ListItemType.Customer} />
 
-                <CustomerListContainer 
+                <ListContainer 
                     data={ this.transformData() } 
                     updateMethod={this.props.actions.updateCustomer}
                     deleteMethod={this.props.actions.deleteCustomer}
@@ -55,7 +59,7 @@ export default class CustomersList extends React.Component<any, any> {
                     emptyError = 'Seznam zákazníků je prázdný'
 
                 />
-            </div>
+            </>
         );
     }
 }

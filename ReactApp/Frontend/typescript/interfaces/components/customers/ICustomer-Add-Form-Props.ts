@@ -8,5 +8,5 @@
 
 export default interface ICustomerAddFormProps {
     modalToggler: Function // Function for closing modal after new customer is completed
-    createCustomer: Function
+    createMethod: Function
 }
