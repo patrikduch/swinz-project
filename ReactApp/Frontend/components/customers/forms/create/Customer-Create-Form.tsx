@@ -20,7 +20,7 @@ import CustomerRegexHelper from '../../../../helpers/regex/Customer-Regex-Helper
 // Enum to determine type of filled input
 import { CustomerInputType } from '../../../../typescript/enums/customers/forms/Customer-Input-Type';
 
-export default class NewCustomerForm extends React.Component<ICustomerAddFormProps, ICustomerAddFormState> {
+export default class CustomerCreationForm extends React.Component<ICustomerAddFormProps, ICustomerAddFormState> {
 
   state = {
     firstname:'',
