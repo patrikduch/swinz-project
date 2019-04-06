@@ -13,5 +13,6 @@ export default interface IListItemProps {
     arg: {
         id: number,
         
-    }
+    },
+    type: any // listing type
 }

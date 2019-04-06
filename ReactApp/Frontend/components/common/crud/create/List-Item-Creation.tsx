@@ -34,7 +34,7 @@ export default class ListItemCreation extends React.Component<IListItemCreationP
     }));
   };
 
-  // Deletion of specific customer
+  // Adding new entry
   createMethod = () => {
     this.toggle();
   };

@@ -23,6 +23,7 @@ export function post(url: string, data: object) {
     return axios.post(url,data);
 }
 
-export function put(url: string, arg: string, data: object) {
-    return axios.put(url+arg, data);
+export function put(url: string, data: object) {
+    console.log(url);
+    return axios.put(url, data);
 }

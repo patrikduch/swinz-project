@@ -25,7 +25,7 @@ export default class CustomerApi {
         return post(`${domain}/api/customers/create`, data)
     }
 
-    static updateCustomer(arg:string, data: object) {        
-        return put(`${domain}/api/customers/update/`, arg, data);
+    static updateCustomer(id:number, data: object) {        
+        return put(`${domain}/api/customers/update/${id}`, data);
     }
 }

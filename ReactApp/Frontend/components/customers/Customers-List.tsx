@@ -50,9 +50,9 @@ export default class CustomersList extends React.Component<any, any> {
             <>
                 <ListTitle>Evidence zákazniků</ListTitle>
                 <ListItemCreation createMethod={this.props.actions.createCustomer} type={ListItemType.Customer} />
-
                 <ListContainer 
                     data={ this.transformData() } 
+                    type={ListItemType.Customer}
                     updateMethod={this.props.actions.updateCustomer}
                     deleteMethod={this.props.actions.deleteCustomer}
                     columnNames = {['#','Křestní jméno','Přijmení', 'Nárok na slevu']}

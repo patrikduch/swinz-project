@@ -25,6 +25,7 @@ export default (props: IListBodyProps) => {
                 props.data.objects.map((arg: any) => {       
                 counter++; // Next item index of the customer`s list
                 return <ListItem key={ getUniqueId() }
+                        type={props.type}
                         updateMethod={props.updateMethod}
                         deleteMethod={props.deleteMethod}
                         iteration={ counter }

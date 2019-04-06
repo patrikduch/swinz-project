@@ -14,6 +14,8 @@ import styled from "styled-components";
 import { area, getUniqueId } from "../../../../helpers/components/rendererHelper";
 // Item deletion
 import ListItemDeletion from '../delete/List-Item-Deletion';
+// Item update
+import ListItemUpdate from '../update/List-Item-Update';
 // Props interface
 import IListItemProps from '../../../../typescript/interfaces/components/common/crud/read/IList-Item-Props';
 // State interface
@@ -33,6 +35,7 @@ export default class ListItem extends React.Component<IListItemProps, IListItemS
         }
         <td>
           <ListOptions>
+            <ListItemUpdate type={this.props.type} updateMethod={this.props.updateMethod} data={this.props.arg} />
             <ListItemDeletion itemIdentifier={this.props.arg.id} deleteMethod={ this.props.deleteMethod}  />
           </ListOptions>
         </td>
