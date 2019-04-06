@@ -9,7 +9,7 @@ import { ProductInputType } from "../../../../typescript/enums/crud/products/for
 export default class ProductCreationForm extends React.Component<any, any> {
   state = {
     productName: "",
-    productCost: ""
+    productPrice: ""
   };
 
   // Manipulation of web elements via state property
@@ -21,9 +21,9 @@ export default class ProductCreationForm extends React.Component<any, any> {
         });
         break;
 
-      case "surnameInputId":
+      case ProductInputType.price:
         this.setState({
-          lastname: e.target.value
+          productPrice: e.target.value
         });
         break;
     }
@@ -33,7 +33,7 @@ export default class ProductCreationForm extends React.Component<any, any> {
     // Object that will be sended with POST request to create new customer
     const data = {
       name: this.state.productName,
-      cost: this.state.productCost
+      price: this.state.productPrice
     };
 
     console.log(data);
@@ -52,18 +52,18 @@ export default class ProductCreationForm extends React.Component<any, any> {
           <FormGroup>
             <Label for={ProductInputType.name}>Název produktu</Label>
             <Input
-              type="text"
-              name="productNameInput"
+              type='text'
+              name='productNameInput'
               id={ProductInputType.name}
               onChange={this.fieldChangeHandler}
             />
           </FormGroup>
           <FormGroup>
-            <Label for={ProductInputType.cost}>Cena produktu</Label>
+            <Label for={ProductInputType.price}>Cena produktu</Label>
             <Input
-              type="text"
-              name="producCostInput"
-              id={ProductInputType.cost}
+              type='text'
+              name='producCostInput'
+              id={ProductInputType.price}
               onChange={this.fieldChangeHandler}
             />
           </FormGroup>

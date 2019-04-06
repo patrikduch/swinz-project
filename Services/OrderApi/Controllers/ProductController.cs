@@ -49,14 +49,23 @@ namespace OrderApi.Controllers
 
         [Route("create")]
         [HttpPost]
-        public async Task CreateProduct([FromBody] Product product)
+        public async Task<ActionResult> CreateProduct([FromBody] Product product)
         {
+            if (product.Name.Equals(string.Empty) || product.Price == 0)
+            {
+                return BadRequest("Incorrect input");
+            }
+
             _unitOfWork.ProductRepository.Add(new Product
             {
-                Name = product.Name
+                Name = product.Name,
+                Price = product.Price
+                
             });
 
             await _unitOfWork.Complete();
+
+            return Ok(product);
         }
 
 
