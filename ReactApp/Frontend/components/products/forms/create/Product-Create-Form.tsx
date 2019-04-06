@@ -1,10 +1,6 @@
-import * as React from "react";
-import Form from "reactstrap/lib/Form";
-import FormGroup from "reactstrap/lib/FormGroup";
-import Label from "reactstrap/lib/Label";
-import Input from "reactstrap/lib/Input";
-import Button from "reactstrap/lib/Button";
-import { ProductInputType } from "../../../../typescript/enums/crud/products/forms/Product-Input-Type";
+import * as React from 'react';
+import { Button, Input, Label, FormGroup, Form,} from 'reactstrap';
+import { ProductInputType } from '../../../../typescript/enums/crud/products/forms/Product-Input-Type';
 
 export default class ProductCreationForm extends React.Component<any, any> {
   state = {

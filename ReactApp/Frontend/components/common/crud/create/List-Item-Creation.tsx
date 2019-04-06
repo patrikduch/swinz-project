@@ -12,22 +12,25 @@ import * as React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button, Modal, ModalHeader, ModalFooter } from 'reactstrap';
 import ModalBody from 'reactstrap/lib/ModalBody';
+
 // Props interface
+import IListItemCreationProps from '../../../../typescript/interfaces/components/common/crud/create/IList-Item-Creation-Props';
 
 // State interface
+import IListItemCreationState from '../../../../typescript/interfaces/components/common/crud/create/IList-Item-Creation-State';
 
 import CustomerCreationForm from '../../../customers/forms/create/Customer-Create-Form';
 import ProductCreationForm from '../../../products/forms/create/Product-Create-Form';
 import { ListItemType } from '../../../../typescript/enums/crud/List-Item-Type';
 
-export default class ListItemCreation extends React.Component<any, any> {
+export default class ListItemCreation extends React.Component<IListItemCreationProps, IListItemCreationState> {
   state = {
-    modal: false
+    isModalActive: false
   };
 
   toggle = () => {
-    this.setState((prevState: any) => ({
-      modal: !prevState.modal
+    this.setState((prevState: IListItemCreationState) => ({
+      isModalActive: !prevState.isModalActive
     }));
   };
 
@@ -69,17 +72,13 @@ export default class ListItemCreation extends React.Component<any, any> {
     }
   };
 
-  componentDidMount() {
-    console.log(this.props);
-  }
-
   render() {
     return (
       <span>
         <Button size="sm" onClick={this.toggle}>
           <FontAwesomeIcon size="lg" icon="plus" />
         </Button>
-        <Modal size="lg" isOpen={this.state.modal} toggle={this.toggle}>
+        <Modal size="lg" isOpen={this.state.isModalActive} toggle={this.toggle}>
           {this.formSelection(this.props.type)}
           <ModalFooter />
         </Modal>
