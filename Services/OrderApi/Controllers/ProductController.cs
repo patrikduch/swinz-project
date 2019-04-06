@@ -53,7 +53,7 @@ namespace OrderApi.Controllers
         {
             _unitOfWork.ProductRepository.Add(new Product
             {
-                Name = "Boruvka"
+                Name = product.Name
             });
 
             await _unitOfWork.Complete();
