@@ -9,8 +9,8 @@ using OrderApi.Contexts;
 namespace OrderApi.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20190401205710_ProductTableName")]
-    partial class ProductTableName
+    [Migration("20190407061930_OrderEntityInitialization")]
+    partial class OrderEntityInitialization
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,17 +20,13 @@ namespace OrderApi.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("PersistenceLib.Domains.OrderApi.Product", b =>
+            modelBuilder.Entity("PersistenceLib.Domains.OrderApi.Order", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name");
+                    b.Property<int>("Id");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Product");
+                    b.ToTable("Order");
                 });
 #pragma warning restore 612, 618
         }

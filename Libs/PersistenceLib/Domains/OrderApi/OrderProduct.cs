@@ -16,5 +16,7 @@ namespace PersistenceLib.Domains.OrderApi
         public Order Order { get; set; }
 
         public Product Product { get; set; }
+
+        public Customer Customer { get; set; }
     }
 }

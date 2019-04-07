@@ -65,6 +65,7 @@ namespace UserApi.Helpers
             // Create role if not exists
             var roleEntity = await UserContext.Roles.FirstOrDefaultAsync(r => r.Name == roleName) ?? new Role()
             {
+                Id = UserContext.Roles.Count() +1,
                 Name = roleName
             };
 

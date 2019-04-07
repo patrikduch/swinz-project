@@ -1,4 +1,7 @@
 ﻿
+using System.Reflection.Metadata.Ecma335;
+using PersistenceLib.Domains.UserApi;
+
 namespace PersistenceLib.Domains.OrderApi
 {
     using System;
@@ -9,9 +12,9 @@ namespace PersistenceLib.Domains.OrderApi
     {
         public int Id { get; set; }
 
-        public DateTime CreationDate { get; set; }
+        public int CustomerId { get; set; }
 
-        public IList<OrderProduct> OrderProducts { get; set; }
+        public Customer Customer { get; set; }
 
     }
 }

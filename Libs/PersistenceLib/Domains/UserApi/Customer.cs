@@ -38,6 +38,7 @@ namespace PersistenceLib.Domains.UserApi
         public User User { get; set; }
 
 
-        public OrderProduct OrderProduct { get; set; }
+        public virtual Order Order { get; set; }
+
     }
 }

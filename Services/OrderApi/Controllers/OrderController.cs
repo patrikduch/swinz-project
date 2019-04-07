@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OrderApi.Contexts;
 using PersistenceLib.Domains.OrderApi;
+using PersistenceLib.Domains.UserApi;
 
 namespace OrderApi.Controllers
 {
@@ -22,17 +23,22 @@ namespace OrderApi.Controllers
         }
 
 
-
-
         /// <summary>
         /// Get all products without restrictions
         /// </summary>
         /// <returns></returns>
         [Route("getAll")]
         [HttpGet]
-        public async Task<List<Order>> Get()
+        public async Task<IEnumerable<Product>> Get()
         {
-            return await _productContext.Orders.Include(c => c.OrderProducts).ToListAsync();
+
+            var res = _productContext.Orders.Include(c => c.Customer);
+            
+
+            return null;
         }
+
+
+
     }
 }

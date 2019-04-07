@@ -5,6 +5,7 @@
 // <author>Patrik Duch</author>
 
 using OrderApi.EntityConfigurations;
+using PersistenceLib.Domains.UserApi;
 
 namespace OrderApi.Contexts
 {
@@ -24,19 +25,15 @@ namespace OrderApi.Contexts
         {
         }
 
-        /// <summary>
-        /// Data-set for accessing products
-        /// </summary>
-        public virtual DbSet<Product> Products { get; set; }
+
 
         public virtual DbSet<Order>  Orders { get; set; }
 
 
 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new ProductConfiguration());
-
             modelBuilder.ApplyConfiguration(new OrderConfiguration());
         }
     }
