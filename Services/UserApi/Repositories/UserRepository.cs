@@ -66,13 +66,20 @@ namespace UserApi.Repositories
             // Create role if not exists
             var roleEntity = await UserContext.Roles.FirstOrDefaultAsync(r => r.Name == roleName) ?? new Role()
             {
+                Id = UserContext.Roles.Count() +1,
                 Name = roleName
             };
 
             // List of roles that will be added to new user
             var roles = new List<UserRoles>
             {
-                new UserRoles() {User = new User() {Username = dto.Username}, Role = roleEntity}
+                new UserRoles() {User = new User()
+                    {
+                        Id = UserContext.Users.Count()+1,
+                        Username = dto.Username
+                    }, Role = roleEntity
+
+                }
             };
 
             // Encryption process
@@ -81,6 +88,7 @@ namespace UserApi.Repositories
             // Creation of new user
             var newUser = new User
             {
+                Id = UserContext.Users.Count()+1,
                 Username = dto.Username,
                 UserRoles = roles,
                 PasswordHash = passwordHash,
