@@ -72,7 +72,11 @@ namespace UserApi.Helpers
             // List of roles that will be added to new user
             var roles = new List<UserRoles>
             {
-                new UserRoles() {User = new User() {Username = dto.Username}, Role = roleEntity}
+                new UserRoles() {User = new User()
+                {
+                    Id = UserContext.Users.Count()+1,
+                    Username = dto.Username
+                }, Role = roleEntity}
             };
 
             // Encryption process
@@ -81,6 +85,7 @@ namespace UserApi.Helpers
             // Creation of new user
             var newUser = new User
             {
+                Id = UserContext.Users.Count()+1,
                 Username = dto.Username,
                 UserRoles = roles,
                 PasswordHash = passwordHash,

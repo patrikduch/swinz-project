@@ -32,8 +32,44 @@ namespace OrderApi.Controllers
         public async Task<IEnumerable<Product>> Get()
         {
 
-            var res = _productContext.Orders.Include(c => c.Customer);
-            
+            var product = new Product
+            {
+                Id = 1,
+                Name = "Aaa",
+                Price = 45
+
+            };
+
+
+            _productContext.Products.Add(product);
+
+            var order = new Order
+            {
+                Id = 1,
+                CustomerId = 1,
+
+            };
+
+
+            _productContext.Orders.Add(order);
+
+
+            var t = new OrderProduct
+            {
+                Id = 1,
+                ProductId = product.Id,
+                OrderId = order.Id
+
+
+            };
+
+            _productContext.OrderProducts.Add(t);
+
+
+            await _productContext.SaveChangesAsync();
+
+
+
 
             return null;
         }

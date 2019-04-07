@@ -10,8 +10,8 @@ using OrderApi.Contexts;
 namespace OrderApi.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20190407071841_OrderProductEntity")]
-    partial class OrderProductEntity
+    [Migration("20190407084139_OrderToProductEntity")]
+    partial class OrderToProductEntity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,11 +37,17 @@ namespace OrderApi.Migrations
 
             modelBuilder.Entity("PersistenceLib.Domains.OrderApi.OrderProduct", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
                     b.Property<int>("OrderId");
 
                     b.Property<int>("ProductId");
 
-                    b.HasKey("OrderId", "ProductId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
 
                     b.HasIndex("ProductId");
 
@@ -50,7 +56,9 @@ namespace OrderApi.Migrations
 
             modelBuilder.Entity("PersistenceLib.Domains.OrderApi.Product", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name");
 
@@ -141,12 +149,12 @@ namespace OrderApi.Migrations
             modelBuilder.Entity("PersistenceLib.Domains.OrderApi.OrderProduct", b =>
                 {
                     b.HasOne("PersistenceLib.Domains.OrderApi.Order", "Order")
-                        .WithMany()
+                        .WithMany("OrderProducts")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("PersistenceLib.Domains.OrderApi.Product", "Product")
-                        .WithMany()
+                        .WithMany("OrderProducts")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

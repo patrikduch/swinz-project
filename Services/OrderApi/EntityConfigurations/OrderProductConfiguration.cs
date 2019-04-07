@@ -17,6 +17,21 @@ namespace OrderApi.EntityConfigurations
             // Composite key
             builder.HasKey(sc => new { sc.OrderId, sc.ProductId });
 
+            builder.Property(t => t.Id).ValueGeneratedNever();
+
+            // M:N (Orders -> Products)
+
+            builder
+                .HasOne(sc => sc.Product)
+                .WithMany(s => s.OrderProducts)
+                .HasForeignKey(sc => sc.ProductId);
+
+
+            builder
+                .HasOne(sc => sc.Order)
+                .WithMany(s => s.OrderProducts)
+                .HasForeignKey(sc => sc.OrderId);
+
 
         }
     }

@@ -19,6 +19,8 @@ namespace OrderApi.EntityConfigurations
         public void Configure(EntityTypeBuilder<Product> builder)
         {
             builder.ToTable("Product");
+
+            builder.Property(t => t.Id).ValueGeneratedNever();
         }
     }
 }
