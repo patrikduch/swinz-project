@@ -7,9 +7,9 @@
 //-----------------------------------------------------------------------
 
 // React dependency
-import * as React from "react";
+import * as React from 'react';
 // Styled helper
-import styled from "styled-components";
+import styled from 'styled-components';
 // Renderer helper methods
 import { area, getUniqueId } from "../../../../helpers/components/rendererHelper";
 // Item deletion

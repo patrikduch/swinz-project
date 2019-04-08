@@ -34,6 +34,7 @@ export function area(areaName: any, obj: any, iteration: number) {
       const entity = obj as ProductObject;
       return (
         <>
+         <th scope="row">{iteration}</th>
           <td>
             <div>{entity.getName}</div>
           </td>
@@ -49,6 +50,7 @@ export function area(areaName: any, obj: any, iteration: number) {
       const entity = obj as OrderObject;
       return (
         <>
+         <th scope="row">{iteration}</th>
           <td>
             <div>{entity.getId}</div>
           </td>

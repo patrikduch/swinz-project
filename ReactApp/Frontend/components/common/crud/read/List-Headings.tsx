@@ -18,7 +18,6 @@ import ListHeadingsItem from './List-Headings-Item';
 // Stylization 
 const Thead = styled.thead`
 `;
-
 export default (props:IListHeadingsProps) => {
     return (
         <Thead>
