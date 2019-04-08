@@ -7,7 +7,7 @@ namespace OrderApi.Dto
 {
     public class OrderDto
     {
-        public int ProductId { get; set; }
+        public int[] ProductArray { get; set; }
         public int CustomerId { get; set; }
     }
 }

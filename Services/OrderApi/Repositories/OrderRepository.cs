@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using OrderApi.Contexts;
 using OrderApi.Dto;
@@ -45,7 +46,7 @@ namespace OrderApi.Repositories
             return dto;
         }
 
-        public CreateOrderDto CreateOrder(int productId, int customerId)
+        public CreateOrderDto CreateOrder(int[] productArray, int customerId)
         {
             var order = new Order
             {
@@ -54,26 +55,44 @@ namespace OrderApi.Repositories
                 CreationDate = DateTime.Now
             };
 
-
-            order.OrderProducts = new List<OrderProduct>
-            {
-                new OrderProduct
-                {
-                    Id = ProductContext.OrderProducts.Count()+1,
-                    OrderId = order.Id,
-                    ProductId = productId
-                }
-            };
+            // Assign collectio of order products
+            order.OrderProducts = GenerateOrderProducts(productArray, order);
             
-
 
             return new CreateOrderDto
             {
                 Order = order,
             };
 
+        }
+
+        private List<OrderProduct> GenerateOrderProducts(IEnumerable<int> productArray, Order order)
+        {
+            var orders = new List<OrderProduct>();
+
+            var counter = 0;
+            var orderProductId = 0;
+
+            foreach (var i in productArray)
+            {
+                if (counter == 0)
+                {
+                    orderProductId = ProductContext.OrderProducts.Count() + 1;
+                }
+
+                orders.Add(new OrderProduct
+                {
+                    Id = orderProductId,
+                    OrderId = order.Id,
+                    ProductId = i
+                });
 
 
+                orderProductId++;
+                counter++;
+            }
+
+            return orders;
         }
     }
 }

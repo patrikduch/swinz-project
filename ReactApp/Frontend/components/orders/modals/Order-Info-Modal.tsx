@@ -23,17 +23,12 @@ import IOrderInfoModalState from '../../../typescript/interfaces/components/orde
 import OrderInfoModalTable from '../modals/Order-Info-Modal-Table';
 
 export default class OrderInfoModal extends React.Component<IOrderInfoModalProps, IOrderInfoModalState> {
-    
+
     state = {
         isModalActive: false  
     };
-
-    componentDidMount() {
-        console.log(this.props);
-    }
   
-    toggle = () => {
-      
+    toggle = () => {      
         this.setState({
             isModalActive: !this.state.isModalActive
         })

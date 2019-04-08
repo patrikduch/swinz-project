@@ -6,8 +6,8 @@
 // Table for displaing customers for specific order
 //----------------------------------------------------------------------------------------
 
-import * as React from "react";
-import Table from "reactstrap/lib/Table";
+import * as React from 'react';
+import { Table } from 'reactstrap';
 
 export default (props: any) => {
   const displayProducts = () => {

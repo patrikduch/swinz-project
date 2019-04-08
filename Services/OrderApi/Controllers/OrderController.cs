@@ -48,7 +48,7 @@ namespace OrderApi.Controllers
         public async Task<ActionResult> CreateOrder([FromBody] OrderDto dto)
         {
 
-            var res = _unitOfWork.OrderRepository.CreateOrder(dto.ProductId, dto.CustomerId);
+            var res = _unitOfWork.OrderRepository.CreateOrder(dto.ProductArray, dto.CustomerId);
 
             _unitOfWork.OrderRepository.Add(res.Order);
 

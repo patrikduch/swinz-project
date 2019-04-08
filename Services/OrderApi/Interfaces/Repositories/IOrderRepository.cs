@@ -12,6 +12,6 @@ namespace OrderApi.Interfaces.Repositories
     {
         Task<List<OrderListDto>> GetAllOrders();
 
-        CreateOrderDto CreateOrder(int productId, int customerId);
+        CreateOrderDto CreateOrder(int[] productArray, int customerId);
     }
 }

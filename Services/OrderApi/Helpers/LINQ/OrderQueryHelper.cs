@@ -12,11 +12,6 @@ namespace OrderApi.Helpers.LINQ
     /// </summary>
     public static class OrderQueryHelper
     {
-        public static string Test(this String s)
-        {
-            return "";
-        }
-
 
         public static IEnumerable<OrderListDto> ToOrderListDto(this List<Order> collection)
         {
