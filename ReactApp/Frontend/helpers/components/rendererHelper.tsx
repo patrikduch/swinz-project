@@ -12,6 +12,7 @@ import { ListItemType } from "../../typescript/enums/crud/List-Item-Type";
 import CustomerObject from "../../view-models/Customer";
 import ProductObject from "../../view-models/Product";
 import OrderObject from '../../view-models/Order';
+import Button from "reactstrap/lib/Button";
 var uniqid = require("uniqid");
 
 // Selection of type of crud view
@@ -53,6 +54,9 @@ export function area(areaName: any, obj: any, iteration: number) {
          <th scope="row">{iteration}</th>
           <td>
             <div>{entity.GetCreationDate}</div>
+          </td>
+          <td>
+            <div><Button size='sm'>#{entity.getCustomerId}</Button></div>
           </td>
         </>
       );

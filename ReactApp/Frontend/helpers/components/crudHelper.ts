@@ -11,7 +11,7 @@ export function toCrudData(collection: any) {
 
     for(let i = 0; i<Object.keys(collection).length; i++) {
 
-        const item = new Order(collection[i].id, collection[i].creationDate);
+        const item = new Order(collection[i].id, collection[i].creationDate,collection[i].customerId);
         list.objects.push(item);
     }
 
