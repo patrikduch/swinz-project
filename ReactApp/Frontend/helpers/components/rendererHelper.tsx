@@ -13,6 +13,10 @@ import CustomerObject from "../../view-models/Customer";
 import ProductObject from "../../view-models/Product";
 import OrderObject from '../../view-models/Order';
 import Button from "reactstrap/lib/Button";
+
+import OrderInfo from '../../components/orders/modals/Order-Info-Modal';
+
+
 var uniqid = require("uniqid");
 
 // Selection of type of crud view
@@ -49,6 +53,7 @@ export function area(areaName: any, obj: any, iteration: number) {
 
     case ListItemType.Order: {
       const entity = obj as OrderObject;
+      console.log(entity);
       return (
         <>
          <th scope="row">{iteration}</th>
@@ -57,6 +62,9 @@ export function area(areaName: any, obj: any, iteration: number) {
           </td>
           <td>
             <div><Button size='sm'>#{entity.getCustomerId}</Button></div>
+          </td>
+          <td>
+          <OrderInfo products={entity.getProducts} />
           </td>
         </>
       );
