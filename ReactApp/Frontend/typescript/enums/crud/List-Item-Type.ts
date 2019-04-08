@@ -9,6 +9,6 @@
 export enum ListItemType {
     Product = 'Product',
     Customer = 'Customer',
-    Order = 'order'
+    Order = 'Order'
 }
   

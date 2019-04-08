@@ -21,11 +21,7 @@ namespace OrderApi.Repositories
 
         public Task<List<Order>> GetAllOrders()
         {
-            //return ProductContext.Orders.ToListAsync();
-
-            
-
-            return null;
+            return ProductContext.Orders.ToListAsync();
         }
 
         public CreateOrderDto CreateOrder(int productId, int customerId)

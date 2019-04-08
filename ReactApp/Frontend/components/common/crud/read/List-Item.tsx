@@ -29,9 +29,8 @@ export default class ListItem extends React.Component<IListItemProps, IListItemS
 
     return (
       <tr key={ getUniqueId() }>
-        <th scope="row">{this.props.iteration}</th>
         {
-          area(this.props.arg.constructor.name,this.props.arg)
+          area(this.props.arg.constructor.name,this.props.arg, this.props.iteration)
         }
         <td>
           <ListOptions>

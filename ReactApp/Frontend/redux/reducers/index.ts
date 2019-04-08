@@ -12,12 +12,14 @@ import customerReducer from '../reducers/customers/customer-reducer';
 import userReducer from '../reducers/users/users-reducer';
 import authReducer from '../reducers/auth/auth-reducer';
 import productReducer from '../reducers/products/product-reducer';
+import orderReducer from '../reducers/orders/order-reducer';
 
 // Merge process of all reducers
 export default combineReducers({
     customers: customerReducer,
     users: userReducer,
     auth: authReducer,
-    products: productReducer
+    products: productReducer,
+    orders: orderReducer
 });
 

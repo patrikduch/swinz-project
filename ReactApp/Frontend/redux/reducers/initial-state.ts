@@ -9,7 +9,8 @@
 export default {
     customers: [], // list of customers
     products: [], // list of products
-    users: [],
+    users: [], // list of users
+    orders: [], // list of orders
     auth: {
         token: '',
         isAuthenticated: false

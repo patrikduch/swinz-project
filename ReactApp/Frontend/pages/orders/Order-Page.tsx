@@ -9,10 +9,13 @@
 import * as React from 'react';
 import { Container } from 'reactstrap';
 
+import OrderListComp from '../../redux/containers/orders/Order-List-Container';
+
+
 export default  () => {
     return (
         <Container>
-            Evidence objednavek
+            <OrderListComp/>
         </Container>
     );
 }
