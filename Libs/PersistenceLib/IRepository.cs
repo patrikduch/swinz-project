@@ -26,5 +26,7 @@ namespace PersistenceLib
 
         void Remove(TEntity entity);
         void RemoveRange(IEnumerable<TEntity> entities);
+
+        int NumberofEntries();
     }
 }

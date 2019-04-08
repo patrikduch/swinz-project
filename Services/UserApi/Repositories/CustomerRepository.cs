@@ -95,6 +95,7 @@ namespace UserApi.Repositories
         public async Task<List<CustomerUserDto>> GetAllCustomers()
         {
             var customers = await UserContext.Customers.Include(c => c.User).ToListAsync();
+
             return _userHelperService.CustomerEntityToDto(customers).ToList();
         }
 

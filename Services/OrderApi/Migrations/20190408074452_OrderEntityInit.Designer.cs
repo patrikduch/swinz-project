@@ -9,8 +9,8 @@ using OrderApi.Contexts;
 namespace OrderApi.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20190407061930_OrderEntityInitialization")]
-    partial class OrderEntityInitialization
+    [Migration("20190408074452_OrderEntityInit")]
+    partial class OrderEntityInit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

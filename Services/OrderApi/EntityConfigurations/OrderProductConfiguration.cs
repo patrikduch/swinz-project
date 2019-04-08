@@ -15,9 +15,7 @@ namespace OrderApi.EntityConfigurations
             builder.ToTable("OrderProduct");
 
             // Composite key
-            builder.HasKey(sc => new { sc.OrderId, sc.ProductId });
-
-            builder.Property(t => t.Id).ValueGeneratedNever();
+            builder.HasKey(sc => new { sc.Id, sc.OrderId, sc.ProductId });
 
             // M:N (Orders -> Products)
 

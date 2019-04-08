@@ -27,6 +27,6 @@ namespace PersistenceLib.Domains.OrderApi
         /// </summary>
         public int Price { get; set; }
 
-        public IList<OrderProduct> OrderProducts { get; set; }
+        public ICollection<OrderProduct> OrderProducts { get; set; }
     }
 }

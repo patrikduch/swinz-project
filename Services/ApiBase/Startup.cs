@@ -104,7 +104,8 @@ namespace ApiBase
             services.AddScoped<IProductUnitOfWork, ProductUnitOfWork>();
             services.AddScoped<IProductRepository, ProductRepository>();
 
-
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IOrderUnitOfWork, OrderUnitOfWork>();
 
 
 

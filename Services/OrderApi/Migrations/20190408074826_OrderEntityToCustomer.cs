@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace OrderApi.Migrations
 {
-    public partial class OrderToCustomerEntity : Migration
+    public partial class OrderEntityToCustomer : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -20,7 +20,6 @@ namespace OrderApi.Migrations
                 column: "CustomerId",
                 unique: true);
 
-          
             migrationBuilder.AddForeignKey(
                 name: "FK_Order_Customer_CustomerId",
                 table: "Order",

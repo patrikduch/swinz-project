@@ -17,6 +17,7 @@ namespace OrderApi.EntityConfigurations
             builder.Property(t => t.Id).ValueGeneratedNever();
 
 
+            // Order - Customer (1:1)
             builder.HasOne(o => o.Customer)
                 .WithOne(c => c.Order)
                 .HasForeignKey<Order>(o => o.CustomerId);

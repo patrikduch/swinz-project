@@ -10,8 +10,8 @@ using OrderApi.Contexts;
 namespace OrderApi.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20190407062233_OrderToCustomerEntity")]
-    partial class OrderToCustomerEntity
+    [Migration("20190408075335_ProductEntityInit")]
+    partial class ProductEntityInit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,6 +33,19 @@ namespace OrderApi.Migrations
                         .IsUnique();
 
                     b.ToTable("Order");
+                });
+
+            modelBuilder.Entity("PersistenceLib.Domains.OrderApi.Product", b =>
+                {
+                    b.Property<int>("Id");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("Price");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Product");
                 });
 
             modelBuilder.Entity("PersistenceLib.Domains.UserApi.Customer", b =>

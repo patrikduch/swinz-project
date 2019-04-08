@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OrderApi.Contexts;
 
 namespace OrderApi.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    partial class ProductContextModelSnapshot : ModelSnapshot
+    [Migration("20190408074826_OrderEntityToCustomer")]
+    partial class OrderEntityToCustomer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,36 +33,6 @@ namespace OrderApi.Migrations
                         .IsUnique();
 
                     b.ToTable("Order");
-                });
-
-            modelBuilder.Entity("PersistenceLib.Domains.OrderApi.OrderProduct", b =>
-                {
-                    b.Property<int>("Id");
-
-                    b.Property<int>("OrderId");
-
-                    b.Property<int>("ProductId");
-
-                    b.HasKey("Id", "OrderId", "ProductId");
-
-                    b.HasIndex("OrderId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("OrderProduct");
-                });
-
-            modelBuilder.Entity("PersistenceLib.Domains.OrderApi.Product", b =>
-                {
-                    b.Property<int>("Id");
-
-                    b.Property<string>("Name");
-
-                    b.Property<int>("Price");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Product");
                 });
 
             modelBuilder.Entity("PersistenceLib.Domains.UserApi.Customer", b =>
@@ -137,19 +109,6 @@ namespace OrderApi.Migrations
                     b.HasOne("PersistenceLib.Domains.UserApi.Customer", "Customer")
                         .WithOne("Order")
                         .HasForeignKey("PersistenceLib.Domains.OrderApi.Order", "CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("PersistenceLib.Domains.OrderApi.OrderProduct", b =>
-                {
-                    b.HasOne("PersistenceLib.Domains.OrderApi.Order", "Order")
-                        .WithMany("OrderProducts")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("PersistenceLib.Domains.OrderApi.Product", "Product")
-                        .WithMany("OrderProducts")
-                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

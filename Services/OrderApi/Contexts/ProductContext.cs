@@ -25,17 +25,17 @@ namespace OrderApi.Contexts
         {
         }
 
-        public virtual DbSet<Order>  Orders { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<OrderProduct> OrderProducts { get; set; }
 
-        public virtual DbSet<OrderProduct> OrderProducts { get; set; }
-
-        public virtual DbSet<Product> Products { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new OrderConfiguration());
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
-            modelBuilder.ApplyConfiguration(new OrderConfiguration());
+            modelBuilder.ApplyConfiguration(new OrderProductConfiguration());
+
         }
     }
 }

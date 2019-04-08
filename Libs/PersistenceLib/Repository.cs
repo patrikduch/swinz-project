@@ -100,5 +100,13 @@ namespace PersistenceLib
             return  await Context.Set<TEntity>().FindAsync(id);
         }
 
+        /// <summary>
+        /// Get number of rows for specific entity
+        /// </summary>
+        /// <returns></returns>
+        public int NumberofEntries()
+        {
+            return Context.Set<TEntity>().Count();
+        }
     }
 }

@@ -10,8 +10,8 @@ using OrderApi.Contexts;
 namespace OrderApi.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20190407090038_OrderToProductEntityFix")]
-    partial class OrderToProductEntityFix
+    [Migration("20190408080818_OrderProductIdentifierAttribute")]
+    partial class OrderProductIdentifierAttribute
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,21 +37,19 @@ namespace OrderApi.Migrations
 
             modelBuilder.Entity("PersistenceLib.Domains.OrderApi.OrderProduct", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("Id");
 
                     b.Property<int>("OrderId");
 
                     b.Property<int>("ProductId");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id", "OrderId", "ProductId");
 
                     b.HasIndex("OrderId");
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderProducts");
+                    b.ToTable("OrderProduct");
                 });
 
             modelBuilder.Entity("PersistenceLib.Domains.OrderApi.Product", b =>
