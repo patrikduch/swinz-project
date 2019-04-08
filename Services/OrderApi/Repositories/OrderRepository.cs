@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using OrderApi.Contexts;
 using OrderApi.Dto;
+using OrderApi.Helpers.LINQ;
 using OrderApi.Interfaces.Repositories;
 using PersistenceLib;
 using PersistenceLib.Domains.OrderApi;
@@ -19,9 +20,29 @@ namespace OrderApi.Repositories
         {
         }
 
-        public Task<List<Order>> GetAllOrders()
+       
+        /// <summary>
+        /// Get all orders (with products included)
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<OrderListDto>> GetAllOrders()
         {
-            return ProductContext.Orders.ToListAsync();
+
+            var dto = ProductContext.Orders.ToList().ToOrderListDto().ToList();
+
+            foreach (var order in dto)
+            {
+                // Assign the product collection to the order object
+                order.Products = await ProductContext.Orders
+                    .SelectMany(o => o.OrderProducts)
+                    .Where(c => c.OrderId == order.Id)
+                    .Select(c => c.Product).ToListAsync();
+
+                // Get customer identifier
+                order.CustomerId = ProductContext.Orders.Select(c => c.Customer.Id).SingleOrDefault();
+            }
+
+            return dto;
         }
 
         public CreateOrderDto CreateOrder(int productId, int customerId)

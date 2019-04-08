@@ -10,7 +10,7 @@ namespace OrderApi.Interfaces.Repositories
 {
     public interface IOrderRepository : IRepository<Order>
     {
-        Task<List<Order>> GetAllOrders();
+        Task<List<OrderListDto>> GetAllOrders();
 
         CreateOrderDto CreateOrder(int productId, int customerId);
     }

@@ -35,7 +35,7 @@ namespace OrderApi.Controllers
         /// <returns></returns>
         [Route("getAll")]
         [HttpGet]
-        public async Task<IEnumerable<Order>> Get()
+        public async Task<List<OrderListDto>> Get()
         {
 
             return await _unitOfWork.OrderRepository.GetAllOrders();
