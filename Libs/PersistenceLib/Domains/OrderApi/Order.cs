@@ -17,5 +17,8 @@ namespace PersistenceLib.Domains.OrderApi
         public Customer Customer { get; set; }
 
         public ICollection<OrderProduct> OrderProducts { get; set; }
+
+        public DateTime CreationDate { get; set; }
+
     }
 }

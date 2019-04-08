@@ -26,13 +26,11 @@ namespace OrderApi.Repositories
 
         public CreateOrderDto CreateOrder(int productId, int customerId)
         {
-
-           
-
             var order = new Order
             {
                 Id = ProductContext.Orders.Count()+1,
-                CustomerId = customerId
+                CustomerId = customerId,
+                CreationDate = DateTime.Now
             };
 
 

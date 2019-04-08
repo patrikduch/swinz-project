@@ -8,14 +8,18 @@
 
 export default class Order {
     private id: number;
+    private creationDate: Date;
 
-
-    constructor(id: number) {
+    constructor(id: number, creationDate: Date) {
         this.id = id;
-
+        this.creationDate = creationDate;
     }
 
     get getId() {
         return this.id;
+    }
+
+    get GetCreationDate() {
+        return this.creationDate;
     }
 }

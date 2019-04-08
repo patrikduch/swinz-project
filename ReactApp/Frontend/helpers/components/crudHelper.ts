@@ -11,9 +11,11 @@ export function toCrudData(collection: any) {
 
     for(let i = 0; i<Object.keys(collection).length; i++) {
 
-        const item = new Order(collection[i].id);
+        const item = new Order(collection[i].id, collection[i].creationDate);
         list.objects.push(item);
     }
+
+    console.log(list);
 
     return list;
 }

@@ -14,9 +14,6 @@ import * as actionTypes from '../../actions/action-types';
 import { ActionCreator, Dispatch } from 'redux';
 
 
-export const createOrder: ActionCreator<{}> = () => async (dispatch: Dispatch) => {
-        
-}
 
 
 export const getOrders: ActionCreator<{}> = () => async (dispatch: Dispatch) => {

@@ -52,7 +52,7 @@ export function area(areaName: any, obj: any, iteration: number) {
         <>
          <th scope="row">{iteration}</th>
           <td>
-            <div>{entity.getId}</div>
+            <div>{entity.GetCreationDate}</div>
           </td>
         </>
       );
