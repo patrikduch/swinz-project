@@ -11,7 +11,7 @@ import * as React from 'react';
 // Styled helper
 import styled from 'styled-components';
 // Renderer helper methods
-import { area, getUniqueId } from "../../../../helpers/components/rendererHelper";
+import { area, getUniqueId } from '../../../../helpers/components/rendererHelper';
 // Item deletion
 import ListItemDeletion from '../delete/List-Item-Deletion';
 // Item update

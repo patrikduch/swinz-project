@@ -6,18 +6,21 @@
 // Set of helper functions for component manipulations
 //-----------------------------------------------------------------------
 
-import * as React from "react";
+// React dependency
+import * as React from 'react';
 
-import { ListItemType } from "../../typescript/enums/crud/List-Item-Type";
-import CustomerObject from "../../view-models/Customer";
-import ProductObject from "../../view-models/Product";
+// Enum type to determine type of passed component which will be rendered by area method
+import { ListItemType } from '../../typescript/enums/crud/List-Item-Type';
+// View model objects
+import CustomerObject from '../../view-models/Customer';
+import ProductObject from '../../view-models/Product';
 import OrderObject from '../../view-models/Order';
-import Button from "reactstrap/lib/Button";
 
+// Modal for displaying products for specific order
 import OrderInfo from '../../components/orders/modals/Order-Info-Modal';
 
-
-var uniqid = require("uniqid");
+// Modal to display customer information
+import CustomerInfoModal from '../../components/customers/modals/Customer-Info-Modal';
 
 // Selection of type of crud view
 export function area(areaName: any, obj: any, iteration: number) {
@@ -39,7 +42,7 @@ export function area(areaName: any, obj: any, iteration: number) {
       const entity = obj as ProductObject;
       return (
         <>
-         <th scope="row">{iteration}</th>
+          <th scope="row">{iteration}</th>
           <td>
             <div>{entity.getName}</div>
           </td>
@@ -50,21 +53,21 @@ export function area(areaName: any, obj: any, iteration: number) {
       );
     }
 
-
     case ListItemType.Order: {
       const entity = obj as OrderObject;
-      console.log(entity);
       return (
         <>
-         <th scope="row">{iteration}</th>
+          <th scope="row">{iteration}</th>
           <td>
             <div>{entity.GetCreationDate}</div>
           </td>
           <td>
-            <div><Button size='sm'>#{entity.getCustomerId}</Button></div>
+            <div>
+              <CustomerInfoModal text={entity.getCustomerId} />
+            </div>
           </td>
           <td>
-          <OrderInfo products={entity.getProducts} />
+            <OrderInfo products={entity.getProducts} />
           </td>
         </>
       );
@@ -77,5 +80,6 @@ export function area(areaName: any, obj: any, iteration: number) {
 
 // Helper method for getting unique identifier for react elements
 export function getUniqueId() {
+  var uniqid = require("uniqid");
   return uniqid.process();
 }

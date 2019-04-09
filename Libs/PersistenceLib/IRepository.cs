@@ -28,5 +28,7 @@ namespace PersistenceLib
         void RemoveRange(IEnumerable<TEntity> entities);
 
         int NumberofEntries();
+
+        Task<TEntity> GetLast();
     }
 }

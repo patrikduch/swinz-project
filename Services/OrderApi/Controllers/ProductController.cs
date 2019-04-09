@@ -50,7 +50,7 @@ namespace OrderApi.Controllers
 
             _unitOfWork.ProductRepository.Add(new Product
             {
-                Id = _unitOfWork.ProductRepository.NumberofEntries()+1,
+                Id = _unitOfWork.ProductRepository.GetLast().Result.Id +1,
                 Name = product.Name,
                 Price = product.Price
                 
