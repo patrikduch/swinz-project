@@ -67,13 +67,13 @@ namespace UserApi.Repositories
                 Password = customerDto.Password
             }, "Customer");
 
-            user.Id = UserContext.Users.LastOrDefault() == null ? 1 : UserContext.Customers.LastOrDefault().Id + 1;
+            user.Id = UserContext.Users.LastOrDefault() == null ? 1 : UserContext.Customers.Last().Id + 1;
 
 
             // Creation of customer object from user a customer data
             var customerResult = new Customer
             {
-                Id = UserContext.Customers.LastOrDefault() == null ? 1 : UserContext.Customers.LastOrDefault().Id +1,
+                Id = UserContext.Customers.LastOrDefault() == null ? 1 : UserContext.Customers.Last().Id +1,
                 FirstName = customerDto.FirstName,
                 LastName = customerDto.Lastname,
                 Discount = customerDto.Discount,

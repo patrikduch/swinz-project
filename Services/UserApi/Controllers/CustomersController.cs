@@ -122,18 +122,17 @@ namespace UserApi.Controllers
             // Get customers entity by primary key
             var entity = await _customerUnitOfWork.CustomerRepository.Get(id);
 
-            if (entity != null && (entity.FirstName != dto.FirstName || entity.LastName != dto.LastName)) // Entry was founded
-            {
-                // Change  entity values
-                entity.FirstName = dto.FirstName;
-                entity.LastName = dto.LastName;               
-            }
+            if (entity == null || (entity.FirstName == dto.FirstName && entity.LastName == dto.LastName)) return null;
+            // Change  entity values
+            entity.FirstName = dto.FirstName;
+            entity.LastName = dto.LastName;
 
             // Save changes
             await _customerUnitOfWork.Complete();
 
             // Return modified customer object
             return entity;
+
         }
 
         /// <summary>
@@ -150,11 +149,10 @@ namespace UserApi.Controllers
             if (userEntity != null)
             {
                 userEntity.Customer = await _customerUnitOfWork.CustomerRepository.Get(id);
+
+                _customerUnitOfWork.UserRepository.Remove(userEntity);
+                await _customerUnitOfWork.Complete();
             }
-
-            _customerUnitOfWork.UserRepository.Remove(userEntity);
-            await _customerUnitOfWork.Complete();
-
         }
         #endregion
     }
