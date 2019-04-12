@@ -109,9 +109,10 @@ namespace PersistenceLib
             return Context.Set<TEntity>().Count();
         }
 
-        public Task<TEntity> GetLast()
+        public TEntity GetLast()
         {
-            return Context.Set<TEntity>().LastOrDefaultAsync();
+            return Context.Set<TEntity>().LastOrDefault();
         }
+
     }
 }

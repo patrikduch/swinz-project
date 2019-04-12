@@ -27,5 +27,7 @@ namespace UserApi.Dto.Customers
         /// </summary>
         public string LastName { get; set; }
 
+        public int Discount { get; set; }
+
     }
 }

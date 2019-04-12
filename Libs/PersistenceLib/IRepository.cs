@@ -29,6 +29,6 @@ namespace PersistenceLib
 
         int NumberofEntries();
 
-        Task<TEntity> GetLast();
+        TEntity GetLast();
     }
 }

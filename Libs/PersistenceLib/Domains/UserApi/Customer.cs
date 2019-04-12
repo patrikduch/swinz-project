@@ -5,11 +5,10 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
-using System.ComponentModel;
-using PersistenceLib.Domains.OrderApi;
-
 namespace PersistenceLib.Domains.UserApi
 {
+    using OrderApi;
+
     /// <summary>
     /// Model that represents Customer entity
     /// </summary>
@@ -32,10 +31,13 @@ namespace PersistenceLib.Domains.UserApi
 
         public int UserId { get; set; }
 
+        /// <summary>
+        /// Gets or sets customer`s discount
+        /// </summary>
         public int Discount { get; set; }
 
         /// <summary>
-        /// Navigation property
+        /// Navigation property to User entity
         /// </summary>
         public User User { get; set; }
 

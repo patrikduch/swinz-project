@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersistenceLib", "Libs\Pers
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaginationLib", "Libs\PaginationLib\PaginationLib.csproj", "{EDD95B3E-6D3F-43C8-966E-F87722FE10D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderApi", "Services\OrderApi\OrderApi.csproj", "{05F5BB89-2473-4ED7-9B22-EFF8CCB51F04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderApi", "Services\OrderApi\OrderApi.csproj", "{05F5BB89-2473-4ED7-9B22-EFF8CCB51F04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

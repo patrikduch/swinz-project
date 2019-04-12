@@ -5,11 +5,9 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
-using PersistenceLib.Domains;
-using PersistenceLib.Domains.UserApi;
-
 namespace UserApi.Controllers
 {
+    using PersistenceLib.Domains.UserApi;
     using System.Linq;
     using UserApi.Interfaces.UnitOfWork;
     using Dto.Customers;
@@ -68,7 +66,9 @@ namespace UserApi.Controllers
                 Id = customerId?.Id,
                 FirstName = res.FirstName,
                 LastName = res.LastName,
-                Username = res.User.Username
+                Username = res.User.Username,
+                Discount = res.Discount
+               
             };
         }
 
