@@ -73,13 +73,14 @@ namespace UserApi.Repositories
             // Creation of customer object from user a customer data
             var customerResult = new Customer
             {
-                Id = UserContext.Customers.Count() +1,
+                Id = UserContext.Customers.Last().Id + 1,
                 FirstName = customerDto.FirstName,
                 LastName = customerDto.Lastname,
-                User = user
+                Discount = customerDto.Discount,
+                User = user,
+                UserId = user.Id
             };
 
-            customerResult.UserId = user.Id;
 
             // Add new object to the customer collection
             UserContext.Customers.Add(customerResult);

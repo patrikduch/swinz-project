@@ -32,6 +32,8 @@ namespace PersistenceLib.Domains.UserApi
 
         public int UserId { get; set; }
 
+        public int Discount { get; set; }
+
         /// <summary>
         /// Navigation property
         /// </summary>

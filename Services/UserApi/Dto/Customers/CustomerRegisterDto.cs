@@ -31,6 +31,11 @@ namespace UserApi.Dto.Customers
         /// </summary>
         public string Password { get; set; }
 
+        /// <summary>
+        /// Gets or sets customer`s discount
+        /// </summary>
+        public int Discount{ get; set; }
+
 
     }
 }
