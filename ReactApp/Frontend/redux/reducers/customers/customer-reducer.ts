@@ -17,7 +17,7 @@ const reducer = (state : any = initialState.customers, action: any) => {
     switch(action.type) {
 
         // Fetching all customers
-        case actionTypes.CUSTOMER_FETCH_SUCCESS:
+        case actionTypes.CUSTOMERS_FETCH_SUCCESS:
             return {
                 ...state,
                 data: action.data.data

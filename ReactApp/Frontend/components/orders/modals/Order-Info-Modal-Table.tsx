@@ -9,11 +9,15 @@
 import * as React from 'react';
 import { Table } from 'reactstrap';
 
+// Helper for id generation
+import { getUniqueId } from '../../../helpers/components/rendererHelper';
+
+
 export default (props: any) => {
   const displayProducts = () => {
     return props.products.map((arg: any) => {
       return (
-        <tr>
+        <tr key={getUniqueId()}>
           <th scope="row">{arg.id}</th>
           <td>{arg.name}</td>
           <td>{arg.price}</td>

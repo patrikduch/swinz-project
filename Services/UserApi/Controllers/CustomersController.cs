@@ -83,6 +83,18 @@ namespace UserApi.Controllers
             return await _customerUnitOfWork.CustomerRepository.GetAllCustomers();
         }
 
+        /// <summary>
+        /// Get specific customer by identifier
+        /// </summary>
+        /// <returns>Customer entity</returns>
+        [HttpGet]
+        [Route("get/{id}")]
+        public async Task<Customer> GetCustomer(int id)
+        {
+            return await _customerUnitOfWork.CustomerRepository.Get(id);
+        }
+
+
 
         /// <summary>
         /// Get all customers for current page

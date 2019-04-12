@@ -33,6 +33,10 @@ export default class CustomerInfoModal extends React.Component<any, any> {
             isModalActive: !this.state.isModalActive
         })
     }
+
+    componentDidMount() {
+      console.log(this.props);
+    }
   
     render() {
       return (
@@ -41,7 +45,7 @@ export default class CustomerInfoModal extends React.Component<any, any> {
           <Modal size='lg' isOpen={this.state.isModalActive} toggle={this.toggle}>
             <ModalHeader toggle={this.toggle}>Informace o zákazníkovi</ModalHeader>
             <ModalBody>
-              
+              {this.props.text}
             </ModalBody>
             <ModalFooter>
               <Button color="secondary" onClick={this.toggle}>Zavřít</Button>

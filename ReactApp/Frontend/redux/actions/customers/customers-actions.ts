@@ -17,11 +17,11 @@ export const getCustomers: ActionCreator<{}> = () => async (dispatch: Dispatch) 
         
     CustomerApi.getCustomers().then((data) => {
 
-        dispatch({ type: actionTypes.CUSTOMER_FETCH_SUCCESS, data });
+        dispatch({ type: actionTypes.CUSTOMERS_FETCH_SUCCESS, data });
 
     }).catch(() => {
 
-        dispatch({ type: actionTypes.CUSTOMER_FETCH_FAILED });
+        dispatch({ type: actionTypes.CUSTOMERS_FETCH_FAILED });
     });
 }
 

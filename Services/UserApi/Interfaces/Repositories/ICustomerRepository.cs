@@ -5,12 +5,9 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
-using PersistenceLib.Domains;
-using PersistenceLib.Domains.UserApi;
-using UserApi.Dto;
-
 namespace UserApi.Interfaces.Repositories
 {
+    using PersistenceLib.Domains.UserApi;
     using PersistenceLib;
     using System.Collections.Generic;
     using System.Threading.Tasks;
