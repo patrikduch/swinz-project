@@ -33,6 +33,13 @@
 
 <b>HOW TO USE</b>
 
+Frontend preparation</br>
+- npm i
+- npm run webpack
+or</br></br>
+- yarn
+- yarn run webpack 
+
 Db preparation </br>
 - Update-Database -Project UserApi
 - Update-Database -Project OrderApi
