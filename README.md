@@ -1,6 +1,7 @@
 # SWINZ-Project
 <b>Requirements</b></br>
 - Node.js </br> 
+- WebPackTaskRunner </br> 
 
 <b>Recommended tools:</b></br>
 - Postman for API testing
