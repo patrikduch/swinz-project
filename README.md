@@ -2,7 +2,8 @@
 <b>Requirements</b></br>
 - Node.js </br> 
 - WebPackTaskRunner </br> 
-
+(https://marketplace.visualstudio.com/items?itemName=MadsKristensen.WebPackTaskRunner) </br> 
+ 
 <b>Recommended tools:</b></br>
 - Postman for API testing
 - Visual Studio Code (for Frontend)
