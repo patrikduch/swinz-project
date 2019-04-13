@@ -28,16 +28,16 @@ namespace OrderApi.Controllers
         /// <summary>
         /// Initializes a new instance of the <seealso cref="ProductController"/> class.
         /// </summary>
-        /// <param name="unitOfWork">Injection interface of product unit of work.</param>
+        /// <param name="unitOfWork">Injection interface of productDto unit of work.</param>
         public ProductController(IProductUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
 
         /// <summary>
-        /// Creation of new product
+        /// Creation of new productDto
         /// </summary>
-        /// <param name="product">Entity object that encapsulates product details</param>
+        /// <param name="product">Entity object that encapsulates productDto details</param>
         /// <returns></returns>
         [Route("create")]
         [HttpPost]
@@ -48,20 +48,19 @@ namespace OrderApi.Controllers
                 return BadRequest("Incorrect input");
             }
 
-            _unitOfWork.ProductRepository.Add(new Product
+            var entity = new Product
             {
-
-
-
-                Id = _unitOfWork.ProductRepository.GetLast() == null ? 1 : _unitOfWork.ProductRepository.GetLast().Id +1,
+                Id = _unitOfWork.ProductRepository.GetLast() == null ? 1 : _unitOfWork.ProductRepository.GetLast().Id + 1,
                 Name = product.Name,
                 Price = product.Price
-                
-            });
 
+            };
+
+            _unitOfWork.ProductRepository.Add(entity);
+        
             await _unitOfWork.Complete();
 
-            return Ok(product);
+            return Ok(entity);
         }
 
         /// <summary>
@@ -77,16 +76,16 @@ namespace OrderApi.Controllers
 
 
         /// <summary>
-        /// Update product by identifier number
+        /// Update productDto by identifier number
         /// </summary>
-        /// <param name="product"></param>
+        /// <param name="productDto"></param>
         /// <param name="id"></param>
         /// <returns></returns>
         [Route("update/{id}")]
         [HttpPut]
-        public async Task<ActionResult> UpdateProduct(int id, [FromBody] Product product)
+        public async Task<ActionResult> UpdateProduct(int id, [FromBody] Product productDto)
         {
-            if (product.Name.Equals(string.Empty) || product.Price == 0)
+            if (productDto.Name.Equals(string.Empty) || productDto.Price == 0)
             {
                 return BadRequest("Incorrect input");
             }
@@ -97,13 +96,14 @@ namespace OrderApi.Controllers
             if (entity == null) return BadRequest("Entity to update wasn't founded");
 
             // Edit fetched object
-            entity.Name = product.Name;
-            entity.Price = product.Price;
+            entity.Name = productDto.Name;
+            entity.Price = productDto.Price;
 
             // Save changes
             await _unitOfWork.Complete();
 
-            return Ok(product);
+            // Return newly updated product
+            return Ok(productDto);
         }
 
         /// <summary>
