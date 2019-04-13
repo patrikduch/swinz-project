@@ -1,8 +1,8 @@
 # SWINZ-Project
 <b>Requirements</b></br>
 - Node.js </br> 
-- WebPackTaskRunner </br> 
-(https://marketplace.visualstudio.com/items?itemName=MadsKristensen.WebPackTaskRunner) </br> 
+- Yarn
+
  
 <b>Recommended tools:</b></br>
 - Postman for API testing
@@ -34,9 +34,6 @@
 <b>HOW TO USE</b>
 
 Frontend preparation</br>
-- npm i
-- npm run webpack
-or</br></br>
 - yarn
 - yarn run webpack 
 
