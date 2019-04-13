@@ -19,7 +19,7 @@ export default (props: IListBodyProps) => {
         let counter = 0; // For list identifier
         return <tbody>
             {
-                props.data.objects.length == 0 && <tr><td>{props.emptyError}</td></tr>
+                props.data.objects.length == 0  && <tr><td>{props.emptyError}</td></tr>
             }
             {
                 props.data.objects.map((arg: any) => {       

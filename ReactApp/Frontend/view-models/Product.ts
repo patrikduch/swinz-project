@@ -10,11 +10,13 @@ export default class Product {
     private id: number;
     private name: string;
     private price: number;
+    private isDeleted: boolean;
 
-    constructor(id: number, name: string, price: number) {
+    constructor(id: number, name: string, price: number, isDeleted: boolean) {
         this.id = id;
         this.name = name;
         this.price = price;
+        this.isDeleted = isDeleted;
     }
 
     get getId() {
@@ -27,5 +29,9 @@ export default class Product {
 
     get getPrice() {
         return this.price;
+    }
+
+    get getIsDeleted() {
+        return this.isDeleted;
     }
 }

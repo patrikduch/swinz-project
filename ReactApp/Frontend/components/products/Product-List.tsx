@@ -28,9 +28,12 @@ export default class ProductList extends React.Component<any, any> {
     transformData = () => {
         const list = new ListItemObject<ProductObject>();
         if(this.props.products.data != undefined) {
-            this.props.products.data.forEach((arg: {id: number, name: string, price: number}) => {
-                const newObj = new ProductObject(arg.id, arg.name, arg.price);
-                list.objects.push(newObj);
+            this.props.products.data.forEach((arg: {id: number, name: string, price: number, isDeleted: boolean}) => {
+                const newObj = new ProductObject(arg.id, arg.name, arg.price, arg.isDeleted);
+                
+                if(!newObj.getIsDeleted) { // Add item if isnt deleted
+                    list.objects.push(newObj);
+                } 
             })
             return list;
         }
