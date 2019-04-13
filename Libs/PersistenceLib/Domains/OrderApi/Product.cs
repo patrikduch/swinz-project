@@ -26,6 +26,10 @@ namespace PersistenceLib.Domains.OrderApi
         /// Gets or sets product`s price
         /// </summary>
         public int Price { get; set; }
+        /// <summary>
+        /// Gets or sets product`s deletion state
+        /// </summary>
+        public bool IsDeleted { get; set; }
 
         public ICollection<OrderProduct> OrderProducts { get; set; }
     }

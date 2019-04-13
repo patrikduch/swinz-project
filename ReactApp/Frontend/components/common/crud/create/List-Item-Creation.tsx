@@ -69,6 +69,20 @@ export default class ListItemCreation extends React.Component<IListItemCreationP
             </ModalBody>
           </>
         );
+
+        case ListItemType.Order:
+        return (
+          <>
+            <ModalHeader toggle={this.toggle}>
+              Vytvoření nové objednávky
+            </ModalHeader>
+            <ModalBody>
+              <ProductCreationForm 
+                modalToggler={this.toggle}
+                createMethod={this.props.createMethod} />
+            </ModalBody>
+          </>
+        );
     }
   };
 

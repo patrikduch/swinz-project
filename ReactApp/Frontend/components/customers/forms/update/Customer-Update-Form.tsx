@@ -16,20 +16,20 @@ import ICustomerUpdateFormProps from '../../../../typescript/interfaces/componen
 // State interface
 import ICustomerUpdateFormState from '../../../../typescript/interfaces/components/customers/crud/update/ICustomer-Update-Form-State';
 
-export default class CustomerUpdateForm extends React.Component<ICustomerUpdateFormProps, ICustomerUpdateFormState> {
+export default class CustomerUpdateForm extends React.Component<
+  ICustomerUpdateFormProps,
+  ICustomerUpdateFormState
+> {
+  state = {
+    firstname: this.props.data.getFirstname,
+    lastname: this.props.data.getLastname,
+    password: "",
+    username: ""
+  };
 
-    state = {
-      firstname:this.props.data.getFirstname,
-      lastname: this.props.data.getLastname,
-      password: '',
-      username: ''
-    }
-  
-     // Manipulation of web elements via state property
+  // Manipulation of web elements via state property
   fieldChangeHandler = (e: any) => {
-
     switch (e.target.id) {
-
       case CustomerInputType.FirstName:
         this.setState({
           firstname: e.target.value
@@ -54,13 +54,10 @@ export default class CustomerUpdateForm extends React.Component<ICustomerUpdateF
         });
         break;
     }
-
-  }
-
+  };
 
   customerUpdate = () => {
-
-    console.log(this.props.data.getId)
+    console.log(this.props.data.getId);
 
     // Object that will be sended with POST request to create new customer
     const data = {
@@ -76,45 +73,32 @@ export default class CustomerUpdateForm extends React.Component<ICustomerUpdateF
 
     // Close form modal
     this.props.modalToggler();
-
+  };
+  render() {
+    return (
+      <Form method="POST">
+        <FormGroup>
+          <Label for="firstnameInputId">Křestní jméno</Label>
+          <Input
+            type="text"
+            name="firstnameInput"
+            id="firstnameInputId"
+            value={this.state.firstname}
+            onChange={this.fieldChangeHandler}
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label for="lastnameInputId">Přijmení</Label>
+          <Input
+            type="text"
+            name="lastnameInput"
+            id="lastnameInputId"
+            value={this.state.lastname}
+            onChange={this.fieldChangeHandler}
+          />
+        </FormGroup>
+        <Button onClick={this.customerUpdate}>Uložit změny</Button>
+      </Form>
+    );
   }
-
-
-
-    render() {
-      return (
-        <Form method='POST'>
-          <FormGroup>
-            <Label for="usernameInputId">Uživatelské jméno</Label>
-            <Input  type="text" name="usernameInput" id="usernameInputId"
-                    value={this.state.username}
-                    onChange={this.fieldChangeHandler}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for="passwordInputId">Heslo</Label>
-            <Input  type="password" name="passwordInput" id="passwordInputId"
-                    value={this.state.password}
-                    onChange={this.fieldChangeHandler}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for="firstnameInputId">Křestní jméno</Label>
-            <Input  type="text" name="firstnameInput" id="firstnameInputId" 
-                    value={this.state.firstname}
-                    onChange={this.fieldChangeHandler}              
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for="lastnameInputId">Přijmení</Label>
-            <Input type="text" name="lastnameInput" id="lastnameInputId" 
-                   value={this.state.lastname}
-                   onChange={this.fieldChangeHandler}
-            />
-        
-          </FormGroup>
-          <Button onClick={this.customerUpdate}>Uložit změny</Button>
-        </Form>
-      );
-    }
-  }
+}

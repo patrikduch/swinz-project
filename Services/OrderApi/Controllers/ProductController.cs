@@ -119,7 +119,9 @@ namespace OrderApi.Controllers
 
             if (productEntity == null) return BadRequest("Entity to delete wasn't founded");
 
-            _unitOfWork.ProductRepository.Remove(productEntity);
+            productEntity.IsDeleted = true;
+
+            //_unitOfWork.ProductRepository.Remove(productEntity);
             await _unitOfWork.Complete();
 
             return Ok(productEntity);
