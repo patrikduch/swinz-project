@@ -12,5 +12,6 @@
     <WebStackScaffolding_ViewDialogWidth>600</WebStackScaffolding_ViewDialogWidth>
     <NameOfLastUsedPublishProfile>CustomProfile</NameOfLastUsedPublishProfile>
     <ToolsVersionPromptShown>3.0</ToolsVersionPromptShown>
+    <ShowAllFiles>false</ShowAllFiles>
   </PropertyGroup>
 </Project>

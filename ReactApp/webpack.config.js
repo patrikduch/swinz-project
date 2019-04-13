@@ -1,3 +1,4 @@
+/// <binding />
 //-----------------------------------------------------------------------
 // <copyright file="webpack.config.js" website="Patrikduch.com">
 //     Copyright 2019 (c) Patrikduch.com
