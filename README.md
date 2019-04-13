@@ -1,7 +1,9 @@
 # SWINZ-Project
 <b>Requirements</b></br>
 - Node.js </br> 
+- Yarn
 
+ 
 <b>Recommended tools:</b></br>
 - Postman for API testing
 - Visual Studio Code (for Frontend)
@@ -30,6 +32,10 @@
 </br>
 
 <b>HOW TO USE</b>
+
+Frontend preparation</br>
+- yarn
+- yarn run webpack 
 
 Db preparation </br>
 - Update-Database -Project UserApi
