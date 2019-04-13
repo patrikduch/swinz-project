@@ -40,7 +40,6 @@ export default class ProductList extends React.Component<any, any> {
     }
 
     render(){
-
         return (
             <div>
                 <ListTitle>Evidence výrobků</ListTitle>

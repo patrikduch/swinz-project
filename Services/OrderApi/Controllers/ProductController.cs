@@ -121,7 +121,6 @@ namespace OrderApi.Controllers
 
             productEntity.IsDeleted = true;
 
-            //_unitOfWork.ProductRepository.Remove(productEntity);
             await _unitOfWork.Complete();
 
             return Ok(productEntity);

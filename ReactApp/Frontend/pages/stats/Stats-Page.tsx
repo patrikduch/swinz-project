@@ -8,11 +8,12 @@
 
 import * as React from 'react';
 import { Container } from 'reactstrap';
+import StatsDecision from '../../components/stats/Stats-Decision';
 
 export default  () => {
     return (
         <Container>
-            Globální statistiky
+           <StatsDecision />
         </Container>
     )
 }

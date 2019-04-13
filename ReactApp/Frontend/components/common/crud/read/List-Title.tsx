@@ -7,9 +7,9 @@
 //-----------------------------------------------------------------------
 
 // React dependency
-import * as React from "react";
+import * as React from 'react';
 // Styled helper
-import styled from "styled-components";
+import styled from 'styled-components';
 // Props interface
 import IListTitleProps from '../../../../typescript/interfaces/components/common/crud/read/IList-Title-Props';
 
