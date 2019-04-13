@@ -12,6 +12,10 @@ import { Container } from 'reactstrap';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+
+import StatsTitle from '../../components/common/PageTitle';
+
+
 export default () => {
   const LinkContent = styled.p`
     color: black;
@@ -21,6 +25,10 @@ export default () => {
 
   return (
     <Container className="container-spacing">
+
+      <StatsTitle>Přehled statistika</StatsTitle>
+
+
       <Link to="">
         <LinkContent>Statistika zákazníků</LinkContent>
       </Link>
@@ -28,6 +36,7 @@ export default () => {
       <Link to="">
         <LinkContent>Statistika firmy</LinkContent>
       </Link>
+      
     </Container>
   );
 };
