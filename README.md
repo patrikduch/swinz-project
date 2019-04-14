@@ -1,7 +1,6 @@
 # SWINZ-Project
 <b>Requirements</b></br>
 - Node.js </br> 
-- Yarn
 
  
 <b>Recommended tools:</b></br>
@@ -33,10 +32,11 @@
 
 <b>HOW TO USE</b>
 
-Frontend preparation</br>
-- yarn
-- yarn run webpack 
-
 Db preparation </br>
 - Update-Database -Project UserApi
 - Update-Database -Project OrderApi
+
+
+Start of app </br>
+- Rebuild all projects
+- Run multiple project ApiBase, ReactApp
