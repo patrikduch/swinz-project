@@ -34,6 +34,13 @@ namespace StatsApi
 
             #endregion
 
+            #region CORS
+            // Cors services
+            services.AddCors(options => options.AddPolicy("AllowAll", p => p.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()));
+            #endregion
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -44,6 +51,9 @@ namespace StatsApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                // CORS
+                app.UseCors(b => b.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
             }
 
             app.UseMvc();

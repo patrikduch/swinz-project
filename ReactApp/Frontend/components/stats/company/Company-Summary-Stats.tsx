@@ -12,17 +12,38 @@ import CardBody from 'reactstrap/lib/CardBody';
 import CardTitle from 'reactstrap/lib/CardTitle';
 import CardText from 'reactstrap/lib/CardText';
 
-export default () => {
+import StatsApi from '../../../api/endpoints/StatsApi';
+
+export default class CompanySummaryStats extends React.Component<any, any> {
+
+  state = {
+    customerCount: null
+  }
+
+  componentWillMount() {
+    StatsApi.getCustomerSummary().then((arg => {
+      this.setState({
+        customerCount: arg.data.customerCount
+      })
+    }));
+  }
+
+  render() {
+
+    console.log(this.state.customerCount);
     return (
-        <Card>
+      <Card>
         <CardBody>
           <CardTitle>Statistika firmy</CardTitle>
           <CardText>
-            Zákazníků celkem: <br/>
+            Zákazníků celkem: {this.state.customerCount} <br/>
             Tržba letošního roku: <br/>
             Prodanych vyrobků: <br/>
           </CardText>
         </CardBody>
       </Card>   
+      
     )
+  }
+
 }
