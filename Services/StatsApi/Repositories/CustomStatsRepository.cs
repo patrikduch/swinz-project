@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using PersistenceLib;
 using PersistenceLib.Domains.OrderApi;
@@ -24,19 +22,20 @@ namespace StatsApi.Repositories
         public CustomerStatsContext CustomerStatsContext => Context as CustomerStatsContext;
 
 
-        public int GetLatestIncome(List<Order> test)
+        public int GetLatestIncome(IQueryable<Order> collection)
         {
-            return test.Where(c => c.CreationDate.Year == DateTime.Now.Year)
-                .SelectMany(c => c.OrderProducts).Sum(c => c.Product.Price);
+            return collection.Where(c => c.CreationDate.Year == DateTime.Now.Year)
+                .SelectMany(c => c.OrderProducts).Where(c=>c.Product.IsDeleted.Equals(false))
+                .Sum(c => c.Product.Price);
         }
 
-        public int GetLatestIncome(IQueryable<Order> test)
+        public int GetSoldCount(IQueryable<Order> collection)
         {
-            return test.Where(c => c.CreationDate.Year == DateTime.Now.Year)
-                .SelectMany(c => c.OrderProducts).Sum(c => c.Product.Price);
-
-
-
+            return collection.Include(c => c.OrderProducts)
+                .SelectMany(c => c.OrderProducts)
+                .Where(c => c.Product.IsDeleted.Equals(false))
+                .Select(c => c.Product)
+                .Count();
         }
     }
 }

@@ -22,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\OrderApi\Mocking\" />
     <Folder Include="Services\UserApi\Mocking\" />
   </ItemGroup>
 

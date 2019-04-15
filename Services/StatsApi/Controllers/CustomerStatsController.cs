@@ -1,12 +1,8 @@
-﻿
-
-using System;
-using Microsoft.EntityFrameworkCore;
+﻿using System.Linq;
 using StatsApi.Interfaces;
 
 namespace StatsApi.Controllers
 {
-    using System.Linq;
     using Microsoft.AspNetCore.Mvc;
     using Contexts;
     using Dto;
@@ -31,21 +27,12 @@ namespace StatsApi.Controllers
         [HttpGet]
         public ActionResult<CustomerSummaryDto> Get()
         {
-
-            //var latestIncome = _context.Orders.Where(c => c.CreationDate.Year == DateTime.Now.Year)
-              //  .SelectMany(c => c.OrderProducts).Sum(c=>c.Product.Price);
-
-            //var soldCount = _context.Orders.Include(c => c.OrderProducts)
-              //  .SelectMany(c => c.OrderProducts)
-              //  .Select(c => c.Product).Count();
-
-
             return Ok(new CustomerSummaryDto
             {
-                //CustomerCount = _context.Customers.Count(),
-                //ProductCount = _context.Products.Count(c => c.IsDeleted.Equals(false)),
+                CustomerCount = _context.Customers.Count(),
+                ProductCount = _context.Products.Count(c => c.IsDeleted.Equals(false)),
                 LatestIncome = _repository.GetLatestIncome(_context.Orders),
-                //SoldCount = soldCount
+                SoldCount = _repository.GetSoldCount(_context.Orders)
             
             });
         }

@@ -10,6 +10,8 @@ namespace StatsApi.Interfaces
 {
     public interface ICustomStatsRepository : IRepository<Customer>
     {
-        int GetLatestIncome(IQueryable<Order> test);
+        int GetLatestIncome(IQueryable<Order> collection);
+
+        int GetSoldCount(IQueryable<Order> collection);
     }
 }
