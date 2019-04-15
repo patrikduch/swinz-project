@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaginationLib", "Libs\Pagin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderApi", "Services\OrderApi\OrderApi.csproj", "{05F5BB89-2473-4ED7-9B22-EFF8CCB51F04}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatsApi", "Services\StatsApi\StatsApi.csproj", "{3A6A4D46-FB11-4306-A19B-23319FE540AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{05F5BB89-2473-4ED7-9B22-EFF8CCB51F04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05F5BB89-2473-4ED7-9B22-EFF8CCB51F04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05F5BB89-2473-4ED7-9B22-EFF8CCB51F04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A6A4D46-FB11-4306-A19B-23319FE540AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A6A4D46-FB11-4306-A19B-23319FE540AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A6A4D46-FB11-4306-A19B-23319FE540AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A6A4D46-FB11-4306-A19B-23319FE540AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,6 +77,7 @@ Global
 		{EC0FFE11-A4EB-47F2-89FE-A80A7B54B90D} = {6F2AF9F8-C28B-45E7-B132-365FF8BE80BD}
 		{EDD95B3E-6D3F-43C8-966E-F87722FE10D4} = {6F2AF9F8-C28B-45E7-B132-365FF8BE80BD}
 		{05F5BB89-2473-4ED7-9B22-EFF8CCB51F04} = {07040D16-0605-4DF9-9360-D07576C593AA}
+		{3A6A4D46-FB11-4306-A19B-23319FE540AB} = {07040D16-0605-4DF9-9360-D07576C593AA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BC95EF07-4827-4F68-BFBC-5E941B2CEA18}

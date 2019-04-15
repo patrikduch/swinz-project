@@ -39,3 +39,5 @@ Libs/PaginationLib/bin
 .vs/Swinz
 Services/OrderApi/bin
 Services/OrderApi/obj
+Services/StatsApi/bin
+Services/StatsApi/obj
