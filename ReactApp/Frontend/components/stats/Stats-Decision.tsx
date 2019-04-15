@@ -12,7 +12,6 @@ import { Container } from 'reactstrap';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-
 import StatsTitle from '../../components/common/PageTitle';
 
 
@@ -28,12 +27,11 @@ export default () => {
 
       <StatsTitle>Přehled statistika</StatsTitle>
 
-
-      <Link to="">
+      <Link to="/stats/customers">
         <LinkContent>Statistika zákazníků</LinkContent>
       </Link>
 
-      <Link to="">
+      <Link to="/stats/company">
         <LinkContent>Statistika firmy</LinkContent>
       </Link>
       
