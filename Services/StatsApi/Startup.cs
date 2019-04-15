@@ -44,7 +44,7 @@ namespace StatsApi
             #endregion
 
 
-            services.AddScoped<ICustomStatsRepository, CustomStatsRepository>();
+            services.AddScoped<ICustomerStatsRepository, CustomerStatsRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

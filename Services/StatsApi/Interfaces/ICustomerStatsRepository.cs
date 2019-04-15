@@ -8,7 +8,7 @@ using PersistenceLib.Domains.UserApi;
 
 namespace StatsApi.Interfaces
 {
-    public interface ICustomStatsRepository : IRepository<Customer>
+    public interface ICustomerStatsRepository : IRepository<Customer>
     {
         int GetLatestIncome(IQueryable<Order> collection);
 

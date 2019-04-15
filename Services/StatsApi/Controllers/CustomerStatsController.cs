@@ -13,9 +13,9 @@ namespace StatsApi.Controllers
     public class CustomerStatsController : ControllerBase
     {
         private readonly CustomerStatsContext _context;
-        private readonly ICustomStatsRepository _repository;
+        private readonly ICustomerStatsRepository _repository;
 
-        public CustomerStatsController(CustomerStatsContext context, ICustomStatsRepository customerStatsRepository)
+        public CustomerStatsController(CustomerStatsContext context, ICustomerStatsRepository customerStatsRepository)
         {
             _repository = customerStatsRepository;
             _context = context;
