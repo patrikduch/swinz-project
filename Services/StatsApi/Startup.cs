@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using StatsApi.Contexts;
+using StatsApi.Interfaces;
+using StatsApi.Repositories;
 
 namespace StatsApi
 {
@@ -41,6 +43,8 @@ namespace StatsApi
                 .AllowAnyHeader()));
             #endregion
 
+
+            services.AddScoped<ICustomStatsRepository, CustomStatsRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

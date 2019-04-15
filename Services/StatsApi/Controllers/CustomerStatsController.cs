@@ -2,6 +2,7 @@
 
 using System;
 using Microsoft.EntityFrameworkCore;
+using StatsApi.Interfaces;
 
 namespace StatsApi.Controllers
 {
@@ -16,9 +17,11 @@ namespace StatsApi.Controllers
     public class CustomerStatsController : ControllerBase
     {
         private readonly CustomerStatsContext _context;
+        private readonly ICustomStatsRepository _repository;
 
-        public CustomerStatsController(CustomerStatsContext context)
+        public CustomerStatsController(CustomerStatsContext context, ICustomStatsRepository customerStatsRepository)
         {
+            _repository = customerStatsRepository;
             _context = context;
 
         }
@@ -29,21 +32,20 @@ namespace StatsApi.Controllers
         public ActionResult<CustomerSummaryDto> Get()
         {
 
-            var latestIncome = _context.Orders.Where(c => c.CreationDate.Year == DateTime.Now.Year)
-                .SelectMany(c => c.OrderProducts).Sum(c=>c.Product.Price);
+            //var latestIncome = _context.Orders.Where(c => c.CreationDate.Year == DateTime.Now.Year)
+              //  .SelectMany(c => c.OrderProducts).Sum(c=>c.Product.Price);
 
-            var soldCount = _context.Orders.Include(c => c.OrderProducts)
-                .SelectMany(c => c.OrderProducts)
-                .Select(c => c.Product).Count();
-
+            //var soldCount = _context.Orders.Include(c => c.OrderProducts)
+              //  .SelectMany(c => c.OrderProducts)
+              //  .Select(c => c.Product).Count();
 
 
             return Ok(new CustomerSummaryDto
             {
-                CustomerCount = _context.Customers.Count(),
-                ProductCount = _context.Products.Count(c => c.IsDeleted.Equals(false)),
-                LatestIncome = latestIncome,
-                SoldCount = soldCount
+                //CustomerCount = _context.Customers.Count(),
+                //ProductCount = _context.Products.Count(c => c.IsDeleted.Equals(false)),
+                LatestIncome = _repository.GetLatestIncome(_context.Orders),
+                //SoldCount = soldCount
             
             });
         }

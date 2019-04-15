@@ -5,10 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\" />
     <Folder Include="Helpers\" />
     <Folder Include="UnitOfWork\" />
-    <Folder Include="Repositories\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

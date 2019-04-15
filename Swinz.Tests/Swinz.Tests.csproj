@@ -17,11 +17,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Services\OrderApi\OrderApi.csproj" />
+    <ProjectReference Include="..\Services\StatsApi\StatsApi.csproj" />
     <ProjectReference Include="..\Services\UserApi\UserApi.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\StatsApi\" />
     <Folder Include="Services\OrderApi\Mocking\" />
     <Folder Include="Services\UserApi\Mocking\" />
   </ItemGroup>

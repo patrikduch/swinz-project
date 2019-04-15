@@ -30,14 +30,11 @@ export default class CompanySummaryStats extends React.Component<any, any> {
         productCount: arg.data.productCount,
         latestIncome: arg.data.latestIncome,
         soldTotal: arg.data.soldCount
-
       })
     }));
   }
 
   render() {
-
-    console.log(this.state.customerCount);
     return (
       <Card>
         <CardBody>
