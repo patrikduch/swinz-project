@@ -5,6 +5,8 @@
     
     "compileOnSave": false,
     "compilerOptions": {
+      "baseUrl": ".",
+      "paths": { "*": ["types/*"] },
         "sourceMap": true, // Debugging purposes
         "module": "commonjs",
         "target": "es2015",

@@ -31,16 +31,14 @@ const Routes = () => {
     <div>
       <HeaderComp>
         <Navbar title="Fakturační systém" />
-        <AdminAuth isNav>
           <Navigation />
-        </AdminAuth>
       </HeaderComp>
       <Route path="/login" exact component={LoginPage} />
       <Route path="/" exact component={HomeComp} />
       <Route path="/customers" exact component={CustomerPage} />
       <Route path="/orders" exact component={OrderPage} />
       <Route path="/products" exact component={ProductPage} />
-      <Route path="/stats" exact component={StatsPage} />>
+      <Route path="/stats" exact component={StatsPage} />
       <Route path="/stats/customers" exact component={CustomerStatsPage} />
       <Route path="/stats/company" exact component={CompanyStatsPage} />
       <FooterComp />
