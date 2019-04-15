@@ -6,6 +6,7 @@
 
 using OrderApi.EntityConfigurations;
 using PersistenceLib.Domains.UserApi;
+using PersistenceLib.EntityConfigurations;
 
 namespace OrderApi.Contexts
 {
@@ -35,7 +36,6 @@ namespace OrderApi.Contexts
             modelBuilder.ApplyConfiguration(new OrderConfiguration());
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
             modelBuilder.ApplyConfiguration(new OrderProductConfiguration());
-
         }
     }
 }

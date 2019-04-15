@@ -6,12 +6,14 @@
 //-----------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PersistenceLib.Domains.OrderApi
 {
     /// <summary>
     /// Entity that represents products
     /// </summary>
+    [Table("Product")]
     public class Product
     {
         /// <summary>

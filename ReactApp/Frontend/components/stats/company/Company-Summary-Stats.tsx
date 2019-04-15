@@ -17,13 +17,20 @@ import StatsApi from '../../../api/endpoints/StatsApi';
 export default class CompanySummaryStats extends React.Component<any, any> {
 
   state = {
-    customerCount: null
+    customerCount: null,
+    productCount: null,
+    latestIncome: null,
+    soldTotal: null,
   }
 
   componentWillMount() {
     StatsApi.getCustomerSummary().then((arg => {
       this.setState({
-        customerCount: arg.data.customerCount
+        customerCount: arg.data.customerCount,
+        productCount: arg.data.productCount,
+        latestIncome: arg.data.latestIncome,
+        soldTotal: arg.data.soldCount
+
       })
     }));
   }
@@ -37,8 +44,9 @@ export default class CompanySummaryStats extends React.Component<any, any> {
           <CardTitle>Statistika firmy</CardTitle>
           <CardText>
             Zákazníků celkem: {this.state.customerCount} <br/>
-            Tržba letošního roku: <br/>
-            Prodanych vyrobků: <br/>
+            Výrobků celkem:  {this.state.productCount} <br/>
+            Tržba letošního roku: {this.state.latestIncome},-Kč  <br/>
+            Prodanych vyrobků: {this.state.soldTotal} <br/>
           </CardText>
         </CardBody>
       </Card>   
