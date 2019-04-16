@@ -6,3 +6,9 @@
 @import './customers/Buttons'; 
 // Additional styles for default Container Reactstrap component
 @import './reacstrap//Container';
+
+
+h2 {
+    font-size: 1.2em;
+    padding-bottom: 0.5vh;
+}

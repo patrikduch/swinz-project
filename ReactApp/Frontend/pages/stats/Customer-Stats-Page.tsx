@@ -15,7 +15,7 @@ const data = {
     labels: ['Leden', 'Unor', 'Březen', 'Duben', 'Květen', 'Červen', 'Červenec', 'Srpen', 'Září', 'Říjen', 'Listopad', 'Prosinec'],
     datasets: [
       {
-        label: 'Patrikuv graf',
+        label: 'Průměrná útrata zákaznika',
         fill: false,
         lineTension: 0.1,
         backgroundColor: 'rgba(75,192,192,0.4)',
@@ -42,8 +42,8 @@ const data = {
 export default  () => {
     return (
         <Container>
-           <span>Průměrná útrata zákaznika #123</span> <span>Export PDF</span>
-           <Line width={700} height={225}  data={data as any} />
+          <br/>
+           <Line  data={data as any} />
         </Container>
     )
 }

@@ -6,23 +6,29 @@
 // Company statistics page
 //-----------------------------------------------------------------------
 
-import * as React from "react";
-import { Container, Input, Col, Row } from "reactstrap";
+import * as React from 'react';
+import { Container, Button, Col, Row } from 'reactstrap';
+
+import DatePickerField from '../../components/common/calendar/Date-Picker-Field';
 
 // Sidebar company info
-import SidebarCompanyInfo from "../../components/stats/company/Company-Summary-Stats";
+import SidebarCompanyInfo from '../../components/stats/company/Company-Summary-Stats';
+
+
 
 export default () => {
   return (
     <Container fluid>
       <Row>
-        <Col xs="3">
-          <p>Měsiční filtrace služeb</p>
+        <Col xs="9">
+          <h2>Měsiční filtrace tržeb</h2>
+          <span>Od </span>
+          <DatePickerField />
+          <span>&nbsp;Do&nbsp;</span>
+          <DatePickerField />
+          <br/><br/>
+          <Button>Vyhledat...</Button>
         </Col>
-        <Col xs="3" />
-      </Row>
-      <Row>
-        <Col xs="9" />
 
         <Col md="2" xs="12">
           <SidebarCompanyInfo />

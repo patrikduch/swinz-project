@@ -71,7 +71,7 @@ namespace Swinz.Tests.Services.StatsApi
 
             var mockContext = new Mock<CustomerStatsContext>();
 
-            var repository = new CustomStatsRepository(mockContext.Object);
+            var repository = new CustomerStatsRepository(mockContext.Object);
 
             var actual = repository.GetLatestIncome(customers);
 
@@ -138,7 +138,7 @@ namespace Swinz.Tests.Services.StatsApi
 
             var mockContext = new Mock<CustomerStatsContext>();
 
-            var repository = new CustomStatsRepository(mockContext.Object);
+            var repository = new CustomerStatsRepository(mockContext.Object);
 
             var actual = repository.GetSoldCount(customers);
 
