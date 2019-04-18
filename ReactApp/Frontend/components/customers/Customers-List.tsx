@@ -10,7 +10,7 @@
 import * as React from 'react';
 
 // Title of CRUD manipulator
-import ListTitle from '../common/crud/read/List-Title';
+import ListTitle from '../common/Page-Title';
 
 // List content
 import ListContainer from '../common/crud/read/List-Container';
@@ -48,7 +48,7 @@ export default class CustomersList extends React.Component<any, any> {
     render() {
         return (
             <>
-                <ListTitle>Evidence zákazniků</ListTitle>
+                <ListTitle crud>Evidence zákazniků</ListTitle>
                 <ListItemCreation createMethod={this.props.actions.createCustomer} type={ListItemType.Customer} />
                 <ListContainer 
                     data={ this.transformData() } 

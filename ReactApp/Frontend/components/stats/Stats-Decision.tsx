@@ -12,7 +12,8 @@ import { Container } from 'reactstrap';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import StatsTitle from '../../components/common/PageTitle';
+// Title of page
+import StatsTitle from '../../components/common/Page-Title';
 
 
 export default () => {
@@ -25,7 +26,7 @@ export default () => {
   return (
     <Container className="container-spacing">
 
-      <StatsTitle>Přehled statistika</StatsTitle>
+      <StatsTitle>Přehled statistik</StatsTitle>
 
       <Link to="/stats/customers">
         <LinkContent>Statistika zákazníků</LinkContent>

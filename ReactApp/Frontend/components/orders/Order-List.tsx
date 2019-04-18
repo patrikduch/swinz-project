@@ -9,7 +9,7 @@
 // React dependency
 import * as React from 'react';
 
-import ListTitle from '../common/crud/read/List-Title';
+import ListTitle from '../common/Page-Title';
 import ListContainer from '../common/crud/read/List-Container';
 import { ListItemType } from '../../typescript/enums/crud/List-Item-Type';
 import { toCrudData } from '../../helpers/components/crudHelper';
@@ -35,7 +35,7 @@ export default class OrdertList extends React.Component<IOrderListProps, any> {
     render(){
         return (
             <div>
-                <ListTitle>Evidence objednávek</ListTitle>
+                <ListTitle crud>Evidence objednávek</ListTitle>
                 <ListItemCreation createMethod={() => 4} type={ListItemType.Order} />
                 <ListContainer
                 data={ toCrudData(this.props.orders) }

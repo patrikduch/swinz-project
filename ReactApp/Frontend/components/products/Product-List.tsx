@@ -9,7 +9,7 @@
 // React dependency
 import * as React from 'react';
 
-import ListTitle from '../common/crud/read/List-Title';
+import ListTitle from '../common/Page-Title';
 import ListContainer from '../common/crud/read/List-Container';
 import ListItemObject from '../../helpers/types/List-Item-Object';
 
@@ -42,7 +42,7 @@ export default class ProductList extends React.Component<any, any> {
     render(){
         return (
             <div>
-                <ListTitle>Evidence výrobků</ListTitle>
+                <ListTitle crud>Evidence výrobků</ListTitle>
                 <ListItemCreation createMethod={this.props.actions.createProduct} type={ListItemType.Product} />
                 <ListContainer
                 data={ this.transformData() }
