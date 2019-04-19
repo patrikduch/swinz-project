@@ -37,6 +37,7 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "@progress/kendo-drawing": "^1.5.11",
     "@progress/kendo-react-pdf": "^2.10.0",
+    "@react-pdf/renderer": "^1.5.3",
     "@types/react-redux": "^6.0.9",
     "bootstrap": "^4.3.1",
     "chart.js": "^2.8.0",

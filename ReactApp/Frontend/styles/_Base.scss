@@ -8,7 +8,9 @@
 @import './reacstrap//Container';
 
 
-h2 {
-    font-size: 1.2em;
-    padding-bottom: 0.5vh;
+@import url('./fonts/Quicksand.scss');
+
+
+body {
+    font-family: 'Quicksand', sans-serif;
 }

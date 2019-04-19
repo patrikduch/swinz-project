@@ -7,9 +7,7 @@
 //-----------------------------------------------------------------------
 
 import * as React from 'react';
-import { Container, Button, Col, Row } from 'reactstrap';
-
-import DatePickerField from '../../components/common/calendar/Date-Picker-Field';
+import { Container, Col, Row } from 'reactstrap';
 
 // Sidebar company info
 import SidebarCompanyInfo from '../../components/stats/company/Company-Summary-Stats';
@@ -17,6 +15,7 @@ import SidebarCompanyInfo from '../../components/stats/company/Company-Summary-S
 // Graph representation
 import { Line } from 'react-chartjs-2';
 
+import PdfGenerator from '../../helpers/pdf/Doc-Service';
 
 
 export default () => {
@@ -50,17 +49,24 @@ export default () => {
 
   return (
     <Container fluid>
-      <Row>
+    <div id='graph'>
+
+    <Row>
         <Col xs="9">
           <h2>Měsíční přehled tržeb (Rok 2019)</h2>
           <Line  data={data as any} />
-        
         </Col>
 
         <Col md="2" xs="12">
           <SidebarCompanyInfo />
         </Col>
       </Row>
+
+    </div>
+
+
+    <button onClick={() => PdfGenerator.createPdf(document.getElementById('graph'))}>Export PDF</button>
+
     </Container>
   );
 };

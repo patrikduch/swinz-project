@@ -40,7 +40,7 @@ export default class CompanySummaryStats extends React.Component<any, any> {
         <CardBody>
           <CardTitle>Statistika firmy</CardTitle>
           <CardText>
-            Zákazníků celkem: {this.state.customerCount} <br/>
+            Zákazniků celkem: {this.state.customerCount} <br/>
             Výrobků celkem:  {this.state.productCount} <br/>
             Tržba letošního roku: {this.state.latestIncome},-Kč  <br/>
             Prodanych vyrobků: {this.state.soldTotal} <br/>
