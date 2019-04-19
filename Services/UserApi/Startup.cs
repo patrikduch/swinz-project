@@ -5,6 +5,17 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using UserApi.Helpers;
+using UserApi.Interfaces.Helpers;
+using UserApi.Interfaces.Repositories;
+using UserApi.Interfaces.UnitOfWork;
+using UserApi.Mocking;
+using UserApi.Repositories;
+using UserApi.UnitOfWork;
+
 namespace UserApi
 {
     using Microsoft.AspNetCore.Builder;
@@ -36,6 +47,55 @@ namespace UserApi
             services.AddDbContext<UserContext>(options => options.UseSqlServer(conn));
             #endregion
 
+            #region CORS
+            // Cors services
+            services.AddCors(options => options.AddPolicy("AllowAll", p => p.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()));
+            #endregion
+
+
+            #region Authentication
+
+            // configure strongly typed settings objects
+            var appSettingsSection = Configuration.GetSection("AppSettings");
+            services.Configure<AppSettingsHelper>(appSettingsSection);
+
+
+        
+
+
+            // configure jwt authentication
+            var appSettings = appSettingsSection.Get<AppSettingsHelper>();
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            services.AddAuthentication(x =>
+                {
+                    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
+                .AddJwtBearer(x =>
+                {
+                    x.RequireHttpsMetadata = false;
+                    x.SaveToken = true;
+                    x.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(key),
+                        ValidateIssuer = false,
+                        ValidateAudience = false
+                    };
+                });
+            #endregion
+
+
+            // Register repositories
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<ICustomerUnitOfWork, CustomerUnitOfWork>();
+            services.AddScoped<IUserContextService, UserContextService>();
+            // Helper services
+            services.AddScoped<IUserHelperService, UserHelperService>();
+
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -47,6 +107,9 @@ namespace UserApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                // CORS
+                app.UseCors(b => b.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
             }
 
             app.UseMvc();

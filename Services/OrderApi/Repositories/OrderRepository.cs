@@ -29,21 +29,12 @@ namespace OrderApi.Repositories
         public async Task<List<OrderListDto>> GetAllOrders()
         {
 
-            var dto = ProductContext.Orders.ToList().ToOrderListDto().ToList();
+            //var dto = ProductContext.Orders.ToList().ToOrderListDto().ToList();
 
-            foreach (var order in dto)
-            {
-                // Assign the product collection to the order object
-                order.Products = await ProductContext.Orders
-                    .SelectMany(o => o.OrderProducts)
-                    .Where(c => c.OrderId == order.Id)
-                    .Select(c => c.Product).ToListAsync();
+            var res = ProductContext.Orders.Include(c => c.Customer).ToList();
 
-                // Get customer identifier
-                //order.CustomerId = ProductContext.Orders.Select(c => c.Customer.Id).SingleOrDefault();
-            }
 
-            return dto;
+            return null;
         }
 
         public CreateOrderDto CreateOrder(int[] productArray, int customerId)

@@ -5,6 +5,11 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using OrderApi.Interfaces.Repositories;
+using OrderApi.Interfaces.UnitOfWork;
+using OrderApi.Repositories;
+using OrderApi.UnitOfWork;
+
 namespace OrderApi
 {
     using Microsoft.AspNetCore.Builder;
@@ -35,6 +40,12 @@ namespace OrderApi
             // Entity framework context setup
             var conn = Configuration.GetConnectionString("Default");
             services.AddDbContext<ProductContext>(options => options.UseSqlServer(conn));
+
+            services.AddScoped<IProductUnitOfWork, ProductUnitOfWork>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IOrderUnitOfWork, OrderUnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
