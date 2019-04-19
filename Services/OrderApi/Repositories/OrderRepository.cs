@@ -40,7 +40,7 @@ namespace OrderApi.Repositories
                     .Select(c => c.Product).ToListAsync();
 
                 // Get customer identifier
-                order.CustomerId = ProductContext.Orders.Select(c => c.Customer.Id).SingleOrDefault();
+                //order.CustomerId = ProductContext.Orders.Select(c => c.Customer.Id).SingleOrDefault();
             }
 
             return dto;

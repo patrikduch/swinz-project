@@ -5,6 +5,8 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using System.Collections.Generic;
+
 namespace PersistenceLib.Domains.UserApi
 {
     using OrderApi;
@@ -42,7 +44,7 @@ namespace PersistenceLib.Domains.UserApi
         public User User { get; set; }
 
 
-        public virtual Order Order { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
 
     }
 }
