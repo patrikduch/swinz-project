@@ -35,6 +35,8 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.15",
     "@fortawesome/free-solid-svg-icons": "^5.7.2",
     "@fortawesome/react-fontawesome": "^0.1.4",
+    "@progress/kendo-drawing": "^1.5.11",
+    "@progress/kendo-react-pdf": "^2.10.0",
     "@types/react-redux": "^6.0.9",
     "bootstrap": "^4.3.1",
     "chart.js": "^2.8.0",

@@ -11,6 +11,7 @@ import { Container } from 'reactstrap';
 
 import { Line } from 'react-chartjs-2';
 
+
 const data = {
     labels: ['Leden', 'Unor', 'Březen', 'Duben', 'Květen', 'Červen', 'Červenec', 'Srpen', 'Září', 'Říjen', 'Listopad', 'Prosinec'],
     datasets: [
@@ -38,12 +39,21 @@ const data = {
     ]
   };
 
+  import PdfGenerator from '../../helpers/pdf/Doc-Service';
 
-export default  () => {
-    return (
+  export default class CustomerStatsPage extends React.Component<any, any> {
+
+    render() {
+      return (
         <Container>
-          <br/>
-           <Line  data={data as any} />
+          <div id ='graph'>
+            <Line  data={data as any} />
+          </div>
+          <button onClick={() => PdfGenerator.createPdf(document.getElementById('graph'))}>Export PDF</button>
         </Container>
-    )
+
+        )
+  }
+
+  
 }

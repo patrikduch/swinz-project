@@ -9,7 +9,20 @@
 import * as React from 'react';
 import { Container } from 'reactstrap';
 
-export default  () => (
-    <Container>Vítejte v CRM systemu</Container>
-);
+import Test from '../helpers/pdf/Doc-Service';
+
+    
+
+export default class Tester extends React.Component {
+
+
+    render() {
+
+        return (
+
+            <Container>Vítejte v CRM systemu</Container>
+        )
+    }
+}
+
     
