@@ -7,6 +7,10 @@
 //----------------------------------------------------------------------------------------
 
 import * as React from 'react';
+
+// Customer REST API
+import CustomerApi from '../../../api/endpoints/CustomerApi';
+
 import Button from 'reactstrap/lib/Button';
 import Modal from 'reactstrap/lib/Modal';
 import ModalHeader from 'reactstrap/lib/ModalHeader';
@@ -18,11 +22,6 @@ import ModalFooter from 'reactstrap/lib/ModalFooter';
 
 // State interface
 
-
-// Table for displaying purchased products
-//import OrderInfoModalTable from '../modals/Order-Info-Modal-Table';
-
-import CustomerApi from '../../../api/endpoints/CustomerApi';
 
 export default class CustomerInfoModal extends React.Component<any, any> {
 
@@ -42,21 +41,20 @@ export default class CustomerInfoModal extends React.Component<any, any> {
     }
 
     componentDidMount() {
-      console.log(this.props.text);
 
       CustomerApi.getCustomer(this.props.text).then((res => {
-
-          console.log(res.data);
-
           this.setState({
             customerInfo: {
               firstname: res.data.firstName,
               lastname: res.data.lastName,
               discount: res.data.discount
             }
-          })
+          });
 
-      }))
+      })).catch(() => {
+
+
+      })
     }
   
     render() {

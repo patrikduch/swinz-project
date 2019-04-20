@@ -89,7 +89,7 @@ export default class ListItemCreation extends React.Component<IListItemCreationP
   render() {
     return (
       <span>
-        <Button size="sm" onClick={this.toggle}>
+        <Button className='add-plus-btn' size="sm" onClick={this.toggle}>
           <FontAwesomeIcon size="lg" icon="plus" />
         </Button>
         <Modal size="lg" isOpen={this.state.isModalActive} toggle={this.toggle}>
