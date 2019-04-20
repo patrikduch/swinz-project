@@ -18,6 +18,6 @@ export default class OrderApi {
     }
 
     static getOrders() {   
-        return get(`${domain}/api/orders/getAll`);
+        return get(`http://localhost:55941/api/orders/getAll`);
     }
 }

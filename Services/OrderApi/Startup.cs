@@ -7,6 +7,7 @@
 
 using OrderApi.Interfaces.Repositories;
 using OrderApi.Interfaces.UnitOfWork;
+using OrderApi.QueryObjects;
 using OrderApi.Repositories;
 using OrderApi.UnitOfWork;
 
@@ -46,6 +47,8 @@ namespace OrderApi
 
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IOrderUnitOfWork, OrderUnitOfWork>();
+
+            services.AddScoped<IOrderQuery, OrderQuery>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +57,9 @@ namespace OrderApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                // CORS
+                app.UseCors(b => b.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
             }
 
             app.UseMvc();

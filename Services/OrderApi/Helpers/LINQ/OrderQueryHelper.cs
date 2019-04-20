@@ -15,12 +15,13 @@ namespace OrderApi.Helpers.LINQ
 
         public static IEnumerable<OrderListDto> ToOrderListDto(this List<Order> collection)
         {
-            foreach (var VARIABLE in collection)
+            foreach (var order in collection)
             {
                 yield return new OrderListDto
                 {
-                    Id = VARIABLE.Id,
-                    CreationDate = VARIABLE.CreationDate
+                    Id = order.Id,
+                    CreationDate = order.CreationDate,
+                    CustomerId =  order.CustomerId
                 };
             }
         }

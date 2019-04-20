@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using OrderApi.Contexts;
 using OrderApi.Dto;
 using OrderApi.Interfaces.UnitOfWork;
+using OrderApi.QueryObjects;
 using PersistenceLib.Domains.OrderApi;
 using PersistenceLib.Domains.UserApi;
 
@@ -35,11 +36,10 @@ namespace OrderApi.Controllers
         /// <returns></returns>
         [Route("getAll")]
         [HttpGet]
-        public async Task<List<OrderListDto>> Get()
+        public async Task<IEnumerable<OrderListDto>> Get()
         {
-
-            return await _unitOfWork.OrderRepository.GetAllOrders();
-
+            var orders = await _unitOfWork.OrderRepository.GetAllOrders();
+            return orders.ToList();
         }
 
 

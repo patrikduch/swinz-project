@@ -8,6 +8,7 @@ using OrderApi.Contexts;
 using OrderApi.Dto;
 using OrderApi.Helpers.LINQ;
 using OrderApi.Interfaces.Repositories;
+using OrderApi.QueryObjects;
 using PersistenceLib;
 using PersistenceLib.Domains.OrderApi;
 
@@ -17,24 +18,31 @@ namespace OrderApi.Repositories
     {
         public ProductContext ProductContext => Context as ProductContext;
 
-        public OrderRepository(ProductContext context) : base(context)
+        private IOrderQuery _orderQuery;
+
+        public OrderRepository(ProductContext context, IOrderQuery query) : base(context)
         {
+            _orderQuery = query;
         }
 
-       
+
         /// <summary>
         /// Get all orders (with products included)
         /// </summary>
         /// <returns></returns>
-        public async Task<List<OrderListDto>> GetAllOrders()
+        public async Task<IEnumerable<OrderListDto>> GetAllOrders()
         {
+            // Get order data from database
+            var dbData = await _orderQuery.Execute(ProductContext);
 
-            //var dto = ProductContext.Orders.ToList().ToOrderListDto().ToList();
+            // Returns only needed data
+            return dbData.ToList();
+        }
 
-            var res = ProductContext.Orders.Include(c => c.Customer).ToList();
-
-
-            return null;
+    
+        public Task<IEnumerable<OrderListDto>> GetOrders()
+        {
+            throw new NotImplementedException();
         }
 
         public CreateOrderDto CreateOrder(int[] productArray, int customerId)

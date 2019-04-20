@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using PersistenceLib.Domains.OrderApi;
+using PersistenceLib.Domains.UserApi;
 
 namespace OrderApi.Dto
 {
@@ -27,7 +28,7 @@ namespace OrderApi.Dto
 
 
         /// <summary>
-        /// Customer`s identifier
+        /// Customers set
         /// </summary>
         public int CustomerId { get; set; }
 
