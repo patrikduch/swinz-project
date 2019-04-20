@@ -6,7 +6,6 @@
 //-----------------------------------------------------------------------
 namespace UserApi.Repositories
 {
-    using PersistenceLib.Domains;
     using PersistenceLib.Domains.UserApi;
     using PersistenceLib;
     using Mocking;
@@ -24,13 +23,6 @@ namespace UserApi.Repositories
     /// </summary>
     public class UserRepository : Repository<User>, IUserRepository
     {
-
-        #region Fields
-        /// <summary>
-        /// Context to manage users
-        /// </summary>
-        private readonly UserContext _context;
-        #endregion
 
         #region Constructors
         /// <summary>
@@ -124,7 +116,7 @@ namespace UserApi.Repositories
         /// <returns></returns>
         public async Task<List<User>> GetUsers()
         {
-            return await _context.Users.Include(c => c.UserRoles).ToListAsync();
+            return await UserContext.Users.Include(c => c.UserRoles).ToListAsync();
         }
 
         /// <summary>

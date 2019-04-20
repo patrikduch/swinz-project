@@ -5,6 +5,8 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using UserApi.QueryObjects;
+
 namespace UserApi.Interfaces.Repositories
 {
     using PersistenceLib.Domains.UserApi;
@@ -18,6 +20,12 @@ namespace UserApi.Interfaces.Repositories
     /// </summary>
     public interface ICustomerRepository : IRepository<Customer>
     {
+        #region READ
+        Task<CustomerDto> GetCustomer(ICustomerQuery query);
+        Task<IEnumerable<CustomerDto>> GetCustomers(ICustomerQuery query);
+        #endregion
+
+
         Task<Customer> CreateCustomer(CustomerRegisterDto customerDto);
         Task<List<CustomerUserDto>> GetAllCustomers();
         Task<List<CustomerUserDto>> GetCustomersPaged(int from, int to, int pageSize);

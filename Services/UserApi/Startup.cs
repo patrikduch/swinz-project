@@ -13,6 +13,7 @@ using UserApi.Interfaces.Helpers;
 using UserApi.Interfaces.Repositories;
 using UserApi.Interfaces.UnitOfWork;
 using UserApi.Mocking;
+using UserApi.QueryObjects;
 using UserApi.Repositories;
 using UserApi.UnitOfWork;
 
@@ -95,6 +96,9 @@ namespace UserApi
             services.AddScoped<IUserContextService, UserContextService>();
             // Helper services
             services.AddScoped<IUserHelperService, UserHelperService>();
+
+            // Query object services
+            services.AddScoped<ICustomerQuery, CustomerQuery>();
 
 
 

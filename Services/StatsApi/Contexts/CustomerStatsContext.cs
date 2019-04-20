@@ -12,26 +12,38 @@ namespace StatsApi.Contexts
     using PersistenceLib.EntityConfigurations;
 
     /// <summary>
-    /// Customer statistics context that represents connection to the database to manage customer statistics
+    /// Customer statistics context that represents connection to the database to manage customer statistics.
     /// </summary>
     public class CustomerStatsContext : DbContext
     {
+        /// <summary>
+        /// Initializes a new instance of the <seealso cref="CustomerStatsContext"/> class.
+        /// </summary>
+        /// <param name="options"></param>
         public CustomerStatsContext(DbContextOptions<CustomerStatsContext> options) : base(options)
         {
         }
 
         /// <summary>
-        /// Data-set for accessing customers
+        /// Auxiliary constructor for handling Unit tests under the <seealso cref="CustomerStatsContext"/>.
+        /// </summary>
+        public CustomerStatsContext()
+        {
+            
+        }
+
+        /// <summary>
+        /// Data-set for accessing customers.
         /// </summary>
         public DbSet<Customer> Customers { get; set; }
 
         /// <summary>
-        /// Data-set for accessing products
+        /// Data-set for accessing products.
         /// </summary>
         public DbSet<Product> Products { get; set; }
 
         /// <summary>
-        /// Data-set for accessing orders
+        /// Data-set for accessing orders.
         /// </summary>
         public DbSet<Order> Orders { get; set; }
 

@@ -8,6 +8,7 @@
 using PersistenceLib.Domains;
 using PersistenceLib.Domains.UserApi;
 using UserApi.Dto;
+using UserApi.QueryObjects;
 
 namespace UserApi.Repositories
 {
@@ -51,6 +52,22 @@ namespace UserApi.Repositories
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// Get customer by identifier
+        /// </summary>
+        /// <param name="query">Query object where logic of selection resides</param>
+        /// <returns></returns>
+        public Task<CustomerDto> GetCustomer(ICustomerQuery query)
+        {
+            return query.Execute(UserContext);
+        }
+
+        public Task<IEnumerable<CustomerDto>> GetCustomers(ICustomerQuery query)
+        {
+            throw new System.NotImplementedException();
+        }
+
         /// <summary>
         /// Creation of customer
         /// </summary>

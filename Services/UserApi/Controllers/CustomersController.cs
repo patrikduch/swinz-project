@@ -7,6 +7,7 @@
 
 namespace UserApi.Controllers
 {
+    using QueryObjects;
     using PersistenceLib.Domains.UserApi;
     using System.Linq;
     using UserApi.Interfaces.UnitOfWork;
@@ -31,6 +32,8 @@ namespace UserApi.Controllers
         /// </summary>
         private readonly ICustomerUnitOfWork _customerUnitOfWork;
 
+        private readonly ICustomerQuery _customerQuery;
+
         #endregion
         #region Constructors
 
@@ -38,10 +41,13 @@ namespace UserApi.Controllers
         /// Inject constructor for Customer`s Controller
         /// </summary>
         /// <param name="customerUnitOfWork">Unit of work for customer`a manipulation</param>
-        public CustomersController(ICustomerUnitOfWork customerUnitOfWork)
+        /// <param name="customerQuery">Query object helper service</param>
+        public CustomersController(ICustomerUnitOfWork customerUnitOfWork, ICustomerQuery customerQuery)
         {
             _customerUnitOfWork = customerUnitOfWork;
+            _customerQuery = customerQuery;
         }
+
         #endregion
         #region Actions
         
@@ -89,9 +95,11 @@ namespace UserApi.Controllers
         /// <returns>Customer entity</returns>
         [HttpGet]
         [Route("get/{id}")]
-        public async Task<Customer> GetCustomer(int id)
+        public async Task<CustomerDto> GetCustomer(int id)
         {
-            return await _customerUnitOfWork.CustomerRepository.Get(id);
+            _customerQuery.FilterById = true;
+            _customerQuery.CustomerId = id;
+            return await _customerUnitOfWork.CustomerRepository.GetCustomer(_customerQuery);
         }
 
 

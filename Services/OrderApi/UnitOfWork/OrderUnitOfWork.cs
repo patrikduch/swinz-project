@@ -6,6 +6,9 @@ namespace OrderApi.UnitOfWork
     using OrderApi.Interfaces.Repositories;
     using OrderApi.Interfaces.UnitOfWork;
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class OrderUnitOfWork: IOrderUnitOfWork
     {
 
@@ -21,6 +24,11 @@ namespace OrderApi.UnitOfWork
         public IOrderRepository OrderRepository { get; }
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="productContext"></param>
+        /// <param name="orderRepository"></param>
         public OrderUnitOfWork(ProductContext productContext, IOrderRepository orderRepository)
         {
             _productContext = productContext;
@@ -28,11 +36,18 @@ namespace OrderApi.UnitOfWork
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void Dispose()
         {
             _productContext.Dispose();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public async Task<int> Complete()
         {
             return await _productContext.SaveChangesAsync();
