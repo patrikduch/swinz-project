@@ -45,9 +45,9 @@ const data = {
 
     render() {
       return (
-        <Container>
+        <Container fluid>
           <div id ='graph'>
-            <Line  data={data as any} />
+            <Line height={120}  data={data as any} />
           </div>
           <button onClick={() => PdfGenerator.createPdf(document.getElementById('graph'))}>Export PDF</button>
         </Container>
