@@ -22,10 +22,17 @@ import ModalFooter from 'reactstrap/lib/ModalFooter';
 // Table for displaying purchased products
 //import OrderInfoModalTable from '../modals/Order-Info-Modal-Table';
 
+import CustomerApi from '../../../api/endpoints/CustomerApi';
+
 export default class CustomerInfoModal extends React.Component<any, any> {
 
     state = {
-        isModalActive: false  
+        isModalActive: false,
+        customerInfo: {
+          firstname: '',
+          lastname: '',
+          discount: 0,
+        }
     };
   
     toggle = () => {      
@@ -35,7 +42,21 @@ export default class CustomerInfoModal extends React.Component<any, any> {
     }
 
     componentDidMount() {
-      console.log(this.props);
+      console.log(this.props.text);
+
+      CustomerApi.getCustomer(this.props.text).then((res => {
+
+          console.log(res.data);
+
+          this.setState({
+            customerInfo: {
+              firstname: res.data.firstName,
+              lastname: res.data.lastName,
+              discount: res.data.discount
+            }
+          })
+
+      }))
     }
   
     render() {
@@ -45,7 +66,9 @@ export default class CustomerInfoModal extends React.Component<any, any> {
           <Modal size='lg' isOpen={this.state.isModalActive} toggle={this.toggle}>
             <ModalHeader toggle={this.toggle}>Informace o zákazníkovi</ModalHeader>
             <ModalBody>
-              {this.props.text}
+              <p>Křestní jméno: {this.state.customerInfo.firstname}</p>
+              <p>Přijmení: {this.state.customerInfo.lastname}</p>
+              <p>Aktivní sleva: {this.state.customerInfo.discount} %</p>
             </ModalBody>
             <ModalFooter>
               <Button color="secondary" onClick={this.toggle}>Zavřít</Button>

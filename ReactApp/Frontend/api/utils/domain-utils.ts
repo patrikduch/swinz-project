@@ -8,4 +8,6 @@
 
 const domain = "http://localhost:63766";
 
+export const CUSTOMER_REST_ENDPOINT = 'http://localhost:50474';
+
 export { domain };

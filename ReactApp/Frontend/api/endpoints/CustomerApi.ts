@@ -9,23 +9,27 @@
 import { get, del, put, post} from '../utils/request-utils';
 
 // Get domain for REST API services
-import { domain } from '../utils/domain-utils';
+import { CUSTOMER_REST_ENDPOINT } from '../utils/domain-utils';
 
 export default class CustomerApi {
 
     static createCustomer(data: object) {        
-        return post(`${domain}/api/customers/create`, data)
+        return post(`${CUSTOMER_REST_ENDPOINT}/api/customers/create`, data)
     }
 
     static getCustomers() {   
-        return get(`${domain}/api/customers/getAll`);
+        return get(`${CUSTOMER_REST_ENDPOINT}/api/customers/getAll`);
+    }
+
+    static getCustomer(id: number) {   
+        return get(`${CUSTOMER_REST_ENDPOINT}/api/customers/get/${id}`);
     }
 
     static updateCustomer(id:number, data: object) {        
-        return put(`${domain}/api/customers/update/${id}`, data);
+        return put(`${CUSTOMER_REST_ENDPOINT}/api/customers/update/${id}`, data);
     }
 
     static deleteCustomer(customerId: number) {        
-        return del(`${domain}/api/customers/delete/`+customerId);
+        return del(`${CUSTOMER_REST_ENDPOINT}/api/customers/delete/`+customerId);
     }
 }
