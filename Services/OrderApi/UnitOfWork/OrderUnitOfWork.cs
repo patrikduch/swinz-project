@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using OrderApi.Contexts;
-using OrderApi.Interfaces.Repositories;
-using OrderApi.Interfaces.UnitOfWork;
-
+﻿
 namespace OrderApi.UnitOfWork
 {
+    using System.Threading.Tasks;
+    using Contexts;
+    using OrderApi.Interfaces.Repositories;
+    using OrderApi.Interfaces.UnitOfWork;
+
     public class OrderUnitOfWork: IOrderUnitOfWork
     {
 

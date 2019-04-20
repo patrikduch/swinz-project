@@ -64,7 +64,7 @@ namespace OrderApi.Controllers
         }
 
         /// <summary>
-        /// Get all products without restrictions
+        /// GetAllOrders all products without restrictions
         /// </summary>
         /// <returns></returns>
         [Route("getAll")]
@@ -73,7 +73,6 @@ namespace OrderApi.Controllers
         {
             return await _unitOfWork.ProductRepository.GetAll();
         }
-
 
         /// <summary>
         /// Update productDto by identifier number
@@ -90,7 +89,7 @@ namespace OrderApi.Controllers
                 return BadRequest("Incorrect input");
             }
 
-            // Get entity by provided identifier
+            // GetAllOrders entity by provided identifier
             var entity = await _unitOfWork.ProductRepository.Get(id);
 
             if (entity == null) return BadRequest("Entity to update wasn't founded");

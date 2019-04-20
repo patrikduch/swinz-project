@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using PersistenceLib.Domains.OrderApi;
-using PersistenceLib.Domains.UserApi;
+﻿//-----------------------------------------------------------------------
+// <copyright file="OrderListDto.cs" website="Patrikduch.com">
+//     Copyright 2019 (c) Patrikduch.com
+// </copyright>
+// <author>Patrik Duch</author>
 
 namespace OrderApi.Dto
 {
+    using System;
+    using System.Collections.Generic;
+    using PersistenceLib.Domains.OrderApi;
+
     /// <summary>
     /// Dto for listing all orders
     /// </summary>
@@ -28,7 +31,7 @@ namespace OrderApi.Dto
 
 
         /// <summary>
-        /// Customers set
+        /// Customer`s identifier
         /// </summary>
         public int CustomerId { get; set; }
 

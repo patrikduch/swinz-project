@@ -16,7 +16,7 @@ namespace StatsApi.Repositories
     using Interfaces;
 
     /// <summary>
-    /// 
+    /// Repository for customers statistics
     /// </summary>
     public class CustomerStatsRepository : Repository<Customer>, ICustomerStatsRepository
     {
@@ -43,7 +43,7 @@ namespace StatsApi.Repositories
         }
 
         /// <summary>
-        /// Get total number of sold products
+        /// GetSummaryStats total number of sold products
         /// </summary>
         /// <param name="collection">IQueryable collection which will be executed</param>
         /// <returns>numeric representation of total sold products</returns>

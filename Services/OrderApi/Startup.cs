@@ -5,14 +5,13 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
-using OrderApi.Interfaces.Repositories;
-using OrderApi.Interfaces.UnitOfWork;
-using OrderApi.QueryObjects;
-using OrderApi.Repositories;
-using OrderApi.UnitOfWork;
-
 namespace OrderApi
 {
+    using OrderApi.Interfaces.Repositories;
+    using OrderApi.Interfaces.UnitOfWork;
+    using QueryObjects;
+    using Repositories;
+    using UnitOfWork;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Mvc;

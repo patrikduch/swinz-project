@@ -1,31 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Rewrite.Internal.ApacheModRewrite;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
-using OrderApi.Contexts;
-using OrderApi.Dto;
-using OrderApi.Helpers.LINQ;
-using PersistenceLib.Domains.OrderApi;
+﻿
 
 namespace OrderApi.QueryObjects
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Microsoft.EntityFrameworkCore;
+    using Contexts;
+    using Dto;
+    using Helpers.LINQ;
+
     public class OrderQuery : IOrderQuery
     {
+        public bool LoadCustomers { get; set; } = false;
+        public bool InjectProducts { get; set; } = false;
+
         public async Task<IEnumerable<OrderListDto>> Execute(DbContext context)
         {
             var dbContext = context as ProductContext;
-            var dto = dbContext?.Orders.Include(c=>c.Customer).ToList().ToOrderListDto().ToList();
+            List<OrderListDto> dto = null;
 
-            foreach (var order in dto)
+            if (LoadCustomers)
             {
-                // Assign the product collection to the order object
-                order.Products = await dbContext.Orders
-                    .SelectMany(o => o.OrderProducts)
-                    .Where(c => c.OrderId == order.Id)
-                    .Select(c => c.Product).ToListAsync();
+                dto = dbContext?.Orders.Include(c => c.Customer)
+                    .ToList()
+                    .ToOrderListDto()
+                    .ToList();
+            }
+
+            if (dto == null) return null; // No data was fetched
+
+            if (InjectProducts)
+            {
+                foreach (var order in dto)
+                {
+                    // Assign the product collection to the order object
+                    order.Products = await dbContext.Orders
+                        .SelectMany(o => o.OrderProducts)
+                        .Where(c => c.OrderId == order.Id)
+                        .Select(c => c.Product).ToListAsync();
+                }
             }
 
             return dto;

@@ -1,21 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using PersistenceLib.Domains.OrderApi;
-using PersistenceLib.Domains.UserApi;
-using PersistenceLib.EntityConfigurations;
+﻿//-----------------------------------------------------------------------
+// <copyright file="CustomerStatsContext.cs" website="Patrikduch.com">
+//     Copyright 2019 (c) Patrikduch.com
+// </copyright>
+// <author>Patrik Duch</author>
 
 namespace StatsApi.Contexts
 {
+    using Microsoft.EntityFrameworkCore;
+    using PersistenceLib.Domains.OrderApi;
+    using PersistenceLib.Domains.UserApi;
+    using PersistenceLib.EntityConfigurations;
+
+    /// <summary>
+    /// Customer statistics context that represents connection to the database to manage customer statistics
+    /// </summary>
     public class CustomerStatsContext : DbContext
     {
-        public CustomerStatsContext()
-        {
-
-        }
-
         public CustomerStatsContext(DbContextOptions<CustomerStatsContext> options) : base(options)
         {
         }
@@ -39,7 +39,6 @@ namespace StatsApi.Contexts
         {
             modelBuilder.Entity<Customer>().ToTable("Customer");
             modelBuilder.Entity<Order>().ToTable("Order");
-
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
 
         }
