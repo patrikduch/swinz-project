@@ -6,54 +6,102 @@
 // Customers statistics page
 //-----------------------------------------------------------------------
 
-import * as React from 'react';
-import { Container } from 'reactstrap';
+import * as React from "react";
 
-import { Line } from 'react-chartjs-2';
+// Styled helper
+import styled from "styled-components";
 
+import { Container, Row, Col } from "reactstrap";
+
+import { Line } from "react-chartjs-2";
 
 const data = {
-    labels: ['Leden', 'Unor', 'Březen', 'Duben', 'Květen', 'Červen', 'Červenec', 'Srpen', 'Září', 'Říjen', 'Listopad', 'Prosinec'],
-    datasets: [
-      {
-        label: 'Průměrná útrata zákaznika',
-        fill: false,
-        lineTension: 0.1,
-        backgroundColor: 'rgba(75,192,192,0.4)',
-        borderColor: 'rgba(75,192,192,1)',
-        borderCapStyle: 'butt',
-        borderDash: [],
-        borderDashOffset: 0.0,
-        borderJoinStyle: 'miter',
-        pointBorderColor: 'rgba(75,192,192,1)',
-        pointBackgroundColor: '#fff',
-        pointBorderWidth: 1,
-        pointHoverRadius: 5,
-        pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-        pointHoverBorderColor: 'rgba(220,220,220,1)',
-        pointHoverBorderWidth: 2,
-        pointRadius: 1,
-        pointHitRadius: 10,
-        data: [50, 2, 3, 4, 5, 6, 7]
-      }
-    ]
-  };
+  labels: [
+    "Leden",
+    "Unor",
+    "Březen",
+    "Duben",
+    "Květen",
+    "Červen",
+    "Červenec",
+    "Srpen",
+    "Září",
+    "Říjen",
+    "Listopad",
+    "Prosinec"
+  ],
+  datasets: [
+    {
+      label: "Průměrná útrata zákaznika",
+      fill: false,
+      lineTension: 0.1,
+      backgroundColor: "rgba(75,192,192,0.4)",
+      borderColor: "rgba(75,192,192,1)",
+      borderCapStyle: "butt",
+      borderDash: [],
+      borderDashOffset: 0.0,
+      borderJoinStyle: "miter",
+      pointBorderColor: "rgba(75,192,192,1)",
+      pointBackgroundColor: "#fff",
+      pointBorderWidth: 1,
+      pointHoverRadius: 5,
+      pointHoverBackgroundColor: "rgba(75,192,192,1)",
+      pointHoverBorderColor: "rgba(220,220,220,1)",
+      pointHoverBorderWidth: 2,
+      pointRadius: 1,
+      pointHitRadius: 10,
+      data: [50, 2, 3, 4, 5, 6, 7]
+    }
+  ]
+};
 
-  import PdfGenerator from '../../helpers/pdf/Doc-Service';
+const Testik = styled.div`
+  color: black;
+  font-size: 1.4em;
+  font-weight: bolder;
+  padding-left: 1vw;
+  padding-top: 1vh;
+`;
 
-  export default class CustomerStatsPage extends React.Component<any, any> {
+import PdfGenerator from "../../helpers/pdf/Doc-Service";
 
-    render() {
-      return (
-        <Container fluid>
-          <div id ='graph'>
-            <Line height={120}  data={data as any} />
-          </div>
-          <button onClick={() => PdfGenerator.createPdf(document.getElementById('graph'))}>Export PDF</button>
-        </Container>
+// Title of page
+import CustomerStatsTitle from "../../components/common/Page-Title";
 
-        )
+export default class CustomerStatsPage extends React.Component<any, any> {
+  render() {
+    return (
+      <Container fluid>
+        
+
+        <Testik id="graph">
+        <CustomerStatsTitle stats>Průměrná útrata zákaznika</CustomerStatsTitle>
+          <Row>
+            <Col xs="8">
+              <Line
+                options={{
+                  legend: {
+                    display: false
+                  }
+                }}
+                data={data as any}
+              />
+            </Col>
+
+            <Col xs="3">
+              <br />
+              <button
+                onClick={() =>
+                  PdfGenerator.createPdf(document.getElementById("graph"))
+                }
+              >
+                Export PDF
+              </button>
+            </Col>
+          </Row>
+          <Col xs="auto" />
+        </Testik>
+      </Container>
+    );
   }
-
-  
 }
