@@ -3,11 +3,9 @@
 //     Copyright 2019 (c) Patrikduch.com
 // </copyright>
 // <author>Patrik Duch</author>
-// Get domain for REST API services
+// Get domain for all REST API services
 //-----------------------------------------------------------------------
 
-const domain = "http://localhost:63766";
-
-export const CUSTOMER_REST_ENDPOINT = 'http://localhost:50474';
-
-export { domain };
+export const USER_API_REST_ENDPOINT =  'http://localhost:50474';
+export const ORDER_API_REST_ENDPOINT = 'http://localhost:55941';
+export const STATS_API_REST_ENDPOINT = 'http://localhost:59394';

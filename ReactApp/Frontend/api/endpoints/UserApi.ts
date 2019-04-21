@@ -8,14 +8,15 @@
 
 import { post} from '../utils/request-utils';
 
+import { USER_API_REST_ENDPOINT } from '../utils/domain-utils';
+
 export default class UserApi {
 
     static authenticate(data: object) {        
-        return post('http://localhost:63766/api/users/authenticate', data)
+        return post(`${USER_API_REST_ENDPOINT}/api/users/authenticate`, data)
     }
 
     static isAuthenticated(data: object) {        
-
-        return post('http://localhost:63766/api/users/isAuthenticated', data);
+        return post(`${USER_API_REST_ENDPOINT}/api/users/isAuthenticated`, data);
     }
 }

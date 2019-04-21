@@ -60,7 +60,7 @@ export default class CustomerInfoModal extends React.Component<any, any> {
     render() {
       return (
         <div>
-          <Button size='sm' color="danger" onClick={this.toggle}>#1</Button>
+          <Button outline color="secondary" size='sm' onClick={this.toggle}><b>#1</b></Button>
           <Modal size='lg' isOpen={this.state.isModalActive} toggle={this.toggle}>
             <ModalHeader toggle={this.toggle}>Informace o zákazníkovi</ModalHeader>
             <ModalBody>

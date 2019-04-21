@@ -6,24 +6,36 @@
 // Component that represents main title
 //-----------------------------------------------------------------------
 
-import * as React from 'react';
+import * as React from "react";
 
 // Styled helper
 import styled, { css } from 'styled-components';
 
-const Title : any = styled.h2`
-    
-    ${(props : any) => props.crud && css` /* Title for crud operations (orders, customers, etc.) */
-      margin-top: 5.0vh;
-      text-align: center;
-    `}
+const Title: any = styled.h2`
+  /* Shared styles for all titles */
+  text-align: center;
+  font-style: bolder;
 
-    color: black;
-    font-size: 1.8em;
-    text-align: center;
-  `;
+  ${(props: any) => {
+    if (props.stats) {
+      /* Title for statistics (customer statistics, company statistics) */
+      return css`
+        margin-top: 2vh;
+        font-size: 1.2em;
+      `;
+    } else if (props.crud) {
+      /* Title for crud operations (orders, customers, etc.) */
+      return css`
+        margin-top: 5vh;
+      `
+    }
+  }}
+`;
 
-export default ({children, crud} : any)  => {
-
-    return <Title crud={crud}>{children}</Title>;
-}
+export default ({ children, crud, stats }: any) => {
+  return (
+    <Title stats={stats} crud={crud}>
+      {children}
+    </Title>
+  );
+};

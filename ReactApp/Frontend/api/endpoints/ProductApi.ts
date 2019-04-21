@@ -9,22 +9,22 @@
 import { get, del, post, put } from '../utils/request-utils';
 
 // Get domain for REST API services
-import { domain } from '../utils/domain-utils';
+import { ORDER_API_REST_ENDPOINT } from '../utils/domain-utils';
 
 export default class ProductApi {
 
     static createProduct(data: object) {        
-        return post(`${domain}/api/products/create`, data)
+        return post(`${ORDER_API_REST_ENDPOINT}/api/products/create`, data)
     }
     static getProducts() {   
-        return get(`${domain}/api/products/getAll`);
+        return get(`${ORDER_API_REST_ENDPOINT}/api/products/getAll`);
     }
 
     static updateProduct(id:number, data: object) {        
-        return put(`${domain}/api/products/update/${id}`, data);
+        return put(`${ORDER_API_REST_ENDPOINT}/api/products/update/${id}`, data);
     }
     
     static deleteProduct(productId: number) {        
-        return del(`${domain}/api/products/delete/`+productId);
+        return del(`${ORDER_API_REST_ENDPOINT}/api/products/delete/`+productId);
     }
 }

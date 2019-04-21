@@ -9,9 +9,7 @@
 import * as React from 'react';
 import { Container } from 'reactstrap';
 
-import Test from '../helpers/pdf/Doc-Service';
 
-    
 
 export default class Tester extends React.Component {
 

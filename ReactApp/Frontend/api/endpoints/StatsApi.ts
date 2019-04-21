@@ -6,14 +6,14 @@
 // Rest API for customers
 //-----------------------------------------------------------------------
 
-import { get, del, put, post} from '../utils/request-utils';
+import { get } from '../utils/request-utils';
 
 // Get domain for REST API services
-import { domain } from '../utils/domain-utils';
+import { STATS_API_REST_ENDPOINT } from '../utils/domain-utils';
 
 export default class CustomerApi {
 
     static getCustomerSummary() {   
-        return get(`http://localhost:59394/api/stats/customers/summary`);
+        return get(`${STATS_API_REST_ENDPOINT}/api/stats/customers/summary`);
     }
 }

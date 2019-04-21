@@ -37,7 +37,7 @@ export default class OrderInfoModal extends React.Component<IOrderInfoModalProps
     render() {
       return (
         <div>
-          <Button size='sm' color="danger" onClick={this.toggle}>Zobrazit výrobky</Button>
+          <Button size='sm' outline color='secondary' onClick={this.toggle}><b>Zobrazit výrobky</b></Button>
           <Modal size='lg' isOpen={this.state.isModalActive} toggle={this.toggle}>
             <ModalHeader toggle={this.toggle}>Zakoupené výrobky</ModalHeader>
             <ModalBody>
