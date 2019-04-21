@@ -9,7 +9,7 @@
 // React dependency
 import * as React from 'react';
 
-import ListTitle from '../common/Page-Title';
+import ListTitle from '../common/title/Page-Title';
 import ListContainer from '../common/crud/read/List-Container';
 import ListItemObject from '../../helpers/types/List-Item-Object';
 

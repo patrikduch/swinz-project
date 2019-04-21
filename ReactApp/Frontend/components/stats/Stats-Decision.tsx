@@ -13,7 +13,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 // Title of page
-import StatsTitle from '../../components/common/Page-Title';
+import StatsTitle from '../common/title/Page-Title';
 
 
 export default () => {

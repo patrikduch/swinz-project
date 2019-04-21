@@ -9,7 +9,7 @@
 // React dependency
 import * as React from 'react';
 // Title of page (h2 heading)
-import ListTitle from '../common/Page-Title';
+import ListTitle from '../common/title/Page-Title';
 import ListContainer from '../common/crud/read/List-Container';
 import { ListItemType } from '../../typescript/enums/crud/List-Item-Type';
 import { toCrudData } from '../../helpers/components/crudHelper';

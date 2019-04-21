@@ -11,23 +11,32 @@ import * as React from "react";
 // Styled helper
 import styled, { css } from 'styled-components';
 
-const Title: any = styled.h2`
+type tp  = {
+  stats: boolean,
+  crud: boolean,
+}
+
+const Title = styled.h2`
   /* Shared styles for all titles */
   text-align: center;
   font-style: bolder;
 
-  ${(props: any) => {
+  ${(props: tp) => {
     if (props.stats) {
       /* Title for statistics (customer statistics, company statistics) */
-      return css`
-        margin-top: 2vh;
-        font-size: 1.2em;
-      `;
+      return (
+        css`
+          margin-top: 2vh;
+          font-size: 1.2em;
+        `
+      );
     } else if (props.crud) {
       /* Title for crud operations (orders, customers, etc.) */
-      return css`
-        margin-top: 5vh;
-      `
+      return (
+        css`
+          margin-top: 5vh;
+        `
+      );
     }
   }}
 `;

@@ -15,6 +15,6 @@ namespace OrderApi.Interfaces.Repositories
     /// </summary>
     public interface IProductRepository : IRepository<Product>
     {
-
+    
     }
 }

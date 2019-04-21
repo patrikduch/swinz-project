@@ -10,7 +10,7 @@
 import * as React from 'react';
 
 // Title of CRUD manipulator
-import ListTitle from '../common/Page-Title';
+import ListTitle from '../common/title/Page-Title';
 
 // List content
 import ListContainer from '../common/crud/read/List-Container';

@@ -13,8 +13,6 @@ import styled from "styled-components";
 
 import { Container, Row, Col } from "reactstrap";
 
-import { Line } from "react-chartjs-2";
-
 const data = {
   labels: [
     "Leden",
@@ -63,43 +61,19 @@ const Testik = styled.div`
   padding-top: 1vh;
 `;
 
-import PdfGenerator from "../../helpers/pdf/Doc-Service";
-
 // Title of page
-import CustomerStatsTitle from "../../components/common/Page-Title";
+import CustomerStatsTitle from "../../components/common/title/Page-Title";
+
+import Graph from '../../components/common/graph/Graph-View';
+
 
 export default class CustomerStatsPage extends React.Component<any, any> {
   render() {
     return (
       <Container fluid>
-        
-
         <Testik id="graph">
         <CustomerStatsTitle stats>Průměrná útrata zákaznika</CustomerStatsTitle>
-          <Row>
-            <Col xs="8">
-              <Line
-                options={{
-                  legend: {
-                    display: false
-                  }
-                }}
-                data={data as any}
-              />
-            </Col>
-
-            <Col xs="3">
-              <br />
-              <button
-                onClick={() =>
-                  PdfGenerator.createPdf(document.getElementById("graph"))
-                }
-              >
-                Export PDF
-              </button>
-            </Col>
-          </Row>
-          <Col xs="auto" />
+          <Graph data={data} />
         </Testik>
       </Container>
     );

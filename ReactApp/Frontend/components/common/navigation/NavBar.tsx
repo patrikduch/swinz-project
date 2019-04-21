@@ -17,17 +17,11 @@ import {
 import INavBarProps from '../../../typescript/interfaces/components/common/navigation/INavBar-Props';
 // State interface
 import INavBarState from '../../../typescript/interfaces/components/common/navigation/INavBar-State';
-
-// Styled helper
-import styled from 'styled-components';
-
 // React router
 import { Link } from 'react-router-dom';
+// Main title of app
+import HeaderTitle from '../title/Header-Title';
 
-// Creating styled components
-const Title = styled.h1`
-  font-size: 1.4em;
-`;
 
 export default class NavBar extends React.Component<INavBarProps,INavBarState> {
   state = {
@@ -42,19 +36,17 @@ export default class NavBar extends React.Component<INavBarProps,INavBarState> {
   render() {
 
     return (
-      <div>
-        <Navbar color="light" light expand="md">
+        <Navbar color='light' light expand='md'>
             <Link to='/'>
-              <Title>{this.props.title}</Title>
+              <HeaderTitle>{this.props.title}</HeaderTitle>
             </Link>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
+            <Nav className='ml-auto' navbar>
             {this.props.children}
             </Nav>
           </Collapse>
         </Navbar>
-      </div>
     );
   }
 }

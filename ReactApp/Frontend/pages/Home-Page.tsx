@@ -9,16 +9,12 @@
 import * as React from 'react';
 import { Container } from 'reactstrap';
 
-
-
-export default class Tester extends React.Component {
-
-
+export default class HomePage extends React.Component {
     render() {
-
         return (
-
-            <Container>Vítejte v CRM systemu</Container>
+            <Container>
+                <p>Vítejte v CRM systému</p>
+            </Container>
         )
     }
 }
