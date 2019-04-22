@@ -20,6 +20,13 @@ const reducer = (state : any = initialState.products, action: any) => {
                 ...state,
                 data:action.data.data
             }
+        // Fetching all products with pagination filter
+        case actionTypes.PRODUCT_FETCH_WITH_PAGINATION_SUCCESS:
+            return {
+                ...state,
+                data:action.data.data
+            }
+            
         // Deletion specific product by identifier
         case actionTypes.PRODUCT_DELETION_SUCCESS:
             const newData = state.data.filter(((arg: any) => {

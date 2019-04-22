@@ -36,7 +36,7 @@ namespace OrderApi.Controllers
         }
 
         /// <summary>
-        /// Get all orders
+        /// GetAll all orders
         /// </summary>
         /// <returns></returns>
         [Route("getAll")]

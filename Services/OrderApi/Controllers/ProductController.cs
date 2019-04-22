@@ -4,6 +4,8 @@
 // </copyright>
 // <author>Patrik Duch</author>
 
+using OrderApi.Dto;
+
 namespace OrderApi.Controllers
 {
     using System.Linq;
@@ -69,10 +71,24 @@ namespace OrderApi.Controllers
         /// <returns></returns>
         [Route("getAll")]
         [HttpGet]
-        public async Task<IEnumerable<Product>> Get()
+        public async Task<IEnumerable<Product>> GetAll()
         {
             return await _unitOfWork.ProductRepository.GetAll();
         }
+
+
+        /// <summary>
+        /// GetAllOrders all products without restrictions
+        /// </summary>
+        /// <returns></returns>
+        [Route("getAllPager")]
+        [HttpPost]
+        public async Task<IEnumerable<Product>> GetAllWithPagination([FromBody] ProductPagerDto productDto)
+        {
+            return await _unitOfWork.ProductRepository.GetProductsWithPagination(productDto.PageIdentifier);
+        }
+
+
 
         /// <summary>
         /// Update productDto by identifier number

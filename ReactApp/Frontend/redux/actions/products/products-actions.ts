@@ -37,6 +37,26 @@ export const getProducts: ActionCreator<{}> = () => async (dispatch: Dispatch) =
 }
 
 
+
+export const getProductsWithPagination: ActionCreator<{}> = (pageId: number) => async (dispatch: Dispatch) => {
+        
+    const test = {
+        pageIdentifier: pageId
+    }
+
+    ProductApi.getProductsWithPaging(test).then((data) => {
+
+        dispatch({ type: actionTypes.PRODUCT_FETCH_WITH_PAGINATION_SUCCESS, data });
+
+    }).catch(() => {
+
+        
+    });
+}
+
+
+
+
 export const updateProduct : ActionCreator<{}> = (productObj: any) => async (dispatch: Dispatch) => {    
     
     ProductApi.updateProduct(productObj.id, {

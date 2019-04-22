@@ -4,6 +4,9 @@
 // </copyright>
 // <author>Patrik Duch</author>
 
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
 namespace OrderApi.Interfaces.Repositories
 {
     using PersistenceLib;
@@ -15,6 +18,7 @@ namespace OrderApi.Interfaces.Repositories
     /// </summary>
     public interface IProductRepository : IRepository<Product>
     {
-    
+
+        Task<IEnumerable<Product>> GetProductsWithPagination(int pageIdentifier);
     }
 }

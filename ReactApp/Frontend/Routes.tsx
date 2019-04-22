@@ -16,13 +16,9 @@ import CustomerStatsPage from "./pages/stats/Customer-Stats-Page";
 import LoginPage from "./redux/containers/login/Login-Page-Container";
 
 import { hot } from "react-hot-loader";
-import { Route, Switch } from "react-router-dom";
-
+import { Route } from "react-router-dom";
 import HeaderComp from "./components/layout/Header";
 import FooterComp from "./components/layout/Footer";
-
-import AdminAuth from "./hoc/authentication/Admin-Auth";
-
 import Navbar from "./components/common/navigation/NavBar";
 import Navigation from "./components/common/navigation/Navigation";
 
@@ -33,6 +29,7 @@ const Routes = () => {
         <Navbar title="Fakturační systém" />
           <Navigation />
       </HeaderComp>
+      
       <Route path="/login" exact component={LoginPage} />
       <Route path="/" exact component={HomeComp} />
       <Route path="/customers" exact component={CustomerPage} />

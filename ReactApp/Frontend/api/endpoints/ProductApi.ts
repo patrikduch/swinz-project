@@ -20,6 +20,12 @@ export default class ProductApi {
         return get(`${ORDER_API_REST_ENDPOINT}/api/products/getAll`);
     }
 
+    
+    static getProductsWithPaging(data: object) {   
+        return post(`${ORDER_API_REST_ENDPOINT}/api/products/getAllPager`, data);
+    }
+
+
     static updateProduct(id:number, data: object) {        
         return put(`${ORDER_API_REST_ENDPOINT}/api/products/update/${id}`, data);
     }

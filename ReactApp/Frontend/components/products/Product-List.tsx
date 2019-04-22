@@ -19,10 +19,14 @@ import ListItemCreation from '../common/crud/create/List-Item-Creation';
 import ProductObject from '../../view-models/Product';
 import { ListItemType } from '../../typescript/enums/crud/List-Item-Type';
 
+// Paggination
+import PaggingContainer from '../common/pagging/Pagging-Container';
+
 export default class ProductList extends React.Component<any, any> {
 
     componentWillMount() {
         this.props.actions.getProducts();
+        console.log(this.props);
     }
 
     transformData = () => {
@@ -52,6 +56,12 @@ export default class ProductList extends React.Component<any, any> {
                 emptyError = 'Seznam výrobků je prázdný'
                 type={ListItemType.Product}
                 />
+
+                <PaggingContainer pager={this.props.actions.getProductsWithPagination}>
+
+                </PaggingContainer>
+
+
             </div>
         )
     }
