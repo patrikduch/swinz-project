@@ -19,12 +19,14 @@ export default class ProductApi {
     static getProducts() {   
         return get(`${ORDER_API_REST_ENDPOINT}/api/products/getAll`);
     }
-
     
     static getProductsWithPaging(data: object) {   
         return post(`${ORDER_API_REST_ENDPOINT}/api/products/getAllPager`, data);
     }
 
+    static getProductPagination() {
+        return get(`${ORDER_API_REST_ENDPOINT}/api/products/paginationInfo`);
+    }
 
     static updateProduct(id:number, data: object) {        
         return put(`${ORDER_API_REST_ENDPOINT}/api/products/update/${id}`, data);

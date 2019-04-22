@@ -112,7 +112,7 @@ namespace UserApi.Controllers
         [Route("getPaged")]
         public async Task<IEnumerable<CustomerUserDto>> GetCustomersWithPagination([FromBody]PaginationTransferObject paginationTransfer)
         {
-            var res = Paginator.GetPage(paginationTransfer);
+            var res = Paginator.GetPageInterval(paginationTransfer);
             return await _customerUnitOfWork.CustomerRepository.GetCustomersPaged(res.From, res.To, paginationTransfer.PageSize);
         }
 

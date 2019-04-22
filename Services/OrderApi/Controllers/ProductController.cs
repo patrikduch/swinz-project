@@ -78,7 +78,7 @@ namespace OrderApi.Controllers
 
 
         /// <summary>
-        /// GetAllOrders all products without restrictions
+        /// 
         /// </summary>
         /// <returns></returns>
         [Route("getAllPager")]
@@ -86,6 +86,18 @@ namespace OrderApi.Controllers
         public async Task<IEnumerable<Product>> GetAllWithPagination([FromBody] ProductPagerDto productDto)
         {
             return await _unitOfWork.ProductRepository.GetProductsWithPagination(productDto.PageIdentifier);
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [Route("paginationInfo")]
+        [HttpGet]
+        public ActionResult<ProductPagerDto> GetProductPagination()
+        {
+            return Ok(_unitOfWork.ProductRepository.GetProductPaginationInfo());
         }
 
 

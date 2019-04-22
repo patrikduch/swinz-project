@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using OrderApi.Dto;
+using OrderApi.Dto.Pagination;
 using PaginationLib;
 
 namespace OrderApi.Repositories
@@ -23,7 +25,7 @@ namespace OrderApi.Repositories
     public class ProductRepository: Repository<Product>, IProductRepository
     {
 
-        private ProductContext _productContext;
+        private readonly ProductContext _productContext;
 
 
         /// <summary>
@@ -35,19 +37,38 @@ namespace OrderApi.Repositories
             _productContext = context;
         }
 
+        /// <summary>
+        /// Get products with pagination filtering
+        /// </summary>
+        /// <param name="pageIdentifier">Page number identifier</param>
+        /// <returns></returns>
         public async Task<IEnumerable<Product>> GetProductsWithPagination(int pageIdentifier)
         {
-
+            // Get interval for specific page identifier
             var pagination = new PaginationTransferObject { PageIdentifier = pageIdentifier };
+            var res = Paginator.GetPageInterval(pagination);
 
-            var res = Paginator.GetPage(pagination);
-
+            var resa = _productContext.Products.Skip(res.From+1).Take(5);
 
             return await _productContext.Products
            
                 .Skip(res.From)
-                .Take(res.To)
+                .Take(5)
                 .ToListAsync();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public ProductPagerListDto GetProductPaginationInfo()
+        {
+           var pageCount = Paginator.GetPageCount(_productContext.Products.Count());
+
+           return new ProductPagerListDto
+           {
+               PageCount = pageCount
+           };
 
         }
     }

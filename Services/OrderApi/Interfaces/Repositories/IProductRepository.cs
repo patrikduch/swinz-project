@@ -6,6 +6,8 @@
 
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using OrderApi.Dto;
+using OrderApi.Dto.Pagination;
 
 namespace OrderApi.Interfaces.Repositories
 {
@@ -20,5 +22,7 @@ namespace OrderApi.Interfaces.Repositories
     {
 
         Task<IEnumerable<Product>> GetProductsWithPagination(int pageIdentifier);
+
+        ProductPagerListDto GetProductPaginationInfo();
     }
 }

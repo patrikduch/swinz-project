@@ -26,7 +26,9 @@ export const createProduct : ActionCreator<{}> = (productObj: object) => async (
 
 export const getProducts: ActionCreator<{}> = () => async (dispatch: Dispatch) => {
         
-    ProductApi.getProducts().then((data) => {
+    ProductApi.getProductsWithPaging({
+        pageIdentifier: 1
+    }).then((data) => {
 
         dispatch({ type: actionTypes.PRODUCT_FETCH_SUCCESS, data });
 

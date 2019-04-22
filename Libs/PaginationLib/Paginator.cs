@@ -5,6 +5,8 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using System;
+
 namespace PaginationLib
 {
     /// <summary>
@@ -17,7 +19,7 @@ namespace PaginationLib
         /// </summary>
         /// <param name="paginationTransfer">Encapsulation of paginationTransfer properties into object</param>
         /// <returns></returns>
-        public static PaginatorResult GetPage(PaginationTransferObject paginationTransfer)
+        public static PaginatorResult GetPageInterval(PaginationTransferObject paginationTransfer)
         {
             // Result values
             int pageFrom;
@@ -30,8 +32,8 @@ namespace PaginationLib
             }
             else
             {
-                pageFrom = (paginationTransfer.PageIdentifier - 1) * paginationTransfer.PageSize;
-                pageTo = (paginationTransfer.PageIdentifier * paginationTransfer.PageSize);
+                pageFrom = ((paginationTransfer.PageIdentifier - 1) * paginationTransfer.PageSize);
+                pageTo = paginationTransfer.PageSize;
 
             }
 
@@ -41,6 +43,53 @@ namespace PaginationLib
                 From = pageFrom,
                 To = pageTo
             };
+        }
+
+
+        /// <summary>
+        /// Get total number of pages
+        /// </summary>
+        /// <param name="collectionCount">Size of provided collection</param>
+        /// <returns></returns>
+        public static int GetPageCount(int collectionCount)
+        {
+
+            float itemsCount = collectionCount;
+            var pageCount = 0;
+
+            if (itemsCount != 0)
+            {
+                itemsCount = (float) ((float)itemsCount / 5.0);
+
+
+                if ((itemsCount % 1 < 0.5 || itemsCount % 1 == 0.5) && itemsCount % 1 != 0) itemsCount++;
+                pageCount = (int) Math.Round(itemsCount);
+            }
+
+
+            return pageCount;
+
+
+
+            /*
+
+                        var itemsCount = collectionCount;
+                        var pageCount = 0;
+
+                        if (itemsCount % 5 == 0)
+                        {
+                            pageCount++;
+
+                            return pageCount;
+                        }
+
+                        while (itemsCount != 0)
+                        {
+                            itemsCount /= 5;
+                            pageCount++;
+                        }*/
+
+            return pageCount;
         }
     }
 }
