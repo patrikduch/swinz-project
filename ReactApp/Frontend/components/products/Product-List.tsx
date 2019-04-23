@@ -7,62 +7,75 @@
 //----------------------------------------------------------------------------------------
 
 // React dependency
-import * as React from 'react';
+import * as React from "react";
 
-import ListTitle from '../common/title/Page-Title';
-import ListContainer from '../common/crud/read/List-Container';
-import ListItemObject from '../../helpers/types/List-Item-Object';
+import ListTitle from "../common/title/Page-Title";
+import ListContainer from "../common/crud/read/List-Container";
+import ListItemObject from "../../helpers/types/List-Item-Object";
 
 // Create operation
-import ListItemCreation from '../common/crud/create/List-Item-Creation';
+import ListItemCreation from "../common/crud/create/List-Item-Creation";
 
-import ProductObject from '../../view-models/Product';
-import { ListItemType } from '../../typescript/enums/crud/List-Item-Type';
+import ProductObject from "../../view-models/Product";
+import { ListItemType } from "../../typescript/enums/crud/List-Item-Type";
 
 // Paggination
-import PaggingContainer from '../common/pagging/Pagging-Container';
+import PaggingContainer from "../common/pagging/Pagging-Container";
 
 export default class ProductList extends React.Component<any, any> {
+  componentWillMount() {
+    this.props.actions.getProducts();
+  }
 
-    componentWillMount() {
-        this.props.actions.getProducts();
-        console.log(this.props);
-    }
+  transformData = () => {
+    const list = new ListItemObject<ProductObject>();
+    if (this.props.products.data != undefined) {
+      this.props.products.data.forEach(
+        (arg: {
+          id: number;
+          name: string;
+          price: number;
+          isDeleted: boolean;
+        }) => {
+          const newObj = new ProductObject(
+            arg.id,
+            arg.name,
+            arg.price,
+            arg.isDeleted
+          );
 
-    transformData = () => {
-        const list = new ListItemObject<ProductObject>();
-        if(this.props.products.data != undefined) {
-            this.props.products.data.forEach((arg: {id: number, name: string, price: number, isDeleted: boolean}) => {
-                const newObj = new ProductObject(arg.id, arg.name, arg.price, arg.isDeleted);
-                
-                if(!newObj.getIsDeleted) { // Add item if isnt deleted
-                    list.objects.push(newObj);
-                } 
-            })
-            return list;
+          if (!newObj.getIsDeleted) {
+            // Add item if isnt deleted
+            list.objects.push(newObj);
+          }
         }
+      );
+      return list;
     }
+  };
 
-    render(){
-        return (
-            <div>
-                <ListTitle crud>Evidence výrobků</ListTitle>
-                <ListItemCreation createMethod={this.props.actions.createProduct} type={ListItemType.Product} />
-                <ListContainer
-                data={ this.transformData() }
-                updateMethod = {this.props.actions.updateProduct}
-                deleteMethod ={this.props.actions.deleteProduct} 
-                columnNames = {['Název výrobku','Cena', ' ']}
-                emptyError = 'Seznam výrobků je prázdný'
-                type={ListItemType.Product}
-                />
+  render() {
+    return (
+      <>
+            <ListTitle crud>Evidence výrobků</ListTitle>
+            <ListItemCreation
+              createMethod={this.props.actions.createProduct}
+              type={ListItemType.Product}
+            />
+            <ListContainer
+              data={this.transformData()}
+              updateMethod={this.props.actions.updateProduct}
+              deleteMethod={this.props.actions.deleteProduct}
+              columnNames={["Název výrobku", "Cena"]}
+              emptyError="Seznam výrobků je prázdný"
+              type={ListItemType.Product}
+            />
 
-                <PaggingContainer pager={this.props.actions.getProductsWithPagination}>
+            <PaggingContainer
+              pager={this.props.actions.getProductsWithPagination}
+            />
 
-                </PaggingContainer>
-
-
-            </div>
-        )
-    }
+</>
+    );
+  }
 }

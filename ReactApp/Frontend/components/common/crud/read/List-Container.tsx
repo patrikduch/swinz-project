@@ -22,7 +22,7 @@ const Container = styled.div`
 export default (props:any) => {
     return (
        <Container>
-           <Table>
+           <Table >
                 <ListHeadings columns={props.columnNames} />
                 <ListBody 
                     type={props.type} 

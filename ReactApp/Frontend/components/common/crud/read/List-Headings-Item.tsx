@@ -18,9 +18,11 @@ import { getUniqueId } from '../../../../helpers/components/rendererHelper';
 // Stylization 
 const Tr = styled.tr`
     border: 1px solid black;
+    
 `;
 const Th = styled.th`
     border: 1px solid black;
+    
 `;
 
 export default (props:IListHeadingsProps) => {

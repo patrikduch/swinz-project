@@ -8,6 +8,6 @@
 
 export enum ProductInputType {
     name = 'productNameInputId',
-    price = 'productPriceId'
+    price = 'productPriceInputId'
 }
   
