@@ -6,6 +6,7 @@
 //-----------------------------------------------------------------------
 
 using System;
+using PaginationLib.Const;
 
 namespace PaginationLib
 {
@@ -23,25 +24,21 @@ namespace PaginationLib
         {
             // Result values
             int pageFrom;
-            int pageTo;
 
             if (paginationTransfer.PageIdentifier == 1)
             {
                 pageFrom = 0;
-                pageTo = paginationTransfer.PageSize;
             }
             else
             {
-                pageFrom = ((paginationTransfer.PageIdentifier - 1) * paginationTransfer.PageSize);
-                pageTo = paginationTransfer.PageSize;
-
+                pageFrom = ((paginationTransfer.PageIdentifier - 1) * PaginationConfig.PAGE_SIZE);
             }
 
             // Returns two value result structure
             return new PaginatorResult
             {
                 From = pageFrom,
-                To = pageTo
+                To = PaginationConfig.PAGE_SIZE
             };
         }
 
@@ -68,28 +65,7 @@ namespace PaginationLib
 
 
             return pageCount;
-
-
-
-            /*
-
-                        var itemsCount = collectionCount;
-                        var pageCount = 0;
-
-                        if (itemsCount % 5 == 0)
-                        {
-                            pageCount++;
-
-                            return pageCount;
-                        }
-
-                        while (itemsCount != 0)
-                        {
-                            itemsCount /= 5;
-                            pageCount++;
-                        }*/
-
-            return pageCount;
+        
         }
     }
 }
