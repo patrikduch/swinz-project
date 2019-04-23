@@ -17,49 +17,7 @@ namespace Swinz.Tests.Libs.PaginationLib
     /// </summary>
     public class PaginationTests
     {
-        [Fact]
-        public void GetPage_IdentifierEqualToOne_ReturnsZeroToFive()
-        {
-            // Arrange
-            var pagination = new PaginationTransferObject {PageIdentifier = 1};
-
-            // Act
-            var result = Paginator.GetPageInterval(pagination);
-            var expected = new PaginatorResult {From = 0, To = 5};
-
-            // Assert
-            Assert.Equal(result, expected);
-        }
-
-        [Fact]
-        public void GetPage_IdentifierNotEqualToOne_ReturnsFiveToTen()
-        {
-            // Arrange
-            var pagination = new PaginationTransferObject { PageIdentifier = 2 };
-
-            // Act
-            var result = Paginator.GetPageInterval(pagination);
-            var expected = new PaginatorResult { From = 5, To = 10 };
-
-            // Assert
-            Assert.Equal(result, expected);
-        }
-
-
-        [Fact]
-        public void GetPage_IdentifierNotEqualToOne_ReturnsTenToFifteen()
-        {
-            // Arrange
-            var pagination = new PaginationTransferObject { PageIdentifier = 3 };
-
-            // Act
-            var result = Paginator.GetPageInterval(pagination);
-            var expected = new PaginatorResult { From = 10, To = 15 };
-
-            // Assert
-            Assert.Equal(result, expected);
-        }
-
+      
         [Fact]
         public void GetPageTotal_WithFiveElements_ReturnsSinglePage()
         {            

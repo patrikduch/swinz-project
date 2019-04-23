@@ -70,11 +70,10 @@ namespace Swinz.Tests.Services.StatsApi
 
 
             var mockContext = new Mock<CustomerStatsContext>();
-
             var repository = new CustomerStatsRepository(mockContext.Object);
 
+            // Act
             var actual = repository.GetLatestIncome(customers);
-
 
             // Assert
             Assert.Equal(266, actual);
@@ -138,11 +137,14 @@ namespace Swinz.Tests.Services.StatsApi
 
             var mockContext = new Mock<CustomerStatsContext>();
 
+
+            // Act
             var repository = new CustomerStatsRepository(mockContext.Object);
 
             var actual = repository.GetSoldCount(customers);
 
-           
+            // Assert
+
             Assert.Equal(2, actual);
 
         }

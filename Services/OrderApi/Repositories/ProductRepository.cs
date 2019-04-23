@@ -48,16 +48,10 @@ namespace OrderApi.Repositories
             var pagination = new PaginationTransferObject { PageIdentifier = pageIdentifier };
             var res = Paginator.GetPageInterval(pagination);
 
-            var resa = _productContext.Products.Where(p => p.IsDeleted.Equals(false)).Skip(res.From).Take(5);
-
-            return resa;
-
-            return await _productContext.Products
-           
+            return _productContext.Products.
+                Where(p => p.IsDeleted.Equals(false))
                 .Skip(res.From)
-                .Take(5)
-                .Where(p=>p.IsDeleted.Equals(false))
-                .ToListAsync();
+                .Take(5);
         }
 
         /// <summary>
