@@ -27,6 +27,11 @@ export default class Order {
         return this.creationDate;
     }
 
+    set SetCreationDate(value: any) {
+
+        this.creationDate = value;
+    }
+
     get getCustomerId() {
         return this.customerId;
     }

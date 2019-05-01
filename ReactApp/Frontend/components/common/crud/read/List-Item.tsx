@@ -22,7 +22,6 @@ import IListItemProps from '../../../../typescript/interfaces/components/common/
 import IListItemState from '../../../../typescript/interfaces/components/common/crud/read/IList-Item-State';
 
 
-//
 
 // Enum type to determine type of passed component which will be rendered by area method
 import { ListItemType } from '../../../../typescript/enums/crud/List-Item-Type';
@@ -38,6 +37,7 @@ import OrderInfo from '../../../../components/orders/modals/Order-Info-Modal';
 import CustomerInfoModal from '../../../../components/customers/modals/Customer-Info-Modal';
 import { Link } from 'react-router-dom';
 
+import moment from 'moment';
 
 const DataRenderer = (props:any) => {
 
@@ -78,11 +78,13 @@ const DataRenderer = (props:any) => {
 
     case ListItemType.Order: {
       const entity = props.arg as OrderObject;
+
+
       return (
         <>
           <th scope='row'>{props.iteration}</th>
           <td>
-            <div>{entity.GetCreationDate}</div>
+            <div>{moment(entity.GetCreationDate).lang("cs").format('MMMM Do YYYY, h:mm:ss')}</div>
           </td>
           <td>
             <div>
