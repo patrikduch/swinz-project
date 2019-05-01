@@ -10,13 +10,9 @@ import * as React from 'react';
 import { Container } from 'reactstrap';
 
 export default () => {
-
-
   return (
-    <Container className="container-spacing">
-
+    <Container className='container-spacing'>
         Celkova statistika firmy
-      
     </Container>
   );
 };

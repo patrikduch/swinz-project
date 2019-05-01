@@ -26,8 +26,18 @@ import { ListItemType } from '../../typescript/enums/crud/List-Item-Type';
 
 export default class CustomersList extends React.Component<any, any> {
 
+    columnNames = ['#','Křestní jméno','Přijmení', 'Nárok na slevu'];
+
     componentWillMount() {
         this.props.actions.getCustomers();
+    }
+
+    componentDidMount() {
+
+        if (this.props.stats) {
+
+            this.columnNames = ['#','Křestní jméno','Přijmení']
+        }
     }
 
     transformData = () => {
@@ -48,14 +58,11 @@ export default class CustomersList extends React.Component<any, any> {
     render() {
         return (
             <>
-                <ListTitle crud>Evidence zákazniků</ListTitle>
-                <ListItemCreation createMethod={this.props.actions.createCustomer} type={ListItemType.Customer} />
                 <ListContainer 
                     data={ this.transformData() } 
+                    stats = {this.props.stats}
                     type={ListItemType.Customer}
-                    updateMethod={this.props.actions.updateCustomer}
-                    deleteMethod={this.props.actions.deleteCustomer}
-                    columnNames = {['#','Křestní jméno','Přijmení', 'Nárok na slevu']}
+                    columnNames = {this.columnNames}
                     emptyError = 'Seznam zákazníků je prázdný'
 
                 />

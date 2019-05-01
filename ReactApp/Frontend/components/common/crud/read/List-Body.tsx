@@ -26,9 +26,8 @@ export default (props: IListBodyProps) => {
                 counter++; // Next item index of the customer`s list
                 return <ListItem key={ getUniqueId() }
                         type={props.type}
-                        updateMethod={props.updateMethod}
-                        deleteMethod={props.deleteMethod}
                         iteration={ counter }
+                        stats ={props.stats}
                         arg={ arg } />
             })}
         </tbody>

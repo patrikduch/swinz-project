@@ -9,11 +9,11 @@ import { ListItemType } from './../../../../../enums/crud/List-Item-Type';
 
 export default interface IListBodyProps {
 
-    deleteMethod: Function
-    updateMethod: Function
     data: {
         objects: []
     }
+
+    stats: boolean, // Check if view is for statistics
 
     type: any // type of listing
 

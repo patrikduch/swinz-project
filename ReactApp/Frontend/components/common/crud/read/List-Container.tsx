@@ -28,8 +28,8 @@ export default (props:any) => {
                     type={props.type} 
                     data={props.data} 
                     emptyError={props.emptyError}
-                    updateMethod={props.updateMethod}
-                    deleteMethod={props.deleteMethod} />
+                    stats ={props.stats}
+                    />
            </Table>
        </Container>
     )

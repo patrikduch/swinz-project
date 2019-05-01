@@ -10,8 +10,10 @@
 @import './reacstrap//Container';
 
 
-@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono');
 @import url('./fonts/Quicksand.scss');
+
+// PDF Fonts
+@import url('./fonts/pdf/DejaVuSans.scss');
 
 body {
     font-family: 'Quicksand', sans-serif;

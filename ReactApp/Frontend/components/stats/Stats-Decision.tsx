@@ -15,7 +15,6 @@ import { Link } from 'react-router-dom';
 // Title of page
 import StatsTitle from '../common/title/Page-Title';
 
-
 export default () => {
   const LinkContent = styled.p`
     color: black;
@@ -24,18 +23,14 @@ export default () => {
   `;
 
   return (
-    <Container className="container-spacing">
-
+    <Container className='container-spacing'>
       <StatsTitle>Přehled statistik</StatsTitle>
-
-      <Link to="/stats/customers">
+      <Link to='/stats/customers'>
         <LinkContent>Statistika zákazníků</LinkContent>
       </Link>
-
-      <Link to="/stats/company">
+      <Link to='/stats/company'>
         <LinkContent>Statistika firmy</LinkContent>
-      </Link>
-      
+      </Link>      
     </Container>
   );
 };

@@ -8,73 +8,76 @@
 
 import * as React from "react";
 
-// Styled helper
-import styled from "styled-components";
-
 import { Container, Row, Col } from "reactstrap";
 
-const data = {
-  labels: [
-    "Leden",
-    "Unor",
-    "Březen",
-    "Duben",
-    "Květen",
-    "Červen",
-    "Červenec",
-    "Srpen",
-    "Září",
-    "Říjen",
-    "Listopad",
-    "Prosinec"
-  ],
-  datasets: [
-    {
-      label: "Průměrná útrata zákaznika",
-      fill: false,
-      lineTension: 0.1,
-      backgroundColor: "rgba(75,192,192,0.4)",
-      borderColor: "rgba(75,192,192,1)",
-      borderCapStyle: "butt",
-      borderDash: [],
-      borderDashOffset: 0.0,
-      borderJoinStyle: "miter",
-      pointBorderColor: "rgba(75,192,192,1)",
-      pointBackgroundColor: "#fff",
-      pointBorderWidth: 1,
-      pointHoverRadius: 5,
-      pointHoverBackgroundColor: "rgba(75,192,192,1)",
-      pointHoverBorderColor: "rgba(220,220,220,1)",
-      pointHoverBorderWidth: 2,
-      pointRadius: 1,
-      pointHitRadius: 10,
-      data: [50, 2, 3, 4, 5, 6, 7]
-    }
-  ]
-};
+import PageTitle from "../../components/common/title/Page-Title";
+import { Line } from "react-chartjs-2";
 
-const Testik = styled.div`
-  color: black;
-  font-size: 1.4em;
-  font-weight: bolder;
-  padding-left: 1vw;
-  padding-top: 1vh;
-`;
-
-// Title of page
-import CustomerStatsTitle from "../../components/common/title/Page-Title";
-
-import Graph from '../../components/common/graph/Graph-View';
-
+// PDF service generator
+import PdfGenerator from "../../helpers/pdf/Doc-Service";
 
 export default class CustomerStatsPage extends React.Component<any, any> {
+  data = {
+    labels: [
+      "Leden",
+      "Unor",
+      "Březen",
+      "Duben",
+      "Květen",
+      "Červen",
+      "Červenec",
+      "Srpen",
+      "Září",
+      "Říjen",
+      "Listopad",
+      "Prosinec"
+    ],
+    datasets: [
+      {
+        label: 'Průměrná útrata zákazníků (Rok 2019)',
+        fill: false,
+        lineTension: 0.1,
+        backgroundColor: "rgba(75,192,192,0.4)",
+        borderColor: "rgba(75,192,192,1)",
+        borderCapStyle: "butt",
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: "miter",
+        pointBorderColor: "rgba(75,192,192,1)",
+        pointBackgroundColor: "#fff",
+        pointBorderWidth: 1,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: "rgba(75,192,192,1)",
+        pointHoverBorderColor: "rgba(220,220,220,1)",
+        pointHoverBorderWidth: 2,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: [50, 2, 3, 4, 5, 6, 7, 100, 0, 20, 40, 70]
+      }
+    ]
+  };
+
   render() {
     return (
-      <Container fluid>
-        <Testik id="graph">
-        <CustomerStatsTitle stats>Průměrná útrata zákaznika</CustomerStatsTitle>
-          <Graph data={data} />
-        </Testik>
+      <Container>
+        <div id="graph">
+          <PageTitle stats>Průměrná útrata zákazníků (Rok 2019)</PageTitle>
+
+          <Row>
+            <Col xs="12">
+              <button
+                onClick={() =>
+                  PdfGenerator.createPdf(document.getElementById("graph"))
+                }
+              >
+                Export PDF
+              </button>
+              <Line height={125} data={this.data as any} />
+            </Col>
+
+            <Col md="2" xs="12" />
+          </Row>
+        </div>
       </Container>
     );
   }

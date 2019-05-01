@@ -5,6 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Services\OrderApi\**" />
+    <Compile Remove="Services\UserApi\**" />
+    <EmbeddedResource Remove="Services\OrderApi\**" />
+    <EmbeddedResource Remove="Services\UserApi\**" />
+    <None Remove="Services\OrderApi\**" />
+    <None Remove="Services\UserApi\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="EntityFrameworkCoreMock.Moq" Version="1.0.0.21" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.0.1" />
     <PackageReference Include="Moq" Version="4.10.1" />
@@ -19,11 +28,6 @@
     <ProjectReference Include="..\Services\OrderApi\OrderApi.csproj" />
     <ProjectReference Include="..\Services\StatsApi\StatsApi.csproj" />
     <ProjectReference Include="..\Services\UserApi\UserApi.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Services\OrderApi\" />
-    <Folder Include="Services\UserApi\" />
   </ItemGroup>
 
 </Project>

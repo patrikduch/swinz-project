@@ -47,25 +47,24 @@ export default () => {
   };
 
   return (
-    <Container fluid>
+    <Container>
     <div id='graph'>
 
     <PageTitle stats>Měsíční přehled tržeb (Rok 2019)</PageTitle>
     
     <Row>
-        <Col xs="9">
-          <Line  data={data as any} />
+        <Col xs="12">
+        <SidebarCompanyInfo />
+        <button onClick={() => PdfGenerator.createPdf(document.getElementById('graph'))}>Export PDF</button>
+          <Line height={125}  data={data as any} />
         </Col>
 
         <Col md="2" xs="12">
-          <SidebarCompanyInfo />
+          
         </Col>
       </Row>
 
     </div>
-
-
-    <button onClick={() => PdfGenerator.createPdf(document.getElementById('graph'))}>Export PDF</button>
 
     </Container>
   );

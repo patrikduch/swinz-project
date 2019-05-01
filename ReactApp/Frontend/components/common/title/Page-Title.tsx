@@ -6,7 +6,7 @@
 // Component that represents main title
 //-----------------------------------------------------------------------
 
-import * as React from "react";
+import * as React from 'react';
 
 // Styled helper
 import styled, { css } from 'styled-components';
@@ -19,15 +19,15 @@ type tp  = {
 const Title = styled.h2`
   /* Shared styles for all titles */
   text-align: center;
-  font-style: bolder;
+  font-weight: bolder;
 
   ${(props: tp) => {
     if (props.stats) {
       /* Title for statistics (customer statistics, company statistics) */
       return (
         css`
-          margin-top: 2vh;
-          font-size: 1.2em;
+          margin-top: 4vh;
+          font-size: 1.8em;
         `
       );
     } else if (props.crud) {

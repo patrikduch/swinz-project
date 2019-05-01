@@ -13,7 +13,7 @@ import { Container } from 'reactstrap';
 export default  () => {
     return (
         <Container>
-            <CustomersListComp />
+            <CustomersListComp stats={false} />
         </Container>
     )
 }

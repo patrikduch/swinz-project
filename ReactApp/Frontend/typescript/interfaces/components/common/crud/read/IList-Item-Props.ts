@@ -8,11 +8,10 @@
 
 export default interface IListItemProps {
     iteration: number
-    updateMethod : Function
-    deleteMethod: Function
     arg: {
         id: number,
         
     },
+    stats: boolean,
     type: any // listing type
 }

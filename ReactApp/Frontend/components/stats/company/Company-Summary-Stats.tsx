@@ -7,10 +7,6 @@
 //-----------------------------------------------------------------------
 
 import * as React from 'react';
-import Card from 'reactstrap/lib/Card';
-import CardBody from 'reactstrap/lib/CardBody';
-import CardTitle from 'reactstrap/lib/CardTitle';
-import CardText from 'reactstrap/lib/CardText';
 
 import StatsApi from '../../../api/endpoints/StatsApi';
 
@@ -36,17 +32,12 @@ export default class CompanySummaryStats extends React.Component<any, any> {
 
   render() {
     return (
-      <Card>
-        <CardBody>
-          <CardTitle>Statistika firmy</CardTitle>
-          <CardText>
+      <div>
             Zákazniků celkem: {this.state.customerCount} <br/>
             Výrobků celkem:  {this.state.productCount} <br/>
             Tržba letošního roku: {this.state.latestIncome},-Kč  <br/>
             Prodanych vyrobků: {this.state.soldTotal} <br/>
-          </CardText>
-        </CardBody>
-      </Card>   
+      </div>   
       
     )
   }
