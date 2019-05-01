@@ -13,7 +13,7 @@ export default class HomePage extends React.Component {
     render() {
         return (
             <Container>
-                <p>Vítejte v CRM systému</p>
+                <p>Prihlaste se </p>
             </Container>
         )
     }

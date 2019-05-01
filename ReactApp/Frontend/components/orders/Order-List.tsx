@@ -14,9 +14,6 @@ import ListContainer from '../common/crud/read/List-Container';
 import { ListItemType } from '../../typescript/enums/crud/List-Item-Type';
 import { toCrudData } from '../../helpers/components/crudHelper';
 
-// Create operation
-import ListItemCreation from '../common/crud/create/List-Item-Creation';
-
 
 interface IOrderListProps {
     actions:{
@@ -35,8 +32,6 @@ export default class OrdertList extends React.Component<IOrderListProps, any> {
     render(){
         return (
             <div>
-                <ListTitle crud>Evidence objednávek</ListTitle>
-                <ListItemCreation createMethod={() => 4} type={ListItemType.Order} />
                 <ListContainer
                 data={ toCrudData(this.props.orders) }
                 updateMethod = {null}

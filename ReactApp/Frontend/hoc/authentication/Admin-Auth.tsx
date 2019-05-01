@@ -18,36 +18,48 @@ import AdminAuthSuccess from '../../components/admin/auth/Admin-Auth-Success';
 import AdminAuthFail from '../../components/admin/auth/Admin-Auth-Fail';
 
 import IAdminAuthProps from '../../typescript/interfaces/hoc/authentification/IAdmin-Auth-Props';
+import { Redirect } from 'react-router';
 
-const AdminAuth = (props: IAdminAuthProps) => {
 
-    class Hoc extends React.Component {
+//import StatsDecision from 'Frontend/components/stats/Stats-Decision';
+
+import { withRouter } from 'react-router-dom';
+
+
+const AdminAuth = (props: any) => {
+
+    class Hoc extends React.Component<any, any> {
         
         state = {
-            tokenString: ''
-        }
-
-        logout = () => {
-            Cookies.expire('auth');
+            tokenString: '',
+            isAuthenticated: false
         }
 
         authPromise = Api.isAuthenticated({
             TokenString: Cookies.get('auth')
         });
 
-
         render() {
             return (
                 <div>
-                    <Async catch={() => <AdminAuthFail isNav={props.isNav} />}
-                        promise={this.authPromise} then={(val) => <AdminAuthSuccess nestedChildren={props.children} isNav={props.isNav} input={val.data}/>
+                   <Async catch={() => <AdminAuthFail isNav={props.isNav} />}
+                        promise={this.authPromise} then={(val) => 
+                        <AdminAuthSuccess nestedChildren={props.children} isNav={props.isNav} input={val.data}/>
                         } />
                 </div>
             )
         }
     }
 
-    return <Hoc />;
+    if(props.location.pathname != '/login') {
+
+        return <Hoc/>
+       
+    }
+
+    const Component = withRouter(Hoc);
+
+    return <Component/>;
 }
 
 export default AdminAuth;

@@ -7,7 +7,7 @@
 //-----------------------------------------------------------------------
 
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 // Props interface
 import IAdminAuthFailProps from '../../../typescript/interfaces/components/admin/IAdmin-Auth-Fail-Props';
@@ -22,5 +22,5 @@ export default (props:IAdminAuthFailProps) => {
         )
     }
 
-    return null;
+    return <Redirect to ='/login' />;
 }

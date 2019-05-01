@@ -10,7 +10,13 @@ import * as React from 'react';
 import { Container, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Redirect } from 'react-router-dom';
 
-export default class LoginPage extends React.Component<any, any> {
+import PageTitle from '../../components/common/title/Page-Title';
+
+import { withRouter } from 'react-router-dom';
+
+
+
+class LoginPage extends React.Component<any, any> {
 
     state = {
         loginSuccess: false,
@@ -76,6 +82,7 @@ export default class LoginPage extends React.Component<any, any> {
 
         return (
             <Container>
+                <PageTitle>Přihlášení do CRM systému</PageTitle>
                 <Form>
                     <FormGroup>
                         <Label for="usernameField">Uživatelske jmeno</Label>
@@ -96,3 +103,7 @@ export default class LoginPage extends React.Component<any, any> {
 
     
 }
+
+
+
+export default withRouter(LoginPage);

@@ -57,11 +57,7 @@ export default class ProductList extends React.Component<any, any> {
   render() {
     return (
       <>
-            <ListTitle crud>Evidence výrobků</ListTitle>
-            <ListItemCreation
-              createMethod={this.props.actions.createProduct}
-              type={ListItemType.Product}
-            />
+            
             <ListContainer
               data={this.transformData()}
               updateMethod={this.props.actions.updateProduct}
@@ -69,10 +65,6 @@ export default class ProductList extends React.Component<any, any> {
               columnNames={["Název výrobku", "Cena"]}
               emptyError="Seznam výrobků je prázdný"
               type={ListItemType.Product}
-            />
-
-            <PaggingContainer
-              pager={this.props.actions.getProductsWithPagination}
             />
 
 </>
