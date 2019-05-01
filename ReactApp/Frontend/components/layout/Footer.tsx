@@ -11,6 +11,7 @@ import * as React from 'react';
 export default () => {
     return (
         <footer>
+            Autor: Patrik Duch
         </footer>
     )
 }

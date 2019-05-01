@@ -25,22 +25,24 @@ import AdminAuth from "./hoc/authentication/Admin-Auth";
 
 const Routes = () => {
   return (
-    <Switch>
-      <Route path="/login" exact component={LoginPage} />
-      <AdminAuth>
-        <HeaderComp>
-          <Navigation />
-        </HeaderComp>
-        <Route path="/" exact component={HomeComp} />
-        <Route path="/customers" exact component={CustomerPage} />
-        <Route path="/orders" exact component={OrderPage} />
-        <Route path="/products" exact component={ProductPage} />
-        <Route path="/stats" exact component={StatsPage} />
-        <Route path="/stats/customers" exact component={CustomerStatsPage} />
-        <Route path="/stats/company" exact component={CompanyStatsPage} />
-        <FooterComp />
-      </AdminAuth>
-    </Switch>
+    <div>
+      <Navbar title='Fakturační systém'/>
+      <Switch>
+        <Route path="/login" exact component={LoginPage} />
+        <AdminAuth>
+          <HeaderComp>
+            <Navigation />
+          </HeaderComp>
+          <Route path="/" exact component={HomeComp} />
+          <Route path="/customers" exact component={CustomerPage} />
+          <Route path="/orders" exact component={OrderPage} />
+          <Route path="/products" exact component={ProductPage} />
+          <Route path="/stats" exact component={StatsPage} />
+          <Route path="/stats/customers" exact component={CustomerStatsPage} />
+          <Route path="/stats/company" exact component={CompanyStatsPage} />
+        </AdminAuth>
+      </Switch>
+    </div>
   );
 };
 
