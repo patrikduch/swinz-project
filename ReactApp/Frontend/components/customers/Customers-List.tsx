@@ -26,7 +26,7 @@ import { ListItemType } from '../../typescript/enums/crud/List-Item-Type';
 
 export default class CustomersList extends React.Component<any, any> {
 
-    columnNames = ['#','Křestní jméno','Přijmení', 'Nárok na slevu'];
+    columnNames = ['#','Křestní jméno','Přijmení', 'Nárok na slevu', '   '];
 
     componentWillMount() {
         this.props.actions.getCustomers();
@@ -36,7 +36,7 @@ export default class CustomersList extends React.Component<any, any> {
 
         if (this.props.stats) {
 
-            this.columnNames = ['#','Křestní jméno','Přijmení']
+            this.columnNames = ['#','Křestní jméno','Přijmení', '    ']
         }
     }
 

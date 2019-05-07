@@ -61,6 +61,12 @@ const DataRenderer = (props:any) => {
           <td>
             <div>{(props.arg as CustomerObject).getLastname}</div>
           </td>
+          <td>
+            <div>N/A</div>
+          </td>
+          <td>
+            <div><span><button>Odstranit</button> <button>Upravit</button></span></div>
+          </td>
         </>
       );
 
@@ -72,7 +78,7 @@ const DataRenderer = (props:any) => {
             <div>{entity.getName}</div>
           </td>
           <td>
-            <div>{entity.getPrice}</div>
+            <div>{entity.getPrice} <span>,-Kč</span></div>
           </td>
         </>
       );
@@ -108,14 +114,23 @@ const DataRenderer = (props:any) => {
 
 
 export default class ListItem extends React.Component<IListItemProps, IListItemState> {
+  
+
+  componentDidMount() {
+      
+  }
+  
   render() {
     const ListOptions = styled.span`
       margin-left: 10vw;
     `;
 
+    
+
     return (
       <tr key={ getUniqueId() }>
         <DataRenderer arg={this.props.arg} iteration={this.props.iteration} stats={this.props.stats}/>
+        
       </tr>
     );
   }
