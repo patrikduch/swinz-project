@@ -1,5 +1,5 @@
-import * as React from "react";
-import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
+import * as React from 'react';
+import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 
 
 import ProductApi from '../../../api/endpoints/ProductApi';

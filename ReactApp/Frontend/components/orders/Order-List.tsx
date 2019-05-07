@@ -32,6 +32,7 @@ export default class OrdertList extends React.Component<IOrderListProps, any> {
     render(){
         return (
             <div>
+                <ListTitle crud>Evidence objednávek</ListTitle>
                 <ListContainer
                 data={ toCrudData(this.props.orders) }
                 updateMethod = {null}

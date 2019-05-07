@@ -42,6 +42,7 @@ const Routes = () => {
           <Route path="/stats/company" exact component={CompanyStatsPage} />
         </AdminAuth>
       </Switch>
+      <FooterComp/>
     </div>
   );
 };

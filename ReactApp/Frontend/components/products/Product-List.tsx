@@ -57,17 +57,16 @@ export default class ProductList extends React.Component<any, any> {
   render() {
     return (
       <>
-            
-            <ListContainer
-              data={this.transformData()}
-              updateMethod={this.props.actions.updateProduct}
-              deleteMethod={this.props.actions.deleteProduct}
-              columnNames={["Název výrobku", "Cena"]}
-              emptyError="Seznam výrobků je prázdný"
-              type={ListItemType.Product}
-            />
-
-</>
+        <ListTitle crud>Evidence výrobků</ListTitle>
+        <ListContainer
+          data={this.transformData()}
+          updateMethod={this.props.actions.updateProduct}
+          deleteMethod={this.props.actions.deleteProduct}
+          columnNames={["Název výrobku", "Cena"]}
+          emptyError="Seznam výrobků je prázdný"
+          type={ListItemType.Product}
+        />
+      </>
     );
   }
 }

@@ -8,11 +8,10 @@
 
 import * as React from 'react';
 import { Container, Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import { Redirect } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 
 import PageTitle from '../../components/common/title/Page-Title';
-
-import { withRouter } from 'react-router-dom';
+import Cookies from 'cookies-js';
 
 
 
@@ -76,7 +75,7 @@ class LoginPage extends React.Component<any, any> {
 
     render() {
 
-        if (this.props.auth.isAuthenticated === true) {
+        if (this.props.auth.isAuthenticated === true || Cookies.get('auth')) {
             return <Redirect to='/' />
         }
 

@@ -5,13 +5,11 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
-using PersistenceLib.Domains;
-using PersistenceLib.Domains.UserApi;
-using UserApi.Dto;
-using UserApi.QueryObjects;
-
 namespace UserApi.Repositories
 {
+    using PersistenceLib.Domains.UserApi;
+    using PersistenceLib.Helpers;
+    using QueryObjects;
     using UserApi.Interfaces.Repositories;
     using Microsoft.EntityFrameworkCore;
     using Contexts;
@@ -84,18 +82,23 @@ namespace UserApi.Repositories
                 Password = customerDto.Password
             }, "Customer");
 
-            user.Id = UserContext.Users.LastOrDefault() == null ? 1 : UserContext.Customers.Last().Id + 1;
+
+            // Get identifier of lastly created user
+            var userId = QueryGenericHelper.GetLastEntity(UserContext.Users);
+
+            // Get identifier of lastly created customer
+            var customerId = QueryGenericHelper.GetLastEntity(UserContext.Customers);
 
 
             // Creation of customer object from user a customer data
             var customerResult = new Customer
             {
-                Id = UserContext.Customers.LastOrDefault() == null ? 1 : UserContext.Customers.Last().Id +1,
+                Id = customerId.Id+1,
                 FirstName = customerDto.FirstName,
                 LastName = customerDto.Lastname,
                 Discount = customerDto.Discount,
                 User = user,
-                UserId = user.Id
+                UserId = userId.Id
             };
 
 
@@ -105,6 +108,7 @@ namespace UserApi.Repositories
             // Return new added object
             return customerResult;
         }
+
 
         /// <summary>
         /// Get all customers without restrictions

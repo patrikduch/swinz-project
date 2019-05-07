@@ -16,11 +16,14 @@ import { getUniqueId } from '../../../../helpers/components/rendererHelper';
 import ListItemDeletion from '../delete/List-Item-Deletion';
 // Item update
 import ListItemUpdate from '../update/List-Item-Update';
+
+
+import { DateFormat } from '../../../../helpers/time/Date-Format-Helper';
+
 // Props interface
 import IListItemProps from '../../../../typescript/interfaces/components/common/crud/read/IList-Item-Props';
 // State interface
 import IListItemState from '../../../../typescript/interfaces/components/common/crud/read/IList-Item-State';
-
 
 
 // Enum type to determine type of passed component which will be rendered by area method
@@ -37,7 +40,6 @@ import OrderInfo from '../../../../components/orders/modals/Order-Info-Modal';
 import CustomerInfoModal from '../../../../components/customers/modals/Customer-Info-Modal';
 import { Link } from 'react-router-dom';
 
-import moment from 'moment';
 
 const DataRenderer = (props:any) => {
 
@@ -84,7 +86,7 @@ const DataRenderer = (props:any) => {
         <>
           <th scope='row'>{props.iteration}</th>
           <td>
-            <div>{moment(entity.GetCreationDate).lang("cs").format('MMMM Do YYYY, h:mm:ss')}</div>
+            <div>{DateFormat(entity.GetCreationDate)}</div>
           </td>
           <td>
             <div>

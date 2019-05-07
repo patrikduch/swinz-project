@@ -50,8 +50,7 @@ namespace ReactApp
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
 
-            app.UseCors(b => b.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
-
+            app.UseCors("AllowAll");
 
             if (env.IsDevelopment())
             {

@@ -58,6 +58,8 @@ export default class CustomersList extends React.Component<any, any> {
     render() {
         return (
             <>
+                <ListTitle crud>Evidence zákazníků</ListTitle>
+                <ListItemCreation type={ListItemType.Customer} createMethod={this.props.actions.createCustomer}  />
                 <ListContainer 
                     data={ this.transformData() } 
                     stats = {this.props.stats}

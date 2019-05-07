@@ -6,17 +6,17 @@
 // Component which represents administration index
 //-----------------------------------------------------------------------
 
-import * as React from 'react';
-import { Container } from 'reactstrap';
+import * as React from "react";
+import { Container} from 'reactstrap';
+
+import DashboardContainer from '../components/dashboard/Dashboard-Container';
 
 export default class HomePage extends React.Component {
-    render() {
-        return (
-            <Container>
-                <p>Prihlaste se </p>
-            </Container>
-        )
-    }
+  render() {
+    return (
+      <Container>
+          <DashboardContainer />
+      </Container>
+    );
+  }
 }
-
-    

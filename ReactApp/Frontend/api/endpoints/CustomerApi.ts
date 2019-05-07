@@ -13,7 +13,8 @@ import { USER_API_REST_ENDPOINT } from '../utils/domain-utils';
 
 export default class CustomerApi {
 
-    static createCustomer(data: object) {        
+    static createCustomer(data: object) {       
+        console.log(data); 
         return post(`${USER_API_REST_ENDPOINT}/api/customers/create`, data)
     }
 

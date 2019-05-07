@@ -9,9 +9,11 @@
 import * as React from 'react';
 
 export default () => {
-    return (
-        <footer>
-            Autor: Patrik Duch
-        </footer>
-    )
-}
+  return (
+    <footer className='footer'>
+      <div className='container'>
+        <span className='text-muted'>Copyright © Patrikduch.com</span>
+      </div>
+    </footer>
+  );
+};

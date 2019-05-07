@@ -5,12 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Services\OrderApi\**" />
-    <Compile Remove="Services\UserApi\**" />
-    <EmbeddedResource Remove="Services\OrderApi\**" />
-    <EmbeddedResource Remove="Services\UserApi\**" />
-    <None Remove="Services\OrderApi\**" />
-    <None Remove="Services\UserApi\**" />
+    <Compile Remove="Tests\Services\OrderApi\**" />
+    <Compile Remove="Tests\Services\UserApi\**" />
+    <EmbeddedResource Remove="Tests\Services\OrderApi\**" />
+    <EmbeddedResource Remove="Tests\Services\UserApi\**" />
+    <None Remove="Tests\Services\OrderApi\**" />
+    <None Remove="Tests\Services\UserApi\**" />
   </ItemGroup>
 
   <ItemGroup>
