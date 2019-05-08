@@ -113,7 +113,7 @@ export default class ListItem extends React.Component<IListItemProps, IListItemS
     return (
       <tr key={ getUniqueId() }>
         <DataRenderer arg={this.props.arg} iteration={this.props.iteration} stats={this.props.stats}/>
-        <ListItemDeletion itemIdentifier={this.props.arg.id} deleteMethod={this.props.deleteMethod} />
+        {!this.props.stats && <ListItemDeletion itemIdentifier={this.props.arg.id} deleteMethod={this.props.deleteMethod} /> }
       </tr>
     );
   }

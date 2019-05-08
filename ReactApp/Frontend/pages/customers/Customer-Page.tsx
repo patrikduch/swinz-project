@@ -7,13 +7,14 @@
 //-----------------------------------------------------------------------
 
 import * as React from 'react';
-import CustomersListComp from '../../redux/containers/customers/Customer-List-Container';
+import CustomerListComp from '../../components/customers/Customers-Crud-List-Container';
+
 import { Container } from 'reactstrap';
 
 export default  () => {
     return (
         <Container>
-            <CustomersListComp stats={false} />
+            <CustomerListComp />
         </Container>
     )
 }
