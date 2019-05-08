@@ -30,6 +30,7 @@ export default class CustomersList extends React.Component<any, any> {
 
     componentWillMount() {
         this.props.actions.getCustomers();
+        console.log(this.props.actions.deleteCustomer);
     }
 
     componentDidMount() {
@@ -62,6 +63,7 @@ export default class CustomersList extends React.Component<any, any> {
                 <ListItemCreation type={ListItemType.Customer} createMethod={this.props.actions.createCustomer}  />
                 <ListContainer 
                     data={ this.transformData() } 
+                    deleteMethod ={this.props.actions.deleteCustomer}
                     stats = {this.props.stats}
                     type={ListItemType.Customer}
                     columnNames = {this.columnNames}

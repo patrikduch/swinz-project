@@ -49,7 +49,6 @@ const DataRenderer = (props:any) => {
     );
   }
 
-
   switch (props.arg.constructor.name) {
     case ListItemType.Customer:
       return (
@@ -64,9 +63,7 @@ const DataRenderer = (props:any) => {
           <td>
             <div>N/A</div>
           </td>
-          <td>
-            <div><span><button>Odstranit</button> <button>Upravit</button></span></div>
-          </td>
+          
         </>
       );
 
@@ -111,26 +108,12 @@ const DataRenderer = (props:any) => {
   }
 }
 
-
-
 export default class ListItem extends React.Component<IListItemProps, IListItemState> {
-  
-
-  componentDidMount() {
-      
-  }
-  
   render() {
-    const ListOptions = styled.span`
-      margin-left: 10vw;
-    `;
-
-    
-
     return (
       <tr key={ getUniqueId() }>
         <DataRenderer arg={this.props.arg} iteration={this.props.iteration} stats={this.props.stats}/>
-        
+        <ListItemDeletion itemIdentifier={this.props.arg.id} deleteMethod={this.props.deleteMethod} />
       </tr>
     );
   }
