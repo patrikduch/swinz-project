@@ -4,6 +4,9 @@
 // </copyright>
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
+
+using PersistenceLib.Helpers;
+
 namespace UserApi.Repositories
 {
     using PersistenceLib.Domains.UserApi;
@@ -62,12 +65,17 @@ namespace UserApi.Repositories
                 Name = roleName
             };
 
+
+            // Get identifier of lastly created user
+            var userEntity = QueryGenericHelper.GetLastEntity(UserContext.Users);
+            var nextUserID = userEntity.Id+1;
+
             // List of roles that will be added to new user
             var roles = new List<UserRoles>
             {
                 new UserRoles() {User = new User()
                     {
-                        Id = UserContext.Users.Count()+1,
+                        Id = nextUserID,
                         Username = dto.Username
                     }, Role = roleEntity
 
@@ -80,7 +88,7 @@ namespace UserApi.Repositories
             // Creation of new user
             var newUser = new User
             {
-                Id = UserContext.Users.Count()+1,
+                Id = nextUserID,
                 Username = dto.Username,
                 UserRoles = roles,
                 PasswordHash = passwordHash,
