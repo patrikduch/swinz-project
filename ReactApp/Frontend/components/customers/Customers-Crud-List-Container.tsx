@@ -18,7 +18,7 @@ export default () => {
   return (
     <div>
       <PageTitle crud>Evidence zákazníků</PageTitle>
-      <CustomerList stats={false} />
+      <CustomerList crud />
     </div>
   );
 };

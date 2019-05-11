@@ -66,7 +66,7 @@ export default class ListItemUpdate extends React.Component<any, any> {
   render() {
     const generatedContent = this.generateContent(this.props.type);
     return (
-      <div className='test'>
+      <span>
         <Button size="sm" onClick={this.toggle}>
           <FontAwesomeIcon size="lg" icon="edit" />
         </Button>
@@ -74,7 +74,7 @@ export default class ListItemUpdate extends React.Component<any, any> {
           {generatedContent}
           <ModalFooter />
         </Modal>
-      </div>
+      </span>
     );
   }
 }

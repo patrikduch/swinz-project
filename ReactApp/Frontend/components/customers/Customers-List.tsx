@@ -17,6 +17,8 @@ import CustomerObject from "../../view-models/Customer";
 import ListItemObject from "../../helpers/types/List-Item-Object";
 import { ListItemType } from "../../typescript/enums/crud/List-Item-Type";
 
+// Create operation
+import ListItemCreation from "../common/crud/create/List-Item-Creation";
 
 export default class CustomersList extends React.Component<any, any> {
   columnNames = ["#", "Křestní jméno", "Přijmení", "Nárok na slevu", "   "];
@@ -46,14 +48,24 @@ export default class CustomersList extends React.Component<any, any> {
 
   render() {
     return (
-      <ListContainer
-        data={this.transformData()}
-        deleteMethod={this.props.actions.deleteCustomer}
-        stats={this.props.stats}
-        type={ListItemType.Customer}
-        columnNames={this.columnNames}
-        emptyError="Seznam zákazníků je prázdný"
-      />
+      <>
+        {this.props.crud && (
+          <ListItemCreation
+            type={ListItemType.Customer}
+            createMethod={this.props.actions.createCustomer}
+          />
+        )}
+
+        <ListContainer
+          data={this.transformData()}
+          deleteMethod={this.props.actions.deleteCustomer}
+          stats={this.props.stats}
+          crud={this.props.crud}
+          type={ListItemType.Customer}
+          columnNames={this.columnNames}
+          emptyError="Seznam zákazníků je prázdný"
+        />
+      </>
     );
   }
 }

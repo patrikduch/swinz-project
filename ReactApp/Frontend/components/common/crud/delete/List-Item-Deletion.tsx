@@ -36,7 +36,7 @@ export default class ListItemDeletion extends React.Component<IListItemDeletionP
 
     render() {
       return (
-        <td>
+        <>
           <Button size='sm' color='danger' onClick={this.toggle}> <FontAwesomeIcon color='white' size='lg' icon="minus-circle" /></Button>
           <Modal size='lg' isOpen={this.state.modal} toggle={this.toggle} >
             <ModalHeader toggle={this.toggle}>Jste si jist, že chcete odstranit tuto položku?</ModalHeader>
@@ -45,7 +45,7 @@ export default class ListItemDeletion extends React.Component<IListItemDeletionP
             <Button color="secondary" onClick={this.toggle}>Zrušit</Button>
             </ModalFooter>
           </Modal>
-        </td>
+        </>
       );
     }
   }

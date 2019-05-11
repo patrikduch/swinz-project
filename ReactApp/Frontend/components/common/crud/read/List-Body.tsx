@@ -28,6 +28,7 @@ export default (props: IListBodyProps) => {
                         type={props.type}
                         iteration={ counter }
                         stats ={props.stats}
+                        crud ={props.crud}
                         deleteMethod={props.deleteMethod}
                         arg={ arg } />
             })}

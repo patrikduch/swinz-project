@@ -29,6 +29,7 @@ export default (props:any) => {
                     data={props.data} 
                     emptyError={props.emptyError}
                     stats ={props.stats}
+                    crud={props.crud}
                     deleteMethod={props.deleteMethod}
                     />
            </Table>
