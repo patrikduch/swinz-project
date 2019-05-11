@@ -1,12 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using Moq;
 using PersistenceLib.Domains.OrderApi;
 using StatsApi.Contexts;
+using StatsApi.Dto;
+using StatsApi.Helpers.CustomerStatistics;
 using StatsApi.Repositories;
+using Swinz.Tests.Helpers;
 
 namespace Swinz.Tests.Services.StatsApi
 {
+
     using Xunit;
 
     /// <summary>
@@ -88,7 +94,6 @@ namespace Swinz.Tests.Services.StatsApi
         {
 
             // Arrange
-
             var orderProducts = new List<OrderProduct>()
             {
                 new OrderProduct
@@ -137,16 +142,155 @@ namespace Swinz.Tests.Services.StatsApi
 
             var mockContext = new Mock<CustomerStatsContext>();
 
-
             // Act
             var repository = new CustomerStatsRepository(mockContext.Object);
-
             var actual = repository.GetSoldCount(customers);
 
             // Assert
-
             Assert.Equal(2, actual);
 
+        }
+
+
+        /// <summary>
+        /// Test for getting month data with single order
+        /// </summary>
+        [Fact]
+        public void GetMonthsData_WithOneOrder_ReturnsProductIdentifiers()
+        {
+            #region Arrange
+
+            var ctx = new Mock<CustomerStatsContext>();
+
+            var orders = new List<Order>()
+            {
+                new Order
+                {
+                    Id =  1,
+                    CreationDate = new DateTime(2019, 5, 15),
+                    CustomerId =  1,
+                    OrderProducts =  new List<OrderProduct>
+                    {
+                        new OrderProduct
+                        {
+                            Id =  1,
+                            Product = new Product
+                            {
+                                Id = 1,
+                                IsDeleted = false,
+                                Name =  "Vyrobek1",
+                                Price = 256
+                            },
+                            ProductId = 1
+                        }
+                    }
+                },
+
+
+            };
+
+            var mockDbSet = MockHelper.GetMockDbSet<Order>(orders);
+
+            ctx.Setup(c => c.Set<Order>()).Returns(mockDbSet.Object);
+
+
+
+
+            #endregion
+
+            #region Act
+
+            var monthData = MonthStatsHelper.GetMonthsData(mockDbSet.Object.AsQueryable() as DbSet<Order>).ToList();
+
+            var resultEntity = monthData.Select(c => c).SingleOrDefault();
+
+            var expectedEntity = new MonthBaseDto
+            {
+                MonthId = 5,
+                ProductsIds = new List<int>
+                {
+                    1
+                }
+            };
+
+            var result = resultEntity.CompareTo(expectedEntity);
+
+            #endregion
+
+            #region Assert
+            Assert.Equal(0, result);
+            #endregion
+        }
+
+
+        /// <summary>
+        /// Test for getting month data with multiple orders
+        /// </summary>
+        [Fact]
+        public void GetMonthsData_WithMultipleOrders_ReturnsProductIdentifiers()
+        {
+            #region Arrange
+
+            var ctx = new Mock<CustomerStatsContext>();
+
+            var orders = new List<Order>()
+            {
+                new Order
+                {
+                    Id =  1,
+                    CreationDate = new DateTime(2019, 5, 15),
+                    CustomerId =  1,
+                    OrderProducts =  new List<OrderProduct>
+                    {
+                        new OrderProduct
+                        {
+                            Id =  1,
+                            Product = new Product
+                            {
+                                Id = 1,
+                                IsDeleted = false,
+                                Name =  "Vyrobek1",
+                                Price = 256
+                            },
+                            ProductId = 1
+                        }
+                    }
+                },
+
+
+            };
+
+            var mockDbSet = MockHelper.GetMockDbSet<Order>(orders);
+
+            ctx.Setup(c => c.Set<Order>()).Returns(mockDbSet.Object);
+
+
+
+
+            #endregion
+
+            #region Act
+
+            var monthData = MonthStatsHelper.GetMonthsData(mockDbSet.Object.AsQueryable() as DbSet<Order>).ToList();
+
+            var resultEntity = monthData.Select(c => c).SingleOrDefault();
+
+            var expectedEntity = new MonthBaseDto
+            {
+                MonthId = 5,
+                ProductsIds = new List<int>
+                {
+                    1
+                }
+            };
+
+            var result = resultEntity.CompareTo(expectedEntity);
+
+            #endregion
+
+            #region Assert
+            Assert.Equal(0, result);
+            #endregion
         }
 
     }
