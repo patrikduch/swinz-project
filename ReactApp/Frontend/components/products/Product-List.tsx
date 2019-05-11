@@ -13,14 +13,8 @@ import ListTitle from "../common/title/Page-Title";
 import ListContainer from "../common/crud/read/List-Container";
 import ListItemObject from "../../helpers/types/List-Item-Object";
 
-// Create operation
-import ListItemCreation from "../common/crud/create/List-Item-Creation";
-
 import ProductObject from "../../view-models/Product";
 import { ListItemType } from "../../typescript/enums/crud/List-Item-Type";
-
-// Paggination
-import PaggingContainer from "../common/pagging/Pagging-Container";
 
 export default class ProductList extends React.Component<any, any> {
   componentWillMount() {
@@ -62,6 +56,7 @@ export default class ProductList extends React.Component<any, any> {
           data={this.transformData()}
           updateMethod={this.props.actions.updateProduct}
           deleteMethod={this.props.actions.deleteProduct}
+          crud={true}
           columnNames={["Název výrobku", "Cena"]}
           emptyError="Seznam výrobků je prázdný"
           type={ListItemType.Product}
