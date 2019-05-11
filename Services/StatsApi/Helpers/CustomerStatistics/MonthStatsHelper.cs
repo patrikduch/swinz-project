@@ -27,17 +27,17 @@ namespace StatsApi.Helpers.CustomerStatistics
 
             foreach (var month in months)
             {
-                var res = query.SingleOrDefault(c => c.CreationDate.Month == month);
+                var res = query.Where(c => c.CreationDate.Month == month).ToList();
 
-                if (res == null) continue;
+                if (res.Count == 0) continue;
+                
+                var productIds = res.Select(c => c.OrderProducts.Select(d => d.ProductId)).ToList();
+
+                yield return new MonthBaseDto
                 {
-                    var productsIds = res.OrderProducts.Select(c => c.ProductId).ToList();
-                    yield return new MonthBaseDto
-                    {
-                        MonthId = month,
-                        ProductsIds = productsIds
-                    };
-                }
+                    MonthId = month,
+                    ProductsIds = productIds.SelectMany(c => c).ToList()
+                };
             }
         }
     }

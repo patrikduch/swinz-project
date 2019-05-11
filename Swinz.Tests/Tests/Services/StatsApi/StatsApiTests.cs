@@ -193,33 +193,14 @@ namespace Swinz.Tests.Services.StatsApi
 
             ctx.Setup(c => c.Set<Order>()).Returns(mockDbSet.Object);
 
-
-
-
             #endregion
-
-            #region Act
 
             var monthData = MonthStatsHelper.GetMonthsData(mockDbSet.Object.AsQueryable() as DbSet<Order>).ToList();
 
-            var resultEntity = monthData.Select(c => c).SingleOrDefault();
+            var resultEntity = monthData.SelectMany(c => c.ProductsIds).ToList();
 
-            var expectedEntity = new MonthBaseDto
-            {
-                MonthId = 5,
-                ProductsIds = new List<int>
-                {
-                    1
-                }
-            };
-
-            var result = resultEntity.CompareTo(expectedEntity);
-
-            #endregion
-
-            #region Assert
-            Assert.Equal(0, result);
-            #endregion
+            
+            Assert.Equal(1, resultEntity.Select(c=>c).SingleOrDefault());
         }
 
 
@@ -257,6 +238,28 @@ namespace Swinz.Tests.Services.StatsApi
                     }
                 },
 
+                new Order
+                {
+                    Id =  2,
+                    CreationDate = new DateTime(2019, 5, 14),
+                    CustomerId =  1,
+                    OrderProducts =  new List<OrderProduct>
+                    {
+                        new OrderProduct
+                        {
+                            Id =  2,
+                            Product = new Product
+                            {
+                                Id = 2,
+                                IsDeleted = false,
+                                Name =  "Vyrobek2",
+                                Price = 251
+                            },
+                            ProductId = 2
+                        }
+                    }
+                },
+
 
             };
 
@@ -273,24 +276,21 @@ namespace Swinz.Tests.Services.StatsApi
 
             var monthData = MonthStatsHelper.GetMonthsData(mockDbSet.Object.AsQueryable() as DbSet<Order>).ToList();
 
-            var resultEntity = monthData.Select(c => c).SingleOrDefault();
+            var productIds = monthData.SelectMany(c => c.ProductsIds).ToList();
 
-            var expectedEntity = new MonthBaseDto
+            var expectedProductIds = new List<int>()
             {
-                MonthId = 5,
-                ProductsIds = new List<int>
-                {
-                    1
-                }
+                1, 2
             };
 
-            var result = resultEntity.CompareTo(expectedEntity);
+
+            Assert.Equal(productIds, expectedProductIds);
+
+
+
 
             #endregion
 
-            #region Assert
-            Assert.Equal(0, result);
-            #endregion
         }
 
     }
