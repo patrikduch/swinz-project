@@ -19,6 +19,13 @@ import ModalFooter from "reactstrap/lib/ModalFooter";
 import CustomerUpdateForm from '../../../../components/customers/forms/update/Customer-Update-Form';
 import ProductUpdateForm from '../../../../components/products/forms/update/Product-Update-Form';
 
+import styled from "styled-components";
+
+// Styled for main container that contains all elements to invoke update functionality
+const Container = styled.span`
+  padding-left: 0.5vw;
+`;
+
 export default class ListItemUpdate extends React.Component<any, any> {
   state = {
     isModalActive: false
@@ -66,7 +73,7 @@ export default class ListItemUpdate extends React.Component<any, any> {
   render() {
     const generatedContent = this.generateContent(this.props.type);
     return (
-      <span>
+      <Container>
         <Button size="sm" onClick={this.toggle}>
           <FontAwesomeIcon size="lg" icon="edit" />
         </Button>
@@ -74,7 +81,7 @@ export default class ListItemUpdate extends React.Component<any, any> {
           {generatedContent}
           <ModalFooter />
         </Modal>
-      </span>
+      </Container>
     );
   }
 }

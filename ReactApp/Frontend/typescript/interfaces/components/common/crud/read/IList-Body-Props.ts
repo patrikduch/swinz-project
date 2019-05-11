@@ -14,6 +14,7 @@ export default interface IListBodyProps {
     }
 
     deleteMethod: Function,
+    updateMethod: Function,
 
     stats: boolean, // Check if view is for statistics
     crud: boolean,

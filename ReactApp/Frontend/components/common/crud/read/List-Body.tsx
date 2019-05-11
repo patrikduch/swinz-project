@@ -30,6 +30,7 @@ export default (props: IListBodyProps) => {
                         stats ={props.stats}
                         crud ={props.crud}
                         deleteMethod={props.deleteMethod}
+                        updateMethod={props.updateMethod}
                         arg={ arg } />
             })}
         </tbody>

@@ -59,6 +59,7 @@ export default class CustomersList extends React.Component<any, any> {
         <ListContainer
           data={this.transformData()}
           deleteMethod={this.props.actions.deleteCustomer}
+          updateMethod={this.props.actions.updateCustomer}
           stats={this.props.stats}
           crud={this.props.crud}
           type={ListItemType.Customer}

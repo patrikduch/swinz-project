@@ -14,6 +14,7 @@ export default interface IListItemProps {
     },
 
     deleteMethod: Function,
+    updateMethod: Function,
     
     stats: boolean,
     crud: boolean,

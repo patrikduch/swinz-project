@@ -16,9 +16,9 @@ import PageTitle from "../../components/common/title/Page-Title";
 
 export default () => {
   return (
-    <div>
+    <>
       <PageTitle crud>Evidence zákazníků</PageTitle>
       <CustomerList crud />
-    </div>
+    </>
   );
 };
