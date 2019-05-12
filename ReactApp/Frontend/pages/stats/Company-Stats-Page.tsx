@@ -17,55 +17,79 @@ import PdfGenerator from '../../helpers/pdf/Doc-Service';
 
 import PageTitle from '../../components/common/title/Page-Title';
 
-export default () => {
 
-  const data = {
-    labels: ['Leden', 'Unor', 'Březen', 'Duben', 'Květen', 'Červen', 'Červenec', 'Srpen', 'Září', 'Říjen', 'Listopad', 'Prosinec'],
-    datasets: [
-      {
-        label: 'Objem tržeb za jednotlivé měsíce',
-        fill: false,
-        lineTension: 0.1,
-        backgroundColor: 'rgba(75,192,192,0.4)',
-        borderColor: 'rgba(75,192,192,1)',
-        borderCapStyle: 'butt',
-        borderDash: [],
-        borderDashOffset: 0.0,
-        borderJoinStyle: 'miter',
-        pointBorderColor: 'rgba(75,192,192,1)',
-        pointBackgroundColor: '#fff',
-        pointBorderWidth: 1,
-        pointHoverRadius: 5,
-        pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-        pointHoverBorderColor: 'rgba(220,220,220,1)',
-        pointHoverBorderWidth: 2,
-        pointRadius: 1,
-        pointHitRadius: 10,
-        data: [50, 2, 3, 4, 5, 6, 7, 100, 0, 20,40,70]
-      }
-    ]
-  };
+// Api for getting graph data
+import StatsApi from '../../api/endpoints/StatsApi';
 
-  return (
-    <Container>
-    <div id='graph'>
+// Graph helper
+import { TransformhDataToGraph } from '../../helpers/graph/Graph-Helper';
 
-    <PageTitle stats>Měsíční přehled tržeb (Rok 2019)</PageTitle>
-    
-    <Row>
-        <Col xs="12">
-        <SidebarCompanyInfo />
-        <button onClick={() => PdfGenerator.createPdf(document.getElementById('graph'))}>Export PDF</button>
-          <Line height={125}  data={data as any} />
-        </Col>
 
-        <Col md="2" xs="12">
-          
-        </Col>
-      </Row>
+export default class CompanyStatsPage extends React.Component {
 
-    </div>
+  state = {
+    graphData: []
+  }
 
-    </Container>
-  );
+  componentDidMount() {
+
+    StatsApi.getSummaryGraphData().then((res => {
+
+      this.setState({
+        graphData: res.data
+      });
+    }));
+
+  }
+
+
+  transformGraphData = () => {
+    const labels = [
+      "Leden",
+      "Unor",
+      "Březen",
+      "Duben",
+      "Květen",
+      "Červen",
+      "Červenec",
+      "Srpen",
+      "Září",
+      "Říjen",
+      "Listopad",
+      "Prosinec"
+    ];
+
+    const graphTitle = 'Měsíční přehled tržeb (Rok 2019)';
+
+    return TransformhDataToGraph(this.state.graphData, labels, graphTitle);
+  }
+
+
+  render() {
+
+    return (
+      <Container>
+      <div id='graph'>
+  
+      <PageTitle stats>Měsíční přehled tržeb (Rok 2019)</PageTitle>
+      
+      <Row>
+          <Col xs="12">
+          <SidebarCompanyInfo />
+          <button onClick={() => PdfGenerator.createPdf(document.getElementById('graph'))}>Export PDF</button>
+            <Line height={125}  data={this.transformGraphData() as any} />
+          </Col>
+  
+          <Col md="2" xs="12">
+            
+          </Col>
+        </Row>
+      </div>  
+      </Container>
+    );
+
+  }
+
+
+  
 };
