@@ -350,7 +350,6 @@ namespace Swinz.Tests.Services.StatsApi
 
             #endregion
 
-
             #region Act
 
 
@@ -366,14 +365,9 @@ namespace Swinz.Tests.Services.StatsApi
 
             #endregion
 
-            var expectedResult = 138;
-
-
             #region Assert
-
+            var expectedResult = 138;
             Assert.Equal(expectedResult, avgResult);
-
-
             #endregion
         }
 
@@ -421,7 +415,6 @@ namespace Swinz.Tests.Services.StatsApi
 
             #endregion
 
-
             #region Act
 
 
@@ -437,13 +430,10 @@ namespace Swinz.Tests.Services.StatsApi
 
             #endregion
 
-            var expectedResult = 276;
-
-
             #region Assert
 
+            var expectedResult = 276;
             Assert.Equal(expectedResult, sumResult);
-
 
             #endregion
         }
