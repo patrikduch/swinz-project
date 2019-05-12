@@ -11,9 +11,6 @@ namespace OrderApi.Dto
     {
         public Order Order { get; set; }
 
-        public Product Product { get; set; }
-
-        public OrderProduct OrderProduct { get; set; }
 
     }
 }

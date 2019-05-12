@@ -75,10 +75,14 @@ namespace OrderApi.Repositories
 
             // Assign collectio of order products
             order.OrderProducts = GenerateOrderProducts(productArray, order);
+
+            //var products = order.OrderProducts.Where(c=>c.OrderId == order.Id).Select(c => c.Product).ToList();
             
             return new CreateOrderDto
             {
                 Order = order,
+                
+               
             };
 
         }
@@ -159,7 +163,8 @@ namespace OrderApi.Repositories
                 {
                     Id = orderProductId,
                     OrderId = order.Id,
-                    ProductId = i
+                    ProductId = i,
+                    
                 });
 
 

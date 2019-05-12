@@ -4,10 +4,9 @@
 // </copyright>
 // <author>Patrik Duch</author>
 
-using PersistenceLib.Domains.OrderApi;
-
 namespace OrderApi.Controllers
 {
+    using PersistenceLib.Domains.OrderApi;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -46,26 +45,25 @@ namespace OrderApi.Controllers
         /// <returns></returns>
         [Route("create")]
         [HttpPost]
-        public async Task<ActionResult<OrderListDto>> CreateOrder([FromBody] OrderDto dto)
+        public async Task<ActionResult> CreateOrder([FromBody] OrderDto dto)
         {
             var res = _unitOfWork.OrderRepository.CreateOrder(dto.ProductArray, dto.CustomerId);
             _unitOfWork.OrderRepository.Add(res.Order);
             await _unitOfWork.Complete();
 
-
-            var orderEntity = await _unitOfWork.OrderRepository.Get(res.Order.Id);
-
-            
-
-            var test = new OrderListDto
+            var productIds = res.Order.OrderProducts.Select(c=>c.ProductId).ToList();
+            var products = new List<Product>();
+        
+            foreach (var i in productIds)
             {
-                Id = orderEntity.Id,
-                CreationDate = orderEntity.CreationDate,
-                CustomerId = orderEntity.CustomerId
-                
-            };
+                var entity = await _unitOfWork.ProductRepository.Get(i);
+                // Unnecessary data is nullified
+                entity.OrderProducts = null;
+                // Added new entity to the product collection
+                products.Add(entity);
+            }
 
-            return Ok(test);
+            return Ok(new { res.Order.CreationDate, res.Order.CustomerId, products });
         }
 
         /// <summary>

@@ -15,5 +15,7 @@ namespace OrderApi.Interfaces.UnitOfWork
     public interface IOrderUnitOfWork : IUnitOfWork
     {
         IOrderRepository OrderRepository { get; }
+
+        IProductRepository ProductRepository { get; }
     }
 }

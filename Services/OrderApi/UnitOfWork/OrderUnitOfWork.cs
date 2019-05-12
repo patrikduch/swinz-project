@@ -23,16 +23,19 @@ namespace OrderApi.UnitOfWork
         /// </summary>
         public IOrderRepository OrderRepository { get; }
 
+        public IProductRepository ProductRepository { get; }
+
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="productContext"></param>
         /// <param name="orderRepository"></param>
-        public OrderUnitOfWork(ProductContext productContext, IOrderRepository orderRepository)
+        public OrderUnitOfWork(ProductContext productContext, IOrderRepository orderRepository, IProductRepository productRepository)
         {
             _productContext = productContext;
             OrderRepository = orderRepository;
+            ProductRepository = productRepository;
 
         }
 
