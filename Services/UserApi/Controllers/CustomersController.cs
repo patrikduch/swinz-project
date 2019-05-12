@@ -102,7 +102,20 @@ namespace UserApi.Controllers
             return await _customerUnitOfWork.CustomerRepository.GetCustomer(_customerQuery);
         }
 
+        /// <summary>
+        /// Get specific customer by first name and lastname
+        /// </summary>
+        /// <returns>Customer entity</returns>
+        [HttpGet]
+        [Route("get/byName")]
+        public async Task<CustomerDto> GetCustomer([FromBody] CustomerEditDto customerDto)
+        {
+            _customerQuery.FilterByName = true;
+            _customerQuery.FirstName = customerDto.Firstname;
+            _customerQuery.LastName = customerDto.Lastname;
 
+            return await _customerUnitOfWork.CustomerRepository.GetCustomer(_customerQuery);
+        }
 
         /// <summary>
         /// Get all customers for current page

@@ -9,8 +9,16 @@
 import axios from 'axios';
 
 // Method for performing get request on REST API
-export function get(url: string) {
-    return axios.get(url);
+export function get(url: string, data : any = null) {
+
+    if (data == null) {
+        return axios.get(url);
+
+    } else {
+        return axios.get(url, data);
+    }
+
+    
 }
 
 // Method for performing delete request on REST API

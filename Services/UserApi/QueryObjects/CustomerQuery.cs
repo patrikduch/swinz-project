@@ -12,6 +12,9 @@ namespace UserApi.QueryObjects
     {
         public bool FilterById { get; set; } = false;
         public int  CustomerId { get; set; }
+        public bool FilterByName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
 
         public async Task<CustomerDto> Execute(DbContext context)
         {
@@ -21,6 +24,13 @@ namespace UserApi.QueryObjects
             {
                 entity = await context.Set<Customer>().Where(c => c.Id == CustomerId).FirstOrDefaultAsync();
             }
+
+            if (FilterByName)
+            {
+                entity = await context.Set<Customer>().Where(c => c.FirstName == FirstName && c.LastName == LastName)
+                    .FirstOrDefaultAsync();
+            }
+
 
             if (entity == null) return null; // No data was found
 

@@ -14,6 +14,12 @@ namespace UserApi.QueryObjects
         bool FilterById { get; set; }
         int CustomerId { get; set; }
 
+        bool FilterByName { get; set; }
+
+        string FirstName { get; set; }
+
+        string LastName { get; set; }
+
         Task<CustomerDto> Execute(DbContext context);
     }
 }

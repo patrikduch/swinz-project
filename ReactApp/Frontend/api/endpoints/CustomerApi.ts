@@ -14,7 +14,6 @@ import { USER_API_REST_ENDPOINT } from '../utils/domain-utils';
 export default class CustomerApi {
 
     static createCustomer(data: object) {       
-        console.log(data); 
         return post(`${USER_API_REST_ENDPOINT}/api/customers/create`, data)
     }
 
@@ -24,6 +23,10 @@ export default class CustomerApi {
 
     static getCustomer(id: number) {   
         return get(`${USER_API_REST_ENDPOINT}/api/customers/get/${id}`);
+    }
+
+    static getCustomerByName(data: object) {   
+        return get(`${USER_API_REST_ENDPOINT}/api/customers/get/byName`, data);
     }
 
     static updateCustomer(id:number, data: object) {        

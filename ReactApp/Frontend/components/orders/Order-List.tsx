@@ -13,6 +13,7 @@ import ListTitle from '../common/title/Page-Title';
 import ListContainer from '../common/crud/read/List-Container';
 import { ListItemType } from '../../typescript/enums/crud/List-Item-Type';
 import { toCrudData } from '../../helpers/components/crudHelper';
+import ListItemCreation from '../common/crud/create/List-Item-Creation';
 
 
 interface IOrderListProps {
@@ -35,7 +36,13 @@ export default class OrdertList extends React.Component<IOrderListProps, any> {
 
     render(){
         return (
-            <div>
+            <>
+
+          <ListItemCreation
+            type={ListItemType.Order}
+            createMethod={() => console.log('a')}
+          />
+        
 
     
                 <ListTitle crud>Evidence objednávek</ListTitle>
@@ -48,7 +55,7 @@ export default class OrdertList extends React.Component<IOrderListProps, any> {
                 type={ListItemType.Order}
                 crud={true}
                 />
-            </div>
+            </>
         )
     }
 

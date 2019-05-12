@@ -7,23 +7,26 @@
 //----------------------------------------------------------------------------------------
 
 // React dependency
-import * as React from 'react';
+import * as React from "react";
 // Component stylization
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Button, Modal, ModalHeader, ModalFooter } from 'reactstrap';
-import ModalBody from 'reactstrap/lib/ModalBody';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Button, Modal, ModalHeader, ModalFooter, Badge } from "reactstrap";
+import ModalBody from "reactstrap/lib/ModalBody";
 
 // Props interface
-import IListItemCreationProps from '../../../../typescript/interfaces/components/common/crud/create/IList-Item-Creation-Props';
+import IListItemCreationProps from "../../../../typescript/interfaces/components/common/crud/create/IList-Item-Creation-Props";
 
 // State interface
-import IListItemCreationState from '../../../../typescript/interfaces/components/common/crud/create/IList-Item-Creation-State';
+import IListItemCreationState from "../../../../typescript/interfaces/components/common/crud/create/IList-Item-Creation-State";
 
-import CustomerCreationForm from '../../../customers/forms/create/Customer-Create-Form';
-import ProductCreationForm from '../../../products/forms/create/Product-Create-Form';
-import { ListItemType } from '../../../../typescript/enums/crud/List-Item-Type';
+import CustomerCreationForm from "../../../customers/forms/create/Customer-Create-Form";
+import ProductCreationForm from "../../../products/forms/create/Product-Create-Form";
+import { ListItemType } from "../../../../typescript/enums/crud/List-Item-Type";
+
+
 
 export default class ListItemCreation extends React.Component<IListItemCreationProps, IListItemCreationState> {
+  
   state = {
     isModalActive: false
   };
@@ -63,23 +66,25 @@ export default class ListItemCreation extends React.Component<IListItemCreationP
               Vytvoření nového výrobku
             </ModalHeader>
             <ModalBody>
-              <ProductCreationForm 
+              <ProductCreationForm
                 modalToggler={this.toggle}
-                createMethod={this.props.createMethod} />
+                createMethod={this.props.createMethod}
+              />
             </ModalBody>
           </>
         );
 
-        case ListItemType.Order:
+      case ListItemType.Order:
         return (
           <>
             <ModalHeader toggle={this.toggle}>
               Vytvoření nové objednávky
             </ModalHeader>
             <ModalBody>
-              <ProductCreationForm 
+              <ProductCreationForm
                 modalToggler={this.toggle}
-                createMethod={this.props.createMethod} />
+                createMethod={this.props.createMethod}
+              />
             </ModalBody>
           </>
         );
@@ -89,7 +94,7 @@ export default class ListItemCreation extends React.Component<IListItemCreationP
   render() {
     return (
       <span>
-        <Button className='add-plus-btn' size="sm" onClick={this.toggle}>
+        <Button className="add-plus-btn" size="sm" onClick={this.toggle}>
           <FontAwesomeIcon size="lg" icon="plus" />
         </Button>
         <Modal size="lg" isOpen={this.state.isModalActive} toggle={this.toggle}>

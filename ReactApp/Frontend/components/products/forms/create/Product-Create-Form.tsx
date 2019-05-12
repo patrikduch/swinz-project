@@ -1,70 +1,139 @@
-import * as React from 'react';
-import { Button, Input, Label, FormGroup, Form,} from 'reactstrap';
-import { ProductInputType } from '../../../../typescript/enums/crud/products/forms/Product-Input-Type';
+import * as React from "react";
+import { Button, Input, Label, FormGroup, Form } from "reactstrap";
+import { ProductInputType } from "../../../../typescript/enums/crud/products/forms/Product-Input-Type";
+
+import ProductApi from "../../../../api/endpoints/ProductApi";
+import CustomerApi from "../../../../api/endpoints/CustomerApi";
+import OrderApi from "../../../../api/endpoints/OrderApi";
+
+import { getUniqueId } from "../../../../helpers/components/rendererHelper";
+
+import Select from "react-select";
+
+const options = [
+  { value: 'a', label: 'a' },
+  { value: 'b', label: 'b' },
+];
 
 export default class ProductCreationForm extends React.Component<any, any> {
   state = {
-    productName: '',
-    productPrice: ''
+    products: [],
+    customers: [],
+    value: [""],
+    customerSelectBox: "",
+    selectedOptions: []
   };
 
-  // Manipulation of web elements via state property
-  fieldChangeHandler = (e: any) => {
-    switch (e.target.id) {
-      case ProductInputType.name:
-        this.setState({
-          productName: e.target.value
-        });
-        break;
+  test = {} as any;
 
-      case ProductInputType.price:
-        this.setState({
-          productPrice: e.target.value
-        });
-        break;
-    }
+  onChange(e: any) {
+    this.setState({
+      customerSelectBox: e.target.value
+    });
+  }
+
+  onTestChange(e: any) {
+    this.setState({
+      value: e.target.value
+    });
+  }
+
+  handleChange = (selectedOptions: any) => {
+    this.setState({ selectedOptions });
   };
 
-  createProduct = () => {
-    // Object that will be sended with POST request to create new customer
-    const data = {
-      name: this.state.productName,
-      price: this.state.productPrice
-    };
+  componentDidMount() {
+    ProductApi.getProducts().then(res => {
+      this.setState({
+        products: res.data
+      });
+    });
 
-    console.log(data);
+    CustomerApi.getCustomers().then(res => {
+      this.setState({
+        customers: res.data
+      });
+    });
 
-    // Call method for customer creation
-    this.props.createMethod(data);
+    console.log(this.test);
+  }
 
-    // Close form modal
-    this.props.modalToggler();
+  createOrder = () => {
+    //OrderApi.createOrder({
+    //ProductArray: [1, 2],
+    //CustomerId: 1
+    //}).then(res => {
+    //console.log(res);
+    //});
+
+    console.log(this.test);
   };
 
   render() {
+    const { selectedOption }: any = this.state;
+
+    const products = this.state.products.map((arg: any) => {
+      return arg.name;
+    });
+
+    const customers = this.state.customers.map((arg: any) => {
+      return arg.firstName + " " + arg.lastName;
+    });
+
+    const test = new Array<object>();
+
+    this.state.products.forEach((element: any) => {
+  
+      test.push({
+
+        id: element.id
+      });
+      
+    });
+
+    console.log(this.state.selectedOptions);
+
     return (
       <>
         <Form>
-          <FormGroup>
-            <Label for={ProductInputType.name}>Název produktu</Label>
-            <Input
-              type='text'
-              name='productNameInput'
-              id={ProductInputType.name}
-              onChange={this.fieldChangeHandler}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for={ProductInputType.price}>Cena produktu</Label>
-            <Input
-              type='text'
-              name='producCostInput'
-              id={ProductInputType.price}
-              onChange={this.fieldChangeHandler}
-            />
-          </FormGroup>
+          <p>Zákazník</p>
 
-          <Button onClick={this.createProduct}>Vytvořit výrobek</Button>
+          <div>
+            <select
+              value={this.state.customerSelectBox}
+              onChange={this.onChange.bind(this)}
+              className="form-control"
+            >
+              <option value="select">Výběr zákazníka</option>
+              {customers.map(arg => {
+                return (
+                  <option key={getUniqueId()} value={arg}>
+                    {arg}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+
+          <div />
+
+          <br />
+
+          <p>Výrobky</p>
+          <Select
+            isMulti
+            value={selectedOption}
+            onChange={this.handleChange}
+            options={options}
+          />
+
+          <br />
+          <br />
+          <br />
+
+          <div>
+            <Button onClick={this.createOrder}>Vytvořit objednávku</Button>
+          </div>
         </Form>
       </>
     );
