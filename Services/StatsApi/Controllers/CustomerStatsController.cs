@@ -4,15 +4,9 @@
 // </copyright>
 // <author>Patrik Duch</author>
 
-using PersistenceLib.Domains.OrderApi;
-using StatsApi.Helpers.CustomerStatistics;
-using StatsApi.Models.Statistics;
-
 namespace StatsApi.Controllers
 {
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-    using Microsoft.EntityFrameworkCore;
+    using Helpers.CustomerStatistics;
     using System.Linq;
     using Interfaces;
     using Microsoft.AspNetCore.Mvc;
@@ -43,9 +37,9 @@ namespace StatsApi.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Get summary customer`s statistics
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Customer`s summary statistics</returns>
         [Route("summary")]
         [HttpGet]
         public ActionResult<CustomerSummaryDto> GetSummaryStats()
@@ -61,65 +55,34 @@ namespace StatsApi.Controllers
         }
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [Route("graph/summary")]
         [HttpGet]
-        public async Task<ActionResult> GetGraphMonthSummary()
+        public ActionResult GetGraphMonthSummary()
         {
-
             var monthData = MonthStatsHelper.GetMonthsData(_context.Orders);
+            var stats = MonthStatsHelper.GetMonthsSumValuation(monthData, _context.Products);
 
-            var test = new List<CustomerAvgValuationDto>();
-
-            foreach (var monthModel in monthData)
-            {
-                var sum = 0;
-
-                foreach (var monthModelProductsId in monthModel.ProductsIds)
-                {
-                    sum += _context.Products.SingleOrDefault(c => c.Id == monthModelProductsId).Price;
-                }
-
-                test.Add(new CustomerAvgValuationDto
-                {
-                    MonthId = monthModel.MonthId,
-                    TotalSum = sum
-                });
-
-            }
-
-            return Ok(test);
+            return Ok(stats);
         }
 
-
-
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [Route("graph/average/summary")]
         [HttpGet]
-        public async Task<ActionResult> GetGraphAverageSummary()
+        public ActionResult GetGraphAverageSummary()
         {
-
             var monthData = MonthStatsHelper.GetMonthsData(_context.Orders);
+            var stats = MonthStatsHelper.GetMonthsAvgValuation(monthData, _context.Products);
 
-
-            var test = new List<CustomerAvgValuationDto>();
-
-            foreach (var monthModel in monthData)
-            {
-                var sum = 0;
-
-                foreach (var monthModelProductsId in monthModel.ProductsIds)
-                {
-                    sum += _context.Products.SingleOrDefault(c => c.Id == monthModelProductsId).Price;
-                }
-
-                test.Add(new CustomerAvgValuationDto
-                {
-                    MonthId = monthModel.MonthId,
-                    TotalSum =  sum /  monthModel.ProductsIds.Count
-                });
-
-            }
-
-            return Ok(test);
+            return Ok(stats);
         }
+
     }
 }

@@ -27,7 +27,7 @@ namespace Swinz.Tests.Services.StatsApi
         public void GetLastYearIncome_ReturnsNumericValue()
         {
 
-            // Arrange
+            #region Arrange
 
             var orderProducts = new List<OrderProduct>()
             {
@@ -78,12 +78,17 @@ namespace Swinz.Tests.Services.StatsApi
             var mockContext = new Mock<CustomerStatsContext>();
             var repository = new CustomerStatsRepository(mockContext.Object);
 
-            // Act
+
+
+            #endregion
+
+            #region Act
             var actual = repository.GetLatestIncome(customers);
+            #endregion
 
-            // Assert
+            #region Assert
             Assert.Equal(266, actual);
-
+            #endregion
         }
 
         /// <summary>
@@ -93,7 +98,7 @@ namespace Swinz.Tests.Services.StatsApi
         public void GetSoldCount_ReturnsNumericValue()
         {
 
-            // Arrange
+            #region Arrange
             var orderProducts = new List<OrderProduct>()
             {
                 new OrderProduct
@@ -142,12 +147,21 @@ namespace Swinz.Tests.Services.StatsApi
 
             var mockContext = new Mock<CustomerStatsContext>();
 
-            // Act
             var repository = new CustomerStatsRepository(mockContext.Object);
+
+            #endregion
+
+            #region Act
+
             var actual = repository.GetSoldCount(customers);
 
-            // Assert
+            #endregion
+
+            #region Assert
+
             Assert.Equal(2, actual);
+
+            #endregion
 
         }
 
@@ -195,12 +209,15 @@ namespace Swinz.Tests.Services.StatsApi
 
             #endregion
 
+            #region Act
             var monthData = MonthStatsHelper.GetMonthsData(mockDbSet.Object.AsQueryable() as DbSet<Order>).ToList();
-
             var resultEntity = monthData.SelectMany(c => c.ProductsIds).ToList();
+            #endregion
 
-            
-            Assert.Equal(1, resultEntity.Select(c=>c).SingleOrDefault());
+            #region Assert
+            Assert.Equal(1, resultEntity.Select(c => c).SingleOrDefault());
+            #endregion
+
         }
 
 
@@ -283,14 +300,152 @@ namespace Swinz.Tests.Services.StatsApi
                 1, 2
             };
 
+            #endregion
 
+            #region Assert
             Assert.Equal(productIds, expectedProductIds);
+            #endregion
+        }
 
+        [Fact]
+        public void GetMonthsAvgValuation_MultiProducts_ReturnsMonthDataCollection()
+        {
 
+            #region Arrange
 
+            var products = new List<Product>()
+            {
+                new Product
+                {
+                    Id = 1,
+                    IsDeleted = false,
+                    Name = "Vyrobek1",
+                    Price = 256
+
+                },
+
+                new Product
+                {
+                    Id = 2,
+                    IsDeleted = false,
+                    Name = "Vyrobek2",
+                    Price = 20
+
+                }
+            };
+                
+            var mockDbSet = MockHelper.GetMockDbSet<Product>(products);
+
+            var monthdata = new List<MonthBaseDto>
+            {
+                new MonthBaseDto
+                {
+                    MonthId = 5,
+                    ProductsIds = new List<int>
+                    {
+                        1, 2
+                    }
+                }
+            };
 
             #endregion
 
+
+            #region Act
+
+
+
+            var res = MonthStatsHelper.GetMonthsAvgValuation(monthdata, mockDbSet.Object);
+
+            var avgResult = 0;
+
+            foreach (var customerAvgValuationDto in res)
+            {
+                avgResult += customerAvgValuationDto.TotalSum;
+            }
+
+            #endregion
+
+            var expectedResult = 138;
+
+
+            #region Assert
+
+            Assert.Equal(expectedResult, avgResult);
+
+
+            #endregion
+        }
+
+
+        [Fact]
+        public void GetMonthsSummaryValuation_MultipleProducts_ReturnsMonthsDataCollection()
+        {
+
+            #region Arrange
+
+            var products = new List<Product>()
+            {
+                new Product
+                {
+                    Id = 1,
+                    IsDeleted = false,
+                    Name = "Vyrobek1",
+                    Price = 256
+
+                },
+
+                new Product
+                {
+                    Id = 2,
+                    IsDeleted = false,
+                    Name = "Vyrobek2",
+                    Price = 20
+
+                }
+            };
+
+            var mockDbSet = MockHelper.GetMockDbSet<Product>(products);
+
+            var monthdata = new List<MonthBaseDto>
+            {
+                new MonthBaseDto
+                {
+                    MonthId = 5,
+                    ProductsIds = new List<int>
+                    {
+                        1, 2
+                    }
+                }
+            };
+
+            #endregion
+
+
+            #region Act
+
+
+
+            var res = MonthStatsHelper.GetMonthsSumValuation(monthdata, mockDbSet.Object);
+
+            var sumResult = 0;
+
+            foreach (var customerAvgValuationDto in res)
+            {
+                sumResult += customerAvgValuationDto.TotalSum;
+            }
+
+            #endregion
+
+            var expectedResult = 276;
+
+
+            #region Assert
+
+            Assert.Equal(expectedResult, sumResult);
+
+
+            #endregion
         }
 
     }

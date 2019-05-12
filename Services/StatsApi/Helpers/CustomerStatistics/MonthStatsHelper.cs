@@ -40,5 +40,55 @@ namespace StatsApi.Helpers.CustomerStatistics
                 };
             }
         }
+
+
+
+
+        public static List<CustomerAvgValuationDto> GetMonthsAvgValuation(IEnumerable<MonthBaseDto> monthData, IQueryable<Product> query)
+        {
+            var test = new List<CustomerAvgValuationDto>();
+
+            foreach (var monthModel in monthData)
+            {
+                var sum = 0;
+
+                foreach (var monthModelProductsId in monthModel.ProductsIds)
+                {
+                    sum += query.SingleOrDefault(c => c.Id == monthModelProductsId).Price;
+                }
+
+                test.Add(new CustomerAvgValuationDto
+                {
+                    MonthId = monthModel.MonthId,
+                    TotalSum = sum / monthModel.ProductsIds.Count
+                });
+            }
+
+            return test;
+        }
+
+
+        public static List<CustomerAvgValuationDto> GetMonthsSumValuation(IEnumerable<MonthBaseDto> monthData, IQueryable<Product> query)
+        {
+            var test = new List<CustomerAvgValuationDto>();
+
+            foreach (var monthModel in monthData)
+            {
+                var sum = 0;
+
+                foreach (var monthModelProductsId in monthModel.ProductsIds)
+                {
+                    sum += query.SingleOrDefault(c => c.Id == monthModelProductsId).Price;
+                }
+
+                test.Add(new CustomerAvgValuationDto
+                {
+                    MonthId = monthModel.MonthId,
+                    TotalSum = sum
+                });
+            }
+
+            return test;
+        }
     }
 }
