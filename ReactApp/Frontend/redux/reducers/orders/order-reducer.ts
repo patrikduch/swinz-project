@@ -12,16 +12,25 @@ import * as actionTypes from '../../actions/action-types';
 import initialState from '../../reducers/initial-state';
 
 // Reducer must be created before the store object
-const reducer = (state : any = initialState.orders, action: {type: string, payload: {
-    data: [],
-}}) => {
+const reducer = (state : any = initialState.orders, action: any) => {
 
     switch(action.type) {
 
         case actionTypes.ORDER_FETCH_SUCCESS:
-
             return {
-                ...state = action.payload.data
+                ...state,
+                data : action.payload.data
+            }
+
+        case actionTypes.ORDER_DELETION_SUCCESS:
+
+            const newData = state.data.filter(((arg: any) => {
+                return arg.id != action.orderId;
+            }));
+            
+            return {
+                ...state,
+                data: newData
             }
 
     

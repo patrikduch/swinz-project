@@ -18,5 +18,7 @@ namespace PersistenceLib.Domains.OrderApi
 
         public DateTime CreationDate { get; set; }
 
+        public bool IsDeleted { get; set; }
+
     }
 }

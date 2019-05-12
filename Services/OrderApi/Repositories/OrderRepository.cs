@@ -5,6 +5,9 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using Microsoft.EntityFrameworkCore;
+using PersistenceLib.Domains.UserApi;
+
 namespace OrderApi.Repositories
 {
     using System;
@@ -78,6 +81,58 @@ namespace OrderApi.Repositories
                 Order = order,
             };
 
+        }
+
+        /// <summary>
+        /// Update of order by identifier
+        /// </summary>
+        /// <param name="orderId"></param>
+        public void UpdateOrder(int orderId)
+        {
+            var entity = ProductContext.Orders.Include(c=>c.OrderProducts)
+                .SingleOrDefault(c => c.Id == orderId);
+
+            var orderProducts = new List<OrderProduct>();
+
+            orderProducts.Add(new OrderProduct()
+            {
+                OrderId = orderId,
+                Product = new Product
+                {
+                    Id = 1,
+                    IsDeleted = false,
+                    Name = "Produkt",
+                    Price = 256
+                }
+                
+            });
+
+            if (entity == null) return;
+
+
+           
+            var datum = new DateTime();
+            var zakaznik = new Customer();
+
+            entity.CreationDate = datum;
+            entity.Customer = zakaznik;
+            
+        }
+
+        /// <summary>
+        /// Delete order by identifier
+        /// </summary>
+        /// <param name="orderId">Order identifier</param>
+        /// <returns></returns>
+        public Task DeleteOrder(int orderId)
+        {
+            var orderEntity = ProductContext.Orders.SingleOrDefault(c => c.Id == orderId);
+
+            if (orderEntity == null) return null;
+
+            orderEntity.IsDeleted = true;
+
+            return ProductContext.SaveChangesAsync();
         }
 
         /// <summary>

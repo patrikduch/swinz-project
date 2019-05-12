@@ -21,7 +21,7 @@ import * as orderActions from '../../actions/orders/order-actions';
 // mapping state from reducer to the  specific component
 const mapStateToProps = (state: any ) => {
     return {
-        orders: state.orders
+        orders: state.orders.data
     }
 }
 

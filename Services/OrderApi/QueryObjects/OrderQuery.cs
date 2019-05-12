@@ -23,6 +23,7 @@ namespace OrderApi.QueryObjects
             if (LoadCustomers)
             {
                 dto = dbContext?.Orders.Include(c => c.Customer)
+                    .Where(c=>c.IsDeleted.Equals(false))
                     .ToList()
                     .ToOrderListDto()
                     .ToList();
@@ -38,7 +39,8 @@ namespace OrderApi.QueryObjects
                     order.Products = await dbContext.Orders
                         .SelectMany(o => o.OrderProducts)
                         .Where(c => c.OrderId == order.Id)
-                        .Select(c => c.Product).ToListAsync();
+                        .Select(c => c.Product)
+                        .ToListAsync();
                 }
             }
 

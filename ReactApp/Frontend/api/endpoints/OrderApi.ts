@@ -6,7 +6,7 @@
 // Rest API for customers
 //-----------------------------------------------------------------------
 
-import { get, post} from '../utils/request-utils';
+import { get, post, del} from '../utils/request-utils';
 
 // Get domain for REST API services
 import { ORDER_API_REST_ENDPOINT  } from '../utils/domain-utils';
@@ -19,5 +19,9 @@ export default class OrderApi {
 
     static getOrders() {   
         return get(`${ORDER_API_REST_ENDPOINT}/api/orders/getAll`);
+    }
+
+    static deleteOrder(orderId: number) {        
+        return del(`${ORDER_API_REST_ENDPOINT}/api/orders/delete/${orderId}`)
     }
 }

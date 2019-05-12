@@ -18,6 +18,7 @@ import { toCrudData } from '../../helpers/components/crudHelper';
 interface IOrderListProps {
     actions:{
         getOrders: Function // fetching list of orders
+        deleteOrder: Function // Deletion of specific order
     }
     orders: any, // list of orders
 }
@@ -27,19 +28,25 @@ export default class OrdertList extends React.Component<IOrderListProps, any> {
 
     componentWillMount() {
         this.props.actions.getOrders();
+        console.log(this.props.actions);
+
+    
     }
 
     render(){
         return (
             <div>
+
+    
                 <ListTitle crud>Evidence objednávek</ListTitle>
                 <ListContainer
                 data={ toCrudData(this.props.orders) }
                 updateMethod = {null}
-                deleteMethod ={null} 
+                deleteMethod ={this.props.actions.deleteOrder} 
                 columnNames = {['#','Datum objednávky', 'Zákazník','Výrobky']}
                 emptyError = 'Seznam objednávek je prázdný'
                 type={ListItemType.Order}
+                crud={true}
                 />
             </div>
         )

@@ -27,3 +27,16 @@ export const getOrders: ActionCreator<{}> = () => async (dispatch: Dispatch) => 
         dispatch({ type: actionTypes.ORDER_FETCH_FAILURE });
     });
 }
+
+export const deleteOrder : ActionCreator<{}> = (orderId: number) => async (dispatch: Dispatch) => {
+        
+    OrderApi.deleteOrder(orderId).then(() => {
+
+        dispatch({ type: actionTypes.ORDER_DELETION_SUCCESS, orderId});
+
+    }).catch(() => { // Error ocurred (REST API mostly)
+
+        dispatch({ type: actionTypes.ORDER_DELETION_FAILURE});
+    });
+}
+

@@ -35,17 +35,7 @@ namespace OrderApi.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        /// <summary>
-        /// GetAll all orders
-        /// </summary>
-        /// <returns></returns>
-        [Route("getAll")]
-        [HttpGet]
-        public async Task<IEnumerable<OrderListDto>> GetAllOrders()
-        {
-            var orders = await _unitOfWork.OrderRepository.GetOrders();
-            return orders.ToList();
-        }
+        
 
         /// <summary>
         /// Creation of new order
@@ -61,5 +51,43 @@ namespace OrderApi.Controllers
             await _unitOfWork.Complete();
             return Ok("ok");
         }
+
+        /// <summary>
+        /// Get all orders
+        /// </summary>
+        /// <returns></returns>
+        [Route("getAll")]
+        [HttpGet]
+        public async Task<IEnumerable<OrderListDto>> GetAllOrders()
+        {
+            var orders = await _unitOfWork.OrderRepository.GetOrders();
+            return orders.ToList();
+        }
+
+
+        [Route("update")]
+        [HttpPost]
+        public async Task<ActionResult> UpdateOrder([FromBody] OrderDto dto)
+        {
+            _unitOfWork.OrderRepository.UpdateOrder(1);
+
+            return Ok("ok");
+        }
+
+
+        /// <summary>
+        /// Deletion of specific order
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        [Route("delete/{orderId}")]
+        [HttpDelete]
+        public async Task<ActionResult> DeleteOrder(int orderId)
+        {
+            await _unitOfWork.OrderRepository.DeleteOrder(orderId);
+
+            return Ok("ok");
+        }
+
     }
 }
