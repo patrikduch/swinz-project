@@ -16,4 +16,12 @@ export default class CustomerApi {
     static getCustomerSummary() {   
         return get(`${STATS_API_REST_ENDPOINT}/api/stats/customers/summary`);
     }
+
+    static getSummaryGraphData() {   
+        return get(`${STATS_API_REST_ENDPOINT}/api/stats/customers/graph/summary`);
+    }
+
+    static getAvgValuationGraphData() {   
+        return get(`${STATS_API_REST_ENDPOINT}/api/stats/customers/graph/average/summary`);
+    }
 }
