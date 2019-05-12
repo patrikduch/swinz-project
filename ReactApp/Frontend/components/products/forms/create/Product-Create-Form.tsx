@@ -10,11 +10,6 @@ import { getUniqueId } from "../../../../helpers/components/rendererHelper";
 
 import Select from "react-select";
 
-const options = [
-  { value: 'a', label: 'a' },
-  { value: 'b', label: 'b' },
-];
-
 export default class ProductCreationForm extends React.Component<any, any> {
   state = {
     products: [],
@@ -59,14 +54,20 @@ export default class ProductCreationForm extends React.Component<any, any> {
   }
 
   createOrder = () => {
-    //OrderApi.createOrder({
-    //ProductArray: [1, 2],
-    //CustomerId: 1
-    //}).then(res => {
-    //console.log(res);
-    //});
 
-    console.log(this.test);
+    const productArray = new Array<number>();
+
+    this.state.selectedOptions.forEach((arg: any) => {
+      productArray.push(arg.id);
+    });
+
+    OrderApi.createOrder({
+      ProductArray: productArray,
+      customerId: 6
+    }).then((res) => {
+
+      console.log(res);
+    });
   };
 
   render() {
@@ -82,16 +83,16 @@ export default class ProductCreationForm extends React.Component<any, any> {
 
     const test = new Array<object>();
 
-    this.state.products.forEach((element: any) => {
-  
+    this.state.products.forEach((element: any) => {  
       test.push({
 
-        id: element.id
+        id: element.id,
+        value: element.name,
+        label: element.name
       });
-      
     });
 
-    console.log(this.state.selectedOptions);
+    console.log(test);
 
     return (
       <>
@@ -124,7 +125,7 @@ export default class ProductCreationForm extends React.Component<any, any> {
             isMulti
             value={selectedOption}
             onChange={this.handleChange}
-            options={options}
+            options={test}
           />
 
           <br />
