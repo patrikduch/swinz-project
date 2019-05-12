@@ -63,7 +63,7 @@ namespace OrderApi.Controllers
                 products.Add(entity);
             }
 
-            return Ok(new { res.Order.CreationDate, res.Order.CustomerId, products });
+            return Ok(new { res.Order.Id, res.Order.CreationDate, res.Order.CustomerId, products });
         }
 
         /// <summary>
