@@ -16,12 +16,14 @@ const reducer = (state : any = initialState.orders, action: any) => {
 
     switch(action.type) {
 
+        // Fetching all orders
         case actionTypes.ORDER_FETCH_SUCCESS:
             return {
                 ...state,
                 data : action.payload.data
             }
 
+        // Deletion of order 
         case actionTypes.ORDER_DELETION_SUCCESS:
 
             const newData = state.data.filter(((arg: any) => {
@@ -32,6 +34,22 @@ const reducer = (state : any = initialState.orders, action: any) => {
                 ...state,
                 data: newData
             }
+        // Creation of new order
+        case actionTypes.ORDER_CREATION_SUCCESS:
+
+            let ordersResult = new Array();
+
+            state.data.forEach((arg: any) => {
+                ordersResult.push(arg);
+            });
+    
+            ordersResult.push(action.data.data);
+
+            return {
+                ...state,
+                data: ordersResult
+            }
+        
 
     
         default:

@@ -4,6 +4,8 @@
 // </copyright>
 // <author>Patrik Duch</author>
 
+using PersistenceLib.Domains.OrderApi;
+
 namespace OrderApi.Controllers
 {
     using System.Collections.Generic;
@@ -44,12 +46,26 @@ namespace OrderApi.Controllers
         /// <returns></returns>
         [Route("create")]
         [HttpPost]
-        public async Task<ActionResult> CreateOrder([FromBody] OrderDto dto)
+        public async Task<ActionResult<OrderListDto>> CreateOrder([FromBody] OrderDto dto)
         {
             var res = _unitOfWork.OrderRepository.CreateOrder(dto.ProductArray, dto.CustomerId);
             _unitOfWork.OrderRepository.Add(res.Order);
             await _unitOfWork.Complete();
-            return Ok("ok");
+
+
+            var orderEntity = await _unitOfWork.OrderRepository.Get(res.Order.Id);
+
+            
+
+            var test = new OrderListDto
+            {
+                Id = orderEntity.Id,
+                CreationDate = orderEntity.CreationDate,
+                CustomerId = orderEntity.CustomerId
+                
+            };
+
+            return Ok(test);
         }
 
         /// <summary>

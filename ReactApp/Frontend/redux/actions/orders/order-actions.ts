@@ -13,9 +13,20 @@ import OrderApi from '../../../api/endpoints/OrderApi';
 import * as actionTypes from '../../actions/action-types';
 import { ActionCreator, Dispatch } from 'redux';
 
+// Creation of new order
+export const createOrder : ActionCreator<{}> = (inputData: object) => async (dispatch: Dispatch) => {
+        
+    OrderApi.createOrder(inputData).then((data) => {
 
+        dispatch({ type: actionTypes.ORDER_CREATION_SUCCESS, data});
 
+    }).catch(() => { // Error ocurred (REST API mostly)
 
+        dispatch({ type: actionTypes.ORDER_CREATION_FAILURE});
+    });
+}
+
+// Get all orders
 export const getOrders: ActionCreator<{}> = () => async (dispatch: Dispatch) => {
         
     OrderApi.getOrders().then((payload) => {
@@ -28,6 +39,7 @@ export const getOrders: ActionCreator<{}> = () => async (dispatch: Dispatch) => 
     });
 }
 
+// Deletion of specific order
 export const deleteOrder : ActionCreator<{}> = (orderId: number) => async (dispatch: Dispatch) => {
         
     OrderApi.deleteOrder(orderId).then(() => {

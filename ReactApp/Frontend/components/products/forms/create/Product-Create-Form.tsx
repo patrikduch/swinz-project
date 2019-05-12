@@ -38,19 +38,21 @@ export default class ProductCreationForm extends React.Component<any, any> {
   };
 
   componentDidMount() {
-    ProductApi.getProducts().then(res => {
+    ProductApi.getProducts().then((res: any) => {
       this.setState({
         products: res.data
       });
     });
 
-    CustomerApi.getCustomers().then(res => {
+    CustomerApi.getCustomers().then((res: any) => {
       this.setState({
         customers: res.data
       });
     });
 
-    console.log(this.test);
+    
+
+    
   }
 
   createOrder = () => {
@@ -61,13 +63,12 @@ export default class ProductCreationForm extends React.Component<any, any> {
       productArray.push(arg.id);
     });
 
-    OrderApi.createOrder({
+    this.props.createMethod({
       ProductArray: productArray,
       customerId: 6
-    }).then((res) => {
-
-      console.log(res);
     });
+
+    this.props.modalToggler();
   };
 
   render() {
@@ -92,7 +93,6 @@ export default class ProductCreationForm extends React.Component<any, any> {
       });
     });
 
-    console.log(test);
 
     return (
       <>
