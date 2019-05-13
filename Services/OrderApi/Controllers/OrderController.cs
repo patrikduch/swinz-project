@@ -36,8 +36,6 @@ namespace OrderApi.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        
-
         /// <summary>
         /// Creation of new order
         /// </summary>
@@ -102,8 +100,6 @@ namespace OrderApi.Controllers
                 products.Add(entityProduct);
             }
 
-            
-
             return Ok(new { entity.Id, entity.CreationDate, entity.CustomerId, products});
         }
 
@@ -118,7 +114,6 @@ namespace OrderApi.Controllers
         public async Task<ActionResult> DeleteOrder(int orderId)
         {
             await _unitOfWork.OrderRepository.DeleteOrder(orderId);
-
             return Ok("ok");
         }
 

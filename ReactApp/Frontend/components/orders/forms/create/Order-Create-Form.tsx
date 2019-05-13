@@ -1,9 +1,15 @@
+//-------------------------------------------------------------------------
+// <copyright file="Order-Create-Form.tsx" website="Patrikduch.com">
+//     Copyright 2019 (c) Patrikduch.com
+// </copyright>
+// <author>Patrik Duch</author>
+// Form for creating orders
+//-------------------------------------------------------------------------
+
 import * as React from "react";
 import { Button, Form } from "reactstrap";
-
 import ProductApi from "../../../../api/endpoints/ProductApi";
 import CustomerApi from "../../../../api/endpoints/CustomerApi";
-
 import Select from "react-select";
 
 export default class OrderCreationForm extends React.Component<any, any> {

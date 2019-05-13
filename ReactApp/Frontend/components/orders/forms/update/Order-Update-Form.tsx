@@ -1,9 +1,14 @@
+//-------------------------------------------------------------------------
+// <copyright file="Order-Update-Form.tsx" website="Patrikduch.com">
+//     Copyright 2019 (c) Patrikduch.com
+// </copyright>
+// <author>Patrik Duch</author>
+// Form for updating orders
+//-------------------------------------------------------------------------
 import * as React from "react";
 import { Button, Form } from "reactstrap";
-
 import ProductApi from "../../../../api/endpoints/ProductApi";
 import CustomerApi from "../../../../api/endpoints/CustomerApi";
-
 import Select from "react-select";
 
 export default class OrderUpdateForm extends React.Component<any, any> {
@@ -30,9 +35,6 @@ export default class OrderUpdateForm extends React.Component<any, any> {
   }
 
   // Handler for changing products selectbox
-
-
-
   handleChange = (selectedOptions: any) => {
     this.setState({ selectedOptions });
   };
@@ -50,8 +52,6 @@ export default class OrderUpdateForm extends React.Component<any, any> {
       });
     });
 
-    
-
     // Seed data to the form
 
     this.setState({
@@ -60,27 +60,25 @@ export default class OrderUpdateForm extends React.Component<any, any> {
 
     const selectedProducts = new Array<object>();
 
-       // Get products for choosen customer
+    // Get products for choosen customer
 
-       this.props.data.products.forEach((element : any) => {  
-        selectedProducts.push({
-           id: element.id,
-          value: element.name,
-          label: element.name,
-        });
-  
+    this.props.data.products.forEach((element: any) => {
+      selectedProducts.push({
+        id: element.id,
+        value: element.name,
+        label: element.name
       });
+    });
 
     this.setState({
-      selectedOptions : selectedProducts
-    })
+      selectedOptions: selectedProducts
+    });
   }
 
   UpdateOrder = () => {
-
     // Get products identifiers
-    const productsIds = this.state.selectedOptions.map((arg: any ) => {
-        return arg.id
+    const productsIds = this.state.selectedOptions.map((arg: any) => {
+      return arg.id;
     });
 
     // Call update method via REST interface
@@ -88,14 +86,12 @@ export default class OrderUpdateForm extends React.Component<any, any> {
       orderId: this.props.data.id,
       ProductIds: productsIds
     });
-  
 
     this.props.modalToggler();
   };
 
   render() {
-
-    console.log(this.state.selectedOptions)
+    console.log(this.state.selectedOptions);
 
     const { selectedOption }: any = this.state;
 
@@ -104,9 +100,9 @@ export default class OrderUpdateForm extends React.Component<any, any> {
 
     this.state.products.forEach((element: any) => {
       optionProducts.push({
-      id: element.id,
-      value: element.name,
-      label: element.name,
+        id: element.id,
+        value: element.name,
+        label: element.name
       });
     });
 
@@ -116,24 +112,19 @@ export default class OrderUpdateForm extends React.Component<any, any> {
       customers.push({
         id: element.id,
         value: element.firstName + " " + element.lastName,
-        label: element.firstName + " " + element.lastName,
+        label: element.firstName + " " + element.lastName
       });
-
     });
 
     // Get products for choosen customer
 
-    this.props.data.products.forEach((element : any) => {  
+    this.props.data.products.forEach((element: any) => {
       selectedProducts.push({
-         id: element.id,
+        id: element.id,
         value: element.name,
-        label: element.name,
+        label: element.name
       });
-
     });
-
-
-
 
     return (
       <>
@@ -159,7 +150,7 @@ export default class OrderUpdateForm extends React.Component<any, any> {
             value={this.state.selectedOptions}
             onChange={this.handleChange}
             options={optionProducts}
-            placeholder='Zvolte výrobky...'
+            placeholder="Zvolte výrobky..."
           />
 
           <br />
