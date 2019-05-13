@@ -39,10 +39,10 @@ export default class OrdertList extends React.Component<any, any> {
           type={ListItemType.Order}
           createMethod={this.props.actions.createOrder}
         />
-        
+
         <ListContainer
           data={toCrudData(this.props.orders)}
-          updateMethod={null}
+          updateMethod={this.props.actions.updateOrder}
           deleteMethod={this.props.actions.deleteOrder}
           columnNames={["#", "Datum objednávky", "Zákazník", "Výrobky"]}
           emptyError="Seznam objednávek je prázdný"

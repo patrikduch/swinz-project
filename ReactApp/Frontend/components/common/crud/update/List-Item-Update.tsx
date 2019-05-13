@@ -76,7 +76,7 @@ export default class ListItemUpdate extends React.Component<any, any> {
               Aktualizace objednávky
             </ModalHeader>
             <ModalBody>
-              <OrderUpdateForm data={this.props.data} />
+              <OrderUpdateForm data={this.props.data} modalToggler={this.toggle} updateMethod={this.props.updateMethod} />
             </ModalBody>
           </>
         );

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OrderApi.Contexts;
 
 namespace OrderApi.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    partial class ProductContextModelSnapshot : ModelSnapshot
+    [Migration("20190513132504_OrderProductNewCompositeKey")]
+    partial class OrderProductNewCompositeKey
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,6 +45,8 @@ namespace OrderApi.Migrations
                     b.Property<int>("OrderId");
 
                     b.Property<int>("ProductId");
+
+                    b.Property<int>("Id");
 
                     b.HasKey("OrderProductId", "OrderId", "ProductId");
 

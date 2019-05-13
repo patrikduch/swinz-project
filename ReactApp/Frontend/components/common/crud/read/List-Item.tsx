@@ -83,8 +83,6 @@ const DataRenderer = (props:any) => {
 
     case ListItemType.Order: {
       const entity = props.arg as OrderObject;
-
-
       return (
         <>
           <th scope='row'>{props.iteration}</th>

@@ -81,11 +81,30 @@ namespace OrderApi.Controllers
 
         [Route("update")]
         [HttpPost]
-        public async Task<ActionResult> UpdateOrder([FromBody] OrderDto dto)
+        public async Task<ActionResult> UpdateOrder([FromBody] OrderUpdateDto dto)
         {
-            _unitOfWork.OrderRepository.UpdateOrder(1);
+            var entity = await _unitOfWork.OrderRepository.UpdateOrder(dto.OrderId, dto);
 
-            return Ok("ok");
+            if (entity == null)
+            {
+                BadRequest("Data cannot be processed");
+            }
+
+            var productIds = entity.OrderProducts.Select(c => c.ProductId).ToList();
+            var products = new List<Product>();
+
+            foreach (var i in productIds)
+            {
+                var entityProduct = await _unitOfWork.ProductRepository.Get(i);
+                // Unnecessary data is nullified
+                entityProduct.OrderProducts = null;
+                // Added new entity to the product collection
+                products.Add(entityProduct);
+            }
+
+            
+
+            return Ok(new { entity.Id, entity.CreationDate, entity.CustomerId, products});
         }
 
 

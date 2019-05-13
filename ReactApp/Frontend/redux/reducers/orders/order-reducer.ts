@@ -49,6 +49,17 @@ const reducer = (state : any = initialState.orders, action: any) => {
                 ...state,
                 data: ordersResult
             }
+
+        case actionTypes.ORDER_UPDATE_SUCCESS:
+
+            console.log('aaaa')
+
+
+           
+
+            return {
+                ...state,
+            }
         
 
     

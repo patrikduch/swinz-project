@@ -17,6 +17,10 @@ export default class OrderApi {
         return post(`${ORDER_API_REST_ENDPOINT}/api/orders/create`, data)
     }
 
+    static updateOrder(data: object) {        
+        return post(`${ORDER_API_REST_ENDPOINT}/api/orders/update`, data)
+    }
+
     static getOrders() {   
         return get(`${ORDER_API_REST_ENDPOINT}/api/orders/getAll`);
     }

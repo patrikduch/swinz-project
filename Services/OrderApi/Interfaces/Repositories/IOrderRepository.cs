@@ -21,7 +21,7 @@ namespace OrderApi.Interfaces.Repositories
         Task<IEnumerable<OrderListDto>> GetOrders();
         CreateOrderDto CreateOrder(int[] productArray, int customerId);
 
-        void UpdateOrder(int orderId);
+        Task<Order> UpdateOrder(int orderId, OrderUpdateDto dto);
 
         Task DeleteOrder(int orderId);
     }

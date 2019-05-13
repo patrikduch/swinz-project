@@ -42,19 +42,7 @@ export default class CustomerInfoModal extends React.Component<any, any> {
 
     componentDidMount() {
 
-      CustomerApi.getCustomer(this.props.text).then((res => {
-          this.setState({
-            customerInfo: {
-              firstname: res.data.firstName,
-              lastname: res.data.lastName,
-              discount: res.data.discount
-            }
-          });
-
-      })).catch(() => {
-
-
-      })
+      
     }
   
     render() {

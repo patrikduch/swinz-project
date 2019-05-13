@@ -26,6 +26,20 @@ export const createOrder : ActionCreator<{}> = (inputData: object) => async (dis
     });
 }
 
+
+// Update of specific order
+export const updateOrder : ActionCreator<{}> = (inputData: object) => async (dispatch: Dispatch) => {
+        
+    OrderApi.updateOrder(inputData).then((data) => {
+
+        dispatch({ type: actionTypes.ORDER_UPDATE_SUCCESS, data});
+
+    }).catch(() => { // Error ocurred (REST API mostly)
+
+        dispatch({ type: actionTypes.ORDER_UPDATE_FAILURE});
+    });
+}
+
 // Get all orders
 export const getOrders: ActionCreator<{}> = () => async (dispatch: Dispatch) => {
         

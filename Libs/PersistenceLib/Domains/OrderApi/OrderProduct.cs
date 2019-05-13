@@ -7,7 +7,7 @@ namespace PersistenceLib.Domains.OrderApi
 {
     public class OrderProduct
     {
-        public int Id { get; set; }
+        public string OrderProductId { get; set; }
 
         public int OrderId { get; set; }
 

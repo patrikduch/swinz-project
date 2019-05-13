@@ -1,9 +1,8 @@
 import * as React from "react";
-import { Button, Input, Label, FormGroup, Form } from "reactstrap";
+import { Button, Form } from "reactstrap";
 
 import ProductApi from "../../../../api/endpoints/ProductApi";
 import CustomerApi from "../../../../api/endpoints/CustomerApi";
-
 
 import Select from "react-select";
 
@@ -16,8 +15,8 @@ export default class OrderCreationForm extends React.Component<any, any> {
     selectedOptions: []
   };
 
+  // Event handler for changing customer in selectbox
   onCustomerChange = (e: any) => {
-    
     this.setState({
       customerSelectBox: e
     });
@@ -47,6 +46,7 @@ export default class OrderCreationForm extends React.Component<any, any> {
     });
   }
 
+  // Creation of new order
   createOrder = () => {
     const productArray = new Array<number>();
 
@@ -97,8 +97,6 @@ export default class OrderCreationForm extends React.Component<any, any> {
               placeholder='Výběr zákazníka...'
             />
           </div>
-
-          <div />
 
           <br />
 

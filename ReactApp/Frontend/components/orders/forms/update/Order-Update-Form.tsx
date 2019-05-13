@@ -1,12 +1,8 @@
 import * as React from "react";
-import { Button, Input, Label, FormGroup, Form } from "reactstrap";
-import { ProductInputType } from "../../../../typescript/enums/crud/products/forms/Product-Input-Type";
+import { Button, Form } from "reactstrap";
 
 import ProductApi from "../../../../api/endpoints/ProductApi";
 import CustomerApi from "../../../../api/endpoints/CustomerApi";
-import OrderApi from "../../../../api/endpoints/OrderApi";
-
-import { getUniqueId } from "../../../../helpers/components/rendererHelper";
 
 import Select from "react-select";
 
@@ -33,6 +29,10 @@ export default class OrderUpdateForm extends React.Component<any, any> {
     });
   }
 
+  // Handler for changing products selectbox
+
+
+
   handleChange = (selectedOptions: any) => {
     this.setState({ selectedOptions });
   };
@@ -50,40 +50,63 @@ export default class OrderUpdateForm extends React.Component<any, any> {
       });
     });
 
-    console.log(this.props.data);
+    
 
     // Seed data to the form
 
     this.setState({
       choosenCustomerId: this.props.data.id
     });
+
+    const selectedProducts = new Array<object>();
+
+       // Get products for choosen customer
+
+       this.props.data.products.forEach((element : any) => {  
+        selectedProducts.push({
+           id: element.id,
+          value: element.name,
+          label: element.name,
+        });
+  
+      });
+
+    this.setState({
+      selectedOptions : selectedProducts
+    })
   }
 
-  createOrder = () => {
-    const productArray = new Array<number>();
+  UpdateOrder = () => {
 
-    this.state.selectedOptions.forEach((arg: any) => {
-      productArray.push(arg.id);
+    // Get products identifiers
+    const productsIds = this.state.selectedOptions.map((arg: any ) => {
+        return arg.id
     });
 
-    this.props.createMethod({
-      ProductArray: productArray,
-      customerId: 6
+    // Call update method via REST interface
+    this.props.updateMethod({
+      orderId: this.props.data.id,
+      ProductIds: productsIds
     });
+  
 
     this.props.modalToggler();
   };
 
   render() {
+
+    console.log(this.state.selectedOptions)
+
     const { selectedOption }: any = this.state;
 
-    const products = new Array<object>();
+    const selectedProducts = new Array<object>();
+    const optionProducts = new Array<object>();
 
     this.state.products.forEach((element: any) => {
-      products.push({
-        id: element.id,
-        value: element.name,
-        label: element.name
+      optionProducts.push({
+      id: element.id,
+      value: element.name,
+      label: element.name,
       });
     });
 
@@ -93,9 +116,24 @@ export default class OrderUpdateForm extends React.Component<any, any> {
       customers.push({
         id: element.id,
         value: element.firstName + " " + element.lastName,
-        label: element.firstName + " " + element.lastName
+        label: element.firstName + " " + element.lastName,
       });
+
     });
+
+    // Get products for choosen customer
+
+    this.props.data.products.forEach((element : any) => {  
+      selectedProducts.push({
+         id: element.id,
+        value: element.name,
+        label: element.name,
+      });
+
+    });
+
+
+
 
     return (
       <>
@@ -118,9 +156,10 @@ export default class OrderUpdateForm extends React.Component<any, any> {
           <p>Výrobky</p>
           <Select
             isMulti
-            value={selectedOption}
+            value={this.state.selectedOptions}
             onChange={this.handleChange}
-            options={products}
+            options={optionProducts}
+            placeholder='Zvolte výrobky...'
           />
 
           <br />
@@ -128,7 +167,7 @@ export default class OrderUpdateForm extends React.Component<any, any> {
           <br />
 
           <div>
-            <Button onClick={this.createOrder}>Vytvořit objednávku</Button>
+            <Button onClick={this.UpdateOrder}>Aktualizovat objednávku</Button>
           </div>
         </Form>
       </>

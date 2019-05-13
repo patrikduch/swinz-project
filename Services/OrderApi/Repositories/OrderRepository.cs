@@ -91,36 +91,47 @@ namespace OrderApi.Repositories
         /// Update of order by identifier
         /// </summary>
         /// <param name="orderId"></param>
-        public void UpdateOrder(int orderId)
+        /// <param name="dto"></param>
+        public async Task<Order> UpdateOrder(int orderId, OrderUpdateDto dto)
         {
-            var entity = ProductContext.Orders.Include(c=>c.OrderProducts)
+            // Get order entity
+            var entity = ProductContext.Orders
+                .Include(c=>c.Customer)
+                .Include(c=>c.OrderProducts)
                 .SingleOrDefault(c => c.Id == orderId);
 
+            if (entity == null) return null;
+
+            // Creation of new instances of OrderProducts
             var orderProducts = new List<OrderProduct>();
 
-            orderProducts.Add(new OrderProduct()
+            if (dto.ProductIds == null) return null;
+
+            foreach (var dtoProductId in dto.ProductIds)
             {
-                OrderId = orderId,
-                Product = new Product
-                {
-                    Id = 1,
-                    IsDeleted = false,
-                    Name = "Produkt",
-                    Price = 256
-                }
                 
-            });
+                orderProducts.Add(new OrderProduct
+                {
+                    OrderProductId =  Guid.NewGuid().ToString(),
+                    OrderId = orderId,
+                    ProductId = dtoProductId,
+                    Order = null,
+                    Product = null
+                });
+            }
 
-            if (entity == null) return;
-
-
-           
-            var datum = new DateTime();
-            var zakaznik = new Customer();
-
-            entity.CreationDate = datum;
-            entity.Customer = zakaznik;
             
+
+            entity.OrderProducts = orderProducts;
+
+            
+
+
+            await Context.SaveChangesAsync();
+
+
+            return entity;
+
         }
 
         /// <summary>
@@ -161,7 +172,7 @@ namespace OrderApi.Repositories
 
                 orders.Add(new OrderProduct
                 {
-                    Id = orderProductId,
+                    OrderProductId = Guid.NewGuid().ToString(),
                     OrderId = order.Id,
                     ProductId = i,
                     
