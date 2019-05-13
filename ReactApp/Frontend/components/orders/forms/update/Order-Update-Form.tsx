@@ -1,25 +1,29 @@
 import * as React from "react";
 import { Button, Input, Label, FormGroup, Form } from "reactstrap";
+import { ProductInputType } from "../../../../typescript/enums/crud/products/forms/Product-Input-Type";
 
 import ProductApi from "../../../../api/endpoints/ProductApi";
 import CustomerApi from "../../../../api/endpoints/CustomerApi";
+import OrderApi from "../../../../api/endpoints/OrderApi";
 
+import { getUniqueId } from "../../../../helpers/components/rendererHelper";
 
 import Select from "react-select";
 
-export default class OrderCreationForm extends React.Component<any, any> {
+export default class OrderUpdateForm extends React.Component<any, any> {
   state = {
     products: [],
     customers: [],
     value: [""],
-    customerSelectBox: {} as any, 
-    selectedOptions: []
+    customerSelectBox: "",
+    selectedOptions: [],
+
+    choosenCustomerId: null
   };
 
-  onCustomerChange = (e: any) => {
-    
+  onChange(e: any) {
     this.setState({
-      customerSelectBox: e
+      customerSelectBox: e.target.value
     });
   }
 
@@ -45,6 +49,14 @@ export default class OrderCreationForm extends React.Component<any, any> {
         customers: res.data
       });
     });
+
+    console.log(this.props.data);
+
+    // Seed data to the form
+
+    this.setState({
+      choosenCustomerId: this.props.data.id
+    });
   }
 
   createOrder = () => {
@@ -56,7 +68,7 @@ export default class OrderCreationForm extends React.Component<any, any> {
 
     this.props.createMethod({
       ProductArray: productArray,
-      customerId: this.state.customerSelectBox.id
+      customerId: 6
     });
 
     this.props.modalToggler();
@@ -89,14 +101,15 @@ export default class OrderCreationForm extends React.Component<any, any> {
       <>
         <Form>
           <p>Zákazník</p>
-
-          <div>
-            <Select
-              onChange={this.onCustomerChange}
-              options={customers}
-              placeholder='Výběr zákazníka...'
-            />
-          </div>
+          <Select
+            value={
+              customers.find((op: any) => {
+                return op.id === this.props.data.customerId;
+              }) as any
+            }
+            onChange={this.handleChange}
+            options={customers}
+          />
 
           <div />
 
@@ -108,7 +121,6 @@ export default class OrderCreationForm extends React.Component<any, any> {
             value={selectedOption}
             onChange={this.handleChange}
             options={products}
-            placeholder='Zvolte výrobky...'
           />
 
           <br />

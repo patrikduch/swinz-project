@@ -18,6 +18,7 @@ import ModalFooter from "reactstrap/lib/ModalFooter";
 
 import CustomerUpdateForm from '../../../../components/customers/forms/update/Customer-Update-Form';
 import ProductUpdateForm from '../../../../components/products/forms/update/Product-Update-Form';
+import OrderUpdateForm from '../../../../components/orders/forms/update/Order-Update-Form';
 
 import styled from "styled-components";
 
@@ -64,6 +65,18 @@ export default class ListItemUpdate extends React.Component<any, any> {
             </ModalHeader>
             <ModalBody>
               <ProductUpdateForm data={this.props.data} modalToggler={this.toggle} updateMethod={this.props.updateMethod}/>
+            </ModalBody>
+          </>
+        );
+
+      case ListItemType.Order:
+        return (
+          <>
+            <ModalHeader toggle={this.toggle}>
+              Aktualizace objednávky
+            </ModalHeader>
+            <ModalBody>
+              <OrderUpdateForm data={this.props.data} />
             </ModalBody>
           </>
         );
