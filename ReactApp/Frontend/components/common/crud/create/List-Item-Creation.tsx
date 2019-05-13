@@ -21,9 +21,8 @@ import IListItemCreationState from "../../../../typescript/interfaces/components
 
 import CustomerCreationForm from "../../../customers/forms/create/Customer-Create-Form";
 import ProductCreationForm from "../../../products/forms/create/Product-Create-Form";
+import OrderCreationForm from "../../../orders/forms/create/Order-Create-Form";
 import { ListItemType } from "../../../../typescript/enums/crud/List-Item-Type";
-
-
 
 export default class ListItemCreation extends React.Component<IListItemCreationProps, IListItemCreationState> {
   
@@ -81,7 +80,7 @@ export default class ListItemCreation extends React.Component<IListItemCreationP
               Vytvoření nové objednávky
             </ModalHeader>
             <ModalBody>
-              <ProductCreationForm
+              <OrderCreationForm
                 modalToggler={this.toggle}
                 createMethod={this.props.createMethod}
               />

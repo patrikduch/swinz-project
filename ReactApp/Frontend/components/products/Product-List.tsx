@@ -15,6 +15,7 @@ import ListItemObject from "../../helpers/types/List-Item-Object";
 
 import ProductObject from "../../view-models/Product";
 import { ListItemType } from "../../typescript/enums/crud/List-Item-Type";
+import ListItemCreation from "../common/crud/create/List-Item-Creation";
 
 export default class ProductList extends React.Component<any, any> {
   componentWillMount() {
@@ -52,6 +53,13 @@ export default class ProductList extends React.Component<any, any> {
     return (
       <>
         <ListTitle crud>Evidence výrobků</ListTitle>
+
+        <ListItemCreation
+          type={ListItemType.Product}
+          createMethod={this.props.actions.createProduct}
+        />
+
+        
         <ListContainer
           data={this.transformData()}
           updateMethod={this.props.actions.updateProduct}
