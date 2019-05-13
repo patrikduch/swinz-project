@@ -89,16 +89,16 @@ namespace UserApi.Repositories
             // Get identifier of lastly created customer
             var customerId = QueryGenericHelper.GetLastEntity(UserContext.Customers);
 
-
+       
             // Creation of customer object from user a customer data
             var customerResult = new Customer
             {
-                Id = customerId.Id+1,
+                Id = customerId?.Id ?? 1,
                 FirstName = customerDto.FirstName,
                 LastName = customerDto.Lastname,
                 Discount = customerDto.Discount,
                 User = user,
-                UserId = userId.Id
+                UserId = userId?.Id ?? 1
             };
 
 
