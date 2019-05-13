@@ -18,14 +18,12 @@ const reducer = (state : any = initialState.orders, action: any) => {
 
         // Fetching all orders
         case actionTypes.ORDER_FETCH_SUCCESS:
-            console.log('kurva')
             return {
                 ...state,
                 data : action.payload.data
             }
 
         case actionTypes.ORDER_UPDATE_SUCCESS:
-            console.log('aaa');
 
             const updatedData = state.data.map((arg: any) => {
                 if (arg.id == action.data.data.id) {
@@ -33,8 +31,6 @@ const reducer = (state : any = initialState.orders, action: any) => {
                 } 
                 return arg;
             });
-
-            console.log(state);
 
             return {
                 ...state,
