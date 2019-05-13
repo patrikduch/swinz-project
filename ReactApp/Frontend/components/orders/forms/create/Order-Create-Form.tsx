@@ -13,28 +13,23 @@ import CustomerApi from "../../../../api/endpoints/CustomerApi";
 import Select from "react-select";
 
 export default class OrderCreationForm extends React.Component<any, any> {
+
   state = {
     products: [],
     customers: [],
-    value: [""],
     customerSelectBox: {} as any, 
     selectedOptions: []
   };
 
-  // Event handler for changing customer in selectbox
+  // Event handler for changing customer from selectbox
   onCustomerChange = (e: any) => {
     this.setState({
       customerSelectBox: e
     });
   }
 
-  onTestChange(e: any) {
-    this.setState({
-      value: e.target.value
-    });
-  }
-
-  handleChange = (selectedOptions: any) => {
+  // Event handler for changing products from selectbox
+  onProductChange = (selectedOptions: any) => {
     this.setState({ selectedOptions });
   };
 
@@ -95,22 +90,18 @@ export default class OrderCreationForm extends React.Component<any, any> {
       <>
         <Form>
           <p>Zákazník</p>
-
-          <div>
             <Select
               onChange={this.onCustomerChange}
               options={customers}
               placeholder='Výběr zákazníka...'
             />
-          </div>
-
           <br />
 
           <p>Výrobky</p>
           <Select
             isMulti
             value={selectedOption}
-            onChange={this.handleChange}
+            onChange={this.onProductChange}
             options={products}
             placeholder='Zvolte výrobky...'
           />

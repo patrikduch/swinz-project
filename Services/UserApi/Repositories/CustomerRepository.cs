@@ -93,12 +93,12 @@ namespace UserApi.Repositories
             // Creation of customer object from user a customer data
             var customerResult = new Customer
             {
-                Id = customerId?.Id ?? 1,
+                Id = customerId?.Id+1 ?? 1,
                 FirstName = customerDto.FirstName,
                 LastName = customerDto.Lastname,
                 Discount = customerDto.Discount,
                 User = user,
-                UserId = userId?.Id ?? 1
+                UserId = userId?.Id+1 ?? 1
             };
 
 

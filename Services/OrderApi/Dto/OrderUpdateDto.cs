@@ -12,6 +12,9 @@ namespace OrderApi.Dto
 
         public int[] ProductIds { get; set; }
 
+        public int CustomerId { get; set; }
+
+
 
 
     }

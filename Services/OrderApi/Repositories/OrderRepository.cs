@@ -120,7 +120,7 @@ namespace OrderApi.Repositories
                 });
             }
 
-            
+            entity.CustomerId = dto.CustomerId;
 
             entity.OrderProducts = orderProducts;
 

@@ -17,11 +17,6 @@ import ModalHeader from 'reactstrap/lib/ModalHeader';
 import ModalBody from 'reactstrap/lib/ModalBody';
 import ModalFooter from 'reactstrap/lib/ModalFooter';
 
-// Props interface
-
-
-// State interface
-
 
 export default class CustomerInfoModal extends React.Component<any, any> {
 
@@ -42,13 +37,29 @@ export default class CustomerInfoModal extends React.Component<any, any> {
 
     componentDidMount() {
 
+      console.log(this.props.text);
+
+      CustomerApi.getCustomer(this.props.text).then((res => {
+        this.setState({
+          customerInfo: {
+            firstname: res.data.firstName,
+            lastname: res.data.lastName,
+            discount: res.data.discount
+          }
+        });
+
+    })).catch(() => {
+
+
+    })
+
       
     }
   
     render() {
       return (
         <div>
-          <Button outline color="secondary" size='sm' onClick={this.toggle}><b>#1</b></Button>
+          <Button outline color="secondary" size='sm' onClick={this.toggle}><b># {this.props.text}</b></Button>
           <Modal size='lg' isOpen={this.state.isModalActive} toggle={this.toggle}>
             <ModalHeader toggle={this.toggle}>Informace o zákazníkovi</ModalHeader>
             <ModalBody>

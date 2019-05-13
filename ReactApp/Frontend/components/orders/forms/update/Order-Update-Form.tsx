@@ -15,27 +15,23 @@ export default class OrderUpdateForm extends React.Component<any, any> {
   state = {
     products: [],
     customers: [],
-    value: [""],
-    customerSelectBox: "",
+    customerSelectBox: {
+      id: 0,
+    } as any, 
     selectedOptions: [],
 
-    choosenCustomerId: null
+    customerId: this.props.data.customerId // Initial customer identifier which were passed into component
   };
 
-  onChange(e: any) {
+   // Event handler for changing customer from selectbox
+   onCustomerChange = (e: any) => {
     this.setState({
-      customerSelectBox: e.target.value
+      customerId: e.id
     });
   }
 
-  onTestChange(e: any) {
-    this.setState({
-      value: e.target.value
-    });
-  }
-
-  // Handler for changing products selectbox
-  handleChange = (selectedOptions: any) => {
+  // Event handler for changing products from selectbox
+  onProductChange = (selectedOptions: any) => {
     this.setState({ selectedOptions });
   };
 
@@ -47,9 +43,11 @@ export default class OrderUpdateForm extends React.Component<any, any> {
     });
 
     CustomerApi.getCustomers().then((res: any) => {
+
       this.setState({
-        customers: res.data
-      });
+        customers: res.data,
+      }); 
+    
     });
 
     // Seed data to the form
@@ -70,9 +68,12 @@ export default class OrderUpdateForm extends React.Component<any, any> {
       });
     });
 
+
+    // Set product options
     this.setState({
       selectedOptions: selectedProducts
     });
+    
   }
 
   UpdateOrder = () => {
@@ -84,16 +85,14 @@ export default class OrderUpdateForm extends React.Component<any, any> {
     // Call update method via REST interface
     this.props.updateMethod({
       orderId: this.props.data.id,
-      ProductIds: productsIds
+      ProductIds: productsIds,
+      CustomerId: this.state.customerId
     });
 
     this.props.modalToggler();
   };
 
   render() {
-    console.log(this.state.selectedOptions);
-
-    const { selectedOption }: any = this.state;
 
     const selectedProducts = new Array<object>();
     const optionProducts = new Array<object>();
@@ -108,6 +107,7 @@ export default class OrderUpdateForm extends React.Component<any, any> {
 
     const customers = new Array<object>();
 
+    // Customers
     this.state.customers.forEach((element: any) => {
       customers.push({
         id: element.id,
@@ -117,7 +117,6 @@ export default class OrderUpdateForm extends React.Component<any, any> {
     });
 
     // Get products for choosen customer
-
     this.props.data.products.forEach((element: any) => {
       selectedProducts.push({
         id: element.id,
@@ -133,10 +132,10 @@ export default class OrderUpdateForm extends React.Component<any, any> {
           <Select
             value={
               customers.find((op: any) => {
-                return op.id === this.props.data.customerId;
+                return op.id === this.state.customerId;
               }) as any
             }
-            onChange={this.handleChange}
+            onChange={this.onCustomerChange}
             options={customers}
           />
 
@@ -148,7 +147,7 @@ export default class OrderUpdateForm extends React.Component<any, any> {
           <Select
             isMulti
             value={this.state.selectedOptions}
-            onChange={this.handleChange}
+            onChange={this.onProductChange}
             options={optionProducts}
             placeholder="Zvolte výrobky..."
           />
