@@ -139,10 +139,6 @@ export default class OrderUpdateForm extends React.Component<any, any> {
             options={customers}
           />
 
-          <div />
-
-          <br />
-
           <p>Výrobky</p>
           <Select
             isMulti
@@ -152,9 +148,6 @@ export default class OrderUpdateForm extends React.Component<any, any> {
             placeholder="Zvolte výrobky..."
           />
 
-          <br />
-          <br />
-          <br />
 
           <div>
             <Button onClick={this.UpdateOrder}>Aktualizovat objednávku</Button>

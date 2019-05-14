@@ -33,7 +33,7 @@ namespace Swinz.Tests.Services.StatsApi
             {
                 new OrderProduct
                 {
-                    Id = 1,
+                    OrderProductId = Guid.NewGuid().ToString(),
                     OrderId = 1,
                     ProductId = 1,
                     Product = new Product
@@ -47,7 +47,7 @@ namespace Swinz.Tests.Services.StatsApi
 
                 new OrderProduct
                 {
-                    Id = 2,
+                    OrderProductId = Guid.NewGuid().ToString(),
                     OrderId = 2,
                     ProductId = 2,
                     Product = new Product
@@ -103,7 +103,7 @@ namespace Swinz.Tests.Services.StatsApi
             {
                 new OrderProduct
                 {
-                    Id = 1,
+                    OrderProductId = Guid.NewGuid().ToString(),
                     OrderId = 1,
                     ProductId = 1,
                     Product = new Product
@@ -117,7 +117,7 @@ namespace Swinz.Tests.Services.StatsApi
 
                 new OrderProduct
                 {
-                    Id = 2,
+                    OrderProductId = Guid.NewGuid().ToString(),
                     OrderId = 2,
                     ProductId = 2,
                     Product = new Product
@@ -187,7 +187,7 @@ namespace Swinz.Tests.Services.StatsApi
                     {
                         new OrderProduct
                         {
-                            Id =  1,
+                            OrderProductId = Guid.NewGuid().ToString(),
                             Product = new Product
                             {
                                 Id = 1,
@@ -242,7 +242,7 @@ namespace Swinz.Tests.Services.StatsApi
                     {
                         new OrderProduct
                         {
-                            Id =  1,
+                            OrderProductId = Guid.NewGuid().ToString(),
                             Product = new Product
                             {
                                 Id = 1,
@@ -264,7 +264,7 @@ namespace Swinz.Tests.Services.StatsApi
                     {
                         new OrderProduct
                         {
-                            Id =  2,
+                            OrderProductId = Guid.NewGuid().ToString(),
                             Product = new Product
                             {
                                 Id = 2,
