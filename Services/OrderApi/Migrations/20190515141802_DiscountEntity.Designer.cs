@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OrderApi.Contexts;
 
 namespace OrderApi.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    partial class ProductContextModelSnapshot : ModelSnapshot
+    [Migration("20190515141802_DiscountEntity")]
+    partial class DiscountEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,8 +24,6 @@ namespace OrderApi.Migrations
             modelBuilder.Entity("PersistenceLib.Domains.OrderApi.Discount", b =>
                 {
                     b.Property<string>("Id");
-
-                    b.Property<int>("DiscountValue");
 
                     b.HasKey("Id");
 
@@ -38,15 +38,11 @@ namespace OrderApi.Migrations
 
                     b.Property<int>("CustomerId");
 
-                    b.Property<string>("DiscountId");
-
                     b.Property<bool>("IsDeleted");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
-
-                    b.HasIndex("DiscountId");
 
                     b.ToTable("Order");
                 });
@@ -166,10 +162,6 @@ namespace OrderApi.Migrations
                         .WithMany("Orders")
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("PersistenceLib.Domains.OrderApi.Discount", "Discount")
-                        .WithMany("Orders")
-                        .HasForeignKey("DiscountId");
                 });
 
             modelBuilder.Entity("PersistenceLib.Domains.OrderApi.OrderProduct", b =>

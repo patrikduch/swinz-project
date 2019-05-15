@@ -35,5 +35,11 @@ namespace OrderApi.Dto
         /// </summary>
         public int CustomerId { get; set; }
 
+        /// <summary>
+        /// Get or Sets discount percentage format
+        /// </summary>
+        public int Discount { get; set; }
+
+
     }
 }

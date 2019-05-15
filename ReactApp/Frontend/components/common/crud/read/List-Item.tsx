@@ -82,6 +82,7 @@ const DataRenderer = (props:any) => {
 
     case ListItemType.Order: {
       const entity = props.arg as OrderObject;
+      console.log(entity);
       return (
         <>
           <th scope='row'>{props.iteration}</th>
@@ -94,7 +95,7 @@ const DataRenderer = (props:any) => {
             </div>
           </td>
           <td>
-            <OrderInfo products={entity.getProducts} />
+            <OrderInfo discount={entity.getProductDiscount} products={entity.getProducts} />
           </td>
         </>
       );

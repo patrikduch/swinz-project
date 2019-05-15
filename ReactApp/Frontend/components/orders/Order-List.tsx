@@ -31,6 +31,8 @@ export default class OrdertList extends React.Component<any, any> {
   }
 
   render() {
+
+    console.log(this.props.orders);
     return (
       <>
         <ListTitle crud>Evidence objednávek</ListTitle>

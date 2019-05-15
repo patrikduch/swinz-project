@@ -20,7 +20,7 @@ export default class OrderCreationForm extends React.Component<any, any> {
     customerSelectBox: {} as any, 
     feeSelectBox : {} as any,
     selectedOptions: [],
-    feeOptions : [5,10,15,25],
+    feeOptions : [0,5,10,15,25],
   };
 
   // Event handler for changing customer from selectbox

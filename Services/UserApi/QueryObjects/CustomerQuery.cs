@@ -1,5 +1,7 @@
 ﻿
 
+using PersistenceLib.Domains.OrderApi;
+
 namespace UserApi.QueryObjects
 {
     using System.Linq;
@@ -23,6 +25,8 @@ namespace UserApi.QueryObjects
             if (FilterById)
             {
                 entity = await context.Set<Customer>().Where(c => c.Id == CustomerId).FirstOrDefaultAsync();
+
+                var res = context.Set<Order>().Where(c => c.CustomerId == entity.Id).Include(c=>c.Discount).ToList();
             }
 
             if (FilterByName)
@@ -33,6 +37,8 @@ namespace UserApi.QueryObjects
 
 
             if (entity == null) return null; // No data was found
+
+            
 
             return new CustomerDto
             {

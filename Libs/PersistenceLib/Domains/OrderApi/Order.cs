@@ -20,5 +20,8 @@ namespace PersistenceLib.Domains.OrderApi
 
         public bool IsDeleted { get; set; }
 
+        public Discount Discount { get; set; }
+
+
     }
 }

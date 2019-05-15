@@ -21,7 +21,8 @@ namespace OrderApi.Helpers.LINQ
                 {
                     Id = order.Id,
                     CreationDate = order.CreationDate,
-                    CustomerId =  order.CustomerId
+                    CustomerId =  order.CustomerId,
+                    Discount = order.Discount.DiscountValue
                 };
             }
         }

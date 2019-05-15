@@ -1,5 +1,7 @@
 ﻿
 
+using PersistenceLib.Domains.OrderApi;
+
 namespace OrderApi.QueryObjects
 {
     using System.Collections.Generic;
@@ -18,11 +20,12 @@ namespace OrderApi.QueryObjects
         public async Task<IEnumerable<OrderListDto>> Execute(DbContext context)
         {
             var dbContext = context as ProductContext;
-            List<OrderListDto> dto = null;
+            List<OrderListDto> dto = new List<OrderListDto>();
 
             if (LoadCustomers)
             {
                 dto = dbContext?.Orders.Include(c => c.Customer)
+                    .Include(c=>c.Discount)
                     .Where(c=>c.IsDeleted.Equals(false))
                     .ToList()
                     .ToOrderListDto()
@@ -42,6 +45,7 @@ namespace OrderApi.QueryObjects
                         .Select(c => c.Product)
                         .ToListAsync();
                 }
+
             }
 
             return dto;

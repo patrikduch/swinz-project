@@ -41,7 +41,7 @@ export default class OrderInfoModal extends React.Component<IOrderInfoModalProps
           <Modal size='lg' isOpen={this.state.isModalActive} toggle={this.toggle}>
             <ModalHeader toggle={this.toggle}>Zakoupené výrobky</ModalHeader>
             <ModalBody>
-              <OrderInfoModalTable products={this.props.products} />
+              <OrderInfoModalTable discount={this.props.discount} products={this.props.products} />
             </ModalBody>
             <ModalFooter>
               <Button color="secondary" onClick={this.toggle}>Zavřít</Button>

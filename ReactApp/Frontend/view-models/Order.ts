@@ -11,12 +11,14 @@ export default class Order {
     private creationDate: Date;
     private customerId :number;
     private products: any;
+    private discount: number;
 
-    constructor(id: number, creationDate: Date, customerId:number, products:any) {
+    constructor(id: number, creationDate: Date, customerId:number, products:any, discount: number) {
         this.id = id;
         this.creationDate = creationDate;
         this.customerId = customerId;
         this.products = products;
+        this.discount = discount;
     }
 
     get getId() {
@@ -38,5 +40,9 @@ export default class Order {
 
     get getProducts() {
         return this.products;
+    }
+
+    get getProductDiscount() {
+        return this.discount;
     }
 }

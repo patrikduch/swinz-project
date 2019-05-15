@@ -5,6 +5,7 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using Microsoft.AspNetCore.ResponseCaching.Internal;
 using Microsoft.EntityFrameworkCore;
 using OrderApi.Helpers.Fee;
 using PersistenceLib.Domains.UserApi;
@@ -55,9 +56,9 @@ namespace OrderApi.Repositories
             _orderQuery.LoadCustomers = true;
             var dbData = await _orderQuery.Execute(ProductContext);
 
-            // Returns only needed data
-            return dbData.ToList();
+            return dbData;
         }
+
 
         /// <summary>
         /// Creation of new order
@@ -86,6 +87,16 @@ namespace OrderApi.Repositories
             order.OrderProducts = GenerateOrderProducts(productArray, order, dtoFeeId);
 
             //var products = order.OrderProducts.Where(c=>c.OrderId == order.Id).Select(c => c.Product).ToList();
+
+            order.Discount = new Discount
+            {
+                Id = Guid.NewGuid().ToString(),
+                Orders = null,
+                DiscountValue = dtoFeeId
+            };
+
+     
+
             
             return new CreateOrderDto
             {
@@ -186,9 +197,7 @@ namespace OrderApi.Repositories
                 var productPrice = productEntity.Price;
 
                 productEntity.OriginalPrice = productPrice;
-                var percentValue = FeePercentageHelper.ConvertToPercentage(productPrice, customerDiscount);
 
-                productEntity.Price -= percentValue;
                 
                 orders.Add(new OrderProduct
                 {

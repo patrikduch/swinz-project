@@ -20,7 +20,8 @@ export default (props: any) => {
         <tr key={getUniqueId()}>
           <th scope="row">{arg.id}</th>
           <td>{arg.name}</td>
-          <td>{arg.price}</td>
+          <td>{arg.price - ((props.discount) /100 * arg.price)}</td>
+          
         </tr>
       );
     });
