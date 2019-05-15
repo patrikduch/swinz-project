@@ -61,7 +61,6 @@ const DataRenderer = (props:any) => {
             <div>{(props.arg as CustomerObject).getLastname}</div>
           </td>
           <td>
-            <div>N/A</div>
           </td>
           
         </>

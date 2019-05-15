@@ -9,5 +9,11 @@ namespace OrderApi.Dto
     {
         public int[] ProductArray { get; set; }
         public int CustomerId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Fee type identifier
+        /// </summary>
+        public int FeeId { get; set; }
+
     }
 }

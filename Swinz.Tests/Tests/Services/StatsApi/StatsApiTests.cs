@@ -356,7 +356,7 @@ namespace Swinz.Tests.Services.StatsApi
 
             var res = MonthStatsHelper.GetMonthsAvgValuation(monthdata, mockDbSet.Object);
 
-            var avgResult = 0;
+            decimal avgResult = 0;
 
             foreach (var customerAvgValuationDto in res)
             {
@@ -421,7 +421,7 @@ namespace Swinz.Tests.Services.StatsApi
 
             var res = MonthStatsHelper.GetMonthsSumValuation(monthdata, mockDbSet.Object);
 
-            var sumResult = 0;
+            decimal sumResult = 0;
 
             foreach (var customerAvgValuationDto in res)
             {

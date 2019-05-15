@@ -9,7 +9,7 @@ namespace StatsApi.Dto
     {
         public int MonthId { get; set; }
 
-        public int TotalSum { get; set; }
+        public decimal TotalSum { get; set; }
 
     }
 }

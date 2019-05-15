@@ -6,6 +6,7 @@
 //-----------------------------------------------------------------------
 
 using Microsoft.EntityFrameworkCore;
+using OrderApi.Helpers.Fee;
 using PersistenceLib.Domains.UserApi;
 
 namespace OrderApi.Repositories
@@ -63,8 +64,9 @@ namespace OrderApi.Repositories
         /// </summary>
         /// <param name="productArray">Sequence of product identifiers</param>
         /// <param name="customerId">Customer identifier (Owner of the order)</param>
+        /// <param name="dtoFeeId"></param>
         /// <returns></returns>
-        public CreateOrderDto CreateOrder(int[] productArray, int customerId)
+        public CreateOrderDto CreateOrder(int[] productArray, int customerId, int dtoFeeId)
         {
             var order = new Order
             {
@@ -73,8 +75,32 @@ namespace OrderApi.Repositories
                 CreationDate = DateTime.Now
             };
 
+            var customer = ProductContext.Customers.SingleOrDefault(c => c.Id == order.CustomerId);
+
+            if (customer == null) return null;
+
+            // Reset of discount
+            if (customer.DiscountCounter == 5)
+            {
+                customer.DiscountCounter = 0;
+                customer.Discount = 0;
+            }
+
+            // Apply five percent discount
+            if (customer.DiscountCounter == 4)
+            {
+                customer.Discount = dtoFeeId;
+                
+            }
+
+            customer.DiscountCounter++;
+
+            
+
+            order.Customer = customer;
+
             // Assign collectio of order products
-            order.OrderProducts = GenerateOrderProducts(productArray, order);
+            order.OrderProducts = GenerateOrderProducts(productArray, order, customer.DiscountCounter, customer.Discount);
 
             //var products = order.OrderProducts.Where(c=>c.OrderId == order.Id).Select(c => c.Product).ToList();
             
@@ -155,8 +181,12 @@ namespace OrderApi.Repositories
         /// </summary>
         /// <param name="productArray">Sequence of product identifiers</param>
         /// <param name="order">Order instance</param>
+        /// <param name="customerDiscountCounter"></param>
+        /// <param name="customerDiscount"></param>
+        /// <param name="customerId"></param>
         /// <returns></returns>
-        private List<OrderProduct> GenerateOrderProducts(IEnumerable<int> productArray, Order order)
+        private List<OrderProduct> GenerateOrderProducts(IEnumerable<int> productArray, Order order,
+            int customerDiscountCounter, decimal customerDiscount)
         {
             var orders = new List<OrderProduct>();
 
@@ -170,11 +200,32 @@ namespace OrderApi.Repositories
                     orderProductId = ProductContext.OrderProducts.Count() + 1;
                 }
 
+                var productEntity = ProductContext.Products.SingleOrDefault(c => c.Id == i);
+                decimal productPrice = productEntity.Price;
+
+                if (customerDiscountCounter == 5)
+                {
+
+                    productEntity.OriginalPrice = productPrice;
+                    var percentValue = FeePercentageHelper.ConvertToPercentage(productPrice, customerDiscount);
+
+                    productEntity.Price -= percentValue;
+
+                }
+                else
+                {
+                    productEntity.Price = productEntity.OriginalPrice;
+                }
+
+             
+
                 orders.Add(new OrderProduct
                 {
                     OrderProductId = Guid.NewGuid().ToString(),
                     OrderId = order.Id,
                     ProductId = i,
+                    Product = productEntity
+                    
                     
                 });
 

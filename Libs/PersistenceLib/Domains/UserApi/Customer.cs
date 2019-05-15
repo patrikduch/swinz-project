@@ -39,6 +39,15 @@ namespace PersistenceLib.Domains.UserApi
         public int Discount { get; set; }
 
         /// <summary>
+        /// Gets or sets customer`s discount counter
+        /// </summary>
+        public int DiscountCounter { get; set; }
+
+        public int OriginalPrice { get; set; }
+
+
+
+        /// <summary>
         /// Navigation property to User entity
         /// </summary>
         public User User { get; set; }

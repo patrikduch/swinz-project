@@ -21,7 +21,7 @@ namespace StatsApi.Dto
         /// <summary>
         /// Income of current year
         /// </summary>
-        public int LatestIncome { get; set; }
+        public decimal LatestIncome { get; set; }
 
         /// <summary>
         /// 

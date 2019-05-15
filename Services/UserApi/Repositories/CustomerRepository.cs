@@ -83,6 +83,12 @@ namespace UserApi.Repositories
             }, "Customer");
 
 
+            if (user != null)
+            {
+                user.Id++;
+            }
+
+
             // Get identifier of lastly created user
             var userId = QueryGenericHelper.GetLastEntity(UserContext.Users);
 

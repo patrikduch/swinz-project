@@ -16,7 +16,7 @@ namespace StatsApi.Interfaces
     /// </summary>
     public interface ICustomerStatsRepository : IRepository<Customer>
     {
-        int GetLatestIncome(IQueryable<Order> collection);
+        decimal GetLatestIncome(IQueryable<Order> collection);
         int GetSoldCount(IQueryable<Order> collection);
     }
 }

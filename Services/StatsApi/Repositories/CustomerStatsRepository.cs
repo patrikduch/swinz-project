@@ -35,7 +35,7 @@ namespace StatsApi.Repositories
         /// </summary>
         /// <param name="collection">IQueryable collection which will be executed</param>
         /// <returns>numeric representation of total company income</returns>
-        public int GetLatestIncome(IQueryable<Order> collection)
+        public decimal GetLatestIncome(IQueryable<Order> collection)
         {
             return collection.Where(c => c.CreationDate.Year == DateTime.Now.Year)
                 .SelectMany(c => c.OrderProducts).Where(c=>c.Product.IsDeleted.Equals(false))

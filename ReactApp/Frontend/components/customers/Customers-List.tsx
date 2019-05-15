@@ -21,7 +21,7 @@ import { ListItemType } from "../../typescript/enums/crud/List-Item-Type";
 import ListItemCreation from "../common/crud/create/List-Item-Creation";
 
 export default class CustomersList extends React.Component<any, any> {
-  columnNames = ["#", "Křestní jméno", "Přijmení", "Nárok na slevu", "   "];
+  columnNames = ["#", "Křestní jméno", "Přijmení",];
 
   componentWillMount() {
     this.props.actions.getCustomers();

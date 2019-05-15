@@ -19,7 +19,7 @@ namespace OrderApi.Interfaces.Repositories
     public interface IOrderRepository : IRepository<Order>
     {
         Task<IEnumerable<OrderListDto>> GetOrders();
-        CreateOrderDto CreateOrder(int[] productArray, int customerId);
+        CreateOrderDto CreateOrder(int[] productArray, int customerId, int dtoFeeId);
 
         Task<Order> UpdateOrder(int orderId, OrderUpdateDto dto);
 

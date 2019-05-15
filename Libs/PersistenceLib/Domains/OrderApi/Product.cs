@@ -5,6 +5,7 @@
 // <author>Patrik Duch</author>
 //-----------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -27,7 +28,10 @@ namespace PersistenceLib.Domains.OrderApi
         /// <summary>
         /// Gets or sets product`s price
         /// </summary>
-        public int Price { get; set; }
+        public decimal Price { get; set; }
+
+        public decimal OriginalPrice { get; set; }
+
         /// <summary>
         /// Gets or sets product`s deletion state
         /// </summary>

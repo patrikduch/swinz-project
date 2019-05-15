@@ -50,7 +50,7 @@ namespace StatsApi.Helpers.CustomerStatistics
 
             foreach (var monthModel in monthData)
             {
-                var sum = 0;
+                decimal sum = 0;
 
                 foreach (var monthModelProductsId in monthModel.ProductsIds)
                 {
@@ -74,7 +74,7 @@ namespace StatsApi.Helpers.CustomerStatistics
 
             foreach (var monthModel in monthData)
             {
-                var sum = 0;
+                decimal sum = 0;
 
                 foreach (var monthModelProductsId in monthModel.ProductsIds)
                 {

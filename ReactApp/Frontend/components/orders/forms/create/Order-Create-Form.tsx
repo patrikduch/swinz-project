@@ -18,13 +18,21 @@ export default class OrderCreationForm extends React.Component<any, any> {
     products: [],
     customers: [],
     customerSelectBox: {} as any, 
-    selectedOptions: []
+    feeSelectBox : {} as any,
+    selectedOptions: [],
+    feeOptions : [5,10,15,25],
   };
 
   // Event handler for changing customer from selectbox
   onCustomerChange = (e: any) => {
     this.setState({
       customerSelectBox: e
+    });
+  }
+
+  onFeeChange = (e: any) => {
+    this.setState({
+      feeSelectBox: e
     });
   }
 
@@ -55,9 +63,13 @@ export default class OrderCreationForm extends React.Component<any, any> {
       productArray.push(arg.id);
     });
 
+    console.log(this.state.feeSelectBox)
+
     this.props.createMethod({
       ProductArray: productArray,
-      customerId: this.state.customerSelectBox.id
+      customerId: this.state.customerSelectBox.id,
+      feeId: this.state.feeSelectBox.id
+
     });
 
     this.props.modalToggler();
@@ -86,6 +98,18 @@ export default class OrderCreationForm extends React.Component<any, any> {
       });
     });
 
+    // Transform to the valid  fee options
+
+    const feeOptions = new Array<object>();
+
+    this.state.feeOptions.forEach((element: any) => {
+      feeOptions.push({
+        id: element,
+        value: element,
+        label: element
+      });
+    });
+
     return (
       <>
         <Form>
@@ -106,9 +130,19 @@ export default class OrderCreationForm extends React.Component<any, any> {
             placeholder='Zvolte výrobky...'
           />
 
-          <br />
-          <br />
-          <br />
+          <br/>
+
+          <p>Nastavení slevy (%)</p>
+
+          <Select
+            value={selectedOption}
+            onChange={this.onFeeChange}
+            options={feeOptions}
+            placeholder='Vyberte slevu...'
+          />
+
+          <br/>
+          
 
           <div>
             <Button onClick={this.createOrder}>Vytvořit objednávku</Button>

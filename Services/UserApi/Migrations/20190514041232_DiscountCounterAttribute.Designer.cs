@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using OrderApi.Contexts;
+using UserApi.Contexts;
 
-namespace OrderApi.Migrations
+namespace UserApi.Migrations
 {
-    [DbContext(typeof(ProductContext))]
-    partial class ProductContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(UserContext))]
+    [Migration("20190514041232_DiscountCounterAttribute")]
+    partial class DiscountCounterAttribute
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,7 +23,9 @@ namespace OrderApi.Migrations
 
             modelBuilder.Entity("PersistenceLib.Domains.OrderApi.Order", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CreationDate");
 
@@ -38,13 +42,14 @@ namespace OrderApi.Migrations
 
             modelBuilder.Entity("PersistenceLib.Domains.OrderApi.OrderProduct", b =>
                 {
-                    b.Property<string>("OrderProductId");
+                    b.Property<string>("OrderProductId")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("OrderId");
 
                     b.Property<int>("ProductId");
 
-                    b.HasKey("OrderProductId", "OrderId", "ProductId");
+                    b.HasKey("OrderProductId");
 
                     b.HasIndex("OrderId");
 
@@ -55,15 +60,15 @@ namespace OrderApi.Migrations
 
             modelBuilder.Entity("PersistenceLib.Domains.OrderApi.Product", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<bool>("IsDeleted");
 
                     b.Property<string>("Name");
 
-                    b.Property<decimal>("OriginalPrice");
-
-                    b.Property<decimal>("Price");
+                    b.Property<int>("Price");
 
                     b.HasKey("Id");
 
@@ -84,11 +89,10 @@ namespace OrderApi.Migrations
 
                     b.Property<string>("LastName");
 
-                    b.Property<int>("OriginalPrice");
-
                     b.Property<int>("UserId");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("Id");
 
                     b.HasIndex("UserId")
                         .IsUnique();
@@ -119,7 +123,8 @@ namespace OrderApi.Migrations
 
                     b.Property<byte[]>("PasswordSalt");
 
-                    b.Property<string>("Username");
+                    b.Property<string>("Username")
+                        .HasColumnName("username");
 
                     b.HasKey("Id");
 
@@ -128,15 +133,13 @@ namespace OrderApi.Migrations
 
             modelBuilder.Entity("PersistenceLib.Domains.UserApi.UserRoles", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("RoleId");
+                    b.Property<int>("Id");
 
                     b.Property<int>("UserId");
 
-                    b.HasKey("Id");
+                    b.Property<int>("RoleId");
+
+                    b.HasKey("Id", "UserId", "RoleId");
 
                     b.HasIndex("RoleId");
 

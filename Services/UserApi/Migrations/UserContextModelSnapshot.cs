@@ -29,25 +29,25 @@ namespace UserApi.Migrations
 
                     b.Property<int>("CustomerId");
 
+                    b.Property<bool>("IsDeleted");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerId")
-                        .IsUnique();
+                    b.HasIndex("CustomerId");
 
                     b.ToTable("Order");
                 });
 
             modelBuilder.Entity("PersistenceLib.Domains.OrderApi.OrderProduct", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("OrderProductId")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("OrderId");
 
                     b.Property<int>("ProductId");
 
-                    b.HasKey("Id");
+                    b.HasKey("OrderProductId");
 
                     b.HasIndex("OrderId");
 
@@ -61,6 +61,8 @@ namespace UserApi.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("IsDeleted");
 
                     b.Property<string>("Name");
 
@@ -79,9 +81,13 @@ namespace UserApi.Migrations
 
                     b.Property<int>("Discount");
 
+                    b.Property<int>("DiscountCounter");
+
                     b.Property<string>("FirstName");
 
                     b.Property<string>("LastName");
+
+                    b.Property<int>("OriginalPrice");
 
                     b.Property<int>("UserId");
 
@@ -145,8 +151,8 @@ namespace UserApi.Migrations
             modelBuilder.Entity("PersistenceLib.Domains.OrderApi.Order", b =>
                 {
                     b.HasOne("PersistenceLib.Domains.UserApi.Customer", "Customer")
-                        .WithOne("Order")
-                        .HasForeignKey("PersistenceLib.Domains.OrderApi.Order", "CustomerId")
+                        .WithMany("Orders")
+                        .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
