@@ -79,28 +79,11 @@ namespace OrderApi.Repositories
 
             if (customer == null) return null;
 
-            // Reset of discount
-            if (customer.DiscountCounter == 5)
-            {
-                customer.DiscountCounter = 0;
-                customer.Discount = 0;
-            }
-
-            // Apply five percent discount
-            if (customer.DiscountCounter == 4)
-            {
-                customer.Discount = dtoFeeId;
-                
-            }
-
-            customer.DiscountCounter++;
-
-            
-
+           
             order.Customer = customer;
 
             // Assign collectio of order products
-            order.OrderProducts = GenerateOrderProducts(productArray, order, customer.DiscountCounter, customer.Discount);
+            order.OrderProducts = GenerateOrderProducts(productArray, order, dtoFeeId);
 
             //var products = order.OrderProducts.Where(c=>c.OrderId == order.Id).Select(c => c.Product).ToList();
             
@@ -181,12 +164,11 @@ namespace OrderApi.Repositories
         /// </summary>
         /// <param name="productArray">Sequence of product identifiers</param>
         /// <param name="order">Order instance</param>
-        /// <param name="customerDiscountCounter"></param>
         /// <param name="customerDiscount"></param>
         /// <param name="customerId"></param>
         /// <returns></returns>
         private List<OrderProduct> GenerateOrderProducts(IEnumerable<int> productArray, Order order,
-            int customerDiscountCounter, decimal customerDiscount)
+            decimal customerDiscount)
         {
             var orders = new List<OrderProduct>();
 
@@ -201,24 +183,13 @@ namespace OrderApi.Repositories
                 }
 
                 var productEntity = ProductContext.Products.SingleOrDefault(c => c.Id == i);
-                decimal productPrice = productEntity.Price;
+                var productPrice = productEntity.Price;
 
-                if (customerDiscountCounter == 5)
-                {
+                productEntity.OriginalPrice = productPrice;
+                var percentValue = FeePercentageHelper.ConvertToPercentage(productPrice, customerDiscount);
 
-                    productEntity.OriginalPrice = productPrice;
-                    var percentValue = FeePercentageHelper.ConvertToPercentage(productPrice, customerDiscount);
-
-                    productEntity.Price -= percentValue;
-
-                }
-                else
-                {
-                    productEntity.Price = productEntity.OriginalPrice;
-                }
-
-             
-
+                productEntity.Price -= percentValue;
+                
                 orders.Add(new OrderProduct
                 {
                     OrderProductId = Guid.NewGuid().ToString(),
